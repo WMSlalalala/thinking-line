@@ -1,0 +1,51 @@
+{
+  "roads": {
+    "page": "https://carto.nationalmap.gov/arcgis/rest/services/transportation/MapServer/8",
+    "downloadQueries": [
+      "https://carto.nationalmap.gov/arcgis/rest/services/transportation/MapServer/8/query?where=1%3D1&outFields=OBJECTID%2CTYPE%2CCOUNTRY%2CNAME%2CINTERSTATE%2CUS_ROUTE%2CSTATE&outSR=4326&geometryPrecision=5&returnGeometry=true&resultOffset=0&resultRecordCount=2000&orderByFields=OBJECTID&f=geojson",
+      "https://carto.nationalmap.gov/arcgis/rest/services/transportation/MapServer/8/query?where=1%3D1&outFields=OBJECTID%2CTYPE%2CCOUNTRY%2CNAME%2CINTERSTATE%2CUS_ROUTE%2CSTATE&outSR=4326&geometryPrecision=5&returnGeometry=true&resultOffset=2000&resultRecordCount=2000&orderByFields=OBJECTID&f=geojson"
+    ],
+    "features": 2348,
+    "license": "Public domain; https://carto.nationalmap.gov/arcgis/rest/services/transportation/MapServer",
+    "processing": "Fetched all 2,348 records via two paginated public queries, removed 47 ferries, retained 2,301 Interstate and US Route features; removed unused properties and trimmed text. Geometry returned in EPSG:4326 with 5 decimal coordinate precision."
+  },
+  "cities": {
+    "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_populated_places.geojson",
+    "features": 111,
+    "license": "Public domain; https://www.naturalearthdata.com/about/terms-of-use/",
+    "page": "https://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-populated-places/",
+    "processing": "Selected ADM0_A3=USA, retained 111 named point features and only display/ranking fields. Includes Alaska and Hawaii."
+  },
+  "note": "Generalized atlas data, not turn-by-turn navigation. USGS small-scale National Atlas road layer is legacy and not actively maintained.",
+  "files": {
+    "us-roads.geojson": {
+      "bytes": 1873864,
+      "gzipBytes": 537750,
+      "features": 2301,
+      "sha256": "e834be129158175325953652d631895dbdd703feedc4976cc3c1c08ede1f0501"
+    },
+    "us-cities.geojson": {
+      "bytes": 28909,
+      "gzipBytes": 4630,
+      "features": 111,
+      "sha256": "1c2f8dfc227d70880efe8f96741dac7342ec394ccc75dd5dcf2c69652049f212"
+    }
+  },
+  "finerOverlay": {
+    "service": "https://carto.nationalmap.gov/arcgis/rest/services/transportation/MapServer",
+    "endpoint": "https://carto.nationalmap.gov/arcgis/rest/services/transportation/MapServer/export",
+    "layers": "show:3,9",
+    "bboxSR": 3857,
+    "imageSR": 3857,
+    "format": "png32",
+    "transparent": true,
+    "f": "image",
+    "tested": {
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "cors": "*",
+      "bytes": 146469
+    },
+    "note": "Roads 1M-scale plus labels, suitable for closer regional atlas view. Layer 9 effective maximum scale 1:500,000; not street navigation. Use export endpoint, WMS endpoint returned 400 during validation."
+  }
+}

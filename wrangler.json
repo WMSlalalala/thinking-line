@@ -1,0 +1,10 @@
+{
+  "name": "thinking-line",
+  "main": "dist/server/index.js",
+  "compatibility_date": "2026-09-05",
+  "assets": {
+    "directory": "dist/client",
+    "binding": "ASSETS",
+    "not_found_handling": "none"
+  }
+}

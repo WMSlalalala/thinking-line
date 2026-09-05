@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1788639911166,
+      "tag": "0000_fantastic_slayback",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1788640699652,
+      "tag": "0001_big_hiroim",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1788643263576,
+      "tag": "0002_rare_glorian",
+      "breakpoints": true
+    }
+  ]
+}

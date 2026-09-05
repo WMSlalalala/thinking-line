@@ -1,0 +1,51 @@
+[
+  {
+    "id": "fishing-1",
+    "src": "assets/fishing/fishing-01.jpg",
+    "width": 1279,
+    "height": 1706,
+    "alt": "A fish held with a gripper above a sunlit wooden pier."
+  },
+  {
+    "id": "fishing-2",
+    "src": "assets/fishing/fishing-02.jpg",
+    "width": 1080,
+    "height": 810,
+    "alt": "Low sunlight over the water and shoreline beside a wooden pier."
+  },
+  {
+    "id": "fishing-3",
+    "src": "assets/fishing/fishing-03.jpg",
+    "width": 960,
+    "height": 1280,
+    "alt": "A fish held in orange gloves above a wooden pier."
+  },
+  {
+    "id": "fishing-4",
+    "src": "assets/fishing/fishing-04.jpg",
+    "width": 1441,
+    "height": 1080,
+    "alt": "A fish and fishing tackle on wooden pier boards beside a red rod."
+  },
+  {
+    "id": "fishing-5",
+    "src": "assets/fishing/fishing-05.jpg",
+    "width": 1080,
+    "height": 1920,
+    "alt": "A small fish held with a gripper beside the water."
+  },
+  {
+    "id": "fishing-6",
+    "src": "assets/fishing/fishing-06.jpg",
+    "width": 1080,
+    "height": 1440,
+    "alt": "A silver-colored fish and fishing rig on wooden pier boards."
+  },
+  {
+    "id": "fishing-7",
+    "src": "assets/fishing/fishing-07.jpg",
+    "width": 1080,
+    "height": 1441,
+    "alt": "Two fish beside fishing tackle and a red rod on a wooden pier."
+  }
+]

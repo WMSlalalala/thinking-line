@@ -1,0 +1,2738 @@
+[
+  {
+    "id": "sharma2026beyondoauth",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "authorization",
+      "privacy"
+    ],
+    "title": "Beyond OAuth: Task-Scoped Authorization for AI Agents via Natural Language Slices",
+    "authors": "Reshabh K Sharma, Linxi Jiang, Shuo Chen, Zhiqiang Lin",
+    "venue": "arXiv preprint · 2026",
+    "arxiv": "2603.17170",
+    "version": "v2",
+    "published": "2026-03-17",
+    "revised": "2026-08-25",
+    "take": "PAuth checks tool names, arguments, and cross-service data dependencies against a user-authenticated task using symbolic slices and signed provenance.",
+    "sources": [
+      "https://arxiv.org/html/2603.17170v2",
+      "https://www.rfc-editor.org/rfc/rfc9396.html"
+    ],
+    "url": "https://arxiv.org/abs/2603.17170",
+    "bib": "sharma2026beyondoauth",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2603.17170v2#S3.F6",
+      "imageUrl": "https://arxiv.org/html/2603.17170v2/figure6.png",
+      "figureLabel": "Figure 6",
+      "caption": "PAuthProxy routes authenticated tasks and provenance envelopes to independent server-side authorization middleware.",
+      "alt": "PAuth architecture: a user task reaches an unmodified MCP agent, then PAuthProxy dispatches tasks, manages keys and routes signed envelopes. MCP servers run code generation, slice derivation, rule compilation, runtime verification and envelope signing beside existing tools.",
+      "license": "CC BY 4.0",
+      "width": 968,
+      "height": 288,
+      "licenseSource": "https://arxiv.org/html/2603.17170v2",
+      "src": "assets/figures/sharma2026beyondoauth.png",
+      "crop": {
+        "width": 968,
+        "height": 288,
+        "left": 0,
+        "top": 1,
+        "right": 968,
+        "bottom": 287,
+        "cropWidth": 968,
+        "cropHeight": 286
+      }
+    },
+    "keywords": [
+      "agent-security",
+      "authorization",
+      "privacy"
+    ],
+    "topic": "agent-security",
+    "note": {
+      "problem": [
+        "An agent may hold permission to invoke a service while still making a call that violates the user's particular request. The recipient, amount, or prerequisite for an operation can depend on earlier service responses, so checking the tool name alone does not establish that the complete operation follows the task.",
+        "The paper asks how servers can verify these dependencies while treating the agent as untrusted. Its setting assumes an authenticated, sufficiently specified task and a trusted server-side translation model. Existing application controls and the correctness of authoritative service data remain separate assumptions."
+      ],
+      "contributions": [
+        "A task-scoped authorization model in which each server derives a symbolic specification of the operations relevant to its part of the task.",
+        "Signed envelopes that connect concrete return values to their computational provenance across services.",
+        "An MCP proxy and server middleware implementation, accompanied by AuthBench cases for legitimate operations and deliberately altered calls."
+      ],
+      "method": [
+        "The user authenticates the task text. A proxy distributes it and the available tool schemas to participating servers. Each server's language model translates the request into a restricted imperative program; deterministic processing derives a slice for each relevant call, including argument expressions and branch conditions.",
+        "Upstream services return signed envelopes containing both a concrete value and its symbolic origin. When a later call arrives, the receiving server verifies the signatures, reconstructs the relevant value environment, checks the slice's conditions, and computes the expected arguments. Execution proceeds when the actual call matches an authorized rule.",
+        "Calls outside the derived rules trigger explicit authorization. Arguments that require unresolved external interpretation are represented as nondeterministic values, which cannot automatically satisfy a concrete match. Alternatively, the user can confirm a refined task that resolves those values before registration. Successful calls produce further envelopes for downstream verification."
+      ],
+      "evaluation": [
+        "AuthBench adapts AgentDojo's banking, messaging, travel, and workspace tasks and adds shopping workflows with cross-service dependencies. It distinguishes original underspecified instructions from refined instructions, then replays legitimate traces and tests operand changes, unrelated tools, and bypassed guards.",
+        "The protocol runs in both an in-process AgentDojo setting and independent MCP servers connected through OpenClaw. Evaluation examines authorization without intervention, escalation of off-task calls, generated-slice correctness, task complexity, and registration versus runtime overhead. Additional translation models and manual slice inspection probe dependence on the language-model stage."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "shi2025progent",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "authorization",
+      "prompt-injection"
+    ],
+    "title": "Progent: Securing AI Agents with Privilege Control",
+    "authors": "Tianneng Shi, Jingxuan He, Zhun Wang, Hongwei Li, Linyu Wu, Wenbo Guo, Dawn Song",
+    "venue": "arXiv preprint · 2025, revised 2026",
+    "arxiv": "2504.11703",
+    "version": "v3",
+    "published": "2025-04-16",
+    "revised": "2026-05-14",
+    "take": "Progent enforces symbolic restrictions on tool calls and checks whether policy updates narrow or expand an agent's executable permissions.",
+    "sources": [
+      "https://arxiv.org/html/2504.11703v3"
+    ],
+    "url": "https://arxiv.org/abs/2504.11703",
+    "bib": "shi2025progent",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2504.11703v3#S2.F1",
+      "imageUrl": "https://arxiv.org/html/2504.11703v3/teaser-horizontal_cropped.svg",
+      "figureLabel": "Figure 1",
+      "caption": "Tool-call policies narrow automatically and require approval for expansion, blocking injected actions.",
+      "alt": "Progent's running email-to-Slack example aligns five agent steps with policy states and policy updates. Reading injected email requests inbox exfiltration, but policy enforcement blocks the email while allowing the intended Slack summary. An SMT check distinguishes approved expansion from automatic narrowing.",
+      "license": "arXiv.org perpetual non-exclusive license",
+      "width": 924,
+      "height": 430,
+      "licenseSource": "https://arxiv.org/html/2504.11703v3",
+      "src": "assets/figures/shi2025progent.svg",
+      "crop": {
+        "width": 924,
+        "height": 430,
+        "left": 0,
+        "top": 0,
+        "right": 924,
+        "bottom": 430,
+        "cropWidth": 924,
+        "cropHeight": 430
+      }
+    },
+    "keywords": [
+      "agent-security",
+      "privilege-control",
+      "prompt-injection"
+    ],
+    "topic": "agent-security",
+    "note": {
+      "problem": [
+        "Tool-using agents need enough authority to complete a legitimate task, but instructions inside retrieved content can redirect that authority toward an attacker's objective. A policy inferred only at the start may lack values learned later, while unrestricted policy updates can let untrusted observations expand the agent's permissions.",
+        "Progent addresses this tension by separating language-model policy generation from deterministic enforcement. Its protected interface is the tool call and its arguments; attacks confined to textual answers or actions that bypass the instrumented tool interface are outside that enforcement boundary."
+      ],
+      "contributions": [
+        "A policy language with allow and forbid rules over tool identifiers and argument conditions, plus explicit handling of blocked calls.",
+        "An SMT-based comparison that determines whether a proposed policy permits any call previously forbidden.",
+        "An execution architecture supporting task-derived initialization, contextual updates, configurable expansion approval, and library or MCP-proxy integration."
+      ],
+      "method": [
+        "A policy model receives the trusted user request and tool definitions and constructs the initial rule set. At runtime, a deterministic checker evaluates every proposed call against rules for its tool, including restrictions on argument values and structured fields. A denied call can terminate execution, request user involvement, or return feedback that lets the agent try another approach.",
+        "Updates are proposed in two stages. The system first decides whether an update may be useful without exposing that decision to the new tool result. If needed, the policy model then receives the fuller context and proposes revised rules. The model's proposal is not itself the enforcement decision.",
+        "The SMT check compares the sets of calls allowed before and after the update. A subset is applied automatically; an expansion goes to an approver. Approvers can deny, automatically accept, apply tool-specific rules, or involve a human. Thus, the formal confinement property describes narrowing between approved expansions, and does not certify the initial policy's interpretation of intent."
+      ],
+      "evaluation": [
+        "AgentDojo and Agent-SafetyBench supply tool-using tasks and adversarial settings. Comparisons include an unprotected agent and prior defenses, measuring legitimate utility without attack, utility during attack, and attacker-objective completion as distinct quantities.",
+        "Ablations fix the initial policy or vary expansion handling to isolate the role of updates and approval. Version 3 uses Auto-Approve by default, while human review is a separate condition. Model sweeps distinguish the policy generator from the acting agent. Integration studies examine existing agents, and runtime measurements assess policy generation, checking, and updates."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "elhelou2025delegated",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "authorization",
+      "framework"
+    ],
+    "title": "Delegated Authorization for Agents Constrained to Semantic Task-to-Scope Matching",
+    "authors": "Majed El Helou, Chiara Troiani, Benjamin Ryder, Jean Diaconu, Hervé Muyal, Marcelo Yannuzzi",
+    "venue": "arXiv preprint · 2025",
+    "arxiv": "2510.26702",
+    "version": "v1",
+    "published": "2025-10-30",
+    "revised": null,
+    "take": "A trusted authorization service evaluates whether a requested tool is semantically relevant to the user's task before granting its scope.",
+    "sources": [
+      "https://arxiv.org/html/2510.26702v1"
+    ],
+    "url": "https://arxiv.org/abs/2510.26702",
+    "bib": "elhelou2025delegated",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2510.26702v1#S3.F2",
+      "imageUrl": "https://arxiv.org/html/2510.26702v1/newfig2.png",
+      "figureLabel": "Figure 2",
+      "caption": "A trusted proxy passes task context to an authorization server that semantically filters requested scopes.",
+      "alt": "The user's query reaches a trusted authorization proxy. An untrusted agent requests delegated authorization; a segmented authorization server combines policy configuration, semantic matching and a trusted language model before MCP tool access to protected APIs.",
+      "license": "CC BY-NC-SA 4.0",
+      "width": 2033,
+      "height": 725,
+      "licenseSource": "https://arxiv.org/html/2510.26702v1",
+      "src": "assets/figures/elhelou2025delegated.png",
+      "crop": {
+        "width": 2033,
+        "height": 725,
+        "left": 0,
+        "top": 0,
+        "right": 2033,
+        "bottom": 725,
+        "cropWidth": 2033,
+        "cropHeight": 725
+      }
+    },
+    "keywords": [
+      "agent-security",
+      "authorization",
+      "semantic-matching"
+    ],
+    "topic": "agent-security",
+    "note": {
+      "problem": [
+        "An application's eligibility to access a tool does not mean that the tool is needed for every request. Broad or persistent grants can therefore give a delegated agent access unrelated to its current task. Conversely, an overly restrictive task matcher can deny tools needed to complete a legitimate workflow.",
+        "The paper studies this relevance decision inside a proposed authorization architecture. The empirical question is whether task and tool descriptions support useful matching decisions, including tasks that require several tools; it is distinct from checking the correctness of concrete tool arguments or a completed execution."
+      ],
+      "contributions": [
+        "A delegated-authorization architecture that carries the original task through a trusted proxy to a task-aware authorization server.",
+        "Two semantic matching approaches: an embedding-based ideal-tool comparison and a direct language-model judgment of a task–tool pair.",
+        "The ASTRA task-generation and incorrect-match simulation pipeline, with evaluation on ASTRA and a cleaned Toucan subset."
+      ],
+      "method": [
+        "The trusted proxy captures the user's prompt and context and conveys them to the agent and authorization infrastructure. Requests for delegated authority pass through this proxy. The authorization server combines the original task, requested tool descriptions, and applicable policy constraints; the design also proposes isolated authorization instances for individual applications.",
+        "SemSimM asks a trusted model to describe an ideal tool for the task, embeds that description and the available tools, and finds the closest match. It accepts the requested tool only when that tool is the selected match and similarity exceeds a calibrated threshold. This implementation targets single-tool matching.",
+        "LLM-ResM instead presents the task and the requested tool's name and description directly to a trusted language model, which returns a structured suitability decision. It does not require embedding the entire registry. The proposed infrastructure uses such decisions to constrain task-scoped grants, while the experiments test the matcher rather than a full token lifecycle."
+      ],
+      "evaluation": [
+        "ASTRA synthesizes tasks from discovered enterprise MCP tool definitions. Positive examples use the tools associated with a task; negative examples substitute tools from the same server or a different server. Toucan is filtered for description quality, language, duplicate tools, and sufficient alternatives before applying the same simulation.",
+        "Validation and test partitions separate tools and MCP servers. Validation calibrates the similarity threshold and prompts; held-out evaluation uses accuracy, precision, recall, and F1 to describe over- and under-scoping. Both matchers handle single-tool cases, while the reasoning matcher also handles tasks requiring two or three tools. This protocol measures matching decisions rather than end-to-end adversarial workflow resistance."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "zhu2025miniscope",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "authorization",
+      "framework"
+    ],
+    "title": "MiniScope: A Least Privilege Framework for Authorizing Tool Calling Agents",
+    "authors": "Jinhao Zhu, Kevin Tseng, Gil Vernik, Xiao Huang, Shishir G. Patil, Vivian Fang, Raluca Ada Popa",
+    "venue": "arXiv preprint · 2025",
+    "arxiv": "2512.11147",
+    "version": "v1",
+    "published": "2025-12-11",
+    "revised": null,
+    "take": "MiniScope reconstructs API permission hierarchies and solves for the minimum-cost scope cover required by an agent's execution plan.",
+    "sources": [
+      "https://arxiv.org/html/2512.11147v1"
+    ],
+    "url": "https://arxiv.org/abs/2512.11147",
+    "bib": "zhu2025miniscope",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2512.11147v1#S4.F4",
+      "imageUrl": "https://arxiv.org/html/2512.11147v1/workflow_narrow.png",
+      "figureLabel": "Figure 4",
+      "caption": "Permission hierarchies guide least-privilege selection; a checker mediates tool calls and protects service credentials.",
+      "alt": "MiniScope's numbered workflow connects the user, agent and services. Permission hierarchies feed a least-privilege solver, credential storage feeds a permission checker, and user approval precedes session-token tool calls checked before credentials reach external services.",
+      "license": "CC BY-NC-ND 4.0",
+      "width": 1600,
+      "height": 1067,
+      "licenseSource": "https://arxiv.org/html/2512.11147v1",
+      "src": "assets/figures/zhu2025miniscope.png",
+      "crop": {
+        "width": 1600,
+        "height": 1067,
+        "left": 0,
+        "top": 28,
+        "right": 1600,
+        "bottom": 1025,
+        "cropWidth": 1600,
+        "cropHeight": 997
+      }
+    },
+    "keywords": [
+      "agent-security",
+      "least-privilege",
+      "authorization"
+    ],
+    "topic": "agent-security",
+    "note": {
+      "problem": [
+        "An agent connected to personal services may receive credentials that authorize more API methods than its task requires. Repeated approval of every call creates friction, but broad initial approval leaves unnecessary authority available if the model makes a mistake or processes an injected instruction.",
+        "MiniScope seeks mechanically enforceable permission selection without trusting the acting model. Its optimization is conditioned on the submitted execution plan and the service's method-to-scope mapping; it does not establish that the plan itself faithfully represents the user's intent."
+      ],
+      "contributions": [
+        "A method for reconstructing permission hierarchies from the sets of API methods enabled by service scopes.",
+        "An integer linear programming formulation that selects a minimum-cost scope cover while accounting for permissions already granted.",
+        "A credential-isolating enforcement layer with session-aware approval, plus synthetic requests grounded in real API documentation."
+      ],
+      "method": [
+        "During initialization, MiniScope collects each service's mapping from API methods to accepted scopes. Scopes enabling equivalent method sets can be grouped, and set inclusion establishes broader and narrower permissions. This derives relationships from actual method coverage rather than relying on scope names.",
+        "The agent submits an execution graph of tool calls and data dependencies. The solver separates calls by service and chooses scopes covering every required method. The paper's cost model reflects the number of methods authorized by a scope. Existing grants are fixed constraints when additional permissions are selected, so the solver minimizes additions without silently revoking earlier grants.",
+        "Users approve newly required permissions through options such as one-time, session, or persistent access. MiniScope stores the real service credentials separately from the agent and associates permissions with a session token. Each call is intercepted and checked before those credentials are attached. Temporary grants are discarded at session end, while persistent grants remain available under the selected permission model."
+      ],
+      "evaluation": [
+        "The dataset derives synthetic requests from documented APIs for mail, calendars, files, storage, messaging, meetings, and other services. It includes individual calls, multi-call requests, and combined-application workflows. Scope-selection baselines use language models; evaluation compares their selections with the optimization objective and examines overprivileged connector configurations.",
+        "Runtime experiments separate solver and checking costs from end-to-end agent latency and operational cost. A simulated sequence of recurring user requests compares confirmation frequency across permission models and user personas. This measures expected approval effort under the simulation, rather than reporting a deployed-user study or an adversarial robustness benchmark."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "lodderstedt2023rar",
+    "track": "research",
+    "kind": "standard",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "authorization"
+    ],
+    "title": "OAuth 2.0 Rich Authorization Requests",
+    "authors": "Torsten Lodderstedt, Justin Richer, Brian Campbell",
+    "venue": "IETF RFC 9396 · Proposed Standard · May 2023",
+    "arxiv": "",
+    "version": null,
+    "published": "2023-05",
+    "revised": null,
+    "url": "https://www.rfc-editor.org/rfc/rfc9396.html",
+    "take": "RFC 9396 adds typed JSON authorization details to OAuth so clients can request permissions with operation-specific data.",
+    "sources": [
+      "https://www.rfc-editor.org/rfc/rfc9396.html",
+      "https://www.rfc-editor.org/info/rfc9396/"
+    ],
+    "bib": "lodderstedt2023rar",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "keywords": [
+      "agent-security",
+      "authorization",
+      "oauth",
+      "standard"
+    ],
+    "topic": "agent-security",
+    "note": {
+      "problem": [
+        "OAuth scope strings can become awkward when an API needs structured authorization information, such as a particular account, payment recipient, amount, or combination of permitted actions. Encoding every variation in a separate scope creates a vocabulary and interoperability problem.",
+        "Rich Authorization Requests supplies a structured way to express those requirements while retaining OAuth's grant and token flow. It specifies representation and processing rules; it does not infer permission requests from natural-language instructions or verify an agent's plan."
+      ],
+      "contributions": [
+        "The authorization_details parameter, whose value is an array of typed JSON objects describing requested access.",
+        "Rules for carrying, validating, comparing, and returning authorization details during authorization and token processing.",
+        "Resource-server delivery mechanisms and metadata for advertising supported types, together with security and privacy requirements."
+      ],
+      "method": [
+        "An API defines authorization-detail types and their allowed fields. Every object requires a type identifier. Optional common fields include locations, actions, datatypes, identifier, and privileges; type-specific fields can express information such as payment data. Repeated objects of the same type are permitted, and a type identifier need not resolve to a downloadable schema.",
+        "The client sends authorization_details in an authorization request, optionally alongside scope for independent requirements. The authorization server validates each object against the type definition and rejects unknown types, unknown fields, incorrect field types, invalid values, or missing required fields. Consent presents the combined requirements, and the resulting grant records the approved authorization.",
+        "When requesting a token, the client can request authorization details allowed by the existing grant or client policy. The authorization server applies type-specific comparison semantics and returns the details assigned to the token. It also makes the approved details available to the resource server, for example through a JWT access token or token introspection, so that the resource server can enforce them.",
+        "Deployments advertise supported types in server metadata and define how consent, enrichment, and enforcement work for each type. Request integrity and confidential transport protect sensitive details. The privacy guidance limits disclosure to the client and resource servers according to their need to know."
+      ],
+      "evaluation": [
+        "This is a standards specification, not an experimental research paper. It includes protocol examples and normative implementation requirements, with no benchmark, model comparison, or empirical effectiveness results.",
+        "Implementation assessment follows those requirements: object validation, consent consistency, grant-to-token comparison, resource-server enforcement, supported-type metadata, and protection against tampering or unintended disclosure. These are conformance concerns described by the specification, not experiments conducted by its authors."
+      ],
+      "myTake": ""
+    },
+    "methodDiagram": {
+      "alt": "Rich authorization request flow: typed details, validation and consent, token issuance, and resource-server enforcement.",
+      "caption": "Original explanatory diagram based on RFC 9396.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9396.html",
+      "steps": [
+        {
+          "title": "Request",
+          "detail": "The client sends typed authorization_details describing the access it needs."
+        },
+        {
+          "title": "Authorize",
+          "detail": "The authorization server validates the details, obtains consent, and records the grant."
+        },
+        {
+          "title": "Issue",
+          "detail": "The token response includes assigned authorization_details within the approved grant."
+        },
+        {
+          "title": "Enforce",
+          "detail": "The resource server receives the details through a JWT claim or token introspection and enforces access."
+        }
+      ]
+    }
+  },
+  {
+    "id": "xing2026critiqueagent",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "architecture"
+    ],
+    "title": "Critique of Agent Model",
+    "authors": "Eric Xing, Mingkai Deng, Jinyu Hou",
+    "venue": "arXiv preprint · 2026",
+    "arxiv": "2606.23991",
+    "version": "v1",
+    "published": "2026-06-22",
+    "revised": null,
+    "take": "The paper proposes an agent architecture that explicitly models goals, identity, planning, self-regulation, and learning rather than locating their control entirely in an external workflow.",
+    "sources": [
+      "https://arxiv.org/html/2606.23991v1"
+    ],
+    "url": "https://arxiv.org/abs/2606.23991",
+    "bib": "xing2026critiqueagent",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2606.23991v1#S5.F8",
+      "imageUrl": "https://arxiv.org/html/2606.23991v1/x5.png",
+      "figureLabel": "Figure 8",
+      "caption": "GIC combines a belief encoder, evolving identity, hierarchical goals, a configurator, and world-model planning.",
+      "alt": "GIC's aircraft-pilot architecture links observations to a belief encoder, evolving identity and subgoals. A configurator chooses when to invoke a planner whose policy, world model and critic simulate candidate trajectories, while actions affect the external world under human-supplied long-term goals.",
+      "license": "CC BY-NC-SA 4.0",
+      "width": 2040,
+      "height": 1116,
+      "licenseSource": "https://arxiv.org/html/2606.23991v1",
+      "src": "assets/figures/xing2026critiqueagent.png",
+      "crop": {
+        "width": 2040,
+        "height": 1116,
+        "left": 0,
+        "top": 5,
+        "right": 2040,
+        "bottom": 1108,
+        "cropWidth": 2040,
+        "cropHeight": 1103
+      }
+    },
+    "keywords": [
+      "agent-security",
+      "agent-architecture",
+      "position-paper"
+    ],
+    "topic": "models-methods",
+    "note": {
+      "problem": [
+        "Systems called agents often rely on external orchestration to decide their goals, schedule reasoning, maintain memory, and organize learning. The paper argues that fluent interaction or tool use alone does not show where these organizing functions reside.",
+        "It distinguishes externally orchestrated agentic systems from agentive systems that internalize more of this control. The central problem is architectural: how to represent persistent, goal-directed behavior and adaptive computation as explicit components that can be trained, inspected, and evaluated."
+      ],
+      "contributions": [
+        "A capability-based framework for analyzing goals, identity, decision-making, self-regulation, learning, and coordination in agent systems.",
+        "The Goal–Identity–Configurator architecture, connecting hierarchical goals and an evolving self-model with reactive policy execution and model-based planning.",
+        "A proposed training strategy and Performance–Efficiency–Growth evaluation framework for studying competence, computation allocation, and improvement over experience."
+      ],
+      "method": [
+        "A human supplies the terminal goal, which is decomposed into subgoals. A belief encoder summarizes observations, while identity represents the agent's capabilities, constraints, and dispositions and can evolve with experience. These states provide context for choosing actions and revising how the task is organized.",
+        "The configurator decides whether to act reactively, continue a cached plan, or invoke deliberate planning. Planning uses a policy, a separately trained world model, and a critic to generate and assess possible trajectories. The architecture distinguishes predicting environmental dynamics from selecting behavior toward a goal.",
+        "The proposed training process initializes components with different signals, develops competence through simulated experience, and refines components through real interaction. World-model prediction, policy learning, critic learning, and computation-allocation decisions have different training objectives. During deployment, the design allows acting, simulation, reflection, and learning to be interleaved under configurator control."
+      ],
+      "evaluation": [
+        "The paper presents an architectural and analytical argument rather than an experimental validation of the complete GIC system. Its aircraft-pilot scenario illustrates component roles. It references companion work for preliminary evidence, while proposing a broader evaluation agenda.",
+        "Performance evaluation uses long-horizon, constrained, stochastic, transfer, and coordination tasks to isolate different capabilities. Efficiency examines latency, computation, planning frequency, and whether deliberation is allocated according to difficulty. Growth examines learning from fixed experience, exploration under a fixed interaction budget, and transfer to unfamiliar tasks. These proposed measurements do not establish delegated authorization or resistance to prompt injection."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "hong2024cogagent",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "framework",
+      "grounding"
+    ],
+    "title": "CogAgent: A Visual Language Model for GUI Agents",
+    "authors": "Wenyi Hong, Weihan Wang, Qingsong Lv et al.",
+    "venue": "CVPR 2024",
+    "arxiv": "2312.08914",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Hong_CogAgent_A_Visual_Language_Model_for_GUI_Agents_CVPR_2024_paper.html",
+    "bib": "hong2024cogagent",
+    "take": "CogAgent adds an efficient high-resolution visual pathway to a vision-language model for reading interfaces and predicting GUI actions.",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "sources": [
+      "https://arxiv.org/html/2312.08914v3",
+      "https://github.com/zai-org/CogVLM",
+      "https://openaccess.thecvf.com/content/CVPR2024/html/Hong_CogAgent_A_Visual_Language_Model_for_GUI_Agents_CVPR_2024_paper.html"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2312.08914v3#S2.F2",
+      "imageUrl": "https://arxiv.org/html/2312.08914v3/architecture.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 2",
+      "caption": "CogAgent combines high-resolution visual features with a language-and-vision backbone.",
+      "alt": "Architecture diagram showing a high-resolution image encoder and cross-attention branch beside the original lower-resolution visual-language model.",
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/hong2024cogagent.png",
+      "crop": {
+        "width": 1190,
+        "height": 1252,
+        "left": 0,
+        "top": 0,
+        "right": 1190,
+        "bottom": 1250,
+        "cropWidth": 1190,
+        "cropHeight": 1250
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "vision-language-model",
+      "grounding"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "GUI screenshots contain small labels, icons, and spatial relationships that can disappear when an image is reduced to the resolution used by general vision-language models. Simply sending many more image patches through the language decoder increases computation. CogAgent addresses the architectural and training-data requirements of understanding these dense screens while retaining ordinary visual question-answering capabilities."
+      ],
+      "contributions": [
+        "A dual-resolution architecture that combines global visual context with fine interface detail through a separate cross-attention pathway.",
+        "Continual pretraining on text recognition, visual grounding, and webpage-specific referring-expression tasks, followed by instruction tuning for GUI use.",
+        "Released CogAgent checkpoints and inference interfaces that support both screenshot interpretation and structured GUI action generation."
+      ],
+      "method": [
+        "The screenshot enters two encoders. The existing CogVLM branch processes a smaller image and passes its visual tokens into the language decoder alongside the instruction. A smaller vision encoder processes a higher-resolution copy. Cross-attention in the decoder reads these detailed features without appending the entire high-resolution patch sequence to the main language sequence.",
+        "Training teaches the additional pathway to recognize text and associate descriptions with image regions. Webpage screenshots are paired with DOM-derived element descriptions and boxes for both description-to-location and location-to-description tasks. The DOM supplies supervision during data construction; it is not required as an observation when the trained GUI model receives a screenshot.",
+        "Instruction tuning combines visual question answering with annotated interfaces and converted action demonstrations. At use time, a prompt supplies the goal and action history with the current image; the model describes the intended operation and its target region. The original release provides a GUI-oriented agent checkpoint separately from a conversational checkpoint, so the selected model and prompt determine the output interface."
+      ],
+      "evaluation": [
+        "Visual question-answering benchmarks including VQAv2, TextVQA, DocVQA, and ChartQA test image, document, text, and chart understanding. Mind2Web and Android in the Wild test screenshot-conditioned action prediction, using benchmark-specific measures of element selection, operation correctness, and action matching.",
+        "Architecture and training-data ablations examine the contribution of the high-resolution branch and different pretraining sources. These GUI tests score actions against recorded benchmark states; they are distinct from an unrestricted live-computer completion test. This note covers the original CogAgent architecture rather than the later separately released CogAgent model."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "zhang2024autogui",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "framework",
+      "training"
+    ],
+    "title": "You Only Look at Screens: Multimodal Chain-of-Action Agents",
+    "authors": "Zhuosheng Zhang and Aston Zhang",
+    "venue": "Findings of ACL 2024",
+    "arxiv": "2309.11436",
+    "url": "https://aclanthology.org/2024.findings-acl.186/",
+    "bib": "zhang2024autogui",
+    "take": "Auto-GUI predicts smartphone actions from screenshots by combining previous action history with a generated plan of future action types.",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "sources": [
+      "https://aclanthology.org/2024.findings-acl.186.pdf",
+      "https://github.com/cooelf/Auto-GUI"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2309.11436v4#S1.F2",
+      "imageUrl": "https://arxiv.org/html/2309.11436v4/overview.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 2",
+      "caption": "Auto-GUI predicts actions from screenshots, goals, and action history.",
+      "alt": "Auto-GUI architecture combines screen and language encoders, then predicts future action plans and the current action in a feedback loop.",
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/zhang2024autogui.png",
+      "crop": {
+        "width": 1417,
+        "height": 615,
+        "left": 0,
+        "top": 8,
+        "right": 1416,
+        "bottom": 609,
+        "cropWidth": 1416,
+        "cropHeight": 601
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "action-model",
+      "mobile"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "A smartphone command usually requires several interactions, but the next action must be chosen from the current screen. Systems that translate each interface into text through separate parsers can lose visual information and introduce additional processing dependencies. Auto-GUI investigates whether a compact multimodal model can learn this decision directly while representing the task's temporal structure."
+      ],
+      "contributions": [
+        "A screenshot-based encoder-decoder agent that combines visual observations, a user goal, and structured previous actions without a runtime UI parser.",
+        "A chain-of-action representation with action history on the input side and an anticipated sequence of action types on the output side.",
+        "An open implementation with action-coordinate normalization and experiments isolating visual features, model capacity, and history."
+      ],
+      "method": [
+        "At each step, a frozen image encoder extracts screenshot features. A language encoder processes the instruction and previous action records, including action type, touch point, lift point, and typed text. A trainable projection aligns visual features with the language representation; attention and a learned gate combine the two channels before decoding.",
+        "The decoder produces an action plan followed by an action decision. The plan lists anticipated action types rather than executable coordinates for every future screen. The decision supplies the current operation and its parameters. Thus, the plan is auxiliary structure for selecting the next action; the environment still has to provide a new observation before subsequent decisions.",
+        "Touch and lift coordinates express both taps and swipes. Coordinates are normalized across screen sizes, and preprocessing standardizes common gesture patterns to reduce variation in demonstrations. The released workflow prepares screenshot features and trajectory records before model training, then decodes action strings for evaluation. This is the Auto-GUI system from 'You Only Look at Screens: Multimodal Chain-of-Action Agents,' not the similarly named later AutoGUI dataset."
+      ],
+      "evaluation": [
+        "Android in the Wild supplies recorded tasks covering general phone use, app installation, Google apps, single-step interactions, and web shopping. Episodes are divided into training, validation, and test sets. The principal measure is screen-wise action matching, with rules for action types, gesture locations or target regions, and swipe direction.",
+        "Comparisons include prompted language models, a fine-tuned language model, and behavioral-cloning agents. Ablations change the image features, language-model scale, and available action history to test what each component contributes. The protocol evaluates predictions at demonstration states rather than rolling out complete tasks in a live Android environment."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "cheng2024seeclick",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "grounding",
+      "training"
+    ],
+    "title": "SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents",
+    "authors": "Kanzhi Cheng, Qiushi Sun, Yougang Chu et al.",
+    "venue": "ACL 2024",
+    "arxiv": "2401.10935",
+    "url": "https://aclanthology.org/2024.acl-long.505/",
+    "bib": "cheng2024seeclick",
+    "take": "SeeClick trains a vision-language model to translate interface instructions into screen locations and evaluates that capability separately from downstream action selection.",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "sources": [
+      "https://arxiv.org/html/2401.10935v2",
+      "https://github.com/njucckevin/SeeClick",
+      "https://aclanthology.org/2024.acl-long.505/"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2401.10935v2#S2.F2",
+      "imageUrl": "https://arxiv.org/html/2401.10935v2/framework.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 2",
+      "caption": "SeeClick connects grounding pretraining, ScreenSpot evaluation, and downstream GUI interaction.",
+      "alt": "Three panels show SeeClick grounding pretraining, ScreenSpot examples across platforms, and a sequence of screenshot-based web actions.",
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/cheng2024seeclick.png",
+      "crop": {
+        "width": 2034,
+        "height": 2043,
+        "left": 0,
+        "top": 0,
+        "right": 2033,
+        "bottom": 2043,
+        "cropWidth": 2033,
+        "cropHeight": 2043
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "grounding",
+      "benchmark"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "A model may understand a user request yet fail to identify the corresponding control in a screenshot. GUI grounding differs from recognizing objects in natural photographs: targets can be small text labels, unfamiliar icons, or visually similar widgets. SeeClick treats this localization problem as a capability that requires dedicated supervision and a benchmark covering multiple interface platforms."
+      ],
+      "contributions": [
+        "A GUI grounding pretraining recipe that maps screenshot-and-description pairs to coordinates through ordinary language generation.",
+        "Automatically collected web examples and reorganized mobile interface data for grounding, text recognition, widget descriptions, and screen summaries.",
+        "ScreenSpot, a human-annotated localization benchmark covering mobile, desktop, and web interfaces with textual and non-textual targets.",
+        "Released model, data preparation, training, and evaluation resources connecting grounding pretraining to visual GUI agent tasks."
+      ],
+      "method": [
+        "A grounding example supplies the screenshot and a description of the desired element. The model outputs a point or bounding box as numerical text. This keeps localization within the language-model generation interface rather than introducing a separate vocabulary of coordinate tokens or requiring an external element detector at inference.",
+        "Web supervision comes from rendered pages whose visible text and descriptive HTML attributes can be associated with element locations. The training mixture also reverses widget-captioning examples to create description-to-location tasks and incorporates mobile UI grounding and summarization resources. General vision-language instruction examples remain in the mixture alongside the GUI-specific material.",
+        "The released implementation adapts Qwen-VL with GUI grounding data and then fine-tunes for particular agent benchmarks. In the agent setting, the prompt adds the task and previous actions to the screenshot, and the model predicts the next operation with its target. The crawler and mobile preprocessing produce training labels; they are not a requirement to supply DOM trees or accessibility metadata to the deployed visual agent."
+      ],
+      "evaluation": [
+        "ScreenSpot tests whether the predicted click lies inside the annotated target box, with breakdowns by platform and by text versus icons or widgets. Its role is to measure localization given a target instruction, separately from deciding which action advances an overall task.",
+        "Downstream experiments use MiniWob, Android in the Wild, and Mind2Web. They evaluate task completion in the interactive MiniWob setting and benchmark action or step correctness on recorded mobile and web demonstrations. Comparisons with the base vision-language model and GUI-trained alternatives examine whether grounding training transfers to action prediction."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "wu2025osatlas",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "grounding",
+      "training"
+    ],
+    "title": "OS-ATLAS: A Foundation Action Model for Generalist GUI Agents",
+    "authors": "Zhiyong Wu, Zhenyu Wu, Fangzhi Xu et al.",
+    "venue": "ICLR 2025",
+    "arxiv": "2410.23218",
+    "url": "https://arxiv.org/abs/2410.23218",
+    "bib": "wu2025osatlas",
+    "take": "OS-Atlas combines cross-platform grounding data with a unified action representation to train reusable GUI grounding and action models.",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "sources": [
+      "https://arxiv.org/html/2410.23218v1",
+      "https://osatlas.github.io/"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2410.23218v1#S3.F2",
+      "imageUrl": "https://arxiv.org/html/2410.23218v1/Pipeline.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 2",
+      "caption": "OS-Atlas moves from cross-platform grounding pretraining to action fine-tuning.",
+      "alt": "Training pipeline links web, desktop, and mobile grounding data to OS-Atlas-Base, followed by action fine-tuning with a unified action space.",
+      "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+      "src": "assets/figures/wu2025osatlas.png",
+      "crop": {
+        "width": 1350,
+        "height": 527,
+        "left": 0,
+        "top": 0,
+        "right": 1350,
+        "bottom": 527,
+        "cropWidth": 1350,
+        "cropHeight": 527
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "grounding",
+      "cross-platform",
+      "action-model"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "Training data for GUI agents is unevenly distributed across platforms, with much more accessible web data than desktop data. Existing trajectories also encode equivalent operations differently, such as a desktop click and a mobile tap. OS-Atlas addresses both problems: collecting diverse interface supervision and making actions compatible enough for joint training and transfer to unfamiliar environments."
+      ],
+      "contributions": [
+        "An automated grounding-data collection infrastructure covering web, Android, Windows, macOS, and Linux interfaces.",
+        "A grounding-then-action training pipeline that separates element localization from instruction-conditioned action prediction.",
+        "A unified action space with shared basic operations and explicitly described custom actions for platform-specific behavior.",
+        "Released models and data, plus corrected ScreenSpot annotations and experiments separating grounding, action prediction, and downstream adaptation."
+      ],
+      "method": [
+        "The collection pipeline renders web pages and links visible elements to their descriptions and coordinates. Desktop and mobile collectors explore interfaces using platform-specific accessibility tools. Screenshots and labels are filtered before training. Additional instruction-grounding examples describe the purpose of an action using its task context and before-and-after screenshots.",
+        "Grounding pretraining asks a vision-language model to locate an element from a screenshot and referring expression or instruction, producing OS-Atlas-Base. Action fine-tuning then uses task instructions, screenshots, and available history to predict thoughts, action types, and arguments. The released model family offers grounding and action variants rather than treating these two training stages as interchangeable outputs.",
+        "The action vocabulary maps common operations to shared click, type, and scroll forms. Custom actions, such as opening an application or dragging an object, are introduced through descriptions appropriate to the environment. This representation lets training examples from different interfaces share an output format while preserving operations that are not available everywhere. A grounding model can also be inserted beneath a separate planner to supply coordinates for its chosen action."
+      ],
+      "evaluation": [
+        "ScreenSpot and its corrected version test point localization and bounding-box overlap. OSWorld evaluates the grounding model within an interactive agent using an external planner. These are different uses of the released models: locating a requested target versus completing a sequence of desktop actions.",
+        "Agent experiments cover AndroidControl, GUI-Odyssey, GUI-Act-Web, and the web and desktop portions of OmniAct. They measure action-type correctness, grounding, and step success under out-of-distribution and downstream fine-tuning settings. Ablations examine data scale, platform coverage, instruction-grounding examples, and action-space unification."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "xu2025aguvis",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "framework",
+      "training"
+    ],
+    "title": "Aguvis: Unified Pure Vision Agents for Autonomous GUI Interaction",
+    "authors": "Yiheng Xu, Zekun Wang, Junli Wang et al.",
+    "venue": "ICML 2025",
+    "arxiv": "2412.04454",
+    "url": "https://proceedings.mlr.press/v267/xu25ae.html",
+    "bib": "xu2025aguvis",
+    "take": "Aguvis trains screenshot-based GUI models with a shared action interface and separate stages for grounding and reasoning over interaction trajectories.",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "sources": [
+      "https://arxiv.org/html/2412.04454v2",
+      "https://aguvis-project.github.io/",
+      "https://proceedings.mlr.press/v267/xu25ae.html"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2412.04454v2#S1.F1",
+      "imageUrl": "https://arxiv.org/html/2412.04454v2/MainFigure.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 1",
+      "caption": "Aguvis links visual observations, inner monologue, and executable GUI actions.",
+      "alt": "A trip-planning screenshot connects user instructions and a unified action space to internal reasoning and a coordinate-based GUI action.",
+      "licenseUrl": "http://creativecommons.org/licenses/by-nc-nd/4.0/",
+      "src": "assets/figures/xu2025aguvis.png",
+      "crop": {
+        "width": 2048,
+        "height": 572,
+        "left": 66,
+        "top": 22,
+        "right": 1981,
+        "bottom": 541,
+        "cropWidth": 1915,
+        "cropHeight": 519
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "action-model",
+      "cross-platform",
+      "reasoning"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "GUI datasets differ in their observations, action names, and assumptions about planning. A model trained only to localize a supplied target does not automatically know which target should come next in a longer task. Aguvis develops a common visual interaction framework and training mixture intended to connect these grounding and decision-making capabilities within an open model."
+      ],
+      "contributions": [
+        "A screenshot-based interaction framework using a common action format with extensions for platform-specific operations.",
+        "Aguvis Data Collection, combining converted action datasets, synthetic grounding supervision, and trajectory annotations with explicit intermediate reasoning.",
+        "A two-stage training recipe that first learns grounding and then adds planning and reasoning over GUI tasks.",
+        "Released checkpoints, data, and training resources for using Aguvis either as a grounding component or as an agent that produces its own plans."
+      ],
+      "method": [
+        "At an interaction step, the model receives the user goal, the current screenshot, and relevant history. It can generate an inner monologue describing the current situation and intended next action, followed by an executable command. The action format is based on PyAutoGUI, with plugins for mobile gestures, platform controls, completion signals, and other operations that need an explicit extension.",
+        "Data construction first translates existing GUI trajectories into this common format. Interface metadata also supports template-generated instruction-and-action pairs. A separate annotation process enriches trajectories with intermediate reasoning and action instructions. Closed-source vision-language models assist this annotation stage; the resulting released model can generate its own thoughts and actions at inference.",
+        "Grounding training develops the mapping from an instruction and screenshot to an interface action. The subsequent stage mixes reasoning-rich trajectories with simpler action instructions, teaching the model different levels of planning detail. The project exposes both grounding-oriented and full agent checkpoints, allowing experiments to separate a planner's choice of target from the model's ability to execute that choice visually."
+      ],
+      "evaluation": [
+        "ScreenSpot tests direct grounding and a setting that includes planning before localization. Multimodal-Mind2Web and AndroidControl test recorded action prediction, including high-level task instructions and lower-level action instructions where applicable. These measures concern the next action at a supplied state.",
+        "Mind2Web-Live, AndroidWorld, and MobileMiniWoB test interactive task execution. The evaluation distinguishes configurations using an external planner from those using Aguvis for planning and grounding together. Ablations investigate training stages, inner-monologue annotations, cross-platform data, and observation-processing efficiency; they do not turn benchmark completion into a general reliability guarantee."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "qin2025uitars",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "framework",
+      "training"
+    ],
+    "title": "UI-TARS: Pioneering Automated GUI Interaction with Native Agents",
+    "authors": "Yujia Qin, Yining Ye, Junjie Fang et al.",
+    "venue": "arXiv preprint, 2025",
+    "arxiv": "2501.12326",
+    "url": "https://arxiv.org/abs/2501.12326",
+    "bib": "qin2025uitars",
+    "take": "UI-TARS trains a native GUI model to generate thoughts and actions from screenshots, using perception data and iteratively refined interaction traces.",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "sources": [
+      "https://arxiv.org/html/2501.12326v1",
+      "https://github.com/bytedance/UI-TARS"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2501.12326v1#S4.F4",
+      "imageUrl": "https://arxiv.org/html/2501.12326v1/figures/model_arc.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 4",
+      "caption": "UI-TARS unifies perception, action, reasoning, and learning from interaction.",
+      "alt": "UI-TARS overview shows an observation-action loop above four capability groups: perception, action, reasoning, and learning from prior interaction.",
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/qin2025uitars.png",
+      "crop": {
+        "width": 1836,
+        "height": 1740,
+        "left": 22,
+        "top": 13,
+        "right": 1811,
+        "bottom": 1723,
+        "cropWidth": 1789,
+        "cropHeight": 1710
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "action-model",
+      "reasoning",
+      "error-recovery"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "A GUI agent must read dense screens, ground actions, maintain progress over time, and respond to states produced by its own mistakes. Modular systems often assign these functions to separate components, while action-only demonstrations provide limited examples of recovery. The original UI-TARS report investigates learning these behaviors within one vision-language model through staged data construction and training."
+      ],
+      "contributions": [
+        "A native agent formulation that conditions thought-and-action generation on the task, recent screenshots, and earlier interaction history.",
+        "Perception and action datasets covering element descriptions, dense screen captions, state changes, visual question answering, and shared GUI operations.",
+        "Thought annotation and bootstrapping procedures that enrich demonstrations with intermediate reasoning and select usable thought-action pairs.",
+        "Iterative online trace collection and reflection training that include corrected decisions and continuations from states reached after errors."
+      ],
+      "method": [
+        "The model reads screenshots directly and generates a thought followed by an action. Recent visual observations are retained alongside the textual history of thoughts and actions. Platform-specific prompts specify the available desktop or mobile commands. The released parser converts generated operations and normalized coordinates into executable calls for the original screen dimensions.",
+        "Perception training links interface images to element properties, spatial descriptions, and screen-level explanations. Action training normalizes equivalent operations across platforms and learns sequences rather than unrelated clicks. Thought augmentation first annotates demonstrations with reasoning; bootstrapping additionally samples thought-action pairs without revealing the reference action, retaining pairs whose action matches the training target.",
+        "For further training, agents execute task instructions in interactive environments and produce new trajectories. Filtering and reflection identify usable traces, corrected actions, and recovery continuations. Supervised learning and preference optimization incorporate these materials into subsequent checkpoints. This is a training process: the description does not assume that model weights update during every deployed user session."
+      ],
+      "evaluation": [
+        "The report evaluates interface perception, visual grounding, offline action prediction, and online task completion separately. Representative suites include VisualWebBench and ScreenQA for perception, ScreenSpot variants for localization, AndroidControl and GUI-Odyssey for recorded mobile actions, and OSWorld and AndroidWorld for interaction with changing environments.",
+        "The study varies model scale, training components, reasoning use, and sampling budgets to examine which capabilities each contributes. Grounding checks target-region correctness; offline tests require the action and arguments to match annotations; online tests use environment task evaluators. This note concerns the original report and does not merge experiments from later numbered UI-TARS releases."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "deng2023mind2web",
+    "date": "2026-07-28",
+    "read": 2,
+    "tags": [
+      "benchmark",
+      "training"
+    ],
+    "views": 0,
+    "hooks": 0,
+    "title": "Mind2Web: Towards a Generalist Agent for the Web",
+    "authors": "Deng, Gu, Zheng et al.",
+    "venue": "NeurIPS 2023 Datasets & Benchmarks",
+    "arxiv": "2306.06070",
+    "bib": "deng2023mind2web",
+    "take": "Mind2Web pairs real-website task demonstrations with generalization splits and a baseline that filters HTML before selecting the next browser action.",
+    "comments": [],
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/5950bf290a1570ea401bf98882128160-Abstract-Datasets_and_Benchmarks.html",
+    "sources": [
+      "https://proceedings.neurips.cc/paper_files/paper/2023/file/5950bf290a1570ea401bf98882128160-Paper-Datasets_and_Benchmarks.pdf",
+      "https://github.com/OSU-NLP-Group/Mind2Web"
+    ],
+    "kind": "paper",
+    "track": "research",
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2306.06070v3#S3.F4.fig1",
+      "imageUrl": "https://arxiv.org/html/2306.06070v3/pipeline.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 3",
+      "caption": "MindAct ranks HTML candidates before predicting the target element and operation.",
+      "alt": "A small language model ranks HTML element candidates; a larger prediction model uses the selected snippet, task description, and action history.",
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/deng2023mind2web.png",
+      "crop": {
+        "width": 407,
+        "height": 245,
+        "left": 0,
+        "top": 0,
+        "right": 407,
+        "bottom": 245,
+        "cropWidth": 407,
+        "cropHeight": 245
+      }
+    },
+    "keywords": [
+      "web-agent",
+      "dataset",
+      "benchmark",
+      "gui-agent",
+      "textual-interface"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "Web agents trained on a small collection of simplified sites may learn those interfaces without learning to operate unfamiliar websites. Real pages also contain far more HTML than a language model can conveniently process. Mind2Web addresses the need for diverse demonstrations, explicit generalization tests, and a practical way to select actions from large webpage representations."
+      ],
+      "contributions": [
+        "A dataset of human-authored goals and browser demonstrations spanning varied real websites, domains, and interaction patterns.",
+        "Separate cross-task, cross-website, and cross-domain splits that distinguish different forms of generalization.",
+        "MindAct, a baseline combining a smaller element-ranking model with a larger language model for final action selection.",
+        "Released trajectory data, webpage records, candidate-element representations, and baseline resources supporting reproducible offline experiments."
+      ],
+      "method": [
+        "Annotators propose a high-level task and demonstrate its completion through a browser tool. For each step, they identify the target element and select an operation, such as clicking, typing, or choosing an option. The collection process records webpage state and the interaction sequence; author verification aligns the task description with the retained actions and removes extraneous steps.",
+        "MindAct first represents individual HTML elements together with useful surrounding structure. A smaller ranking model scores each candidate against the task and previous actions. Only a selected candidate set proceeds to the larger prediction model, reducing the page information that must fit into its prompt while retaining candidate-specific context.",
+        "The prediction stage chooses the target element, operation, and any required value. Its multiple-choice formulation can process candidate groups before selecting a final action. The released dataset distinguishes annotated positive elements from other candidates and provides the cleaned representations used by the baseline. These records make it possible to inspect element retrieval separately from deciding what to do with the retrieved element."
+      ],
+      "evaluation": [
+        "The cross-task split holds out tasks on familiar websites; cross-website testing holds out sites within familiar domains; cross-domain testing holds out broader categories. Candidate ranking is evaluated by retrieval recall, while action prediction uses element accuracy, operation F1, step success, and an aggregate task-success measure.",
+        "Each evaluated step uses a cached webpage state and reference action history. Aggregate task success therefore reflects agreement across the recorded sequence, not autonomous completion in a live browser. The paper examines model choice and candidate filtering under this protocol and discusses how valid alternative action paths can be missed by a single recorded demonstration."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "rawles2024androidworld",
+    "date": "2026-07-12",
+    "read": 2,
+    "tags": [
+      "benchmark"
+    ],
+    "views": 0,
+    "hooks": 0,
+    "title": "AndroidWorld: A Dynamic Benchmarking Environment for Autonomous Agents",
+    "authors": "Rawles, Clinckemaillie, Chang et al.",
+    "venue": "ICLR 2025",
+    "arxiv": "2405.14573",
+    "bib": "rawles2024androidworld",
+    "take": "AndroidWorld provides parameterized Android tasks with controlled initialization and programmatic completion checks for evaluating interactive agents.",
+    "comments": [],
+    "url": "https://openreview.net/forum?id=il5yUQsrjC",
+    "sources": [
+      "https://arxiv.org/html/2405.14573",
+      "https://github.com/google-research/android_world",
+      "https://openreview.net/forum?id=il5yUQsrjC"
+    ],
+    "kind": "paper",
+    "track": "research",
+    "figure": {
+      "sourcePage": "https://google-research.github.io/android_world/",
+      "imageUrl": "https://google-research.github.io/android_world/assets/images/aw_graph.png",
+      "license": "CC BY 4.0",
+      "figureLabel": "Project overview",
+      "caption": "AndroidWorld evaluates agents through task templates and Android system state.",
+      "alt": "AndroidWorld connects an emulator and application state to task evaluators, parameterized task templates, and an agent observing screenshots and UI trees.",
+      "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+      "src": "assets/figures/rawles2024androidworld.png",
+      "crop": {
+        "width": 1680,
+        "height": 674,
+        "left": 0,
+        "top": 0,
+        "right": 1680,
+        "bottom": 674,
+        "cropWidth": 1680,
+        "cropHeight": 674
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "mobile",
+      "benchmark",
+      "environment"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "Recorded action datasets cannot show how an agent responds when its own action changes the screen, and live-app evaluations can be difficult to repeat. AndroidWorld addresses the need for an executable mobile environment whose tasks can vary while preserving valid initialization and success criteria. The benchmark concerns complete interactions with applications, rather than only matching isolated demonstration actions."
+      ],
+      "contributions": [
+        "An Android environment exposing screenshots, accessibility information, and an action interface for agents.",
+        "Parameterized task definitions with setup, reward evaluation, and teardown tied to controlled application state.",
+        "Reusable validators that inspect files, databases, settings, or UI elements and support tasks composed from simpler objectives.",
+        "A released benchmark implementation and baseline agents, including M3A, for studying observation formats and prompting designs."
+      ],
+      "method": [
+        "The environment runs a fixed Android emulator configuration with controlled application versions. A task samples parameters under a specified random seed and prepares the corresponding initial state. The resulting instruction may refer to particular names, file contents, appointments, or other task-specific values, so different instances require more than replaying a fixed coordinate sequence.",
+        "An agent obtains the current screenshot and, when its configuration uses it, an accessibility-tree representation. It acts through gestures, text entry, navigation controls, and the supported function interface. The environment applies the action and returns a changed observation. Completion is checked against the requested state, using application databases or files where possible and UI validation where necessary.",
+        "The M3A baseline selects an action from the available operations and then inspects the transition. Its reflection stage summarizes what happened and provides a history for the next decision. The benchmark also supports simpler prompting and an adapted SeeAct baseline. In the released task API, initialization and validation belong to task code, keeping the evaluator separate from an agent's own claim that it has finished."
+      ],
+      "evaluation": [
+        "Experiments measure task success on AndroidWorld and MobileMiniWoB under defined interaction budgets. Agent comparisons vary the underlying language model, text-only versus screenshot-assisted observations, operating guidelines, and reflection. Human task attempts provide a reference for task difficulty and the interaction budgets used in the study.",
+        "Further analyses inspect failures and sensitivity to task parameters. Task seeds, application versions, and reset procedures matter because the goal is to compare agents on controlled yet varied instances. The state-based validators assess specified outcomes; their use does not imply that every behavior outside those checks has been evaluated."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "wen2024autodroid",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "framework",
+      "memory"
+    ],
+    "title": "AutoDroid: LLM-powered Task Automation in Android",
+    "authors": "Hao Wen, Yuanchun Li, Guohong Liu et al.",
+    "venue": "ACM MobiCom 2024",
+    "arxiv": "2308.15272",
+    "url": "https://www.microsoft.com/en-us/research/uploads/prod/2024/07/mobicom24-autodroid.pdf",
+    "bib": "wen2024autodroid",
+    "take": "AutoDroid explores Android applications to build reusable app-specific memory and supplies that memory when an LLM chooses subsequent UI actions.",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "sources": [
+      "https://www.microsoft.com/en-us/research/uploads/prod/2024/07/mobicom24-autodroid.pdf",
+      "https://autodroid-sys.github.io/"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2308.15272v4#S3.F3",
+      "imageUrl": "https://arxiv.org/html/2308.15272v4/overview.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 3",
+      "caption": "AutoDroid builds app memory offline and uses it during online task execution.",
+      "alt": "An offline exploration and task-synthesis pipeline builds app memory; online prompt generation, knowledge augmentation, and execution use that memory.",
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/wen2024autodroid.png",
+      "crop": {
+        "width": 1305,
+        "height": 553,
+        "left": 0,
+        "top": 0,
+        "right": 1305,
+        "bottom": 553,
+        "cropWidth": 1305,
+        "cropHeight": 553
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "mobile",
+      "textual-interface",
+      "memory"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "General language knowledge does not necessarily reveal how a particular Android application exposes a function. A task may require navigating through controls whose labels do not resemble the user's goal. Meanwhile, raw UI hierarchies are lengthy and repeated model calls are costly. AutoDroid combines application exploration, compact UI descriptions, and selective memory retrieval to address these operational gaps."
+      ],
+      "contributions": [
+        "A task-oriented interface representation that converts Android UI structure into compact, actionable HTML-like elements.",
+        "An exploration-based memory pipeline that records UI transitions and synthesizes descriptions of functions reachable through those transitions.",
+        "A memory-augmented execution loop with techniques for reducing repeated UI processing and language-model query cost.",
+        "A system and Android task benchmark used to compare action decisions, complete task execution, and the cost of different configurations."
+      ],
+      "method": [
+        "Before user-task execution, an explorer interacts with the app and builds a UI Transition Graph. Screens are nodes and recorded actions connect them. A language model summarizes functions associated with UI elements and screens, producing simulated tasks together with the paths that reach them. This memory records operational knowledge about the analyzed application rather than relying on general model pretraining alone.",
+        "During execution, the user's goal is matched to simulated tasks through sentence embeddings. Relevant paths and UI functions become hints in the current prompt. The prompt also includes the actual screen representation and prior actions. The model selects an element identifier, an operation, and any input text from a constrained output format; an executor translates that selection into an Android interaction.",
+        "The interface representation prunes irrelevant structure, groups functionally equivalent elements, and can inspect scrollable content before requesting a decision. The system also includes prompt filtering and confirmation handling for selected sensitive operations. Its released workflow separates app-memory preparation from online task execution, making exploration effort and memory reuse part of the deployment assumptions rather than hidden capabilities of a screenshot-only model."
+      ],
+      "evaluation": [
+        "DroidTask provides Android task instructions, reference action traces, and application environments for exploration. The paper evaluates different language-model backbones using action accuracy and task completion. Comparisons and ablations investigate app memory, UI representation, exploration coverage, and optimizations that change the number or size of model queries.",
+        "Cost analyses consider model interaction and the work required to prepare application knowledge. The experiments assume that the apps can be explored and their interface information analyzed. They test the configured system on its benchmark, rather than showing that a model can infer the same app-specific transitions from an arbitrary screenshot without prior analysis."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "zhang2026screentext",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "benchmark"
+    ],
+    "title": "Do LLMs Need to See Everything? A Benchmark and Study of Failures in LLM-driven Smartphone Automation using Screentext vs. Screenshots",
+    "authors": "Shiquan Zhang, Tianyi Zhang, Le Fang et al.",
+    "venue": "arXiv preprint, 2026",
+    "arxiv": "2604.17817",
+    "url": "https://arxiv.org/abs/2604.17817",
+    "bib": "zhang2026screentext",
+    "take": "DailyDroid compares smartphone automation with screentext alone and screentext plus screenshots, using task outcomes and a structured failure analysis.",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "sources": [
+      "https://arxiv.org/html/2604.17817v1",
+      "https://github.com/BowenBryanWang/AutoTask"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2604.17817v1#S2.F1",
+      "imageUrl": "https://arxiv.org/html/2604.17817v1/figs/Figure1_user.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 1",
+      "caption": "The paper frames mobile interaction around perception, planning, action, and memory.",
+      "alt": "Conceptual diagram links user instructions to a smartphone environment and an agent with memory, planning, prediction, decision, and reflection components.",
+      "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+      "src": "assets/figures/zhang2026screentext.png",
+      "crop": {
+        "width": 1920,
+        "height": 701,
+        "left": 19,
+        "top": 10,
+        "right": 1902,
+        "bottom": 693,
+        "cropWidth": 1883,
+        "cropHeight": 683
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "mobile",
+      "benchmark",
+      "textual-interface",
+      "failure-analysis"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "Overall completion scores do not explain whether a mobile agent failed because it misread the goal, could not access the UI, chose the wrong control, or could not execute its decision. This study develops everyday Android tasks and a controlled modality comparison to connect measured behavior with concrete interface and agent failures. It also examines the resource implications of adding visual observations."
+      ],
+      "contributions": [
+        "DailyDroid, a task suite spanning everyday application categories and difficulty levels defined by interaction complexity.",
+        "A shared experimental framework comparing screentext with screentext plus screenshots under the same task and execution setup.",
+        "A failure handbook separating system-level interface problems from agent-level interpretation and decision problems.",
+        "A protocol combining execution logs, resource measurements, and manual outcome verification rather than relying only on agent-reported success."
+      ],
+      "method": [
+        "The study adapts AutoTask, whose Android-side recording service and computer-side backend support repeated observation and execution. Accessibility information is converted into simplified HTML-like elements with identifiers. The backend receives the task and current representation, requests an action, executes it through the device interface, and continues from the resulting state. Backtracking and reflection are available within this inherited control framework.",
+        "For the modality experiment, the authors disable contextual knowledge injection and memory, and add screenshot capture to AutoTask. One condition sends only the structured screentext; the other sends that same screentext together with the screenshot. Both conditions retain the shared parser and action-grounding mechanism. The comparison therefore concerns the added screenshot channel, not a contest between a pure visual agent and a text-only agent.",
+        "Tasks are authored and pilot-tested across application categories, with difficulty based on navigation depth, decision points, and state dependencies. After execution, the authors inspect prompts, responses, screen records, and action traces. They manually verify outcomes and inductively organize recurring failures into diagnostic categories."
+      ],
+      "evaluation": [
+        "GPT-4o and o4-mini are tested under both input conditions with a common emulator setup and a bounded action budget. Measurements cover task success, action count, total runtime, model waiting time, device-side time, token usage, and estimated API cost.",
+        "Failure coding examines UI retrieval, parsing, interface logic, execution, and agent reasoning or interpretation. The framework did not support a screenshot-only condition, and the study does not repeat every task-condition pair across multiple runs. These protocol details define which modality and reliability questions the experiment measures."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "lu2024omniparser",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "grounding"
+    ],
+    "title": "OmniParser for Pure Vision Based GUI Agent",
+    "authors": "Yadong Lu, Jianwei Yang, Yelong Shen et al.",
+    "venue": "arXiv preprint, 2024",
+    "arxiv": "2408.00203",
+    "url": "https://arxiv.org/abs/2408.00203",
+    "bib": "lu2024omniparser",
+    "take": "OmniParser converts screenshots into labeled interface regions and semantic descriptions that a downstream GUI agent can use to ground its actions.",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "sources": [
+      "https://arxiv.org/html/2408.00203v1",
+      "https://github.com/microsoft/OmniParser"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2408.00203v1#S3.F1",
+      "imageUrl": "https://arxiv.org/html/2408.00203v1/flow_merged_0.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 1, mobile examples",
+      "caption": "OmniParser associates numbered interface regions with text and icon descriptions.",
+      "alt": "Two mobile screenshots contain numbered bounding boxes, alongside extracted text and generated icon descriptions that expose local interface semantics.",
+      "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+      "src": "assets/figures/lu2024omniparser.png",
+      "crop": {
+        "width": 2029,
+        "height": 674,
+        "left": 0,
+        "top": 0,
+        "right": 1975,
+        "bottom": 674,
+        "cropWidth": 1975,
+        "cropHeight": 674
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "ui-parsing",
+      "grounding"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "A multimodal planner can describe a sensible next step while pointing to the wrong location. Supplying boxes from a browser DOM or mobile UI hierarchy can simplify grounding, but those structures are not consistently available across interfaces. OmniParser addresses the perception stage by deriving candidate elements and their descriptions from the screenshot itself."
+      ],
+      "contributions": [
+        "A screenshot parsing pipeline combining interactable-region detection, icon description, and optical character recognition.",
+        "Web-derived supervision for training an interactable-region detector using element boxes available during data collection.",
+        "A structured output containing element identifiers, locations, and semantic information, paired with an annotated screenshot for downstream reasoning.",
+        "An open parser implementation and experiments integrating the original system with a screenshot-aware action planner."
+      ],
+      "method": [
+        "The input screenshot is processed by an interactable-icon detector and an OCR component. Their boxes are merged, with overlapping detections reconciled so the same visible element does not create redundant targets. Each retained region receives an identifier that links its textual representation to its location in the image.",
+        "A captioning component supplies functional descriptions for icons whose meaning may not be evident from OCR text. The parser then produces a DOM-like list of regions and a screenshot annotated with corresponding marks. This representation gives the downstream model explicit targets and semantic hints instead of asking it to invent precise coordinates without intermediate candidates.",
+        "In the original agent integration, GPT-4V receives the parsed information and screenshot context, selects an operation and target identifier, and the system maps the identifier back to the target region. The released parser exposes image-processing components and utilities independently of that planner. DOM-derived labels are used to create detector training data; runtime parsing operates on pixels. Later repository releases add components and models, which should be distinguished from the original paper's evaluation."
+      ],
+      "evaluation": [
+        "ScreenSpot tests whether the agent can ground an instruction on the appropriate screen element. Mind2Web and Android in the Wild evaluate next-action prediction on recorded web and mobile tasks. The study compares the original parser-assisted agent with GPT-4V configurations using other representations or grounding arrangements.",
+        "The evaluation asks whether better detected regions and element descriptions help the downstream planner choose executable actions. It concerns the combined parser-and-planner setup, not parsed text as a complete replacement for visual context. The benchmark protocols distinguish localization from action correctness and do not constitute a general live-task completion evaluation."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "ma2024cocoagent",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "framework",
+      "grounding"
+    ],
+    "title": "CoCo-Agent: A Comprehensive Cognitive MLLM Agent for Smartphone GUI Automation",
+    "authors": "Xinbei Ma, Zhuosheng Zhang, Hai Zhao",
+    "venue": "Findings of ACL 2024",
+    "arxiv": "2402.11941",
+    "url": "https://aclanthology.org/2024.findings-acl.539/",
+    "bib": "ma2024cocoagent",
+    "take": "CoCo-Agent combines screenshots with detailed layout text and generates action parameters conditionally on the selected operation type.",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "sources": [
+      "https://aclanthology.org/2024.findings-acl.539.pdf",
+      "https://github.com/xbmxb/CoCo-Agent"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2402.11941v3#S2.F1",
+      "imageUrl": "https://arxiv.org/html/2402.11941v3/agent_v2_0215night-crop.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 1",
+      "caption": "CoCo-Agent combines visual context, layout elements, goals, and action history.",
+      "alt": "CoCo-Agent integrates a mobile screenshot, layout coordinates, task goal, and action history through visual and language components to predict an action.",
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/ma2024cocoagent.png",
+      "crop": {
+        "width": 855,
+        "height": 300,
+        "left": 0,
+        "top": 0,
+        "right": 855,
+        "bottom": 300,
+        "cropWidth": 855,
+        "cropHeight": 300
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "mobile",
+      "ui-parsing",
+      "action-model"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "Smartphone agents must resolve small interface details and produce commands whose parameters agree with the intended operation. A coarse image representation may miss an icon or label, while an undifferentiated action format asks the model to generate fields that are irrelevant or inconsistent. CoCo-Agent addresses these perception and output-representation problems within a multimodal action model."
+      ],
+      "contributions": [
+        "Comprehensive Environment Perception, which combines the current screenshot, fine-grained layout descriptions, the goal, and action history.",
+        "Conditional Action Prediction, which separates deciding an action type from generating the target and parameters required by that type.",
+        "Action normalization that connects detected interface elements with click targets and expresses scrolling through direction-specific operations.",
+        "An open LLaVA-based implementation evaluated on both smartphone action demonstrations and a dialogue-enabled GUI benchmark."
+      ],
+      "method": [
+        "The visual-language backbone uses a vision encoder and projection layer to bring screenshot features into a language model. The text input adds the user goal, previous actions, and a list of interface items with locations. OCR and icon-recognition tools provide this detailed layout channel, supplementing information that the global screenshot representation may not resolve.",
+        "The model first predicts what kind of operation is required. Its continuation supplies only the relevant target information: a click can name an item and its location, a scroll specifies a direction, and text entry supplies a string. The representation separates clicks associated with detected elements from taps that are not associated with a detected box.",
+        "Training normalizes element clicks to box centers and scroll gestures to standard directions, reducing inconsistent surface forms in demonstrations. Generated descriptions are parsed back into the benchmark action format for execution or scoring. The released resources include model and run examples built around this multimodal representation; the method deliberately combines pixels with tool-derived layout text rather than treating either channel as the whole observation."
+      ],
+      "evaluation": [
+        "Android in the Wild tests next-action prediction across its application subsets, including separate-subset and unified training configurations. Action correctness requires the relevant fields to agree with the annotation, using target-box or coordinate-tolerance rules for taps and directional matching for scrolls.",
+        "META-GUI adds dialogue-enabled interactions. Its evaluation includes text-entry F1 and response-generation BLEU alongside action fields. Component ablations examine detailed layout information, historical actions, and conditional action modeling. These tests evaluate predictions from recorded interaction states and dialogue context; they are not measurements of unrestricted online recovery from the agent's own errors."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "zheng2024seeact",
+    "date": "2026-08-08",
+    "read": 2,
+    "tags": [
+      "framework",
+      "grounding"
+    ],
+    "views": 0,
+    "hooks": 0,
+    "title": "GPT-4V(ision) is a Generalist Web Agent, if Grounded",
+    "authors": "Zheng, Gou, Kil et al.",
+    "venue": "ICML 2024",
+    "arxiv": "2401.01614",
+    "bib": "zheng2024seeact",
+    "take": "SeeAct separates a multimodal model's proposed web action from element grounding and tests how that separation affects offline and live-browser evaluation.",
+    "comments": [],
+    "url": "https://proceedings.mlr.press/v235/zheng24e.html",
+    "sources": [
+      "https://arxiv.org/html/2401.01614v2",
+      "https://github.com/OSU-NLP-Group/SeeAct",
+      "https://proceedings.mlr.press/v235/zheng24e.html"
+    ],
+    "kind": "paper",
+    "track": "research",
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2401.01614v2#S1.F1",
+      "imageUrl": "https://arxiv.org/html/2401.01614v2/teaser_v4.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 1",
+      "caption": "SeeAct separates visual action planning from grounding executable browser operations.",
+      "alt": "A truck-rental example shows a multimodal model describing an intended action, then grounding it to an HTML element and browser operation.",
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/zheng2024seeact.png",
+      "crop": {
+        "width": 1087,
+        "height": 879,
+        "left": 0,
+        "top": 0,
+        "right": 1087,
+        "bottom": 879,
+        "cropWidth": 1087,
+        "cropHeight": 879
+      }
+    },
+    "keywords": [
+      "web-agent",
+      "grounding",
+      "gui-agent",
+      "evaluation"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "Describing a browser action is different from identifying the exact page element on which it should execute. A screenshot-aware model may produce a plausible instruction without reliably mapping it to a DOM element. SeeAct isolates action generation from grounding so their errors can be studied separately, while also examining the difference between cached demonstrations and live website interaction."
+      ],
+      "contributions": [
+        "A web-agent pipeline that generates an intended action from screenshot context before converting it into an executable browser operation.",
+        "A comparison of element-attribute matching, textual candidate selection, and visual mark selection as grounding strategies.",
+        "A human-assisted oracle-grounding condition for estimating the contribution of grounding errors without replacing the model's intended action.",
+        "Offline and online evaluation resources, with a released browser implementation that exposes action prediction and execution as separate stages."
+      ],
+      "method": [
+        "The action-generation prompt supplies the task, current screenshot, and previous actions. GPT-4V analyzes this context and describes the next operation in language. The intended action must then be resolved into a target element, operation type, and any value required by the operation, such as text to enter.",
+        "Grounding via attributes searches for an element matching the generated type and text. Grounding via textual choices presents ranked HTML candidates as a multiple-choice question. Grounding via image annotation overlays candidate boxes and labels on the screenshot and asks for the target label. These alternatives change how the same intended action is connected to an actual page element.",
+        "The oracle condition asks a human to identify the action the model meant, provided its description contains the needed information. It does not authorize the human to invent a better task plan. In the executable pipeline, the selected element and operation are passed to browser automation, a fresh observation is collected, and the process repeats. The released interface separates prediction from execution so grounding or planning components can be substituted explicitly."
+      ],
+      "evaluation": [
+        "Offline experiments use Mind2Web task splits to measure element selection, operation correctness, and step success on cached states. Live-website experiments instead execute action sequences and assess whether the task is completed, allowing valid alternative routes that may differ from a recorded demonstration.",
+        "The study compares grounding strategies, oracle assistance, and model configurations, and analyzes errors involving element descriptions and visual labels. Its oracle setting is an intervention on the grounding stage, not a fully automatic agent result. The online-versus-offline comparison tests the consequences of their different protocols rather than assuming that their success measures are interchangeable."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "gou2024uground",
+    "date": "2026-08-22",
+    "read": 2,
+    "tags": [
+      "grounding",
+      "training"
+    ],
+    "views": 0,
+    "hooks": 0,
+    "title": "Navigating the Digital World as Humans Do: Universal Visual Grounding for GUI Agents",
+    "authors": "Gou, Wang, Zheng et al.",
+    "venue": "ICLR 2025",
+    "arxiv": "2410.05243",
+    "bib": "gou2024uground",
+    "take": "UGround maps descriptions of interface elements to screenshot coordinates and supplies grounding for the modular SeeAct-V agent.",
+    "comments": [],
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/4ca0e369689dadb25a5345ba9755ad6f-Abstract-Conference.html",
+    "sources": [
+      "https://arxiv.org/html/2410.05243v3",
+      "https://osu-nlp-group.github.io/UGround/",
+      "https://proceedings.iclr.cc/paper_files/paper/2025/hash/4ca0e369689dadb25a5345ba9755ad6f-Abstract-Conference.html"
+    ],
+    "kind": "paper",
+    "track": "research",
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2410.05243v3#S2.F2",
+      "imageUrl": "https://arxiv.org/html/2410.05243v3/framework_v1.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 2",
+      "caption": "SeeAct-V combines a visual planner with UGround for coordinate prediction.",
+      "alt": "A screenshot-only observation feeds a planner that describes the next target; a grounder predicts pixel coordinates for the resulting click and typing action.",
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/gou2024uground.png",
+      "crop": {
+        "width": 2039,
+        "height": 527,
+        "left": 25,
+        "top": 19,
+        "right": 2012,
+        "bottom": 501,
+        "cropWidth": 1987,
+        "cropHeight": 482
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "grounding",
+      "cross-platform"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "A GUI planner can describe the intended operation without locating the correct control. Grounding must connect that description to a screen position even when the description refers to appearance, relative location, or function. Screenshots also vary in size and orientation, while HTML and accessibility metadata are not consistently available across platforms."
+      ],
+      "contributions": [
+        "A hybrid data-construction pipeline pairs rendered webpages and element coordinates with visual, positional, and functional referring expressions, including descriptions that combine these cues.",
+        "A grounding model adapts LLaVA-NeXT to high-resolution screenshots and directly generates pixel coordinates for the described target.",
+        "The SeeAct-V framework separates screenshot-based planning from coordinate grounding, allowing different planners to use the same grounding component."
+      ],
+      "method": [
+        "The main synthesis pipeline matches HTML elements to their rendered bounding boxes. Rules extract attributes and construct spatial relationships; a multimodal model supplements incomplete metadata with visual or functional descriptions. A language model makes generated descriptions more concise. The target label is the element's center point.",
+        "The final training mixture combines these web examples with directly generated web descriptions and existing Android grounding datasets. Web synthesis supplies most of the examples, but the trained model is not based exclusively on web data.",
+        "UGround processes a screenshot with an instruction describing the target and autoregressively returns unnormalized pixel coordinates. Its image pipeline expands the supported tiling configurations for large portrait and landscape screenshots. Within SeeAct-V, a planner produces the next operation and target description, UGround locates that target, and the environment executes the resulting action before providing another screenshot."
+      ],
+      "evaluation": [
+        "ScreenSpot tests element localization across mobile, desktop, and web interfaces. Offline evaluations on Multimodal-Mind2Web, AndroidControl, and OmniAct assess web and mobile next actions and desktop automation scripts against annotated references. Online evaluations use Mind2Web-Live and AndroidWorld to test task execution in changing environments.",
+        "Data-scaling and source-mixture ablations examine what the training corpus contributes. Further analysis studies referring-expression types and grounding errors. These protocols distinguish isolated target localization from the additional planning and interaction demands of a complete agent."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "wu2025guiactor",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "grounding"
+    ],
+    "title": "GUI-Actor: Coordinate-Free Visual Grounding for GUI Agents",
+    "authors": "Qianhui Wu, Kanzhi Cheng, Rui Yang et al.",
+    "venue": "NeurIPS 2025",
+    "arxiv": "2506.03143",
+    "url": "https://arxiv.org/abs/2506.03143",
+    "bib": "wu2025guiactor",
+    "take": "GUI-Actor learns an attention distribution over screenshot patches and uses a verifier to select a region for interaction.",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "sources": [
+      "https://arxiv.org/html/2506.03143v1",
+      "https://github.com/microsoft/GUI-Actor",
+      "https://proceedings.neurips.cc/paper_files/paper/2025/file/16130af940e9dabb43c726119bd3b42e-Paper-Conference.pdf"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2506.03143v1#S3.F2.sf1",
+      "imageUrl": "https://arxiv.org/html/2506.03143v1/overview.svg",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 2(a)",
+      "caption": "GUI-Actor grounds actions through attention over screenshot patches.",
+      "alt": "The action head connects actor-token representations to image-patch features from a vision-language backbone, assigning attention to proposed target regions.",
+      "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+      "src": "assets/figures/wu2025guiactor.svg",
+      "crop": {
+        "width": 792,
+        "height": 352.8,
+        "left": 5,
+        "top": 1,
+        "right": 787,
+        "bottom": 352,
+        "cropWidth": 782,
+        "cropHeight": 351
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "grounding",
+      "model-architecture"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "Generating coordinates as ordinary text leaves the relationship between numeric tokens and visual features implicit. It also assigns a single target point to controls that admit many valid clicks. GUI-Actor studies a spatial prediction interface that works directly with the patch representation of a vision-language model."
+      ],
+      "contributions": [
+        "An action head connects a dedicated actor token to screenshot patches, making the grounding prediction an attention map over visual regions.",
+        "Multi-patch supervision treats patches overlapping the target element as valid, representing the spatial extent of an actionable control.",
+        "A separately trained grounding verifier checks candidate locations, while a frozen-backbone training setting isolates the capability of the new action head."
+      ],
+      "method": [
+        "The language model processes the screenshot and instruction, then generates an action containing special actor tokens in place of the coordinate string. The final hidden state of the actor token serves as a contextual query for grounding.",
+        "The action head first contextualizes visual patches with self-attention. Separate projection networks map the actor representation and patch features into a shared space. Their similarities form a probability distribution over the screenshot. Training combines ordinary next-token prediction with an attention objective whose target distributes probability across patches covered by the annotated bounding box.",
+        "At inference, high-attention patches provide candidate locations. The verifier receives the instruction and a screenshot marked at each candidate and predicts whether the marked point satisfies the instruction. It is trained using correct targets and incorrect locations from the same interface. Candidate checking follows attention order and can stop when a location passes the confidence criterion."
+      ],
+      "evaluation": [
+        "ScreenSpot, ScreenSpot-v2, and ScreenSpot-Pro test whether the final click lies inside the annotated target. The professional-software setting probes unfamiliar layouts and high-resolution screens. Online OSWorld-W experiments examine grounding within an agent execution loop.",
+        "Controlled comparisons vary supervision, training-data scale, and whether the backbone is frozen. Verifier ablations test candidate selection and aggregation, including application to other grounding models. The measurements separate architectural choices in localization from broader model training."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "hu2022lora",
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "tags": [
+      "adaptation",
+      "efficiency"
+    ],
+    "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+    "authors": "Edward J. Hu, Yelong Shen, Phillip Wallis et al.",
+    "venue": "ICLR 2022",
+    "arxiv": "2106.09685",
+    "url": "https://www.microsoft.com/en-us/research/publication/lora-low-rank-adaptation-of-large-language-models/",
+    "bib": "hu2022lora",
+    "take": "LoRA adapts pretrained language models through trainable low-rank weight updates while retaining the original model parameters.",
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "sources": [
+      "https://arxiv.org/html/2106.09685v2",
+      "https://github.com/microsoft/LoRA",
+      "https://openreview.net/pdf?id=nZeVKeeFYf9"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2106.09685v2#S1.F1",
+      "imageUrl": "https://arxiv.org/html/2106.09685v2/figure1.svg",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 1",
+      "caption": "LoRA adds trainable low-rank matrices alongside frozen pretrained weights.",
+      "alt": "A frozen weight matrix maps input to output while a parallel low-rank pair of matrices contributes a trainable update.",
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/hu2022lora.svg",
+      "crop": {
+        "width": 240,
+        "height": 209,
+        "left": 0,
+        "top": 0,
+        "right": 240,
+        "bottom": 209,
+        "cropWidth": 240,
+        "cropHeight": 209
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "efficient-adaptation",
+      "training"
+    ],
+    "topic": "models-methods",
+    "note": {
+      "problem": [
+        "Full fine-tuning requires gradients and optimizer state for the pretrained weights, followed by storage of a separate adapted model for each task. LoRA examines whether task-specific changes can be represented in a smaller parameter space. The original work concerns language-model adaptation rather than a GUI policy or visual grounding architecture."
+      ],
+      "contributions": [
+        "A low-rank parameterization constrains the update to a pretrained weight matrix while leaving the original matrix frozen during adaptation.",
+        "The update can be merged into the pretrained weights for inference, and task-specific adapters can be stored separately from the shared base model.",
+        "Empirical studies examine where to apply the updates, their rank, and the relationship between the learned update subspace and the pretrained weights."
+      ],
+      "method": [
+        "For a selected linear layer, LoRA represents the weight change as the product of two smaller matrices. The layer adds the low-rank branch's output to the frozen base transformation. One matrix starts at zero, so the adapted model initially reproduces the base layer; a scaling factor controls the update magnitude.",
+        "Backpropagation updates the low-rank matrices while the base parameters remain fixed. The paper focuses on attention projections in Transformer language models. Rank and the selection of adapted matrices determine the trainable parameter budget; the method does not require reducing the size of the underlying pretrained model.",
+        "At deployment, the matrix product can be added to the base weights, preserving the original layer structure. Alternatively, adapters can remain separate to support switching between tasks. The released loralib implementation demonstrates replacing selected layers, marking adapter parameters as trainable, and saving adapter state without duplicating the complete pretrained checkpoint."
+      ],
+      "evaluation": [
+        "Language-understanding experiments use GLUE with RoBERTa and DeBERTa. Generation experiments cover E2E, DART, WebNLG, WikiSQL, and SAMSum with GPT-family models. Comparisons include full fine-tuning and other parameter-efficient adaptation methods.",
+        "The evaluation considers task-specific prediction or generation metrics alongside trainable parameters and training resource requirements. Ablations vary attention matrices and rank, while subspace analysis investigates the structure of learned updates. No GUI-navigation benchmark is part of the original evidence."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "id": "fastvlm",
+    "tags": [
+      "architecture",
+      "efficiency"
+    ],
+    "title": "FastVLM: Efficient Vision Encoding for Vision Language Models",
+    "authors": "Pavan Kumar Anasosalu Vasu, Fartash Faghri, Chun-Liang Li, et al.",
+    "venue": "CVPR 2025",
+    "arxiv": "2412.13303",
+    "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Vasu_FastVLM_Efficient_Vision_Encoding_for_Vision_Language_Models_CVPR_2025_paper.html",
+    "bib": "vasu2025fastvlm",
+    "take": "FastVLM combines a hierarchical vision encoder with a language model to study accuracy and response latency on visual-language tasks.",
+    "sources": [
+      "https://arxiv.org/html/2412.13303v2",
+      "https://github.com/apple/ml-fastvlm",
+      "https://openaccess.thecvf.com/content/CVPR2025/html/Vasu_FastVLM_Efficient_Vision_Encoding_for_Vision_Language_Models_CVPR_2025_paper.html"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2412.13303v2#S3.F2",
+      "imageUrl": "https://arxiv.org/html/2412.13303v2/main_diagram.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 2",
+      "caption": "FastVLM couples a hierarchical visual encoder with a language model.",
+      "alt": "FastViTHD uses convolutional, RepMixer, and attention stages with pooled features, which pass through a connector to the language model.",
+      "licenseUrl": "http://creativecommons.org/licenses/by-sa/4.0/",
+      "src": "assets/figures/fastvlm.png",
+      "crop": {
+        "width": 2047,
+        "height": 615,
+        "left": 0,
+        "top": 0,
+        "right": 2047,
+        "bottom": 615,
+        "cropWidth": 2047,
+        "cropHeight": 615
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "vision-language-model",
+      "efficiency"
+    ],
+    "topic": "models-methods",
+    "note": {
+      "problem": [
+        "High-resolution images preserve small text and visual detail, but they increase both image-encoding cost and the number of tokens processed by a language model. Reducing only the token count does not address an expensive image encoder. FastVLM treats these components together when designing an efficient vision-language model."
+      ],
+      "contributions": [
+        "FastViTHD introduces a hybrid convolution-and-attention vision backbone with additional downsampling for high-resolution image processing.",
+        "An architecture study jointly varies image resolution, vision encoding, and language-model size to examine the accuracy–latency design space.",
+        "The project releases model checkpoints, inference code, export utilities, and an application demonstrating execution on Apple devices."
+      ],
+      "method": [
+        "FastVLM retains the image-encoder, projector, and language-model structure used in LLaVA-style systems. Its encoder begins with efficient convolutional processing and RepMixer blocks, then uses attention in later stages. Moving attention to smaller feature maps limits its spatial cost.",
+        "The high-definition backbone adds a further downsampling stage, producing a shorter visual sequence for the language model. The study also aggregates features from multiple encoder stages, using pooling or depthwise convolutions to align their spatial scales. A projector maps the resulting visual representation into the decoder's input space.",
+        "Training first prepares the vision encoder through image–text contrastive learning and then aligns and instruction-tunes the multimodal model. Experiments compare direct changes to input resolution with tiled image processing. At inference, the image must be encoded before the decoder can process visual and text tokens and begin generating its answer; the implementation measures these stages separately."
+      ],
+      "evaluation": [
+        "Benchmarks include GQA, TextVQA, DocVQA, POPE, and SEED-Bench, covering question answering, document reading, visual understanding, and object hallucination. Additional image–text evaluations characterize the encoder before its integration into the language model.",
+        "Latency experiments report image-encoding time and time to first token under a specified device setup. Ablations vary encoder architecture, feature aggregation, input resolution, tiling, and decoder size. These are general visual-language evaluations; they do not directly test GUI click accuracy or complete interface workflows."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "id": "tinyclick",
+    "tags": [
+      "grounding",
+      "training"
+    ],
+    "title": "TinyClick: Single-Turn Agent for Empowering GUI Automation",
+    "authors": "Pawel Pawlowski, Krystian Zawistowski, Wojciech Lapacz, et al.",
+    "venue": "Interspeech 2025",
+    "arxiv": "2410.11871",
+    "url": "https://www.isca-archive.org/interspeech_2025/pawlowski25_interspeech.html",
+    "bib": "pawlowski2025tinyclick",
+    "take": "TinyClick adapts Florence-2-Base to predict a GUI click location from a screenshot and a user command.",
+    "sources": [
+      "https://arxiv.org/html/2410.11871v3",
+      "https://www.isca-archive.org/interspeech_2025/pawlowski25_interspeech.html",
+      "https://www.isca-archive.org/interspeech_2025/pawlowski25_interspeech.pdf"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2410.11871v3#S1.F2",
+      "imageUrl": "https://arxiv.org/html/2410.11871v3/grafika_training.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 2",
+      "caption": "TinyClick trains element-purpose descriptions alongside instruction-to-location prediction.",
+      "alt": "A mobile microphone icon anchors two training examples: describing an element from location tokens and predicting location tokens from a click instruction.",
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/tinyclick.png",
+      "crop": {
+        "width": 845,
+        "height": 989,
+        "left": 10,
+        "top": 14,
+        "right": 834,
+        "bottom": 971,
+        "cropWidth": 824,
+        "cropHeight": 957
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "grounding",
+      "small-models"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "GUI target localization can be computationally expensive when assigned to a large multimodal model. TinyClick studies a narrower task: locating the interface element specified by one instruction. It asks how a compact pretrained vision model can learn that mapping using related visual tasks and enriched annotations."
+      ],
+      "contributions": [
+        "A compact Florence-2-Base model is adapted for instruction-conditioned GUI point prediction using its existing visual and coordinate-token representations.",
+        "A multitask training mixture combines command following with element captioning, localization, clickable-object detection, and screen question answering.",
+        "Additional model-generated descriptions supply element purpose and expected effects, complementing existing bounding boxes, commands, and interface metadata."
+      ],
+      "method": [
+        "Each action-training example pairs a screenshot and a command with the location of the intended control. Florence-2 encodes the image and generates the spatial answer through its language decoder. Coordinates use the model's dedicated location-token representation, allowing the same architecture to handle both descriptions and spatial outputs.",
+        "Auxiliary tasks connect different views of the same interface element. Given its location, the model may describe the element or its purpose; given a description, it must find the element. Detection examples identify clickable controls, and question-answering examples require interpretation of the screen's content.",
+        "The authors combine public GUI datasets and supplement their annotations with a larger multimodal model. Software metadata provides detection labels where available. The training recipe removes evaluation examples from contributing data sources and varies the data mixture. This supervision develops visual and functional recognition; it does not train TinyClick to independently plan an entire sequence of application operations."
+      ],
+      "evaluation": [
+        "ScreenSpot tests point prediction across mobile, desktop, and web screenshots, including text and icon targets. The OmniAct evaluation uses individual annotated boxes and descriptions, rather than the dataset's full multi-turn task commands. Correctness depends on the predicted point falling within the intended target.",
+        "Ablations compare multitask training with command-only training and examine alternative data mixtures. Error analysis distinguishes incorrect element identification from imprecise pointing. The protocol therefore measures single-step grounding, without attributing end-to-end navigation or recovery capabilities to the model."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "id": "showui",
+    "tags": [
+      "framework",
+      "training"
+    ],
+    "title": "ShowUI: One Vision-Language-Action Model for GUI Visual Agent",
+    "authors": "Kevin Qinghong Lin, Linjie Li, Difei Gao, et al.",
+    "venue": "CVPR 2025",
+    "arxiv": "2411.17465",
+    "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Lin_ShowUI_One_Vision-Language-Action_Model_for_GUI_Visual_Agent_CVPR_2025_paper.html",
+    "bib": "lin2025showui",
+    "take": "ShowUI combines UI-guided visual-token selection with interleaved observation and action sequences in a vision-language-action model.",
+    "sources": [
+      "https://arxiv.org/html/2411.17465v1",
+      "https://github.com/showlab/ShowUI",
+      "https://openaccess.thecvf.com/content/CVPR2025/html/Lin_ShowUI_One_Vision-Language-Action_Model_for_GUI_Visual_Agent_CVPR_2025_paper.html"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2411.17465v1#S1.F3",
+      "imageUrl": "https://arxiv.org/html/2411.17465v1/vla.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 3",
+      "caption": "ShowUI interleaves visual observations and action history while reducing visual tokens.",
+      "alt": "The ShowUI sequence alternates screenshots and previous actions; selected visual tokens and text tokens enter self-attention to predict subsequent actions.",
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/showui.png",
+      "crop": {
+        "width": 1314,
+        "height": 609,
+        "left": 0,
+        "top": 7,
+        "right": 1314,
+        "bottom": 609,
+        "cropWidth": 1314,
+        "cropHeight": 602
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "vision-language-action",
+      "efficiency"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "GUI agents must process screenshots with small actionable elements alongside large areas of repetitive background. Long visual histories further increase the sequence length. At the same time, actions differ across devices and depend on what happened earlier. ShowUI addresses the representation of both screen content and interaction history."
+      ],
+      "contributions": [
+        "A UI-connected graph groups visually similar neighboring patches and guides token selection while retaining each selected patch's original positional information.",
+        "Interleaved vision-language-action streaming represents navigation histories and supports multiple grounding queries associated with a shared screenshot.",
+        "A curated instruction-tuning mixture balances grounding and navigation data across web, desktop, and mobile interfaces, including varied descriptions of target elements."
+      ],
+      "method": [
+        "The screenshot is divided into patches. A graph links neighboring patches when their RGB content is sufficiently similar, and a union-find procedure identifies connected components. Patches in the same component are treated as visually redundant. During training, the model skips a portion of their tokens while leaving single-patch components intact.",
+        "Selected tokens keep their original position embeddings. This differs from replacing an entire component with a pooled token, which changes the spatial representation. The selection procedure adds no trainable routing network and can also be applied during inference.",
+        "Actions use a common structured format specifying the operation, a value when needed, and a position. The system prompt describes the available action space. Navigation examples alternate screenshots and preceding actions so the next prediction can use both visual state and interaction history; grounding examples reuse a screenshot across several query–answer pairs.",
+        "Instruction tuning builds on Qwen2-VL. Data curation emphasizes interactive visual elements, augments desktop target descriptions with appearance, spatial, and intention-based queries, and balances sources whose sizes differ substantially."
+      ],
+      "evaluation": [
+        "ScreenSpot evaluates target grounding across platforms. Navigation experiments use Mind2Web, AITW, and MiniWoB, applying each benchmark's action-matching or task-completion protocol. The study also measures the amount of visual processing required by alternative representations.",
+        "Ablations vary token-selection ratios and compare selection with merging or other reductions. They examine data choices and the contribution of observation–action history, connecting efficiency measurements to the grounding and navigation tasks being performed."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "id": "qwen25-technical-report",
+    "tags": [
+      "architecture",
+      "training"
+    ],
+    "title": "Qwen2.5 Technical Report",
+    "authors": "Qwen Team (An Yang et al.)",
+    "venue": "arXiv technical report, 2024; revised 2025",
+    "arxiv": "2412.15115",
+    "url": "https://arxiv.org/abs/2412.15115",
+    "bib": "qwen2024qwen25",
+    "take": "The Qwen2.5 report describes a general language-model family, its pretraining pipeline, instruction tuning, and capability evaluations.",
+    "sources": [
+      "https://arxiv.org/html/2412.15115v2",
+      "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
+      "https://qwenlm.github.io/blog/qwen2.5/"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2412.15115v2#S0.F1",
+      "imageUrl": "https://arxiv.org/html/2412.15115v2/main.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 1",
+      "caption": "Qwen2.5 relates greater pretraining scale to stronger benchmark results.",
+      "alt": "A bar chart compares Qwen1.5, Qwen2, and Qwen2.5 on math, coding, reasoning, and knowledge benchmarks alongside increasing pretraining token counts.",
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/qwen25-technical-report.png",
+      "crop": {
+        "width": 2042,
+        "height": 664,
+        "left": 54,
+        "top": 13,
+        "right": 2005,
+        "bottom": 632,
+        "cropWidth": 1951,
+        "cropHeight": 619
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "language-model",
+      "model-report"
+    ],
+    "topic": "models-methods",
+    "note": {
+      "problem": [
+        "A general language model must cover knowledge, reasoning, coding, multilingual communication, and instruction following under different compute budgets. The report addresses how training data, model scale, and post-training can support that breadth. Qwen2.5-7B-Instruct is a text-generating member of this family; the report does not define a GUI-specific model or screenshot action policy."
+      ],
+      "contributions": [
+        "A family of pretrained and instruction-tuned language models is documented alongside the architecture and deployment characteristics of the released dense checkpoints.",
+        "The pretraining recipe combines improved filtering, domain balancing, mathematical and programming data, synthetic examples, and context-length extension.",
+        "Post-training separates supervised instruction learning, offline preference optimization, and online reinforcement learning, with additional procedures for long-context models."
+      ],
+      "method": [
+        "The dense models use a decoder-only Transformer with grouped-query attention, rotary position embeddings, gated feed-forward layers, and normalization before the main sublayers. The family shares a byte-level tokenizer. The report also describes mixture-of-experts models, but those are distinct variants rather than the architecture of the released dense 7B checkpoint.",
+        "Data preparation uses model-assisted quality assessment and domain classification to filter and balance the corpus. Specialized mathematics and coding data supplement general text. Synthetic examples pass further quality checks. Hyperparameter studies guide learning-rate and batch-size choices, and later training stages extend the context window.",
+        "Supervised fine-tuning covers instruction following, structured information, long responses, reasoning, and multilingual tasks. For offline preference training, sampled responses are checked through answer matching, execution feedback, or review; passing and failing candidates form preference pairs. Online training samples responses and uses a reward model with group-relative optimization.",
+        "The official 7B-Instruct model card supplies its chat formatting and context configuration. Those checkpoint-specific details delimit how the family-level report maps to a concrete model used in another system."
+      ],
+      "evaluation": [
+        "Base and instruction-tuned models are evaluated separately. Tasks span knowledge and reasoning, mathematics, code generation, multilingual understanding, translation, instruction compliance, and conversational response quality. Representative benchmarks include MMLU, GSM8K, HumanEval, and IFEval.",
+        "Long-context tests examine retrieval and comprehension as input length changes. Comparisons across model sizes and prior checkpoints characterize the training recipe; they do not establish visual grounding or GUI-navigation capability."
+      ],
+      "myTake": ""
+    },
+    "methodDiagram": {
+      "alt": "Qwen2.5 training stages: pretraining, supervised fine-tuning, offline preference optimization, and online reinforcement learning.",
+      "caption": "Original explanatory diagram of the training stages described in the Qwen2.5 report.",
+      "source": "https://arxiv.org/html/2412.15115v2",
+      "steps": [
+        {
+          "title": "Pretraining",
+          "detail": "Train on filtered and balanced general, mathematical, coding, and synthetic text; then extend the context window."
+        },
+        {
+          "title": "Instruction tuning",
+          "detail": "Learn supervised responses for reasoning, coding, structured information, multilingual, and long-response tasks."
+        },
+        {
+          "title": "Offline preferences",
+          "detail": "Check sampled responses and train on accepted–rejected pairs with direct preference optimization."
+        },
+        {
+          "title": "Online RL",
+          "detail": "Score sampled response groups with a reward model and optimize the policy with GRPO."
+        }
+      ]
+    }
+  },
+  {
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "id": "android-in-the-zoo",
+    "tags": [
+      "training"
+    ],
+    "title": "Android in the Zoo: Chain-of-Action-Thought for GUI Agents",
+    "authors": "Jiwen Zhang, Jihao Wu, Yihua Teng, et al.",
+    "venue": "Findings of EMNLP 2024",
+    "arxiv": "2403.02713",
+    "url": "https://aclanthology.org/2024.findings-emnlp.702/",
+    "bib": "zhang2024aitz",
+    "take": "Android in the Zoo provides mobile interaction demonstrations annotated with screen descriptions, action reasoning, action descriptions, and observed outcomes.",
+    "sources": [
+      "https://aclanthology.org/2024.findings-emnlp.702.pdf",
+      "https://arxiv.org/html/2403.02713v2",
+      "https://github.com/IMNearth/CoAT"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2403.02713v2#S0.F1",
+      "imageUrl": "https://arxiv.org/html/2403.02713v2/coat_pipe.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 1",
+      "caption": "AITZ annotates screen descriptions, action reasoning, next actions, and outcomes.",
+      "alt": "A mobile shopping example illustrates Chain-of-Action-Thought: observe the screen, reason about the task, describe the next action, and record its result.",
+      "licenseUrl": "http://creativecommons.org/licenses/by-sa/4.0/",
+      "src": "assets/figures/android-in-the-zoo.png",
+      "crop": {
+        "width": 1387,
+        "height": 529,
+        "left": 0,
+        "top": 0,
+        "right": 1387,
+        "bottom": 529,
+        "cropWidth": 1387,
+        "cropHeight": 529
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "mobile",
+      "dataset"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "A screenshot and a coordinate-labelled action omit much of the context that connects a user request to an interaction. The current state may depend on an earlier action, and a raw action history does not explain what changed. The paper proposes semantic annotations that make these relationships explicit for GUI learning and prompting."
+      ],
+      "contributions": [
+        "Chain-of-Action-Thought defines separate components for screen description, action reasoning, next-action description, and the result of an executed action.",
+        "The Android-in-the-Zoo dataset samples and validates Android-in-the-Wild demonstrations, then adds model-generated semantic annotations with expert correction.",
+        "Evaluation procedures examine both individual action matching and progress through a reference episode, comparing prompting and fine-tuning uses of the representation."
+      ],
+      "method": [
+        "Dataset construction first samples instructions and episodes using strategies tailored to the source subsets. These strategies reduce repeated templates and balance categories. Human annotators then check whether the recorded episode actually fulfils its instruction, so semantic annotation is built on verified demonstrations.",
+        "A multimodal model generates the semantic components with different input information for each task. Screen descriptions summarize visible content. Action reasoning connects the request, current screen, and history. Next-action descriptions use the known demonstration action to state the intended operation in readable form.",
+        "Action Result is retrospective: it summarizes the change between screenshots before and after an executed action. At the next step, the previous result can join earlier action descriptions as history. It is therefore not simply a prediction of a future outcome. Experts correct inconsistent action descriptions and trigger regeneration of dependent annotations.",
+        "The components can be combined in prompts for larger multimodal models or used to supervise a smaller model. Their explicit fields allow experiments to vary the semantic context supplied for action prediction without changing the underlying recorded interaction."
+      ],
+      "evaluation": [
+        "Zero-shot experiments compare the proposed context representation with standard prompting, action-history prompting, and chain-of-thought prompting. Fine-tuning experiments test learning from the annotated mobile demonstrations. Component comparisons examine the role of different semantic fields.",
+        "Screen-wise action matching checks the action type and relevant arguments, such as position, scroll direction, text, or button. The episodic goal-progress metric records where the first error occurs relative to the reference sequence. These are demonstration-based measurements rather than unrestricted live-app completion tests."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "id": "gui-odyssey",
+    "tags": [
+      "training",
+      "benchmark"
+    ],
+    "title": "GUIOdyssey: A Comprehensive Dataset for Cross-App GUI Navigation on Mobile Devices",
+    "authors": "Quanfeng Lu, Wenqi Shao, Zitao Liu, et al.",
+    "venue": "ICCV 2025",
+    "arxiv": "2406.08451",
+    "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Lu_GUIOdyssey_A_Comprehensive_Dataset_for_Cross-App_GUI_Navigation_on_Mobile_ICCV_2025_paper.html",
+    "bib": "lu2025guiodyssey",
+    "take": "GUIOdyssey provides cross-application mobile demonstrations and a history-resampling agent for studying navigation across tasks, apps, and devices.",
+    "sources": [
+      "https://arxiv.org/html/2406.08451v2",
+      "https://github.com/OpenGVLab/GUI-Odyssey",
+      "https://openaccess.thecvf.com/content/ICCV2025/papers/Lu_GUIOdyssey_A_Comprehensive_Dataset_for_Cross-App_GUI_Navigation_on_Mobile_ICCV_2025_paper.pdf"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2406.08451v2#S4.F5",
+      "imageUrl": "https://arxiv.org/html/2406.08451v2/OdysseyAgent_crop-2.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 5",
+      "caption": "OdysseyAgent resamples historical screenshots to support cross-app navigation.",
+      "alt": "OdysseyAgent combines a current screenshot with previous actions and history screenshots; a learnable history resampler compresses past visual features for the language model.",
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/gui-odyssey.png",
+      "crop": {
+        "width": 1122,
+        "height": 711,
+        "left": 5,
+        "top": 5,
+        "right": 1122,
+        "bottom": 711,
+        "cropWidth": 1117,
+        "cropHeight": 706
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "mobile",
+      "cross-app",
+      "dataset"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "Mobile workflows often require carrying information from one application into another. The current screenshot may omit details needed for the next action, while retaining every earlier screenshot is costly. GUIOdyssey addresses both the shortage of cross-app demonstrations and the representation of visual history in an agent."
+      ],
+      "contributions": [
+        "A mobile dataset records human demonstrations across applications and devices, with high-level instructions and additional semantic annotations for individual steps.",
+        "OdysseyAgent adds a learnable history resampler to a vision-language model, compressing past screenshots before predicting the next action.",
+        "Separate random, app, task, and device splits distinguish in-domain evaluation from several forms of generalization."
+      ],
+      "method": [
+        "Human demonstrators carry out designed cross-app tasks on mobile devices. The recordings preserve screenshots, actions, and the task instruction. Additional annotations describe finer-grained operations and interaction semantics, supporting experiments with either high-level goals or more explicit step-level instructions.",
+        "OdysseyAgent builds on Qwen-VL-Chat, retaining its vision encoder, vision-language adapter, and language model. A history resampler uses learnable query embeddings to attend to visual tokens from earlier screenshots. This cross-attention converts a potentially long visual history into a shorter set of representations.",
+        "The compressed history is combined with the current screenshot, user instruction, and preceding actions. The language model predicts the next operation as a token sequence. Training adapts the vision-language adapter, history resampler, and language model to the demonstrations. The method therefore combines visual memory with the textual record of earlier actions, rather than treating them as interchangeable sources of context."
+      ],
+      "evaluation": [
+        "The ICCV version evaluates held-out recordings under random, unseen-app, unseen-task, and unseen-device conditions. It compares high-level and low-level instruction settings and tests the addition of semantic annotations.",
+        "Action Matching Score checks operation type and operation-specific arguments. Pointing actions use spatial or target-region criteria, scrolling checks direction, and typing uses string similarity. Episode success requires the entire annotated action sequence to match, making it an offline sequence metric rather than an independently checked final application state.",
+        "Ablations remove history components, vary the amount of history, and compare the resampler with direct multi-image input. These tests investigate which context helps action prediction and the computational cost of representing it."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "track": "research",
+    "kind": "paper",
+    "date": "2026-09-05",
+    "read": 2,
+    "comments": [],
+    "views": 0,
+    "hooks": 0,
+    "id": "qwen-ui-agent",
+    "tags": [
+      "framework",
+      "training"
+    ],
+    "title": "Qwen-UI-Agent Technical Report: Toward Next-Generation Real-World Centric Foundation GUI Agents",
+    "authors": "Hanzhang Zhou, Panrong Tong, Xu Zhang, et al.",
+    "venue": "arXiv technical report, 2026",
+    "arxiv": "2607.28227",
+    "url": "https://arxiv.org/abs/2607.28227",
+    "bib": "zhou2026qwenuiagent",
+    "take": "Qwen-UI-Agent combines cross-platform execution environments, an agent-driven training pipeline, and GUI, command-line, and API actions.",
+    "sources": [
+      "https://arxiv.org/abs/2607.28227v1",
+      "https://arxiv.org/html/2607.28227v1",
+      "https://tongyi-mai.github.io/Qwen-UI-Agent/"
+    ],
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2607.28227v1#S2.F5",
+      "imageUrl": "https://arxiv.org/html/2607.28227v1/Data_Flywheel_v3.png",
+      "license": "Figure rights retained by the original authors",
+      "figureLabel": "Figure 5",
+      "caption": "Qwen-UI-Agent cycles evaluation, failure diagnosis, task synthesis, trajectory collection, verification, and training.",
+      "alt": "The data flywheel starts with domain capability bootstrapping, then iteratively evaluates failures, synthesizes tasks, collects and verifies trajectories, and retrains the model.",
+      "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+      "src": "assets/figures/qwen-ui-agent.png",
+      "crop": {
+        "width": 2027,
+        "height": 1022,
+        "left": 0,
+        "top": 0,
+        "right": 2027,
+        "bottom": 1022,
+        "cropWidth": 2027,
+        "cropHeight": 1022
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "cross-platform",
+      "model-report"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "GUI agents trained in a narrow benchmark environment may lack the execution access, device reliability, or experience needed for real workflows. The report addresses mobile, desktop, browser, and information-seeking tasks together, including workflows that cross platforms. Its scope includes the surrounding runtime and training infrastructure as well as the policy model."
+      ],
+      "contributions": [
+        "A unified environment interface supports sandbox systems and real mobile devices while exposing graphical operations, command execution, API calls, and requests for user input.",
+        "An agent-driven data pipeline connects task synthesis, environment preparation, trajectory collection, verification, failure diagnosis, and subsequent training iterations.",
+        "The training recipe combines domain-specific supervised learning, action-level correction, and online reinforcement learning; MobileWorld-Real supplies a real-device evaluation setting."
+      ],
+      "method": [
+        "At each decision, the model receives the instruction, interaction history, and available visual or structured observations. It can emit one operation or an ordered batch. Environment adapters translate these operations into native actions and return screenshots, command results, or service responses through a shared lifecycle.",
+        "The real-device runtime tracks device, application, account, network, and display availability. It routes work to usable targets and supports handover for information or operations requiring the user. Trajectory review distinguishes policy failures from environment failures so infrastructure problems can be repaired separately.",
+        "The data pipeline synthesizes tasks and their initial states. For checkable outcomes, it constructs executable verifiers. A visual judge also identifies useful segments in successful or failed trajectories for supervised learning. Failure diagnoses guide the next round of task generation.",
+        "Domain experts are supervised separately and merged into a unified checkpoint. Action-level reinforcement learning targets recurring local errors with operation-specific rewards. Online reinforcement learning then uses complete environment interactions and task outcomes to train longer decision sequences. A harness retains workflow state across services and platforms."
+      ],
+      "evaluation": [
+        "MobileWorld, MobileWorld-Real, and AndroidDaily cover simulated and real-device mobile tasks. OSWorld-Verified and OSWorld-v2 test desktop execution; WebArena tests browser tasks; BrowseComp variants test information seeking. Grounding and general-capability suites are evaluated separately.",
+        "Protocols use benchmark-specific completion or partial-progress measures. MobileWorld-Real records environment errors separately and excludes them from its success denominator. The report also analyzes GUI–CLI coordination, batched execution, and training-stage behavior. Proactive-service demonstrations are distinguished from these benchmark protocols."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "xie2024osworld",
+    "date": "2026-08-30",
+    "read": 2,
+    "tags": [
+      "benchmark"
+    ],
+    "views": 0,
+    "hooks": 0,
+    "title": "OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments",
+    "authors": "Xie, Zhang, Chen et al.",
+    "venue": "NeurIPS 2024 Datasets & Benchmarks",
+    "arxiv": "2404.07972",
+    "bib": "xie2024osworld",
+    "take": "OSWorld supplies real computer environments with task initialization and execution-based checks for open-ended desktop and web workflows.",
+    "comments": [],
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/5d413e48f84dc61244b6be550f1cd8f5-Abstract-Datasets_and_Benchmarks_Track.html",
+    "sources": [
+      "https://arxiv.org/html/2404.07972v2",
+      "https://osworld-v1.xlang.ai/",
+      "https://proceedings.neurips.cc/paper_files/paper/2024/hash/5d413e48f84dc61244b6be550f1cd8f5-Abstract-Datasets_and_Benchmarks_Track.html"
+    ],
+    "kind": "paper",
+    "track": "research",
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2404.07972v2#S2.F2",
+      "imageUrl": "https://arxiv.org/html/2404.07972v2/arch_figure_w_config_new.png",
+      "figureLabel": "Figure 2",
+      "caption": "OSWorld coordinates task setup, agent interaction, and execution-based evaluation across virtual machines.",
+      "alt": "OSWorld architecture showing a configuration file, task manager, agent, virtual machines, and evaluation components.",
+      "license": "CC BY 4.0",
+      "width": 1076,
+      "height": 460,
+      "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+      "src": "assets/figures/xie2024osworld.png",
+      "crop": {
+        "width": 1076,
+        "height": 460,
+        "left": 0,
+        "top": 0,
+        "right": 1076,
+        "bottom": 460,
+        "cropWidth": 1076,
+        "cropHeight": 460
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "benchmark"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "A computer assistant may need to move among applications, manipulate files, and continue work from a partially prepared state. Evaluating only a predicted action against a recorded click cannot establish whether that work was completed. OSWorld addresses the infrastructure and task-specific validation needed to test such interactions on functioning computers."
+      ],
+      "contributions": [
+        "A computer environment connects an agent to virtual machines running real applications, with support for different observation and action configurations.",
+        "Tasks include explicit initial-state preparation and custom evaluators that inspect the files, application settings, or other state relevant to the user's request.",
+        "The benchmark spans individual applications, file operations, and multi-application workflows, with human evaluation and diagnostic studies of agent observations and errors."
+      ],
+      "method": [
+        "A task configuration specifies the instruction, required files and application state, and the checks that define completion. The task manager initializes that state before interaction begins. This allows an episode to start from realistic work in progress rather than only from an empty desktop.",
+        "The agent observes the machine through screenshots, accessibility information, or a selected combination. A controller executes mouse and keyboard operations inside the virtual machine and returns the resulting observation. The infrastructure supports isolated environments running in parallel.",
+        "After the episode, the evaluator can post-process application state, retrieve relevant files or information, and apply a task-specific comparison. For example, a document-editing task requires checking the edited artifact rather than accepting the agent's declaration that it has finished. Some checks use application configuration or external information, so the validation logic varies with the task.",
+        "The environment, tasks, and baseline agents are separate components. This permits a new agent to use the same task setup and validator, or a new task to supply its own setup and evaluation functions while reusing the execution machinery."
+      ],
+      "evaluation": [
+        "The original paper evaluates computer tasks involving desktop software, browser applications, file handling, and cross-application workflows. Completion is determined by the supplied execution-based evaluator; human runs provide an additional reference for task feasibility and difficulty.",
+        "Experiments vary screenshot and accessibility inputs, resolution, history length, and interface layout. They examine application categories, workflow complexity, and error types. This note describes the original paper's protocol; later OSWorld-Verified and OSWorld-v2 releases have distinct evaluation configurations."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "yang2023som",
+    "date": "2026-08-14",
+    "read": 2,
+    "tags": [
+      "grounding"
+    ],
+    "views": 0,
+    "hooks": 0,
+    "title": "Set-of-Mark Prompting Unleashes Extraordinary Visual Grounding in GPT-4V",
+    "authors": "Yang, Zhang, Li et al.",
+    "venue": "arXiv 2023",
+    "arxiv": "2310.11441",
+    "bib": "yang2023som",
+    "take": "Set-of-Mark prompting overlays labelled image regions so a multimodal language model can refer to spatial targets through those labels.",
+    "comments": [],
+    "url": "https://arxiv.org/abs/2310.11441",
+    "sources": [
+      "https://arxiv.org/html/2310.11441v2",
+      "https://som-gpt4v.github.io/",
+      "https://github.com/microsoft/SoM"
+    ],
+    "kind": "paper",
+    "track": "research",
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2310.11441v2#S2.F2",
+      "imageUrl": "https://arxiv.org/html/2310.11441v2/figures/method2_xyz.png",
+      "figureLabel": "Figure 2",
+      "caption": "Set-of-Mark labels image regions so GPT-4V can ground its answer in explicit visual references.",
+      "alt": "Original comparison of GPT-4V fruit-counting answers with numbered region marks and without marks.",
+      "license": "arXiv.org perpetual non-exclusive license",
+      "width": 5449,
+      "height": 1159,
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/yang2023som.png",
+      "crop": {
+        "width": 5449,
+        "height": 1159,
+        "left": 0,
+        "top": 3,
+        "right": 5449,
+        "bottom": 1159,
+        "cropWidth": 5449,
+        "cropHeight": 1156
+      }
+    },
+    "keywords": [
+      "gui-agent",
+      "grounding"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "A multimodal model can describe an image while struggling to identify exactly which region its words refer to. Numeric coordinates are awkward language outputs, and an unlabelled visual highlight offers no reusable name. Set-of-Mark studies whether explicit labels can connect visual regions to the model's textual response without updating its parameters."
+      ],
+      "contributions": [
+        "A visual prompting scheme assigns speakable identifiers to image regions, allowing generated answers to refer back to a defined spatial partition.",
+        "An image-partition toolbox combines segmentation models and granularities, while mark-design procedures address label type, placement, and overlap.",
+        "A zero-shot evaluation suite applies the same prompting idea to region-level recognition, referring, segmentation, and phrase-grounding tasks."
+      ],
+      "method": [
+        "An off-the-shelf segmentation system first proposes regions. The toolbox includes SEEM, SAM, and Semantic-SAM, supporting different levels of granularity and automatic or interactive partitioning. Each resulting region receives a visible identifier, such as a number, that is overlaid on the input image.",
+        "Prompting then asks the model to interpret the marked image. Depending on the task, the text may use ordinary language or explicitly refer to region identifiers. The model can identify a target by returning its label; the system maps that label back to the corresponding mask or region rather than requiring the model to reconstruct the geometry.",
+        "Mark placement is part of the input construction. Labels must remain distinguishable when regions overlap or have similar centers. The paper examines alternatives for locating and styling the marks, as well as which region proposals are supplied.",
+        "The segmentation system and the multimodal model retain separate roles: one defines candidate regions, and the other reasons about their meanings and relationships. No parameter update to GPT-4V is required for the prompting method."
+      ],
+      "evaluation": [
+        "Experiments use sampled validation examples from tasks including referring comprehension and segmentation on RefCOCOg, phrase grounding on Flickr30k, and generic segmentation. Predictions are interpreted through the corresponding region masks or boxes and evaluated with the task's spatial metric.",
+        "The original GPT-4V experiments use a fresh conversation for each example to avoid carrying context between tests. Comparisons include specialist vision models and other multimodal models. Ablations examine partition granularity and mark design; the study is not an end-to-end GUI-navigation evaluation."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "zhou2023webarena",
+    "date": "2026-07-21",
+    "read": 2,
+    "tags": [
+      "benchmark"
+    ],
+    "views": 0,
+    "hooks": 0,
+    "title": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
+    "authors": "Zhou, Xu, Zhu et al.",
+    "venue": "ICLR 2024",
+    "arxiv": "2307.13854",
+    "bib": "zhou2023webarena",
+    "take": "WebArena provides self-hosted websites and functional task validators for evaluating autonomous web navigation.",
+    "comments": [],
+    "url": "https://openreview.net/pdf?id=oKn9c6ytLx",
+    "sources": [
+      "https://arxiv.org/html/2307.13854v4",
+      "https://openreview.net/pdf?id=oKn9c6ytLx",
+      "https://github.com/web-arena-x/webarena"
+    ],
+    "kind": "paper",
+    "track": "research",
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2307.13854v4#S1.F1",
+      "imageUrl": "https://arxiv.org/html/2307.13854v4/webarena.png",
+      "figureLabel": "Figure 1",
+      "caption": "WebArena connects realistic websites, agent actions, and functional validators for complete user tasks.",
+      "alt": "WebArena overview linking websites and auxiliary tools to an agent and functional success checks.",
+      "license": "arXiv.org perpetual non-exclusive license",
+      "width": 2043,
+      "height": 613,
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/zhou2023webarena.png",
+      "crop": {
+        "width": 2043,
+        "height": 613,
+        "left": 0,
+        "top": 0,
+        "right": 2043,
+        "bottom": 613,
+        "cropWidth": 2043,
+        "cropHeight": 613
+      }
+    },
+    "keywords": [
+      "web-agent",
+      "benchmark",
+      "gui-agent"
+    ],
+    "topic": "gui-agent",
+    "note": {
+      "problem": [
+        "Web agents need to operate across realistic pages, preserve context, and sometimes change application state. Simplified environments omit important interactions, while live websites are difficult to hold constant across experiments. Matching one reference action sequence also misses alternative valid ways to fulfil the same instruction."
+      ],
+      "contributions": [
+        "A self-hosted environment assembles functional shopping, discussion, software-development, and content-management websites, together with tools and reference resources.",
+        "A task collection expresses realistic information-seeking and state-changing user goals, including objectives that require multiple pages or websites.",
+        "Task-specific evaluators check answers and application state, providing a functional success criterion rather than requiring one prescribed navigation path."
+      ],
+      "method": [
+        "The websites contain application data and functionality modelled on common web services. Running controlled copies allows their state to be initialized and reset. Auxiliary sites supply resources such as maps and reference information that an agent may need while solving a task.",
+        "A task provides a natural-language objective and a starting configuration. The agent repeatedly receives the current page's URL and a configured representation of its content, such as a screenshot, HTML, or accessibility information. It issues browser operations through the available action interface and observes the resulting page before choosing another action.",
+        "Information-seeking tasks are checked against reference answers. Depending on the task, the evaluator may require an exact value, the presence of specified content, or semantic equivalence. State-changing tasks inspect the relevant page or underlying application data; for example, a content-editing task can be checked by reading the resulting content and its location.",
+        "These validators are implemented separately from the policy. An agent can therefore take a different route through the websites while still receiving credit for the required outcome. The released environment also includes baseline-agent and evaluation code for reproducing the experimental setup."
+      ],
+      "evaluation": [
+        "The paper evaluates agents on multi-step information retrieval and application operations across the controlled websites. The primary task-completion measure comes from the functional validators. Human evaluation checks how the same task collection can be completed by people.",
+        "Baseline comparisons vary language models, prompts, and the available interaction configuration. Analyses examine task categories and failed trajectories. The benchmark's controlled state supports repeatability, while its different answer and state checks remain explicit parts of the evaluation protocol."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "debenedetti2024agentdojo",
+    "date": "2026-06-30",
+    "read": 2,
+    "tags": [
+      "prompt-injection",
+      "benchmark"
+    ],
+    "views": 0,
+    "hooks": 0,
+    "title": "AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents",
+    "authors": "Debenedetti, Zhang, Balunović et al.",
+    "venue": "NeurIPS 2024 Datasets & Benchmarks",
+    "arxiv": "2406.13352",
+    "bib": "debenedetti2024agentdojo",
+    "take": "AgentDojo evaluates legitimate task completion and prompt-injection objectives in the same stateful tool-using environments.",
+    "comments": [],
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/97091a5177d8dc64b1da8bf3e1f6fb54-Abstract-Datasets_and_Benchmarks_Track.html",
+    "sources": [
+      "https://arxiv.org/html/2406.13352v3",
+      "https://proceedings.neurips.cc/paper_files/paper/2024/hash/97091a5177d8dc64b1da8bf3e1f6fb54-Abstract-Datasets_and_Benchmarks_Track.html"
+    ],
+    "kind": "paper",
+    "track": "research",
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2406.13352v3#S1.F1",
+      "imageUrl": "https://arxiv.org/html/2406.13352v3/overview.svg",
+      "figureLabel": "Figure 1",
+      "caption": "AgentDojo evaluates legitimate task completion and attacker objectives within the same tool-using environment.",
+      "alt": "AgentDojo diagram showing attacker-controlled email content, an agent following a user task, and separate utility and security evaluation.",
+      "license": "arXiv.org perpetual non-exclusive license",
+      "width": 2417,
+      "height": 811,
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/debenedetti2024agentdojo.svg",
+      "crop": {
+        "width": 870,
+        "height": 292,
+        "left": 0,
+        "top": 0,
+        "right": 868,
+        "bottom": 290,
+        "cropWidth": 868,
+        "cropHeight": 290
+      }
+    },
+    "keywords": [
+      "agent-security",
+      "prompt-injection",
+      "benchmark"
+    ],
+    "topic": "agent-security",
+    "note": {
+      "problem": [
+        "An agent can encounter attacker-controlled text while carrying out a legitimate request, and that text can redirect later tool use. Evaluating only whether the model rejects an instruction misses whether the user's task was completed, whether an unwanted state change occurred, and which capabilities the attacker actually controlled.",
+        "Static payload collections also become inadequate as defenses change. AgentDojo therefore treats evaluation as an extensible interaction environment in which user tasks, injection locations, attacker goals, agents, and defenses can be varied independently."
+      ],
+      "contributions": [
+        "Stateful workspace, messaging, travel, and banking environments with implemented tools and realistic task data.",
+        "Separate executable criteria for legitimate user goals and adversarial objectives, combined into security test cases.",
+        "Interfaces for new attacks and modular agent defenses, with reporting that distinguishes benign utility, utility under attack, and targeted attacker success."
+      ],
+      "method": [
+        "Each environment stores mutable application state, such as messages, calendar events, or account data. Tools read or modify this state through defined functions. A user task provides a natural-language instruction, a reference sequence of calls, and a deterministic utility check over the agent's output and the state before and after execution.",
+        "An injection task specifies an adversarial goal and designated content the attacker may replace. The attack supplies text for those placeholders, which can be encountered through ordinary tool use. Pairing user and injection tasks creates a security case without granting the attacker arbitrary control over the entire conversation or environment.",
+        "The agent receives the legitimate task and tool descriptions and runs until completion. The framework then applies the user-task and attacker-goal checks separately. Attacks can be replaced or adapted, and agent pipelines can incorporate components such as output delimiters, injection detectors, repeated task reminders, or a preselected tool subset."
+      ],
+      "evaluation": [
+        "Baseline experiments run multiple language-model agents across the task suites in benign and attacked conditions. Benign utility measures completion without an attack; utility under attack requires completing the authorized task without adversarial side effects; targeted attack success measures whether the specified attacker goal is achieved.",
+        "Attack ablations vary message components and knowledge of the victim or tool interface. Defense comparisons examine both utility and attacker outcomes, while additional analyses consider injection placement and combinations of attacks. The protocol supports testing new adaptive attacks rather than treating resistance to the supplied payloads as a general robustness guarantee."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "greshake2023indirect",
+    "date": "2026-06-22",
+    "read": 2,
+    "tags": [
+      "prompt-injection"
+    ],
+    "views": 0,
+    "hooks": 0,
+    "title": "Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection",
+    "authors": "Greshake, Abdelnabi, Mishra et al.",
+    "venue": "AISec 2023 (ACM CCS workshop)",
+    "arxiv": "2302.12173",
+    "bib": "greshake2023indirect",
+    "take": "The paper analyzes how instructions embedded in retrieved content can redirect LLM-integrated applications without controlling the user's original prompt.",
+    "comments": [],
+    "url": "https://cispa.de/en/research/publications/77133-not-what-you-ve-signed-up-for-compromising-real-world-llm-integrated-applications-with-indirect-prompt-injection",
+    "sources": [
+      "https://arxiv.org/html/2302.12173v2",
+      "https://cispa.de/en/research/publications/77133-not-what-you-ve-signed-up-for-compromising-real-world-llm-integrated-applications-with-indirect-prompt-injection"
+    ],
+    "kind": "paper",
+    "track": "research",
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2302.12173v2#S3.F3",
+      "imageUrl": "https://arxiv.org/html/2302.12173v2/overview_alternative.png",
+      "figureLabel": "Figure 3",
+      "caption": "Indirect prompt injection crosses from external content into application behavior and downstream tool use.",
+      "alt": "Threat-model diagram connecting attacker-controlled external sources, a user, an LLM application, and APIs through numbered interactions.",
+      "license": "arXiv.org perpetual non-exclusive license",
+      "width": 890,
+      "height": 919,
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/greshake2023indirect.png",
+      "crop": {
+        "width": 890,
+        "height": 919,
+        "left": 0,
+        "top": 0,
+        "right": 890,
+        "bottom": 916,
+        "cropWidth": 890,
+        "cropHeight": 916
+      }
+    },
+    "keywords": [
+      "agent-security",
+      "prompt-injection"
+    ],
+    "topic": "agent-security",
+    "note": {
+      "problem": [
+        "Applications that search, read documents, or inspect code place externally supplied text inside a language model's context. That text can contain instructions from someone other than the user or application developer. When the model treats those instructions as authoritative, ordinary retrieval becomes a route for influencing answers and downstream actions.",
+        "The paper studies this application-level boundary, rather than only direct attempts to override a chatbot through its public prompt box. Its scope includes effects on the user, the integrated application, and other systems reachable through the application's tools."
+      ],
+      "contributions": [
+        "A threat model distinguishing indirect injection delivery paths, attacker objectives, and affected parties.",
+        "A threat taxonomy covering information exposure, fraud, intrusion, malware-related behavior, content manipulation, and availability.",
+        "A collection of controlled demonstrations and historical application tests, including multi-stage and encoded delivery, with prompts and transcripts for inspection."
+      ],
+      "method": [
+        "The analysis follows the path from an attacker-controlled source to the application's retrieval or context-building step. The model then processes that source alongside the legitimate interaction and may use the application's interfaces or generated answer to pursue the injected objective. The critical transition is from consuming external data to accepting behavioral direction.",
+        "The authors distinguish passive delivery through retrieved sources from active delivery through material such as messages. They also discuss user-mediated and hidden delivery. The taxonomy organizes consequences by the threatened asset or behavior, so that different delivery techniques can be compared without equating them.",
+        "Controlled prototypes provide selected search, page-reading, URL-retrieval, email, address-book, and memory interfaces. Prepared responses allow the authors to observe how an injected instruction affects a subsequent interaction. Additional tests examine page context supplied to Bing Chat's sidebar and code context supplied to GitHub Copilot; these tests concern the integrations available during the study."
+      ],
+      "evaluation": [
+        "The synthetic applications use prepared tool content and mock targets, without issuing requests to real external systems. Application demonstrations use controlled local material, including local HTML for sidebar tests. The authors inspect conversation and tool-use traces against the intended attacker objective across the threat categories.",
+        "This is primarily a qualitative feasibility study, not a standardized success-rate benchmark. Multi-stage and encoded cases investigate delivery mechanisms. The paper leaves systematic measurement across prompt variations, repeated generations, interaction histories, and user persuasion to future work, and notes that changing black-box services limit exact reproduction."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "ruan2023toolemu",
+    "date": "2026-06-14",
+    "read": 2,
+    "tags": [
+      "framework",
+      "benchmark"
+    ],
+    "views": 0,
+    "hooks": 0,
+    "title": "Identifying the Risks of LM Agents with an LM-Emulated Sandbox",
+    "authors": "Ruan, Dong, Wang et al.",
+    "venue": "ICLR 2024",
+    "arxiv": "2309.15817",
+    "bib": "ruan2023toolemu",
+    "take": "ToolEmu uses language models to emulate tool environments and assess the safety and helpfulness of complete agent trajectories.",
+    "comments": [],
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/7274ed909a312d4d869cc328ad1c5f04-Abstract-Conference.html",
+    "sources": [
+      "https://arxiv.org/html/2309.15817v2",
+      "https://proceedings.iclr.cc/paper_files/paper/2024/hash/7274ed909a312d4d869cc328ad1c5f04-Abstract-Conference.html"
+    ],
+    "kind": "paper",
+    "track": "research",
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2309.15817v2#S1.F1",
+      "imageUrl": "https://arxiv.org/html/2309.15817v2/Framework.png",
+      "figureLabel": "Figure 1",
+      "caption": "ToolEmu uses a language-model tool emulator and trajectory evaluator to assess potential agent failures.",
+      "alt": "ToolEmu framework showing user requests, an agent, a tool-and-state emulator, interaction trajectories, and a safety evaluator.",
+      "license": "CC BY 4.0",
+      "width": 1620,
+      "height": 482,
+      "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+      "src": "assets/figures/ruan2023toolemu.png",
+      "crop": {
+        "width": 1620,
+        "height": 482,
+        "left": 0,
+        "top": 0,
+        "right": 1620,
+        "bottom": 482,
+        "cropWidth": 1620,
+        "cropHeight": 482
+      }
+    },
+    "keywords": [
+      "agent-security",
+      "tool-use"
+    ],
+    "topic": "agent-security",
+    "note": {
+      "problem": [
+        "Testing agents against realistic tool risks normally requires implementing tools, constructing sandbox state, and finding situations where a plausible mistake has consequences. That work becomes expensive across many applications, especially for rare scenarios or tools without an accessible implementation.",
+        "ToolEmu replaces this implementation burden with a language-model emulator. The resulting challenge is not only generating plausible responses: the simulated trajectory must obey tool specifications and maintain state consistently enough that the identified failure could occur in a real implementation."
+      ],
+      "contributions": [
+        "A specification-driven emulator that produces tool observations without executing the real tool.",
+        "An adversarial emulation mode that selects challenging states using task underspecification and designated potential risks.",
+        "Trajectory-level safety and helpfulness evaluators, a curated toolkit benchmark, and human validation of both emulation quality and evaluator judgments."
+      ],
+      "method": [
+        "The standard emulator receives tool specifications, the user instruction, the current call, and the history of actions and observations. It produces the next observation while implicitly maintaining the virtual initial state and state transitions. Specifications describe arguments, return values, behavior, and exceptions; the emulator must validate inputs and remain consistent with prior events.",
+        "The adversarial emulator additionally receives the instruction's ambiguities and possible risky actions. It uses this information to instantiate scenarios where an unsafe choice is more likely to matter. The risk comes from the selected environment and agent decision, rather than from performing the corresponding real-world action.",
+        "After the run, separate evaluators inspect the full trajectory. Safety assessment considers whether risky actions occurred and the likelihood and severity of their consequences. Helpfulness assessment compares the trajectory with the expected safe achievement of the request. The benchmark's tool specifications and test cases are generated with model assistance, then filtered, revised, and checked by people."
+      ],
+      "evaluation": [
+        "Validation pairs standard and adversarial emulations for the same case and acting model. Human annotators, blinded to the agent and emulator identity, inspect input validation, behavioral accuracy, and state consistency, and separately judge safety and helpfulness. Evaluator validation compares model–human agreement with inter-annotator agreement and examines failure-detection precision and recall.",
+        "Agent evaluation uses ReAct-style tool use across the curated cases, comparing base models, prompting variants, and an agent that takes no actions. Metrics cover safety, helpfulness, and identified failure incidence. These comparisons test risk discovery and useful task performance within the emulator; they do not make an emulated incident equivalent to a confirmed failure of a deployed tool."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "andriushchenko2024agentharm",
+    "date": "2026-06-05",
+    "read": 2,
+    "tags": [
+      "benchmark"
+    ],
+    "views": 0,
+    "hooks": 0,
+    "title": "AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents",
+    "authors": "Andriushchenko, Souly, Dziemian et al.",
+    "venue": "ICLR 2025",
+    "arxiv": "2410.09024",
+    "bib": "andriushchenko2024agentharm",
+    "take": "AgentHarm measures whether agents refuse malicious requests and whether they can complete the associated multi-step workflows through synthetic tools.",
+    "comments": [],
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/c493d23af93118975cdbc32cbe7323f5-Abstract-Conference.html",
+    "sources": [
+      "https://arxiv.org/html/2410.09024v3",
+      "https://proceedings.iclr.cc/paper_files/paper/2025/hash/c493d23af93118975cdbc32cbe7323f5-Abstract-Conference.html"
+    ],
+    "kind": "paper",
+    "track": "research",
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2410.09024v3#S1.F1",
+      "imageUrl": "https://arxiv.org/html/2410.09024v3/agentharm_figure1_v2.png",
+      "figureLabel": "Figure 1",
+      "caption": "AgentHarm compares harmful and benign requests through multi-step interactions with proxy tools.",
+      "alt": "AgentHarm overview showing harmful and benign requests, refusal or compliance, and multi-step calls to proxy tools.",
+      "license": "arXiv.org perpetual non-exclusive license",
+      "width": 1200,
+      "height": 675,
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/andriushchenko2024agentharm.png",
+      "crop": {
+        "width": 1200,
+        "height": 675,
+        "left": 22,
+        "top": 60,
+        "right": 1191,
+        "bottom": 557,
+        "cropWidth": 1169,
+        "cropHeight": 497
+      }
+    },
+    "keywords": [
+      "agent-security",
+      "benchmark"
+    ],
+    "topic": "agent-security",
+    "note": {
+      "problem": [
+        "A jailbreak can remove refusal behavior while also degrading the model's ability to carry out a task. Conversely, an agent may avoid a harmful outcome because it cannot operate the tools, even when it is willing to comply. A refusal-only test cannot distinguish these cases.",
+        "AgentHarm studies direct misuse through explicitly malicious user requests. Its tasks require coherent, dependent tool calls, while benign counterparts probe similar capabilities without the malicious objective. This threat model differs from an external attacker injecting instructions into a legitimate user's retrieved content."
+      ],
+      "contributions": [
+        "Human-written malicious behaviors spanning multiple harm categories, with detailed, open-ended, and initial-tool-hint variants.",
+        "Synthetic tool implementations and fine-grained grading rubrics that assess progress through a multi-step workflow.",
+        "Benign counterparts, refusal tracking, and completion measurements on non-refused tasks to separate safeguards from agent competence."
+      ],
+      "method": [
+        "Each behavior defines a digitally realizable objective and the tools needed to pursue it. Calls commonly depend on information from earlier calls, so the agent must preserve arguments and execution order. Separate writers and reviewers check the tasks, and variants adjust how much task detail or starting guidance the model receives.",
+        "Tools are standalone functions in the Inspect evaluation framework, with prepared outputs and no real-world side effects. They imitate both general-purpose and domain-specific interfaces. Error responses allow recovery from mistakes, such as referring to a nonexistent resource, so the benchmark can observe self-correction during a run.",
+        "Grading primarily uses manually specified checks on calls, arguments, and outputs, allowing partial credit for incomplete workflows. A language-model judge handles narrowly scoped semantic checks when necessary. Refusal detection examines the agent's messages throughout the trajectory, including refusals that occur after some tools have already run."
+      ],
+      "evaluation": [
+        "The baseline agent uses a direct tool-calling loop that feeds results back into context. Conditions include ordinary requests, forced tool calling where supported, and a shared jailbreak template. Validation, public-test, and private-test partitions separate tuning from evaluation and support checks for contamination.",
+        "Measurements include workflow completion, refusal, and performance on non-refused behaviors, alongside the benign counterparts. Ablations vary task detail, hints, sampling attempts, and other evaluation choices; trajectory inspection examines dependency and parameter errors. Because the tools are deliberately simplified proxies, these measurements concern benchmark behavior rather than operational capability to cause the corresponding real-world harm."
+      ],
+      "myTake": ""
+    }
+  },
+  {
+    "id": "zhang2024agentsafetybench",
+    "date": "2026-05-27",
+    "read": 2,
+    "tags": [
+      "benchmark"
+    ],
+    "views": 0,
+    "hooks": 0,
+    "title": "Agent-SafetyBench: Evaluating the Safety of LLM Agents",
+    "authors": "Zhang, Cui, Lu et al.",
+    "venue": "AAAI 2026 Workshop on Trust and Control in Agentic AI (TrustAgent)",
+    "arxiv": "2412.14470",
+    "bib": "zhang2024agentsafetybench",
+    "take": "Agent-SafetyBench organizes interactive safety tests by both risk category and failure mode, using implemented environments and a trained trajectory scorer.",
+    "comments": [],
+    "url": "https://trustagenticai.github.io/AAAI2026/paper.html",
+    "sources": [
+      "https://trustagenticai.github.io/AAAI2026/AAAI-Workshop/30.pdf",
+      "https://trustagenticai.github.io/AAAI2026/paper.html"
+    ],
+    "kind": "paper",
+    "track": "research",
+    "figure": {
+      "sourcePage": "https://arxiv.org/html/2412.14470v2#S1.F2",
+      "imageUrl": "https://arxiv.org/html/2412.14470v2/figs/overview.png",
+      "figureLabel": "Figure 2",
+      "caption": "Agent-SafetyBench combines risk categories, simulated environments, interaction records, and an automated safety scorer.",
+      "alt": "Agent-SafetyBench overview showing risk categories, environments, failure modes, an example test case, an agent trajectory, and a scorer.",
+      "license": "arXiv.org perpetual non-exclusive license",
+      "width": 2639,
+      "height": 1712,
+      "licenseUrl": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "src": "assets/figures/zhang2024agentsafetybench.png",
+      "crop": {
+        "width": 2639,
+        "height": 1712,
+        "left": 1,
+        "top": 15,
+        "right": 2624,
+        "bottom": 1712,
+        "cropWidth": 2623,
+        "cropHeight": 1697
+      }
+    },
+    "keywords": [
+      "agent-security",
+      "benchmark"
+    ],
+    "topic": "agent-security",
+    "note": {
+      "problem": [
+        "Agent safety failures can arise from generated content, incorrect actions, missing actions, or misplaced trust in tool outputs. Existing evaluations often emphasize one type of attack or one application, making it difficult to compare risks across different interaction patterns.",
+        "The benchmark distinguishes the harm that may occur from the behavioral failure that produces it. A single risk can have several causes, and one failure mode can matter in multiple domains. It also separates useful action from apparent safety obtained by declining every request."
+      ],
+      "contributions": [
+        "A taxonomy connecting risk categories with anticipated failure modes in tool use and generated content.",
+        "A collection of configurable, implemented test environments and cases built by refining existing datasets and augmenting underrepresented scenarios.",
+        "A fine-tuned safety scorer trained on human-labeled interaction records, plus analyses of failure modes, helpfulness, and defensive prompting."
+      ],
+      "method": [
+        "Each case specifies a user instruction or existing dialog, its risk category, relevant environments and initialization parameters, and expected failure modes. Each environment pairs a JSON tool schema with a Python implementation. This supports repeatable interactions with concrete tool behavior rather than relying on a language model to invent every tool response.",
+        "Construction starts by clarifying and deduplicating cases from earlier datasets and standardizing their environments. Additional cases are generated with a designated risk, environment context, and an expected risky behavior sequence. Authors review the cases, scripts check agreement between schemas and implementations, and trial trajectories receive manual safety labels.",
+        "The scorer is fine-tuned from Qwen2.5-7B-Instruct using those human labels and model-generated explanations. During evaluation, the acting agent repeatedly chooses a tool and arguments or produces a final answer. The completed interaction record is then classified as safe or unsafe, with an accompanying analysis; this judgment is separate from the acting agent."
+      ],
+      "evaluation": [
+        "Experiments compare language-model agents across the full case collection, reporting safety classifications overall, by risk category, and for behavior-level versus content-only cases. Scorer validation uses manually labeled held-out interaction records. Failure-mode analysis examines which behavioral mechanisms account for unsafe trajectories.",
+        "A separate helpfulness analysis labels cases according to whether they can be completed safely and asks whether the agent's behavior advances the task, independently of its safety judgment. Defensive-prompt comparisons contrast a concise failure-mode list with a more detailed version containing examples. These analyses investigate risk awareness, robustness, and refusal behavior within the benchmark's environments and scoring protocol."
+      ],
+      "myTake": ""
+    }
+  }
+]

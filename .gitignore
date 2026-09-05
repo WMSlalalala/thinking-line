@@ -1,0 +1,7 @@
+index.html
+artifact.html
+dist/
+node_modules/
+.env
+.wrangler/
+public-trips-build-*/
