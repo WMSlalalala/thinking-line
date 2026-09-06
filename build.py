@@ -19,7 +19,7 @@ for trip in trips:
         raise ValueError(f"{trip['id']}: route geometry is required")
     if any(len(p) != 2 or not all(isinstance(v,(int,float)) and math.isfinite(v) for v in p) or abs(p[0]) > 180 or abs(p[1]) > 85 for p in coordinates):
         raise ValueError(f"{trip['id']}: invalid route coordinates")
-    if coordinates[0] != coordinates[-1]:
+    if trip.get('loop', True) and coordinates[0] != coordinates[-1]:
         raise ValueError(f"{trip['id']}: this trip must close into a loop")
 (root/'assets/map/trips.json').write_text(json.dumps(trips,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 

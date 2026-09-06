@@ -12903,5 +12903,85 @@
       "https://routing.openstreetmap.de/about.html",
       "https://www.openstreetmap.org/copyright"
     ]
+  },
+  {
+    "id": "ventura-los-angeles-irvine-coast",
+    "title": "Ventura → Los Angeles → Irvine",
+    "loop": false,
+    "stops": [
+      {
+        "name": "Ventura",
+        "state": "CA",
+        "coordinates": [
+          -119.293174,
+          34.278336
+        ],
+        "source": "https://www.openstreetmap.org/relation/112589",
+        "sourceId": 112589,
+        "sourceName": "OpenStreetMap city relation (via Nominatim)",
+        "label": "Ventura, CA",
+        "coordinateRole": "Representative city point; not a recorded visit location",
+        "id": "stop-1",
+        "order": 1,
+        "lng": -119.293174,
+        "lat": 34.278336,
+        "routingCoordinate": [
+          -119.293101,
+          34.278336
+        ],
+        "snappedDistanceMeters": 6.722278953
+      },
+      {
+        "name": "Los Angeles",
+        "state": "CA",
+        "coordinates": [
+          -118.231986,
+          34.049219
+        ],
+        "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+        "sourceId": 1159151569,
+        "sourceName": "Natural Earth 1:10m populated places",
+        "label": "Los Angeles, CA",
+        "coordinateRole": "Representative city point; not a recorded visit location",
+        "id": "stop-2",
+        "order": 2,
+        "lng": -118.231986,
+        "lat": 34.049219,
+        "routingCoordinate": [
+          -118.231902,
+          34.049208
+        ],
+        "snappedDistanceMeters": 7.85341174
+      },
+      {
+        "name": "Irvine",
+        "state": "CA",
+        "coordinates": [
+          -117.82995,
+          33.680411
+        ],
+        "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson",
+        "sourceId": 1159132667,
+        "sourceName": "Natural Earth 1:10m populated places",
+        "label": "Irvine, CA",
+        "coordinateRole": "Representative city point; not a recorded visit location",
+        "id": "stop-3",
+        "order": 3,
+        "lng": -117.82995,
+        "lat": 33.680411,
+        "routingCoordinate": [
+          -117.82993,
+          33.680405
+        ],
+        "snappedDistanceMeters": 1.970484987
+      }
+    ],
+    "routing": {
+      "engine": "OSRM public demo server",
+      "profile": "driving",
+      "request": "https://router.project-osrm.org/route/v1/driving/-119.293174,34.278336;-118.231986,34.049219;-117.82995,33.680411?overview=full&geometries=geojson&steps=false",
+      "distanceMeters": 174163.4,
+      "simplification": "Douglas-Peucker 0.00015 degrees"
+    }
   }
 ]

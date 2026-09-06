@@ -30,7 +30,7 @@ function updateMapData(){
   LIFE.trips.forEach(function(trip){var points=tripCoordinates(trip).map(function(p){return[p[1],p[0]]});if(points.length<2)return;
     var halo=L.polyline(points,{color:'#ffffff',weight:7,opacity:.85,interactive:false,lineCap:'round',lineJoin:'round'}).addTo(LIFE.routeLayer);
     var line=L.polyline(points,{color:routeColor(trip),weight:3.5,opacity:.95,lineCap:'round',lineJoin:'round',bubblingMouseEvents:false}).addTo(LIFE.routeLayer);
-    LIFE.lines.push({id:trip.id,halo:halo,line:line});line.on('mouseover',function(e){setRouteEmphasis(trip.id);popupAt([e.latlng.lng,e.latlng.lat],trip.title,trip.points.slice(0,-1).map(function(p){return p.name||p.label}).join(' → '),trip.photos?.[0])});line.on('mouseout',function(){clearPopup();setRouteEmphasis(LIFE.selected)});line.on('click',function(){selectTrip(trip.id)});
+    LIFE.lines.push({id:trip.id,halo:halo,line:line});line.on('mouseover',function(e){setRouteEmphasis(trip.id);popupAt([e.latlng.lng,e.latlng.lat],trip.title,tripStops(trip).map(function(p){return p.name||p.label}).join(' → '),trip.photos?.[0])});line.on('mouseout',function(){clearPopup();setRouteEmphasis(LIFE.selected)});line.on('click',function(){selectTrip(trip.id)});
   });setRouteEmphasis(LIFE.selected);renderMapMarkers();
 }
 function popupAt(lngLat,title,detail,photo){

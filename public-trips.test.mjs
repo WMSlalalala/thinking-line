@@ -55,16 +55,16 @@ test('source contains no frontend login, editor UI, file input or write path',()
   for(const pattern of [/signin-with-chatgpt/i,/\b(saveTrip|chooseCity|uploadTripPhotos|renderEditor|deleteTrip)\s*\(/,/type=["']file["']/i,/method\s*:\s*["'](?:POST|PUT|PATCH|DELETE)["']/i,/\/api\/life\/(?:session|places)/,/href=["'][^"']*life\/edit/])assert.doesNotMatch(lifeSource+'\n'+mapSource,pattern);
   const f=fixture();assert.doesNotMatch(f.nodes.get('life-content').innerHTML,/<form\b|sign in|save route|add route/i);
 });
-test('all three source routes have unique IDs, distinct colors, ordered stops and closed valid geometry',()=>{
-  assert.equal(repository.length,3);assert.equal(new Set(repository.map(t=>t.id)).size,3);assert.equal(new Set(repository.map(t=>t.color)).size,3);
-  for(const t of repository){assert.equal(t.managed,true);assert.equal(t.geometry.type,'LineString');assert.ok(t.geometry.coordinates.length>t.points.length);assert.deepEqual(t.geometry.coordinates[0],t.geometry.coordinates.at(-1));assert.equal(t.points[0].lat,t.points.at(-1).lat);assert.equal(t.points[0].lng,t.points.at(-1).lng);assert.ok(t.points.every(p=>p.id&&p.label));for(const p of t.geometry.coordinates)assert.ok(p.length===2&&p.every(Number.isFinite)&&Math.abs(p[0])<=180&&Math.abs(p[1])<=85);}
+test('all source routes have unique IDs, distinct colors, ordered stops and valid geometry (loops closed)',()=>{
+  assert.equal(repository.length,4);assert.equal(new Set(repository.map(t=>t.id)).size,4);assert.equal(new Set(repository.map(t=>t.color)).size,4);
+  for(const t of repository){assert.equal(t.managed,true);assert.equal(t.geometry.type,'LineString');assert.ok(t.geometry.coordinates.length>t.points.length);if(t.loop===false){assert.notDeepEqual(t.geometry.coordinates[0],t.geometry.coordinates.at(-1))}else{assert.deepEqual(t.geometry.coordinates[0],t.geometry.coordinates.at(-1));assert.equal(t.points[0].lat,t.points.at(-1).lat);assert.equal(t.points[0].lng,t.points.at(-1).lng));assert.ok(t.points.every(p=>p.id&&p.label));for(const p of t.geometry.coordinates)assert.ok(p.length===2&&p.every(Number.isFinite)&&Math.abs(p[0])<=180&&Math.abs(p[1])<=85);}
 });
 test('map uses routed geometry in Leaflet latitude/longitude order and draws every closure',async()=>{
-  const f=fixture();await f.ready();assert.equal(f.context.LIFE.lines.length,3);
-  repository.forEach((t,i)=>{const line=f.context.LIFE.lines[i].line;assert.equal(line.coords.length,t.geometry.coordinates.length);assert.deepEqual(clone(line.coords[0]),t.geometry.coordinates[0].slice().reverse());assert.deepEqual(clone(line.coords.at(-1)),clone(line.coords[0]));});
+  const f=fixture();await f.ready();assert.equal(f.context.LIFE.lines.length,4);
+  repository.forEach((t,i)=>{const line=f.context.LIFE.lines[i].line;assert.equal(line.coords.length,t.geometry.coordinates.length);assert.deepEqual(clone(line.coords[0]),t.geometry.coordinates[0].slice().reverse());if(t.loop!==false)assert.deepEqual(clone(line.coords.at(-1)),clone(line.coords[0]));});
 });
 test('closed loop ending does not produce duplicate stop markers and all markers are display-only',async()=>{
-  const f=fixture();await f.ready();assert.equal(f.context.LIFE.markers.length,repository.reduce((n,t)=>n+t.points.length-1,0));
+  const f=fixture();await f.ready();assert.equal(f.context.LIFE.markers.length,repository.reduce((n,t)=>n+(t.loop===false?t.points.length:t.points.length-1),0));
   f.context.LIFE.markers.forEach(m=>{assert.equal(m.options.draggable,false);assert.equal(m.options.keyboard,true);assert.equal(m.options.bubblingMouseEvents,false);assert.equal(m.events.dragend,undefined);});
 });
 test('route hover highlights one route and mouseout restores the selected route',async()=>{
@@ -83,7 +83,7 @@ test('city atlas labels have no editing click handlers and no keyboard focus',as
   const f=fixture();await f.ready();f.context.LIFE.atlasLabels={clearLayers(){}};f.context.LIFE.cities={features:[{properties:{NAME:'Boston',POP_MAX:100,MIN_ZOOM:1},geometry:{coordinates:[-71,42]}}]};const before=f.madeMarkers.length;f.context.drawAtlasLabels();const marker=f.madeMarkers[before];assert.equal(marker.options.interactive,false);assert.equal(marker.options.keyboard,false);assert.equal(marker.events.click,undefined);
 });
 test('public loading makes GET-only anonymous requests, with static source data preserved',async()=>{
-  const f=fixture();await f.context.wireLife(1);await tick();assert.equal(f.context.LIFE.trips.length,3);assert.deepEqual(clone(f.context.LIFE.trips.map(t=>t.geometry)),repository.map(t=>t.geometry));
+  const f=fixture();await f.context.wireLife(1);await tick();assert.equal(f.context.LIFE.trips.length,4);assert.deepEqual(clone(f.context.LIFE.trips.map(t=>t.geometry)),repository.map(t=>t.geometry));
   for(const call of f.network){assert.ok(!call.options?.method||call.options.method==='GET');assert.notEqual(call.options?.credentials,'include');assert.doesNotMatch(call.url,/session|signin|places/);}
   assert.equal(f.network.find(c=>c.url.startsWith(apiOrigin)).options.credentials,'omit');
 });
