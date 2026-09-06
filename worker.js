@@ -3,7 +3,7 @@ import { lifeApi } from './life-api.js';
 import { LIFE_ASSETS } from './life-assets.js';
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-const origins = new Set(['https://thinking-line.wangmingshuo03.chatgpt.site', 'https://wmslalalala.github.io', 'http://127.0.0.1:8127']);
+const origins = new Set(['https://thinking-line.wangmingshuo03.chatgpt.site', 'https://wmslalalala.github.io', 'https://thinkingline.blog', 'https://www.thinkingline.blog', 'http://127.0.0.1:8127']);
 const knownPosts = new Set(POST_IDS);
 const json = (data,status=200,headers={}) => Response.json(data,{status,headers:{'Cache-Control':'no-store',...headers}});
 const first = (db,sql,...args) => db.prepare(sql).bind(...args).first();
