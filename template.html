@@ -149,7 +149,7 @@ function home(){var latest=POSTS.slice().sort(byDate).slice(0,5);
   '<p class="intro">I study large language models and agentic AI, with a focus on agent systems and agent security. Thinking Line is where I work through the papers I read, the things I make, and life beyond the screen.</p>'+
   '<div class="links">'+LINKS.map(function(l){return '<a href="'+l[1]+'" target="_blank" rel="noopener">'+l[0]+' ↗</a>'}).join('')+'</div></div></section>'+
   '<section class="home-main"><h2 class="h">Latest notes <a href="#/research">Browse topics ↗</a></h2><div class="ledger">'+latest.map(function(p){return rowHTML(p,{track:false,take:true})}).join('')+'</div></section>'+
-  '<aside class="home-explore"><nav class="explore-links" aria-label="Explore"><h2 class="h">Explore</h2>'+Object.keys(TRACKS).map(function(k){return '<a href="#/'+k+'">'+TRACKS[k].name+'</a>'}).join('')+'</nav><a class="feedback" href="mailto:mwnag49@ncsu.edu"><span>Feedback</span>mwnag49@ncsu.edu ↗</a></aside>'}
+  '<aside class="home-explore"><nav class="explore-links" aria-label="Explore"><h2 class="h">Explore</h2>'+Object.keys(TRACKS).map(function(k){return '<a href="#/'+k+'">'+TRACKS[k].name+'</a>'}).join('')+'</nav><a class="feedback" href="mailto:mwang49@ncsu.edu"><span>Feedback</span>mwang49@ncsu.edu ↗</a></aside>'}
 
 var RS={q:'',tags:{},topic:''};
 function rlist(topic){return POSTS.filter(function(p){return p.track==='research'&&(!topic||researchTopic(p)===topic)}).sort(byDate)}
