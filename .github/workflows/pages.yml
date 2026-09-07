@@ -24,6 +24,8 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Build static client
         run: python3 build.py
+      - name: Check research collection and links
+        run: python3 memory_collection_test.py
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:

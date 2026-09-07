@@ -1,0 +1,625 @@
+<p><a href="/notes/p0-y26-133/">← 返回阅读笔记 / Back to reading note</a></p><meta content="width=device-width, initial-scale=1" name="viewport"/><!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8"/><title>A History-Aware Visually Grounded Critic for Computer Use Agents (HiViG) 原表</title><style>body{font:16px system-ui;max-width:1500px;margin:30px auto;padding:20px}table{border-collapse:collapse;width:100%;margin:20px 0}td,th{border:1px solid #bbb;padding:7px}figure{margin:30px 0;overflow:auto}caption,figcaption{font-weight:600}math{font-size:1em}</style><h1>Y26-133 原文表格</h1><p>抽取日期：2026-09-07。来自<a href="https://arxiv.org/html/2606.11078">原文</a>。保留原表行列，未统一实验配置；数值解释见中文分析。</p><figure id="S3.T1"><figcaption>Table 1: Comparison of test-time interventions on Qwen3-VL-32B and Gemini-3-Flash across GUI benchmarks in diverse environments. The best and the second best overall success rate results are in bold and underline , respectively. HiViG delivers gains in all benchmarks. WALv2: WebArenaLitev2 for web, ALab: AndroidaLab for mobile, WAA: WindowsAgentArena for desktop, and Avg.: average overall success rate. Detailed performances for each benchmark are in Table 6 , Table 7 , and Table 8 .</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="S3.T1.2">
+<tr class="ltx_tr" id="S3.T1.2.1">
+<td class="ltx_td ltx_align_left ltx_border_tt" id="S3.T1.2.1.1" rowspan="2" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.1.1.1">Method</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="4" id="S3.T1.2.1.2" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_italic" id="S3.T1.2.1.2.1">Qwen3-VL-32B-Thinking</span>  </td>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="4" id="S3.T1.2.1.3" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_italic" id="S3.T1.2.1.3.1">Gemini-3-Flash</span></td></tr>
+<tr class="ltx_tr" id="S3.T1.2.2">
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.2.1" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.2.1.1">WALv2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.2.2" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.2.2.1">ALab</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.2.3" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.2.3.1">WAA</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.2.4" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.2.4.1">Avg.</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.2.5" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.2.5.1">WALv2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.2.6" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.2.6.1">ALab</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.2.7" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.2.7.1">WAA</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.2.8" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.2.8.1">Avg.</span></td></tr>
+<tr class="ltx_tr" id="S3.T1.2.3">
+<td class="ltx_td ltx_align_left ltx_border_t" id="S3.T1.2.3.1" style="padding:0.25pt 12.0pt;">Base agent</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.3.2" style="padding:0.25pt 12.0pt;">13.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.3.3" style="padding:0.25pt 12.0pt;">44.2</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.3.4" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_underline" id="S3.T1.2.3.4.1">35.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.3.5" style="padding:0.25pt 12.0pt;">31.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.3.6" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_underline" id="S3.T1.2.3.6.1">30.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.3.7" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_underline" id="S3.T1.2.3.7.1">58.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.3.8" style="padding:0.25pt 12.0pt;">35.8</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.3.9" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_underline" id="S3.T1.2.3.9.1">41.4</span></td></tr>
+<tr class="ltx_tr" id="S3.T1.2.4">
+<td class="ltx_td ltx_align_left ltx_border_t" id="S3.T1.2.4.1" style="padding:0.25pt 12.0pt;">OpenCUA</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.4.2" style="padding:0.25pt 12.0pt;">14.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.4.3" style="padding:0.25pt 12.0pt;">47.1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.4.4" style="padding:0.25pt 12.0pt;">35.2</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.4.5" style="padding:0.25pt 12.0pt;">32.4</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.4.6" style="padding:0.25pt 12.0pt;">29.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.4.7" style="padding:0.25pt 12.0pt;">57.2</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.4.8" style="padding:0.25pt 12.0pt;">35.8</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.4.9" style="padding:0.25pt 12.0pt;">41.0</td></tr>
+<tr class="ltx_tr" id="S3.T1.2.5">
+<td class="ltx_td ltx_align_left" id="S3.T1.2.5.1" style="padding:0.25pt 12.0pt;">SE-WSM</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.5.2" style="padding:0.25pt 12.0pt;">11.7</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.5.3" style="padding:0.25pt 12.0pt;">45.7</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.5.4" style="padding:0.25pt 12.0pt;">31.6</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.5.5" style="padding:0.25pt 12.0pt;">29.7</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.5.6" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_underline" id="S3.T1.2.5.6.1">30.5</span></td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.5.7" style="padding:0.25pt 12.0pt;">57.2</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.5.8" style="padding:0.25pt 12.0pt;">35.1</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.5.9" style="padding:0.25pt 12.0pt;">40.9</td></tr>
+<tr class="ltx_tr" id="S3.T1.2.6">
+<td class="ltx_td ltx_align_left ltx_border_t" id="S3.T1.2.6.1" style="padding:0.25pt 12.0pt;">CGI (32B)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.6.2" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_underline" id="S3.T1.2.6.2.1">16.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.6.3" style="padding:0.25pt 12.0pt;">46.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.6.4" style="padding:0.25pt 12.0pt;">33.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.6.5" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_underline" id="S3.T1.2.6.5.1">32.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.6.6" style="padding:0.25pt 12.0pt;">29.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.6.7" style="padding:0.25pt 12.0pt;">55.8</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.6.8" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_underline" id="S3.T1.2.6.8.1">37.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.6.9" style="padding:0.25pt 12.0pt;">41.2</td></tr>
+<tr class="ltx_tr" id="S3.T1.2.7">
+<td class="ltx_td ltx_align_left" id="S3.T1.2.7.1" style="padding:0.25pt 12.0pt;">CGI (8B)</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.7.2" style="padding:0.25pt 12.0pt;">12.3</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.7.3" style="padding:0.25pt 12.0pt;">44.2</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.7.4" style="padding:0.25pt 12.0pt;">31.0</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.7.5" style="padding:0.25pt 12.0pt;">29.2</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.7.6" style="padding:0.25pt 12.0pt;">26.6</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.7.7" style="padding:0.25pt 12.0pt;">55.1</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.7.8" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_underline" id="S3.T1.2.7.8.1">37.9</span></td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.7.9" style="padding:0.25pt 12.0pt;">39.9</td></tr>
+<tr class="ltx_tr" id="S3.T1.2.8">
+<td class="ltx_td ltx_align_left" id="S3.T1.2.8.1" style="padding:0.25pt 12.0pt;">GUI-Critic-R1</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.8.2" style="padding:0.25pt 12.0pt;">13.6</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.8.3" style="padding:0.25pt 12.0pt;"><span class="ltx_text ltx_underline" id="S3.T1.2.8.3.1">49.3</span></td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.8.4" style="padding:0.25pt 12.0pt;">34.4</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.8.5" style="padding:0.25pt 12.0pt;">32.4</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.8.6" style="padding:0.25pt 12.0pt;">22.1</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.8.7" style="padding:0.25pt 12.0pt;">53.6</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.8.8" style="padding:0.25pt 12.0pt;">32.5</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.8.9" style="padding:0.25pt 12.0pt;">36.1</td></tr>
+<tr class="ltx_tr" id="S3.T1.2.9">
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="S3.T1.2.9.1" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_smallcaps" id="S3.T1.2.9.1.1" style="--ltx-bg-color:#E0FEFE;">HiViG<span class="ltx_text ltx_font_upright" id="S3.T1.2.9.1.1.1"> (Ours)</span></span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S3.T1.2.9.2" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.9.2.1" style="--ltx-bg-color:#E0FEFE;">25.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S3.T1.2.9.3" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.9.3.1" style="--ltx-bg-color:#E0FEFE;">51.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S3.T1.2.9.4" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.9.4.1" style="--ltx-bg-color:#E0FEFE;">38.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S3.T1.2.9.5" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.9.5.1" style="--ltx-bg-color:#E0FEFE;">38.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S3.T1.2.9.6" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.9.6.1" style="--ltx-bg-color:#E0FEFE;">45.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S3.T1.2.9.7" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.9.7.1" style="--ltx-bg-color:#E0FEFE;">61.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S3.T1.2.9.8" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.9.8.1" style="--ltx-bg-color:#E0FEFE;">44.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S3.T1.2.9.9" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 12.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T1.2.9.9.1" style="--ltx-bg-color:#E0FEFE;">50.4</span></td></tr>
+</table></figure><figure id="S3.T2.fig1"><figcaption>Table 2: Impact of verbal feedback components. Experiments with verbal feedback components of HiViG on WebArenaLitev2 evaluated with Qwen3-VL-32B and Gemini-3-Flash as CUA. VisAnalysis: Visually-grounded error analysis, HisAnalysis: History state tracking. Combining two components leads to better performance.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="S3.T2.fig1.2">
+<tr class="ltx_tr" id="S3.T2.fig1.2.1">
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.T2.fig1.2.1.1" style="padding:1.5pt 5.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T2.fig1.2.1.1.1">VisAnalysis</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.T2.fig1.2.1.2" style="padding:1.5pt 5.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T2.fig1.2.1.2.1">HisTrack</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.T2.fig1.2.1.3" style="padding:1.5pt 5.0pt;"><span class="ltx_text ltx_font_italic" id="S3.T2.fig1.2.1.3.1">Qwen3-VL</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.T2.fig1.2.1.4" style="padding:1.5pt 5.0pt;"><span class="ltx_text ltx_font_italic" id="S3.T2.fig1.2.1.4.1">G-3-Flash</span></td></tr>
+<tr class="ltx_tr" id="S3.T2.fig1.2.2">
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T2.fig1.2.2.1" style="padding:1.5pt 5.0pt;"><span class="ltx_text" id="S3.T2.fig1.2.2.1.1" style="--ltx-fg-color:#FF0000;">✗</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T2.fig1.2.2.2" style="padding:1.5pt 5.0pt;"><span class="ltx_text" id="S3.T2.fig1.2.2.2.1" style="--ltx-fg-color:#FF0000;">✗</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T2.fig1.2.2.3" style="padding:1.5pt 5.0pt;">13.5</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T2.fig1.2.2.4" style="padding:1.5pt 5.0pt;">30.0</td></tr>
+<tr class="ltx_tr" id="S3.T2.fig1.2.3">
+<td class="ltx_td ltx_align_center" id="S3.T2.fig1.2.3.1" style="padding:1.5pt 5.0pt;"><span class="ltx_text" id="S3.T2.fig1.2.3.1.1" style="--ltx-fg-color:#009900;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S3.T2.fig1.2.3.2" style="padding:1.5pt 5.0pt;"><span class="ltx_text" id="S3.T2.fig1.2.3.2.1" style="--ltx-fg-color:#FF0000;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S3.T2.fig1.2.3.3" style="padding:1.5pt 5.0pt;">21.4</td>
+<td class="ltx_td ltx_align_center" id="S3.T2.fig1.2.3.4" style="padding:1.5pt 5.0pt;">35.1</td></tr>
+<tr class="ltx_tr" id="S3.T2.fig1.2.4">
+<td class="ltx_td ltx_align_center" id="S3.T2.fig1.2.4.1" style="padding:1.5pt 5.0pt;"><span class="ltx_text" id="S3.T2.fig1.2.4.1.1" style="--ltx-fg-color:#FF0000;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S3.T2.fig1.2.4.2" style="padding:1.5pt 5.0pt;"><span class="ltx_text" id="S3.T2.fig1.2.4.2.1" style="--ltx-fg-color:#009900;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S3.T2.fig1.2.4.3" style="padding:1.5pt 5.0pt;">23.4</td>
+<td class="ltx_td ltx_align_center" id="S3.T2.fig1.2.4.4" style="padding:1.5pt 5.0pt;">42.9</td></tr>
+<tr class="ltx_tr" id="S3.T2.fig1.2.5">
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.T2.fig1.2.5.1" style="padding:1.5pt 5.0pt;"><span class="ltx_text" id="S3.T2.fig1.2.5.1.1" style="--ltx-fg-color:#009900;">✓</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.T2.fig1.2.5.2" style="padding:1.5pt 5.0pt;"><span class="ltx_text" id="S3.T2.fig1.2.5.2.1" style="--ltx-fg-color:#009900;">✓</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.T2.fig1.2.5.3" style="padding:1.5pt 5.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T2.fig1.2.5.3.1">25.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.T2.fig1.2.5.4" style="padding:1.5pt 5.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T2.fig1.2.5.4.1">45.5</span></td></tr>
+</table></figure><figure id="S3.T3.fig1"><figcaption>Table 3: Ablation of visual grounding strategies. We evaluate the impact of masking the policy’s verbal intent (30% of SFT samples) and injecting a visual marker (i.e., ’X’ marker). Combining both strategies forces the critic to break its text reliance and evaluate the raw spatial coordinates, yielding visually accurate verbal feedback. WALv2: WebArenaLitev2, ALab: AndroidLab.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="S3.T3.fig1.2">
+<tr class="ltx_tr" id="S3.T3.fig1.2.1">
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.T3.fig1.2.1.1" style="padding:1.5pt 5.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T3.fig1.2.1.1.1">Intent Masking</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.T3.fig1.2.1.2" style="padding:1.5pt 5.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T3.fig1.2.1.2.1">Visual Marker</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.T3.fig1.2.1.3" style="padding:1.5pt 5.0pt;">WALv2</td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.T3.fig1.2.1.4" style="padding:1.5pt 5.0pt;">ALab</td></tr>
+<tr class="ltx_tr" id="S3.T3.fig1.2.2">
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T3.fig1.2.2.1" style="padding:1.5pt 5.0pt;"><span class="ltx_text" id="S3.T3.fig1.2.2.1.1" style="--ltx-fg-color:#009900;">✓</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T3.fig1.2.2.2" style="padding:1.5pt 5.0pt;"><span class="ltx_text" id="S3.T3.fig1.2.2.2.1" style="--ltx-fg-color:#FF0000;">✗</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T3.fig1.2.2.3" style="padding:1.5pt 5.0pt;">20.8</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T3.fig1.2.2.4" style="padding:1.5pt 5.0pt;">46.4</td></tr>
+<tr class="ltx_tr" id="S3.T3.fig1.2.3">
+<td class="ltx_td ltx_align_center" id="S3.T3.fig1.2.3.1" style="padding:1.5pt 5.0pt;"><span class="ltx_text" id="S3.T3.fig1.2.3.1.1" style="--ltx-fg-color:#FF0000;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S3.T3.fig1.2.3.2" style="padding:1.5pt 5.0pt;"><span class="ltx_text" id="S3.T3.fig1.2.3.2.1" style="--ltx-fg-color:#009900;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S3.T3.fig1.2.3.3" style="padding:1.5pt 5.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T3.fig1.2.3.3.1">25.3</span></td>
+<td class="ltx_td ltx_align_center" id="S3.T3.fig1.2.3.4" style="padding:1.5pt 5.0pt;">47.1</td></tr>
+<tr class="ltx_tr" id="S3.T3.fig1.2.4">
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.T3.fig1.2.4.1" style="padding:1.5pt 5.0pt;"><span class="ltx_text" id="S3.T3.fig1.2.4.1.1" style="--ltx-fg-color:#009900;">✓</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.T3.fig1.2.4.2" style="padding:1.5pt 5.0pt;"><span class="ltx_text" id="S3.T3.fig1.2.4.2.1" style="--ltx-fg-color:#009900;">✓</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.T3.fig1.2.4.3" style="padding:1.5pt 5.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T3.fig1.2.4.3.1">25.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.T3.fig1.2.4.4" style="padding:1.5pt 5.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T3.fig1.2.4.4.1">51.5</span></td></tr>
+</table></figure><figure id="A4.T4"><figcaption>Table 4: Ablation on critic training. We compare the overall success rate of a unified 8B critic trained on a mixed dataset (Mixed training HiViG ) against separately trained 8B critics (Separate HiViG ) and zero-shot baselines that use Qwen3-VL models for historical progress grounding across WebArenaLitev2. VisAnalysis: Visually grounded error analysis, HisTrack: Historical state tracking.
+Both Qwen3-VL-8B and Qwen3-VL-32B are thinking models.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="A4.T4.2">
+<tr class="ltx_tr" id="A4.T4.2.1">
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A4.T4.2.1.1" style="padding:1.5pt 13.0pt;"><span class="ltx_text ltx_font_bold" id="A4.T4.2.1.1.1">VisAnalysis</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A4.T4.2.1.2" style="padding:1.5pt 13.0pt;"><span class="ltx_text ltx_font_bold" id="A4.T4.2.1.2.1">HisTrack</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A4.T4.2.1.3" style="padding:1.5pt 13.0pt;"><span class="ltx_text ltx_font_bold" id="A4.T4.2.1.3.1">Overall</span></td></tr>
+<tr class="ltx_tr" id="A4.T4.2.2">
+<td class="ltx_td ltx_align_center ltx_border_t" id="A4.T4.2.2.1" style="padding:1.5pt 13.0pt;">Separate <span class="ltx_text ltx_font_smallcaps" id="A4.T4.2.2.1.1">HiViG</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A4.T4.2.2.2" style="padding:1.5pt 13.0pt;">Separate <span class="ltx_text ltx_font_smallcaps" id="A4.T4.2.2.2.1">HiViG</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A4.T4.2.2.3" style="padding:1.5pt 13.0pt;">23.4</td></tr>
+<tr class="ltx_tr" id="A4.T4.2.3">
+<td class="ltx_td ltx_align_center" id="A4.T4.2.3.1" style="padding:1.5pt 13.0pt;">Separate <span class="ltx_text ltx_font_smallcaps" id="A4.T4.2.3.1.1">HiViG</span></td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.3.2" style="padding:1.5pt 13.0pt;">Qwen3-VL-8B</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.3.3" style="padding:1.5pt 13.0pt;">24.7</td></tr>
+<tr class="ltx_tr" id="A4.T4.2.4">
+<td class="ltx_td ltx_align_center" id="A4.T4.2.4.1" style="padding:1.5pt 13.0pt;">Separate <span class="ltx_text ltx_font_smallcaps" id="A4.T4.2.4.1.1">HiViG</span></td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.4.2" style="padding:1.5pt 13.0pt;">Qwen3-VL-32B</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.4.3" style="padding:1.5pt 13.0pt;"><span class="ltx_text ltx_font_bold" id="A4.T4.2.4.3.1">25.3</span></td></tr>
+<tr class="ltx_tr" id="A4.T4.2.5">
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" colspan="2" id="A4.T4.2.5.1" style="padding:1.5pt 13.0pt;">Mixed training <span class="ltx_text ltx_font_smallcaps" id="A4.T4.2.5.1.1">HiViG</span> (Ours)  </td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A4.T4.2.5.2" style="padding:1.5pt 13.0pt;"><span class="ltx_text ltx_font_bold" id="A4.T4.2.5.2.1">25.3</span></td></tr>
+</table></figure><figure id="A4.T5.fig1"><figcaption>Table 5: Ablation on intent masking. We evaluate the impact of the intent masking ratio for visual grounding. While a 50% mask yields slight improvements on WebArenaLitev2, the 30% ratio provides the most robust and balanced performance across platforms. WALv2: WebArenaLitev2, ALab: AndroidLab. Avg.: average overall success rate.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="A4.T5.fig1.2">
+<tr class="ltx_tr" id="A4.T5.fig1.2.1">
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A4.T5.fig1.2.1.1" style="padding:1.5pt 5.0pt;"><span class="ltx_text ltx_font_bold" id="A4.T5.fig1.2.1.1.1">Intent Masking Ratio</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A4.T5.fig1.2.1.2" style="padding:1.5pt 5.0pt;">WALv2</td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A4.T5.fig1.2.1.3" style="padding:1.5pt 5.0pt;">ALab</td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A4.T5.fig1.2.1.4" style="padding:1.5pt 5.0pt;">Avg.</td></tr>
+<tr class="ltx_tr" id="A4.T5.fig1.2.2">
+<td class="ltx_td ltx_align_center ltx_border_t" id="A4.T5.fig1.2.2.1" style="padding:1.5pt 5.0pt;">0%</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A4.T5.fig1.2.2.2" style="padding:1.5pt 5.0pt;">25.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A4.T5.fig1.2.2.3" style="padding:1.5pt 5.0pt;">47.1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A4.T5.fig1.2.2.4" style="padding:1.5pt 5.0pt;">36.2</td></tr>
+<tr class="ltx_tr" id="A4.T5.fig1.2.3">
+<td class="ltx_td ltx_align_center" id="A4.T5.fig1.2.3.1" style="padding:1.5pt 5.0pt;">30%</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.fig1.2.3.2" style="padding:1.5pt 5.0pt;">25.3</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.fig1.2.3.3" style="padding:1.5pt 5.0pt;"><span class="ltx_text ltx_font_bold" id="A4.T5.fig1.2.3.3.1">51.5</span></td>
+<td class="ltx_td ltx_align_center" id="A4.T5.fig1.2.3.4" style="padding:1.5pt 5.0pt;"><span class="ltx_text ltx_font_bold" id="A4.T5.fig1.2.3.4.1">38.4</span></td></tr>
+<tr class="ltx_tr" id="A4.T5.fig1.2.4">
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A4.T5.fig1.2.4.1" style="padding:1.5pt 5.0pt;">50%</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A4.T5.fig1.2.4.2" style="padding:1.5pt 5.0pt;"><span class="ltx_text ltx_font_bold" id="A4.T5.fig1.2.4.2.1">26.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A4.T5.fig1.2.4.3" style="padding:1.5pt 5.0pt;">49.3</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A4.T5.fig1.2.4.4" style="padding:1.5pt 5.0pt;">37.7</td></tr>
+</table></figure><figure id="A5.T6"><figcaption>Table 6: Comparison of test-time intervention methods on Qwen3-VL-32B-Thinking and Gemini-3-Flash in WebArenalitev2 benchmark.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="A5.T6.2">
+<tr class="ltx_tr" id="A5.T6.2.1">
+<td class="ltx_td ltx_align_left ltx_border_tt" id="A5.T6.2.1.1" style="padding:0.25pt 10.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T6.2.1.1.1">Method</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T6.2.1.2" style="padding:0.25pt 10.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T6.2.1.2.1">Admin</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T6.2.1.3" style="padding:0.25pt 10.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T6.2.1.3.1">GitLab</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T6.2.1.4" style="padding:0.25pt 10.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T6.2.1.4.1">Shopping</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T6.2.1.5" style="padding:0.25pt 10.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T6.2.1.5.1">Map</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T6.2.1.6" style="padding:0.25pt 10.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T6.2.1.6.1">Reddit</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T6.2.1.7" style="padding:0.25pt 10.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T6.2.1.7.1">Overall</span></td></tr>
+<tr class="ltx_tr" id="A5.T6.2.2">
+<td class="ltx_td ltx_align_center ltx_border_t" colspan="7" id="A5.T6.2.2.1" style="padding:0.25pt 10.0pt;"><span class="ltx_text ltx_font_italic" id="A5.T6.2.2.1.1">Computer Use Agent: Qwen3-VL-32B-Thinking</span></td></tr>
+<tr class="ltx_tr" id="A5.T6.2.3">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T6.2.3.1" style="padding:0.25pt 10.0pt;">Base agent</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.3.2" style="padding:0.25pt 10.0pt;">11.4</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.3.3" style="padding:0.25pt 10.0pt;">16.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.3.4" style="padding:0.25pt 10.0pt;">15.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.3.5" style="padding:0.25pt 10.0pt;">3.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.3.6" style="padding:0.25pt 10.0pt;">15.8</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.3.7" style="padding:0.25pt 10.0pt;">13.0</td></tr>
+<tr class="ltx_tr" id="A5.T6.2.4">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T6.2.4.1" style="padding:0.25pt 10.0pt;">OpenCUA</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.4.2" style="padding:0.25pt 10.0pt;">14.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.4.3" style="padding:0.25pt 10.0pt;">16.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.4.4" style="padding:0.25pt 10.0pt;">20.5</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.4.5" style="padding:0.25pt 10.0pt;">3.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.4.6" style="padding:0.25pt 10.0pt;">15.8</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.4.7" style="padding:0.25pt 10.0pt;">14.9</td></tr>
+<tr class="ltx_tr" id="A5.T6.2.5">
+<td class="ltx_td ltx_align_left" id="A5.T6.2.5.1" style="padding:0.25pt 10.0pt;">SE-WSM</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.5.2" style="padding:0.25pt 10.0pt;">11.4</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.5.3" style="padding:0.25pt 10.0pt;">16.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.5.4" style="padding:0.25pt 10.0pt;">15.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.5.5" style="padding:0.25pt 10.0pt;">3.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.5.6" style="padding:0.25pt 10.0pt;">5.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.5.7" style="padding:0.25pt 10.0pt;">11.7</td></tr>
+<tr class="ltx_tr" id="A5.T6.2.6">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T6.2.6.1" style="padding:0.25pt 10.0pt;">CGI (32B)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.6.2" style="padding:0.25pt 10.0pt;">17.1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.6.3" style="padding:0.25pt 10.0pt;">16.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.6.4" style="padding:0.25pt 10.0pt;">25.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.6.5" style="padding:0.25pt 10.0pt;">3.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.6.6" style="padding:0.25pt 10.0pt;">15.8</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.6.7" style="padding:0.25pt 10.0pt;">16.9</td></tr>
+<tr class="ltx_tr" id="A5.T6.2.7">
+<td class="ltx_td ltx_align_left" id="A5.T6.2.7.1" style="padding:0.25pt 10.0pt;">CGI (8B)</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.7.2" style="padding:0.25pt 10.0pt;">14.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.7.3" style="padding:0.25pt 10.0pt;">13.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.7.4" style="padding:0.25pt 10.0pt;">13.6</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.7.5" style="padding:0.25pt 10.0pt;">3.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.7.6" style="padding:0.25pt 10.0pt;">15.8</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.7.7" style="padding:0.25pt 10.0pt;">12.3</td></tr>
+<tr class="ltx_tr" id="A5.T6.2.8">
+<td class="ltx_td ltx_align_left" id="A5.T6.2.8.1" style="padding:0.25pt 10.0pt;">GUI-Critic-R1</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.8.2" style="padding:0.25pt 10.0pt;">14.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.8.3" style="padding:0.25pt 10.0pt;">13.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.8.4" style="padding:0.25pt 10.0pt;">15.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.8.5" style="padding:0.25pt 10.0pt;">3.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.8.6" style="padding:0.25pt 10.0pt;">21.1</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.8.7" style="padding:0.25pt 10.0pt;">13.6</td></tr>
+<tr class="ltx_tr" id="A5.T6.2.9">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T6.2.9.1" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 10.0pt;"><span class="ltx_text ltx_font_smallcaps" id="A5.T6.2.9.1.1" style="--ltx-bg-color:#E0FEFE;">HiViG<span class="ltx_text ltx_font_upright" id="A5.T6.2.9.1.1.1"> (Ours)</span></span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.9.2" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 10.0pt;"><span class="ltx_text" id="A5.T6.2.9.2.1" style="--ltx-bg-color:#E0FEFE;">28.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.9.3" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 10.0pt;"><span class="ltx_text" id="A5.T6.2.9.3.1" style="--ltx-bg-color:#E0FEFE;">13.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.9.4" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 10.0pt;"><span class="ltx_text" id="A5.T6.2.9.4.1" style="--ltx-bg-color:#E0FEFE;">31.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.9.5" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 10.0pt;"><span class="ltx_text" id="A5.T6.2.9.5.1" style="--ltx-bg-color:#E0FEFE;">23.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.9.6" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 10.0pt;"><span class="ltx_text" id="A5.T6.2.9.6.1" style="--ltx-bg-color:#E0FEFE;">26.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.9.7" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 10.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T6.2.9.7.1" style="--ltx-bg-color:#E0FEFE;">25.3</span></td></tr>
+<tr class="ltx_tr" id="A5.T6.2.10">
+<td class="ltx_td ltx_align_center ltx_border_t" colspan="7" id="A5.T6.2.10.1" style="padding:0.25pt 10.0pt;"><span class="ltx_text ltx_font_italic" id="A5.T6.2.10.1.1">Computer Use Agent: Gemini-3-Flash</span></td></tr>
+<tr class="ltx_tr" id="A5.T6.2.11">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T6.2.11.1" style="padding:0.25pt 10.0pt;">Base agent</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.11.2" style="padding:0.25pt 10.0pt;">25.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.11.3" style="padding:0.25pt 10.0pt;">56.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.11.4" style="padding:0.25pt 10.0pt;">25.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.11.5" style="padding:0.25pt 10.0pt;">19.2</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.11.6" style="padding:0.25pt 10.0pt;">26.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.11.7" style="padding:0.25pt 10.0pt;">30.5</td></tr>
+<tr class="ltx_tr" id="A5.T6.2.12">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T6.2.12.1" style="padding:0.25pt 10.0pt;">OpenCUA</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.12.2" style="padding:0.25pt 10.0pt;">22.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.12.3" style="padding:0.25pt 10.0pt;">53.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.12.4" style="padding:0.25pt 10.0pt;">22.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.12.5" style="padding:0.25pt 10.0pt;">23.1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.12.6" style="padding:0.25pt 10.0pt;">31.6</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.12.7" style="padding:0.25pt 10.0pt;">29.9</td></tr>
+<tr class="ltx_tr" id="A5.T6.2.13">
+<td class="ltx_td ltx_align_left" id="A5.T6.2.13.1" style="padding:0.25pt 10.0pt;">SE-WSM</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.13.2" style="padding:0.25pt 10.0pt;">25.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.13.3" style="padding:0.25pt 10.0pt;">53.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.13.4" style="padding:0.25pt 10.0pt;">31.8</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.13.5" style="padding:0.25pt 10.0pt;">23.1</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.13.6" style="padding:0.25pt 10.0pt;">10.5</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.13.7" style="padding:0.25pt 10.0pt;">30.5</td></tr>
+<tr class="ltx_tr" id="A5.T6.2.14">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T6.2.14.1" style="padding:0.25pt 10.0pt;">CGI (32B)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.14.2" style="padding:0.25pt 10.0pt;">37.1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.14.3" style="padding:0.25pt 10.0pt;">33.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.14.4" style="padding:0.25pt 10.0pt;">31.8</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.14.5" style="padding:0.25pt 10.0pt;">19.2</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.14.6" style="padding:0.25pt 10.0pt;">21.1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T6.2.14.7" style="padding:0.25pt 10.0pt;">29.9</td></tr>
+<tr class="ltx_tr" id="A5.T6.2.15">
+<td class="ltx_td ltx_align_left" id="A5.T6.2.15.1" style="padding:0.25pt 10.0pt;">CGI (8B)</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.15.2" style="padding:0.25pt 10.0pt;">17.1</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.15.3" style="padding:0.25pt 10.0pt;">50.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.15.4" style="padding:0.25pt 10.0pt;">25.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.15.5" style="padding:0.25pt 10.0pt;">11.5</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.15.6" style="padding:0.25pt 10.0pt;">31.6</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.15.7" style="padding:0.25pt 10.0pt;">26.6</td></tr>
+<tr class="ltx_tr" id="A5.T6.2.16">
+<td class="ltx_td ltx_align_left" id="A5.T6.2.16.1" style="padding:0.25pt 10.0pt;">GUI-Critic-R1</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.16.2" style="padding:0.25pt 10.0pt;">8.6</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.16.3" style="padding:0.25pt 10.0pt;">36.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.16.4" style="padding:0.25pt 10.0pt;">27.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.16.5" style="padding:0.25pt 10.0pt;">15.4</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.16.6" style="padding:0.25pt 10.0pt;">21.1</td>
+<td class="ltx_td ltx_align_center" id="A5.T6.2.16.7" style="padding:0.25pt 10.0pt;">22.1</td></tr>
+<tr class="ltx_tr" id="A5.T6.2.17">
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="A5.T6.2.17.1" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 10.0pt;"><span class="ltx_text ltx_font_smallcaps" id="A5.T6.2.17.1.1" style="--ltx-bg-color:#E0FEFE;">HiViG<span class="ltx_text ltx_font_upright" id="A5.T6.2.17.1.1.1"> (Ours)</span></span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T6.2.17.2" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 10.0pt;"><span class="ltx_text" id="A5.T6.2.17.2.1" style="--ltx-bg-color:#E0FEFE;">42.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T6.2.17.3" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 10.0pt;"><span class="ltx_text" id="A5.T6.2.17.3.1" style="--ltx-bg-color:#E0FEFE;">70.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T6.2.17.4" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 10.0pt;"><span class="ltx_text" id="A5.T6.2.17.4.1" style="--ltx-bg-color:#E0FEFE;">38.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T6.2.17.5" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 10.0pt;"><span class="ltx_text" id="A5.T6.2.17.5.1" style="--ltx-bg-color:#E0FEFE;">34.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T6.2.17.6" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 10.0pt;"><span class="ltx_text" id="A5.T6.2.17.6.1" style="--ltx-bg-color:#E0FEFE;">42.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T6.2.17.7" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 10.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T6.2.17.7.1" style="--ltx-bg-color:#E0FEFE;">45.5</span></td></tr>
+</table></figure><figure id="A5.T7"><figcaption>Table 7: Comparison of test-time intervention methods on Qwen3-VL-32B-Thinking and Gemini-3-Flash in AndroidLab benchmark.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="A5.T7.2">
+<tr class="ltx_tr" id="A5.T7.2.1">
+<td class="ltx_td ltx_align_left ltx_border_tt" id="A5.T7.2.1.1" style="padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T7.2.1.1.1">Method</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T7.2.1.2" style="padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T7.2.1.2.1">Bluecoins</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T7.2.1.3" style="padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T7.2.1.3.1">Calendar</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T7.2.1.4" style="padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T7.2.1.4.1">Cantook</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T7.2.1.5" style="padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T7.2.1.5.1">Clock</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T7.2.1.6" style="padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T7.2.1.6.1">Contacts</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T7.2.1.7" style="padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T7.2.1.7.1">Map</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T7.2.1.8" style="padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T7.2.1.8.1">Pimusic</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T7.2.1.9" style="padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T7.2.1.9.1">Setting</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T7.2.1.10" style="padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T7.2.1.10.1">Zoom</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T7.2.1.11" style="padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T7.2.1.11.1">Overall</span></td></tr>
+<tr class="ltx_tr" id="A5.T7.2.2">
+<td class="ltx_td ltx_align_center ltx_border_t" colspan="11" id="A5.T7.2.2.1" style="padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_italic" id="A5.T7.2.2.1.1">Computer Use Agent: Qwen3-VL-32B-Thinking</span></td></tr>
+<tr class="ltx_tr" id="A5.T7.2.3">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T7.2.3.1" style="padding:0.25pt 2.0pt;">Base agent</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.3.2" style="padding:0.25pt 2.0pt;">20.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.3.3" style="padding:0.25pt 2.0pt;">35.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.3.4" style="padding:0.25pt 2.0pt;">33.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.3.5" style="padding:0.25pt 2.0pt;">74.1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.3.6" style="padding:0.25pt 2.0pt;">53.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.3.7" style="padding:0.25pt 2.0pt;">6.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.3.8" style="padding:0.25pt 2.0pt;">16.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.3.9" style="padding:0.25pt 2.0pt;">69.6</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.3.10" style="padding:0.25pt 2.0pt;">40.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.3.11" style="padding:0.25pt 2.0pt;">44.2</td></tr>
+<tr class="ltx_tr" id="A5.T7.2.4">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T7.2.4.1" style="padding:0.25pt 2.0pt;">OpenCUA</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.4.2" style="padding:0.25pt 2.0pt;">33.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.4.3" style="padding:0.25pt 2.0pt;">28.6</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.4.4" style="padding:0.25pt 2.0pt;">41.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.4.5" style="padding:0.25pt 2.0pt;">70.4</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.4.6" style="padding:0.25pt 2.0pt;">53.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.4.7" style="padding:0.25pt 2.0pt;">6.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.4.8" style="padding:0.25pt 2.0pt;">25.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.4.9" style="padding:0.25pt 2.0pt;">73.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.4.10" style="padding:0.25pt 2.0pt;">60.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.4.11" style="padding:0.25pt 2.0pt;">47.1</td></tr>
+<tr class="ltx_tr" id="A5.T7.2.5">
+<td class="ltx_td ltx_align_left" id="A5.T7.2.5.1" style="padding:0.25pt 2.0pt;">SE-WSM</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.5.2" style="padding:0.25pt 2.0pt;">20.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.5.3" style="padding:0.25pt 2.0pt;">42.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.5.4" style="padding:0.25pt 2.0pt;">41.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.5.5" style="padding:0.25pt 2.0pt;">70.4</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.5.6" style="padding:0.25pt 2.0pt;">53.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.5.7" style="padding:0.25pt 2.0pt;">13.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.5.8" style="padding:0.25pt 2.0pt;">8.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.5.9" style="padding:0.25pt 2.0pt;">69.6</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.5.10" style="padding:0.25pt 2.0pt;">60.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.5.11" style="padding:0.25pt 2.0pt;">45.7</td></tr>
+<tr class="ltx_tr" id="A5.T7.2.6">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T7.2.6.1" style="padding:0.25pt 2.0pt;">CGI (32B)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.6.2" style="padding:0.25pt 2.0pt;">26.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.6.3" style="padding:0.25pt 2.0pt;">42.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.6.4" style="padding:0.25pt 2.0pt;">33.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.6.5" style="padding:0.25pt 2.0pt;">74.1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.6.6" style="padding:0.25pt 2.0pt;">53.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.6.7" style="padding:0.25pt 2.0pt;">6.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.6.8" style="padding:0.25pt 2.0pt;">33.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.6.9" style="padding:0.25pt 2.0pt;">76.5</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.6.10" style="padding:0.25pt 2.0pt;">0.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.6.11" style="padding:0.25pt 2.0pt;">46.9</td></tr>
+<tr class="ltx_tr" id="A5.T7.2.7">
+<td class="ltx_td ltx_align_left" id="A5.T7.2.7.1" style="padding:0.25pt 2.0pt;">CGI (8B)</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.7.2" style="padding:0.25pt 2.0pt;">26.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.7.3" style="padding:0.25pt 2.0pt;">42.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.7.4" style="padding:0.25pt 2.0pt;">25.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.7.5" style="padding:0.25pt 2.0pt;">77.8</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.7.6" style="padding:0.25pt 2.0pt;">53.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.7.7" style="padding:0.25pt 2.0pt;">0.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.7.8" style="padding:0.25pt 2.0pt;">16.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.7.9" style="padding:0.25pt 2.0pt;">69.6</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.7.10" style="padding:0.25pt 2.0pt;">20.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.7.11" style="padding:0.25pt 2.0pt;">44.2</td></tr>
+<tr class="ltx_tr" id="A5.T7.2.8">
+<td class="ltx_td ltx_align_left" id="A5.T7.2.8.1" style="padding:0.25pt 2.0pt;">GUI-Critic-R1</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.8.2" style="padding:0.25pt 2.0pt;">40.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.8.3" style="padding:0.25pt 2.0pt;">42.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.8.4" style="padding:0.25pt 2.0pt;">16.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.8.5" style="padding:0.25pt 2.0pt;">77.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.8.6" style="padding:0.25pt 2.0pt;">53.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.8.7" style="padding:0.25pt 2.0pt;">13.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.8.8" style="padding:0.25pt 2.0pt;">25.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.8.9" style="padding:0.25pt 2.0pt;">73.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.8.10" style="padding:0.25pt 2.0pt;">60.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.8.11" style="padding:0.25pt 2.0pt;">49.3</td></tr>
+<tr class="ltx_tr" id="A5.T7.2.9">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T7.2.9.1" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_smallcaps" id="A5.T7.2.9.1.1" style="--ltx-bg-color:#E0FEFE;">HiViG<span class="ltx_text ltx_font_upright" id="A5.T7.2.9.1.1.1"> (Ours)</span></span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.9.2" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.9.2.1" style="--ltx-bg-color:#E0FEFE;">40.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.9.3" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.9.3.1" style="--ltx-bg-color:#E0FEFE;">42.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.9.4" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.9.4.1" style="--ltx-bg-color:#E0FEFE;">50.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.9.5" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.9.5.1" style="--ltx-bg-color:#E0FEFE;">70.4</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.9.6" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.9.6.1" style="--ltx-bg-color:#E0FEFE;">60.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.9.7" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.9.7.1" style="--ltx-bg-color:#E0FEFE;">13.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.9.8" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.9.8.1" style="--ltx-bg-color:#E0FEFE;">16.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.9.9" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.9.9.1" style="--ltx-bg-color:#E0FEFE;">78.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.9.10" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.9.10.1" style="--ltx-bg-color:#E0FEFE;">60.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.9.11" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T7.2.9.11.1" style="--ltx-bg-color:#E0FEFE;">51.5</span></td></tr>
+<tr class="ltx_tr" id="A5.T7.2.10">
+<td class="ltx_td ltx_align_center ltx_border_t" colspan="11" id="A5.T7.2.10.1" style="padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_italic" id="A5.T7.2.10.1.1">Computer Use Agent: Gemini-3-Flash</span></td></tr>
+<tr class="ltx_tr" id="A5.T7.2.11">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T7.2.11.1" style="padding:0.25pt 2.0pt;">Base agent</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.11.2" style="padding:0.25pt 2.0pt;">66.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.11.3" style="padding:0.25pt 2.0pt;">42.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.11.4" style="padding:0.25pt 2.0pt;">75.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.11.5" style="padding:0.25pt 2.0pt;">74.1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.11.6" style="padding:0.25pt 2.0pt;">53.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.11.7" style="padding:0.25pt 2.0pt;">13.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.11.8" style="padding:0.25pt 2.0pt;">25.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.11.9" style="padding:0.25pt 2.0pt;">78.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.11.10" style="padding:0.25pt 2.0pt;">80.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.11.11" style="padding:0.25pt 2.0pt;">58.0</td></tr>
+<tr class="ltx_tr" id="A5.T7.2.12">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T7.2.12.1" style="padding:0.25pt 2.0pt;">OpenCUA</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.12.2" style="padding:0.25pt 2.0pt;">60.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.12.3" style="padding:0.25pt 2.0pt;">42.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.12.4" style="padding:0.25pt 2.0pt;">50.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.12.5" style="padding:0.25pt 2.0pt;">81.5</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.12.6" style="padding:0.25pt 2.0pt;">26.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.12.7" style="padding:0.25pt 2.0pt;">40.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.12.8" style="padding:0.25pt 2.0pt;">33.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.12.9" style="padding:0.25pt 2.0pt;">78.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.12.10" style="padding:0.25pt 2.0pt;">80.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.12.11" style="padding:0.25pt 2.0pt;">57.2</td></tr>
+<tr class="ltx_tr" id="A5.T7.2.13">
+<td class="ltx_td ltx_align_left" id="A5.T7.2.13.1" style="padding:0.25pt 2.0pt;">SE-WSM</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.13.2" style="padding:0.25pt 2.0pt;">53.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.13.3" style="padding:0.25pt 2.0pt;">42.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.13.4" style="padding:0.25pt 2.0pt;">58.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.13.5" style="padding:0.25pt 2.0pt;">77.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.13.6" style="padding:0.25pt 2.0pt;">40.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.13.7" style="padding:0.25pt 2.0pt;">40.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.13.8" style="padding:0.25pt 2.0pt;">33.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.13.9" style="padding:0.25pt 2.0pt;">73.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.13.10" style="padding:0.25pt 2.0pt;">80.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.13.11" style="padding:0.25pt 2.0pt;">57.2</td></tr>
+<tr class="ltx_tr" id="A5.T7.2.14">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T7.2.14.1" style="padding:0.25pt 2.0pt;">CGI (32B)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.14.2" style="padding:0.25pt 2.0pt;">60.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.14.3" style="padding:0.25pt 2.0pt;">42.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.14.4" style="padding:0.25pt 2.0pt;">50.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.14.5" style="padding:0.25pt 2.0pt;">74.1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.14.6" style="padding:0.25pt 2.0pt;">33.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.14.7" style="padding:0.25pt 2.0pt;">40.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.14.8" style="padding:0.25pt 2.0pt;">33.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.14.9" style="padding:0.25pt 2.0pt;">78.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.14.10" style="padding:0.25pt 2.0pt;">60.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T7.2.14.11" style="padding:0.25pt 2.0pt;">55.8</td></tr>
+<tr class="ltx_tr" id="A5.T7.2.15">
+<td class="ltx_td ltx_align_left" id="A5.T7.2.15.1" style="padding:0.25pt 2.0pt;">CGI (8B)</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.15.2" style="padding:0.25pt 2.0pt;">60.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.15.3" style="padding:0.25pt 2.0pt;">35.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.15.4" style="padding:0.25pt 2.0pt;">58.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.15.5" style="padding:0.25pt 2.0pt;">88.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.15.6" style="padding:0.25pt 2.0pt;">26.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.15.7" style="padding:0.25pt 2.0pt;">26.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.15.8" style="padding:0.25pt 2.0pt;">33.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.15.9" style="padding:0.25pt 2.0pt;">73.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.15.10" style="padding:0.25pt 2.0pt;">40.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.15.11" style="padding:0.25pt 2.0pt;">55.1</td></tr>
+<tr class="ltx_tr" id="A5.T7.2.16">
+<td class="ltx_td ltx_align_left" id="A5.T7.2.16.1" style="padding:0.25pt 2.0pt;">GUI-Critic-R1</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.16.2" style="padding:0.25pt 2.0pt;">60.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.16.3" style="padding:0.25pt 2.0pt;">42.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.16.4" style="padding:0.25pt 2.0pt;">50.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.16.5" style="padding:0.25pt 2.0pt;">66.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.16.6" style="padding:0.25pt 2.0pt;">46.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.16.7" style="padding:0.25pt 2.0pt;">26.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.16.8" style="padding:0.25pt 2.0pt;">25.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.16.9" style="padding:0.25pt 2.0pt;">73.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.16.10" style="padding:0.25pt 2.0pt;">80.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T7.2.16.11" style="padding:0.25pt 2.0pt;">53.6</td></tr>
+<tr class="ltx_tr" id="A5.T7.2.17">
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="A5.T7.2.17.1" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_smallcaps" id="A5.T7.2.17.1.1" style="--ltx-bg-color:#E0FEFE;">HiViG<span class="ltx_text ltx_font_upright" id="A5.T7.2.17.1.1.1"> (Ours)</span></span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T7.2.17.2" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.17.2.1" style="--ltx-bg-color:#E0FEFE;">73.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T7.2.17.3" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.17.3.1" style="--ltx-bg-color:#E0FEFE;">42.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T7.2.17.4" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.17.4.1" style="--ltx-bg-color:#E0FEFE;">50.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T7.2.17.5" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.17.5.1" style="--ltx-bg-color:#E0FEFE;">88.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T7.2.17.6" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.17.6.1" style="--ltx-bg-color:#E0FEFE;">40.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T7.2.17.7" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.17.7.1" style="--ltx-bg-color:#E0FEFE;">40.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T7.2.17.8" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.17.8.1" style="--ltx-bg-color:#E0FEFE;">33.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T7.2.17.9" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.17.9.1" style="--ltx-bg-color:#E0FEFE;">78.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T7.2.17.10" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text" id="A5.T7.2.17.10.1" style="--ltx-bg-color:#E0FEFE;">80.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T7.2.17.11" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T7.2.17.11.1" style="--ltx-bg-color:#E0FEFE;">61.6</span></td></tr>
+</table></figure><figure id="A5.T8"><figcaption>Table 8: Comparison of test-time intervention methods on Qwen3-VL-32B-Thinking and Gemini-3-Flash in WindowsAgentArena benchmark.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="A5.T8.2">
+<tr class="ltx_tr" id="A5.T8.2.1">
+<td class="ltx_td ltx_align_left ltx_border_tt" id="A5.T8.2.1.1" style="padding:0.25pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T8.2.1.1.1">Method</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T8.2.1.2" style="padding:0.25pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T8.2.1.2.1">Office</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T8.2.1.3" style="padding:0.25pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T8.2.1.3.1">Web Browsing</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T8.2.1.4" style="padding:0.25pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T8.2.1.4.1">Windows System</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T8.2.1.5" style="padding:0.25pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T8.2.1.5.1">Code</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T8.2.1.6" style="padding:0.25pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T8.2.1.6.1">Media</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T8.2.1.7" style="padding:0.25pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T8.2.1.7.1">Windows Utilities</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T8.2.1.8" style="padding:0.25pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T8.2.1.8.1">Overall</span></td></tr>
+<tr class="ltx_tr" id="A5.T8.2.2">
+<td class="ltx_td ltx_align_center ltx_border_t" colspan="8" id="A5.T8.2.2.1" style="padding:0.25pt 4.0pt;"><span class="ltx_text ltx_font_italic" id="A5.T8.2.2.1.1">Computer Use Agent: Qwen3-VL-32B-Thnking</span></td></tr>
+<tr class="ltx_tr" id="A5.T8.2.3">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T8.2.3.1" style="padding:0.25pt 4.0pt;">Base agent</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.3.2" style="padding:0.25pt 4.0pt;">4.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.3.3" style="padding:0.25pt 4.0pt;">57.1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.3.4" style="padding:0.25pt 4.0pt;">50.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.3.5" style="padding:0.25pt 4.0pt;">58.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.3.6" style="padding:0.25pt 4.0pt;">27.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.3.7" style="padding:0.25pt 4.0pt;">50.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.3.8" style="padding:0.25pt 4.0pt;">35.7</td></tr>
+<tr class="ltx_tr" id="A5.T8.2.4">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T8.2.4.1" style="padding:0.25pt 4.0pt;">OpenCUA</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.4.2" style="padding:0.25pt 4.0pt;">2.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.4.3" style="padding:0.25pt 4.0pt;">61.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.4.4" style="padding:0.25pt 4.0pt;">70.8</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.4.5" style="padding:0.25pt 4.0pt;">50.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.4.6" style="padding:0.25pt 4.0pt;">24.5</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.4.7" style="padding:0.25pt 4.0pt;">25.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.4.8" style="padding:0.25pt 4.0pt;">35.2</td></tr>
+<tr class="ltx_tr" id="A5.T8.2.5">
+<td class="ltx_td ltx_align_left" id="A5.T8.2.5.1" style="padding:0.25pt 4.0pt;">SE-WSM</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.5.2" style="padding:0.25pt 4.0pt;">2.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.5.3" style="padding:0.25pt 4.0pt;">52.4</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.5.4" style="padding:0.25pt 4.0pt;">58.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.5.5" style="padding:0.25pt 4.0pt;">50.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.5.6" style="padding:0.25pt 4.0pt;">22.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.5.7" style="padding:0.25pt 4.0pt;">25.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.5.8" style="padding:0.25pt 4.0pt;">31.6</td></tr>
+<tr class="ltx_tr" id="A5.T8.2.6">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T8.2.6.1" style="padding:0.25pt 4.0pt;">CGI (32B)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.6.2" style="padding:0.25pt 4.0pt;">4.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.6.3" style="padding:0.25pt 4.0pt;">47.6</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.6.4" style="padding:0.25pt 4.0pt;">58.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.6.5" style="padding:0.25pt 4.0pt;">50.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.6.6" style="padding:0.25pt 4.0pt;">37.2</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.6.7" style="padding:0.25pt 4.0pt;">25.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.6.8" style="padding:0.25pt 4.0pt;">33.7</td></tr>
+<tr class="ltx_tr" id="A5.T8.2.7">
+<td class="ltx_td ltx_align_left" id="A5.T8.2.7.1" style="padding:0.25pt 4.0pt;">CGI (8B)</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.7.2" style="padding:0.25pt 4.0pt;">4.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.7.3" style="padding:0.25pt 4.0pt;">47.6</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.7.4" style="padding:0.25pt 4.0pt;">58.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.7.5" style="padding:0.25pt 4.0pt;">41.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.7.6" style="padding:0.25pt 4.0pt;">28.1</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.7.7" style="padding:0.25pt 4.0pt;">25.0</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.7.8" style="padding:0.25pt 4.0pt;">31.0</td></tr>
+<tr class="ltx_tr" id="A5.T8.2.8">
+<td class="ltx_td ltx_align_left" id="A5.T8.2.8.1" style="padding:0.25pt 4.0pt;">GUI-Critic-R1</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.8.2" style="padding:0.25pt 4.0pt;">4.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.8.3" style="padding:0.25pt 4.0pt;">61.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.8.4" style="padding:0.25pt 4.0pt;">45.8</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.8.5" style="padding:0.25pt 4.0pt;">54.2</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.8.6" style="padding:0.25pt 4.0pt;">28.1</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.8.7" style="padding:0.25pt 4.0pt;">41.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.8.8" style="padding:0.25pt 4.0pt;">34.4</td></tr>
+<tr class="ltx_tr" id="A5.T8.2.9">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T8.2.9.1" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 4.0pt;"><span class="ltx_text ltx_font_smallcaps" id="A5.T8.2.9.1.1" style="--ltx-bg-color:#E0FEFE;">HiViG<span class="ltx_text ltx_font_upright" id="A5.T8.2.9.1.1.1"> (Ours)</span></span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.9.2" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 4.0pt;"><span class="ltx_text" id="A5.T8.2.9.2.1" style="--ltx-bg-color:#E0FEFE;">7.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.9.3" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 4.0pt;"><span class="ltx_text" id="A5.T8.2.9.3.1" style="--ltx-bg-color:#E0FEFE;">57.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.9.4" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 4.0pt;"><span class="ltx_text" id="A5.T8.2.9.4.1" style="--ltx-bg-color:#E0FEFE;">58.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.9.5" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 4.0pt;"><span class="ltx_text" id="A5.T8.2.9.5.1" style="--ltx-bg-color:#E0FEFE;">58.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.9.6" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 4.0pt;"><span class="ltx_text" id="A5.T8.2.9.6.1" style="--ltx-bg-color:#E0FEFE;">28.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.9.7" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 4.0pt;"><span class="ltx_text" id="A5.T8.2.9.7.1" style="--ltx-bg-color:#E0FEFE;">50.0</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.9.8" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T8.2.9.8.1" style="--ltx-bg-color:#E0FEFE;">38.0</span></td></tr>
+<tr class="ltx_tr" id="A5.T8.2.10">
+<td class="ltx_td ltx_align_center ltx_border_t" colspan="8" id="A5.T8.2.10.1" style="padding:0.25pt 4.0pt;"><span class="ltx_text ltx_font_italic" id="A5.T8.2.10.1.1">Computer Use Agent: Gemini-3-Flash</span></td></tr>
+<tr class="ltx_tr" id="A5.T8.2.11">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T8.2.11.1" style="padding:0.25pt 4.0pt;">Base agent</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.11.2" style="padding:0.25pt 4.0pt;">4.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.11.3" style="padding:0.25pt 4.0pt;">52.4</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.11.4" style="padding:0.25pt 4.0pt;">58.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.11.5" style="padding:0.25pt 4.0pt;">45.8</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.11.6" style="padding:0.25pt 4.0pt;">32.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.11.7" style="padding:0.25pt 4.0pt;">58.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.11.8" style="padding:0.25pt 4.0pt;">35.8</td></tr>
+<tr class="ltx_tr" id="A5.T8.2.12">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T8.2.12.1" style="padding:0.25pt 4.0pt;">OpenCUA</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.12.2" style="padding:0.25pt 4.0pt;">4.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.12.3" style="padding:0.25pt 4.0pt;">52.4</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.12.4" style="padding:0.25pt 4.0pt;">58.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.12.5" style="padding:0.25pt 4.0pt;">45.8</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.12.6" style="padding:0.25pt 4.0pt;">32.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.12.7" style="padding:0.25pt 4.0pt;">58.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.12.8" style="padding:0.25pt 4.0pt;">35.8</td></tr>
+<tr class="ltx_tr" id="A5.T8.2.13">
+<td class="ltx_td ltx_align_left" id="A5.T8.2.13.1" style="padding:0.25pt 4.0pt;">SE-WSM</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.13.2" style="padding:0.25pt 4.0pt;">4.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.13.3" style="padding:0.25pt 4.0pt;">42.9</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.13.4" style="padding:0.25pt 4.0pt;">62.5</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.13.5" style="padding:0.25pt 4.0pt;">45.8</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.13.6" style="padding:0.25pt 4.0pt;">28.1</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.13.7" style="padding:0.25pt 4.0pt;">66.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.13.8" style="padding:0.25pt 4.0pt;">35.1</td></tr>
+<tr class="ltx_tr" id="A5.T8.2.14">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T8.2.14.1" style="padding:0.25pt 4.0pt;">CGI (32B)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.14.2" style="padding:0.25pt 4.0pt;">4.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.14.3" style="padding:0.25pt 4.0pt;">47.6</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.14.4" style="padding:0.25pt 4.0pt;">62.5</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.14.5" style="padding:0.25pt 4.0pt;">58.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.14.6" style="padding:0.25pt 4.0pt;">32.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.14.7" style="padding:0.25pt 4.0pt;">50.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T8.2.14.8" style="padding:0.25pt 4.0pt;">37.9</td></tr>
+<tr class="ltx_tr" id="A5.T8.2.15">
+<td class="ltx_td ltx_align_left" id="A5.T8.2.15.1" style="padding:0.25pt 4.0pt;">CGI (8B)</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.15.2" style="padding:0.25pt 4.0pt;">4.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.15.3" style="padding:0.25pt 4.0pt;">57.1</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.15.4" style="padding:0.25pt 4.0pt;">62.5</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.15.5" style="padding:0.25pt 4.0pt;">54.2</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.15.6" style="padding:0.25pt 4.0pt;">37.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.15.7" style="padding:0.25pt 4.0pt;">41.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.15.8" style="padding:0.25pt 4.0pt;">37.9</td></tr>
+<tr class="ltx_tr" id="A5.T8.2.16">
+<td class="ltx_td ltx_align_left" id="A5.T8.2.16.1" style="padding:0.25pt 4.0pt;">GUI-Critic-R1</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.16.2" style="padding:0.25pt 4.0pt;">2.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.16.3" style="padding:0.25pt 4.0pt;">57.1</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.16.4" style="padding:0.25pt 4.0pt;">58.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.16.5" style="padding:0.25pt 4.0pt;">45.8</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.16.6" style="padding:0.25pt 4.0pt;">19.3</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.16.7" style="padding:0.25pt 4.0pt;">41.7</td>
+<td class="ltx_td ltx_align_center" id="A5.T8.2.16.8" style="padding:0.25pt 4.0pt;">32.5</td></tr>
+<tr class="ltx_tr" id="A5.T8.2.17">
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="A5.T8.2.17.1" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 4.0pt;"><span class="ltx_text ltx_font_smallcaps" id="A5.T8.2.17.1.1" style="--ltx-bg-color:#E0FEFE;">HiViG<span class="ltx_text ltx_font_upright" id="A5.T8.2.17.1.1.1"> (Ours)</span></span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T8.2.17.2" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 4.0pt;"><span class="ltx_text" id="A5.T8.2.17.2.1" style="--ltx-bg-color:#E0FEFE;">23.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T8.2.17.3" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 4.0pt;"><span class="ltx_text" id="A5.T8.2.17.3.1" style="--ltx-bg-color:#E0FEFE;">57.1</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T8.2.17.4" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 4.0pt;"><span class="ltx_text" id="A5.T8.2.17.4.1" style="--ltx-bg-color:#E0FEFE;">62.5</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T8.2.17.5" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 4.0pt;"><span class="ltx_text" id="A5.T8.2.17.5.1" style="--ltx-bg-color:#E0FEFE;">54.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T8.2.17.6" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 4.0pt;"><span class="ltx_text" id="A5.T8.2.17.6.1" style="--ltx-bg-color:#E0FEFE;">28.9</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T8.2.17.7" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 4.0pt;"><span class="ltx_text" id="A5.T8.2.17.7.1" style="--ltx-bg-color:#E0FEFE;">66.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T8.2.17.8" style="--ltx-bg-color:#E0FEFE;padding:0.25pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="A5.T8.2.17.8.1" style="--ltx-bg-color:#E0FEFE;">44.2</span></td></tr>
+</table></figure></html>

@@ -1,0 +1,741 @@
+<p><a href="/notes/p0-sup-a30/">← 返回阅读笔记 / Back to reading note</a></p><meta content="width=device-width, initial-scale=1" name="viewport"/><!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8"/><title>Beyond Retrieval: Analytic Memory for Multimodal Agents (AdaMM)</title><style>body{font:16px system-ui;margin:35px;line-height:1.6}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:7px}figure{overflow:auto;margin:30px 0}figcaption{font-weight:600}</style><h1>SUP-A30 原表</h1><p>来源：<a href="https://arxiv.org/html/2607.29440">作者原文</a>。2026-09-07抓取，原始行列，不是统一复跑成绩。</p><figure id="S3.T1"><figcaption>Table 1: Access tools for analytic and retrieval memory.</figcaption><table class="ltx_tabular ltx_align_middle" id="S3.T1.2">
+<tr class="ltx_tr" id="S3.T1.2.1">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="S3.T1.2.1.1" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="S3.T1.2.1.1.1" style="width:58.7pt;">
+<span class="ltx_p ltx_align_left" id="S3.T1.2.1.1.1.1"><span class="ltx_text ltx_font_bold" id="S3.T1.2.1.1.1.1.1">Memory</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="S3.T1.2.1.2" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="S3.T1.2.1.2.1" style="width:124.2pt;">
+<span class="ltx_p ltx_align_left" id="S3.T1.2.1.2.1.1"><span class="ltx_text ltx_font_bold" id="S3.T1.2.1.2.1.1.1">Tools</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_tt" id="S3.T1.2.1.3" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="S3.T1.2.1.3.1">
+<span class="ltx_p ltx_align_left" id="S3.T1.2.1.3.1.1"><span class="ltx_text ltx_font_bold" id="S3.T1.2.1.3.1.1.1">Capability</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="S3.T1.2.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="S3.T1.2.2.1" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="S3.T1.2.2.1.1" style="width:58.7pt;">
+<span class="ltx_p ltx_align_left" id="S3.T1.2.2.1.1.1">Analytic</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="S3.T1.2.2.2" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="S3.T1.2.2.2.1" style="width:124.2pt;">
+<span class="ltx_p ltx_align_left" id="S3.T1.2.2.2.1.1"><span class="ltx_text ltx_font_smallcaps" id="S3.T1.2.2.2.1.1.1">Lookup</span>, <span class="ltx_text ltx_font_smallcaps" id="S3.T1.2.2.2.1.1.2">Filter</span>, <span class="ltx_text ltx_font_smallcaps" id="S3.T1.2.2.2.1.1.3">Compute</span>, <span class="ltx_text ltx_font_smallcaps" id="S3.T1.2.2.2.1.1.4">Rank</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="S3.T1.2.2.3" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="S3.T1.2.2.3.1">
+<span class="ltx_p ltx_align_left" id="S3.T1.2.2.3.1.1">Exact record access and deterministic computation.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="S3.T1.2.3">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="S3.T1.2.3.1" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="S3.T1.2.3.1.1" style="width:58.7pt;">
+<span class="ltx_p ltx_align_left" id="S3.T1.2.3.1.1.1">Retrieval</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="S3.T1.2.3.2" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="S3.T1.2.3.2.1" style="width:124.2pt;">
+<span class="ltx_p ltx_align_left" id="S3.T1.2.3.2.1.1"><span class="ltx_text ltx_font_smallcaps" id="S3.T1.2.3.2.1.1.1">SemanticMatch</span>, <span class="ltx_text ltx_font_smallcaps" id="S3.T1.2.3.2.1.1.2">EventLocate</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb" id="S3.T1.2.3.3" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="S3.T1.2.3.3.1">
+<span class="ltx_p ltx_align_left" id="S3.T1.2.3.3.1.1">Relevance-based retrieval and event localization.</span>
+</span></td></tr>
+</table></figure><figure id="S4.T2"><figcaption>Table 2: Benchmark statistics.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="S4.T2.2">
+<tr class="ltx_tr" id="S4.T2.2.1">
+<td class="ltx_td ltx_align_left ltx_border_tt" id="S4.T2.2.1.1">Benchmarks</td>
+<td class="ltx_td ltx_align_right ltx_border_tt" id="S4.T2.2.1.2">Sessions</td>
+<td class="ltx_td ltx_align_right ltx_border_tt" id="S4.T2.2.1.3">Rounds</td>
+<td class="ltx_td ltx_align_right ltx_border_tt" id="S4.T2.2.1.4">Images</td>
+<td class="ltx_td ltx_align_right ltx_border_tt" id="S4.T2.2.1.5">QA pairs</td></tr>
+<tr class="ltx_tr" id="S4.T2.2.2">
+<td class="ltx_td ltx_align_left ltx_border_t" id="S4.T2.2.2.1">MemEye</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="S4.T2.2.2.2">221</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="S4.T2.2.2.3">848</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="S4.T2.2.2.4">438</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="S4.T2.2.2.5">742</td></tr>
+<tr class="ltx_tr" id="S4.T2.2.3">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="S4.T2.2.3.1">MemGallery</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="S4.T2.2.3.2">240</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="S4.T2.2.3.3">3,962</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="S4.T2.2.3.4">1,003</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="S4.T2.2.3.5">1,711</td></tr>
+</table></figure><figure id="S4.T3"><figcaption>Table 3: Main results on MemEye and MemGallery. Higher is better for all metrics. Bold values denote the best result within a backbone and red values denote improvements over the strongest baseline.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="S4.T3.2">
+<tr class="ltx_tr" id="S4.T3.2.1">
+<td class="ltx_td ltx_align_left ltx_border_tt" id="S4.T3.2.1.1" rowspan="2" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text" id="S4.T3.2.1.1.1">Backbone</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="2" id="S4.T3.2.1.2" rowspan="2" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text" id="S4.T3.2.1.2.1">Method</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="3" id="S4.T3.2.1.3" style="padding-left:2.0pt;padding-right:2.0pt;">MemEye</td>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="3" id="S4.T3.2.1.4" style="padding-left:2.0pt;padding-right:2.0pt;">MemGallery</td></tr>
+<tr class="ltx_tr" id="S4.T3.2.2">
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.2.2.1" style="padding-left:2.0pt;padding-right:2.0pt;">EM</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.2.2.2" style="padding-left:2.0pt;padding-right:2.0pt;">BLEU-1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.2.2.3" style="padding-left:2.0pt;padding-right:2.0pt;">LLM-Judge</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.2.2.4" style="padding-left:2.0pt;padding-right:2.0pt;">F1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.2.2.5" style="padding-left:2.0pt;padding-right:2.0pt;">BLEU-1</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_t" id="S4.T3.2.2.6" style="padding-left:2.0pt;padding-right:2.0pt;">LLM-Judge</td></tr>
+<tr class="ltx_tr" id="S4.T3.2.3">
+<td class="ltx_td ltx_align_left ltx_border_t" id="S4.T3.2.3.1" rowspan="8" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text" id="S4.T3.2.3.1.1">GPT-4.1-nano</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="S4.T3.2.3.2" rowspan="2" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text" id="S4.T3.2.3.2.1">Unimodal</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="S4.T3.2.3.3" style="padding-left:2.0pt;padding-right:2.0pt;">A-Mem</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.2.3.4" style="padding-left:2.0pt;padding-right:2.0pt;">39.1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.2.3.5" style="padding-left:2.0pt;padding-right:2.0pt;">17.1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.2.3.6" style="padding-left:2.0pt;padding-right:2.0pt;">32.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.2.3.7" style="padding-left:2.0pt;padding-right:2.0pt;">53.2</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.2.3.8" style="padding-left:2.0pt;padding-right:2.0pt;">47.2</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_t" id="S4.T3.2.3.9" style="padding-left:2.0pt;padding-right:2.0pt;">67.4</td></tr>
+<tr class="ltx_tr" id="S4.T3.2.4">
+<td class="ltx_td ltx_align_left" id="S4.T3.2.4.1" style="padding-left:2.0pt;padding-right:2.0pt;">MemoryOS</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.4.2" style="padding-left:2.0pt;padding-right:2.0pt;">42.4</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.4.3" style="padding-left:2.0pt;padding-right:2.0pt;">15.8</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.4.4" style="padding-left:2.0pt;padding-right:2.0pt;">27.6</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.4.5" style="padding-left:2.0pt;padding-right:2.0pt;">53.4</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.4.6" style="padding-left:2.0pt;padding-right:2.0pt;">47.1</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S4.T3.2.4.7" style="padding-left:2.0pt;padding-right:2.0pt;">65.9</td></tr>
+<tr class="ltx_tr" id="S4.T3.2.5">
+<td class="ltx_td ltx_align_left ltx_border_t" id="S4.T3.2.5.1" rowspan="6" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text" id="S4.T3.2.5.1.1">Multimodal</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="S4.T3.2.5.2" style="padding-left:2.0pt;padding-right:2.0pt;">M2A</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.5.3" style="padding-left:2.0pt;padding-right:2.0pt;">34.1</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.5.4" style="padding-left:2.0pt;padding-right:2.0pt;">5.8</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.5.5" style="padding-left:2.0pt;padding-right:2.0pt;">13.8</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.5.6" style="padding-left:2.0pt;padding-right:2.0pt;">50.2</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.5.7" style="padding-left:2.0pt;padding-right:2.0pt;">44.3</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S4.T3.2.5.8" style="padding-left:2.0pt;padding-right:2.0pt;">61.5</td></tr>
+<tr class="ltx_tr" id="S4.T3.2.6">
+<td class="ltx_td ltx_align_left" id="S4.T3.2.6.1" style="padding-left:2.0pt;padding-right:2.0pt;">MMA</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.6.2" style="padding-left:2.0pt;padding-right:2.0pt;">39.0</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.6.3" style="padding-left:2.0pt;padding-right:2.0pt;">10.6</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.6.4" style="padding-left:2.0pt;padding-right:2.0pt;">32.0</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.6.5" style="padding-left:2.0pt;padding-right:2.0pt;">55.9</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.6.6" style="padding-left:2.0pt;padding-right:2.0pt;">50.7</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S4.T3.2.6.7" style="padding-left:2.0pt;padding-right:2.0pt;">64.1</td></tr>
+<tr class="ltx_tr" id="S4.T3.2.7">
+<td class="ltx_td ltx_align_left" id="S4.T3.2.7.1" style="padding-left:2.0pt;padding-right:2.0pt;">MIRIX</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.7.2" style="padding-left:2.0pt;padding-right:2.0pt;">40.9</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.7.3" style="padding-left:2.0pt;padding-right:2.0pt;">5.7</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.7.4" style="padding-left:2.0pt;padding-right:2.0pt;">13.6</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.7.5" style="padding-left:2.0pt;padding-right:2.0pt;">56.3</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.7.6" style="padding-left:2.0pt;padding-right:2.0pt;">51.1</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S4.T3.2.7.7" style="padding-left:2.0pt;padding-right:2.0pt;">66.3</td></tr>
+<tr class="ltx_tr" id="S4.T3.2.8">
+<td class="ltx_td ltx_align_left" id="S4.T3.2.8.1" style="padding-left:2.0pt;padding-right:2.0pt;">MM-RAG</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.8.2" style="padding-left:2.0pt;padding-right:2.0pt;">42.7</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.8.3" style="padding-left:2.0pt;padding-right:2.0pt;">16.6</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.8.4" style="padding-left:2.0pt;padding-right:2.0pt;">42.2</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.8.5" style="padding-left:2.0pt;padding-right:2.0pt;">58.3</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.8.6" style="padding-left:2.0pt;padding-right:2.0pt;">52.4</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S4.T3.2.8.7" style="padding-left:2.0pt;padding-right:2.0pt;">67.3</td></tr>
+<tr class="ltx_tr" id="S4.T3.2.9">
+<td class="ltx_td ltx_align_left" id="S4.T3.2.9.1" style="padding-left:2.0pt;padding-right:2.0pt;">UniversalRAG</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.9.2" style="padding-left:2.0pt;padding-right:2.0pt;">43.1</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.9.3" style="padding-left:2.0pt;padding-right:2.0pt;">16.5</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.9.4" style="padding-left:2.0pt;padding-right:2.0pt;">40.2</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.9.5" style="padding-left:2.0pt;padding-right:2.0pt;">57.7</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.9.6" style="padding-left:2.0pt;padding-right:2.0pt;">52.4</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S4.T3.2.9.7" style="padding-left:2.0pt;padding-right:2.0pt;">67.0</td></tr>
+<tr class="ltx_tr" id="S4.T3.2.10">
+<td class="ltx_td ltx_align_left" id="S4.T3.2.10.1" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text ltx_font_smallcaps" id="S4.T3.2.10.1.1">AdaMM</span> <span class="ltx_text ltx_font_bold" id="S4.T3.2.10.1.2">(Ours)</span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.10.2" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text ltx_font_bold" id="S4.T3.2.10.2.1">50.4</span><span class="ltx_text" id="S4.T3.2.10.2.2" style="--ltx-fg-color:#FF0000;">(+7.3)</span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.10.3" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text ltx_font_bold" id="S4.T3.2.10.3.1">21.2</span><span class="ltx_text" id="S4.T3.2.10.3.2" style="--ltx-fg-color:#FF0000;">(+4.1)</span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.10.4" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text ltx_font_bold" id="S4.T3.2.10.4.1">48.0</span><span class="ltx_text" id="S4.T3.2.10.4.2" style="--ltx-fg-color:#FF0000;">(+5.8)</span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.10.5" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text ltx_font_bold" id="S4.T3.2.10.5.1">62.6</span><span class="ltx_text" id="S4.T3.2.10.5.2" style="--ltx-fg-color:#FF0000;">(+4.3)</span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.10.6" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text ltx_font_bold" id="S4.T3.2.10.6.1">56.7</span><span class="ltx_text" id="S4.T3.2.10.6.2" style="--ltx-fg-color:#FF0000;">(+4.3)</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S4.T3.2.10.7" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text ltx_font_bold" id="S4.T3.2.10.7.1">74.3</span><span class="ltx_text" id="S4.T3.2.10.7.2" style="--ltx-fg-color:#FF0000;">(+6.9)</span></td></tr>
+<tr class="ltx_tr" id="S4.T3.2.11">
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="S4.T3.2.11.1" rowspan="8" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text" id="S4.T3.2.11.1.1">GPT-5.4-mini</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="S4.T3.2.11.2" rowspan="2" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text" id="S4.T3.2.11.2.1">Unimodal</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="S4.T3.2.11.3" style="padding-left:2.0pt;padding-right:2.0pt;">A-Mem</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.2.11.4" style="padding-left:2.0pt;padding-right:2.0pt;">48.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.2.11.5" style="padding-left:2.0pt;padding-right:2.0pt;">22.4</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.2.11.6" style="padding-left:2.0pt;padding-right:2.0pt;">35.2</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.2.11.7" style="padding-left:2.0pt;padding-right:2.0pt;">63.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.2.11.8" style="padding-left:2.0pt;padding-right:2.0pt;">58.6</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_t" id="S4.T3.2.11.9" style="padding-left:2.0pt;padding-right:2.0pt;">74.4</td></tr>
+<tr class="ltx_tr" id="S4.T3.2.12">
+<td class="ltx_td ltx_align_left" id="S4.T3.2.12.1" style="padding-left:2.0pt;padding-right:2.0pt;">MemoryOS</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.12.2" style="padding-left:2.0pt;padding-right:2.0pt;">48.7</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.12.3" style="padding-left:2.0pt;padding-right:2.0pt;">21.8</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.12.4" style="padding-left:2.0pt;padding-right:2.0pt;">33.3</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.12.5" style="padding-left:2.0pt;padding-right:2.0pt;">64.5</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.12.6" style="padding-left:2.0pt;padding-right:2.0pt;">59.0</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S4.T3.2.12.7" style="padding-left:2.0pt;padding-right:2.0pt;">75.5</td></tr>
+<tr class="ltx_tr" id="S4.T3.2.13">
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="S4.T3.2.13.1" rowspan="6" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text" id="S4.T3.2.13.1.1">Multimodal</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="S4.T3.2.13.2" style="padding-left:2.0pt;padding-right:2.0pt;">M2A</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.13.3" style="padding-left:2.0pt;padding-right:2.0pt;">40.1</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.13.4" style="padding-left:2.0pt;padding-right:2.0pt;">12.3</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.13.5" style="padding-left:2.0pt;padding-right:2.0pt;">33.5</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.13.6" style="padding-left:2.0pt;padding-right:2.0pt;">60.8</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.13.7" style="padding-left:2.0pt;padding-right:2.0pt;">56.0</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S4.T3.2.13.8" style="padding-left:2.0pt;padding-right:2.0pt;">71.7</td></tr>
+<tr class="ltx_tr" id="S4.T3.2.14">
+<td class="ltx_td ltx_align_left" id="S4.T3.2.14.1" style="padding-left:2.0pt;padding-right:2.0pt;">MMA</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.14.2" style="padding-left:2.0pt;padding-right:2.0pt;">53.9</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.14.3" style="padding-left:2.0pt;padding-right:2.0pt;">25.7</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.14.4" style="padding-left:2.0pt;padding-right:2.0pt;">43.3</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.14.5" style="padding-left:2.0pt;padding-right:2.0pt;">64.0</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.14.6" style="padding-left:2.0pt;padding-right:2.0pt;">59.6</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S4.T3.2.14.7" style="padding-left:2.0pt;padding-right:2.0pt;">73.3</td></tr>
+<tr class="ltx_tr" id="S4.T3.2.15">
+<td class="ltx_td ltx_align_left" id="S4.T3.2.15.1" style="padding-left:2.0pt;padding-right:2.0pt;">MIRIX</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.15.2" style="padding-left:2.0pt;padding-right:2.0pt;">46.7</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.15.3" style="padding-left:2.0pt;padding-right:2.0pt;">18.0</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.15.4" style="padding-left:2.0pt;padding-right:2.0pt;">33.2</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.15.5" style="padding-left:2.0pt;padding-right:2.0pt;">65.7</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.15.6" style="padding-left:2.0pt;padding-right:2.0pt;">60.9</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S4.T3.2.15.7" style="padding-left:2.0pt;padding-right:2.0pt;">78.2</td></tr>
+<tr class="ltx_tr" id="S4.T3.2.16">
+<td class="ltx_td ltx_align_left" id="S4.T3.2.16.1" style="padding-left:2.0pt;padding-right:2.0pt;">MM-RAG</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.16.2" style="padding-left:2.0pt;padding-right:2.0pt;">61.8</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.16.3" style="padding-left:2.0pt;padding-right:2.0pt;">29.7</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.16.4" style="padding-left:2.0pt;padding-right:2.0pt;">49.4</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.16.5" style="padding-left:2.0pt;padding-right:2.0pt;">66.5</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.16.6" style="padding-left:2.0pt;padding-right:2.0pt;">61.9</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S4.T3.2.16.7" style="padding-left:2.0pt;padding-right:2.0pt;">78.7</td></tr>
+<tr class="ltx_tr" id="S4.T3.2.17">
+<td class="ltx_td ltx_align_left" id="S4.T3.2.17.1" style="padding-left:2.0pt;padding-right:2.0pt;">UniversalRAG</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.17.2" style="padding-left:2.0pt;padding-right:2.0pt;">62.4</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.17.3" style="padding-left:2.0pt;padding-right:2.0pt;">30.4</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.17.4" style="padding-left:2.0pt;padding-right:2.0pt;">48.6</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.17.5" style="padding-left:2.0pt;padding-right:2.0pt;">65.6</td>
+<td class="ltx_td ltx_align_center" id="S4.T3.2.17.6" style="padding-left:2.0pt;padding-right:2.0pt;">60.8</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S4.T3.2.17.7" style="padding-left:2.0pt;padding-right:2.0pt;">77.4</td></tr>
+<tr class="ltx_tr" id="S4.T3.2.18">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="S4.T3.2.18.1" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text ltx_font_smallcaps" id="S4.T3.2.18.1.1">AdaMM</span> <span class="ltx_text ltx_font_bold" id="S4.T3.2.18.1.2">(Ours)</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T3.2.18.2" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text ltx_font_bold" id="S4.T3.2.18.2.1">65.5</span><span class="ltx_text" id="S4.T3.2.18.2.2" style="--ltx-fg-color:#FF0000;">(+3.1)</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T3.2.18.3" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text ltx_font_bold" id="S4.T3.2.18.3.1">35.9</span><span class="ltx_text" id="S4.T3.2.18.3.2" style="--ltx-fg-color:#FF0000;">(+5.5)</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T3.2.18.4" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text ltx_font_bold" id="S4.T3.2.18.4.1">60.7</span><span class="ltx_text" id="S4.T3.2.18.4.2" style="--ltx-fg-color:#FF0000;">(+11.3)</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T3.2.18.5" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text ltx_font_bold" id="S4.T3.2.18.5.1">69.1</span><span class="ltx_text" id="S4.T3.2.18.5.2" style="--ltx-fg-color:#FF0000;">(+2.6)</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T3.2.18.6" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text ltx_font_bold" id="S4.T3.2.18.6.1">64.1</span><span class="ltx_text" id="S4.T3.2.18.6.2" style="--ltx-fg-color:#FF0000;">(+2.2)</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_bb" id="S4.T3.2.18.7" style="padding-left:2.0pt;padding-right:2.0pt;"><span class="ltx_text ltx_font_bold" id="S4.T3.2.18.7.1">83.9</span><span class="ltx_text" id="S4.T3.2.18.7.2" style="--ltx-fg-color:#FF0000;">(+5.2)</span></td></tr>
+</table></figure><figure id="A2.T4"><figcaption>Table 4: Detailed access-tool specifications for analytic and retrieval memory.</figcaption><table class="ltx_tabular ltx_align_middle" id="A2.T4.2">
+<tr class="ltx_tr" id="A2.T4.2.1">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A2.T4.2.1.1" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.1.1.1" style="width:34.5pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.1.1.1.1"><span class="ltx_text ltx_font_bold" id="A2.T4.2.1.1.1.1.1">Memory</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A2.T4.2.1.2" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.1.2.1" style="width:55.2pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.1.2.1.1"><span class="ltx_text ltx_font_bold" id="A2.T4.2.1.2.1.1.1">Tool</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A2.T4.2.1.3" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.1.3.1" style="width:82.8pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.1.3.1.1"><span class="ltx_text ltx_font_bold" id="A2.T4.2.1.3.1.1.1">Arguments <math alttext="\Theta_{i}" class="ltx_Math" display="inline" id="A2.T4.m1" intent=":literal"><semantics><msub><mi mathvariant="normal">Θ</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\Theta_{i}</annotation></semantics></math></span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A2.T4.2.1.4" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.1.4.1" style="width:69.0pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.1.4.1.1"><span class="ltx_text ltx_font_bold" id="A2.T4.2.1.4.1.1.1">Return <math alttext="\Omega_{i}" class="ltx_Math" display="inline" id="A2.T4.m2" intent=":literal"><semantics><msub><mi mathvariant="normal">Ω</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\Omega_{i}</annotation></semantics></math></span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_tt" id="A2.T4.2.1.5" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.1.5.1">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.1.5.1.1"><span class="ltx_text ltx_font_bold" id="A2.T4.2.1.5.1.1.1">Function</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A2.T4.2.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A2.T4.2.2.1" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.2.1.1" style="width:34.5pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.2.1.1.1">Analytic</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A2.T4.2.2.2" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.2.2.1" style="width:55.2pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.2.2.1.1"><span class="ltx_text ltx_font_smallcaps" id="A2.T4.2.2.2.1.1.1">Lookup</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A2.T4.2.2.3" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.2.3.1" style="width:82.8pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.2.3.1.1"><span class="ltx_text ltx_font_typewriter" id="A2.T4.2.2.3.1.1.1">table</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.2.3.1.1.2">key_values</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.2.3.1.1.3">result_budget</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A2.T4.2.2.4" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.2.4.1" style="width:69.0pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.2.4.1.1"><span class="ltx_text ltx_font_typewriter" id="A2.T4.2.2.4.1.1.1">matching_rows</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A2.T4.2.2.5" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.2.5.1">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.2.5.1.1">Retrieves records matching the specified keys.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A2.T4.2.3">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A2.T4.2.3.1" style="padding-top:0.75pt;padding-bottom:0.75pt;"></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A2.T4.2.3.2" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.3.2.1" style="width:55.2pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.3.2.1.1"><span class="ltx_text ltx_font_smallcaps" id="A2.T4.2.3.2.1.1.1">Filter</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A2.T4.2.3.3" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.3.3.1" style="width:82.8pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.3.3.1.1"><span class="ltx_text ltx_font_typewriter" id="A2.T4.2.3.3.1.1.1">table</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.3.3.1.1.2">column_filters</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.3.3.1.1.3">result_budget</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A2.T4.2.3.4" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.3.4.1" style="width:69.0pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.3.4.1.1"><span class="ltx_text ltx_font_typewriter" id="A2.T4.2.3.4.1.1.1">matching_rows</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left" id="A2.T4.2.3.5" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.3.5.1">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.3.5.1.1">Selects records satisfying the specified predicates.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A2.T4.2.4">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A2.T4.2.4.1" style="padding-top:0.75pt;padding-bottom:0.75pt;"></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A2.T4.2.4.2" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.4.2.1" style="width:55.2pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.4.2.1.1"><span class="ltx_text ltx_font_smallcaps" id="A2.T4.2.4.2.1.1.1">Compute</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A2.T4.2.4.3" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.4.3.1" style="width:82.8pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.4.3.1.1"><span class="ltx_text ltx_font_typewriter" id="A2.T4.2.4.3.1.1.1">table</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.4.3.1.1.2">target_column_expression</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.4.3.1.1.3">operator</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.4.3.1.1.4">optional_column_filters</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A2.T4.2.4.4" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.4.4.1" style="width:69.0pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.4.4.1.1"><span class="ltx_text ltx_font_typewriter" id="A2.T4.2.4.4.1.1.1">computed_result</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.4.4.1.1.2">contributing_rows</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left" id="A2.T4.2.4.5" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.4.5.1">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.4.5.1.1">Performs deterministic computation over a selected table scope.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A2.T4.2.5">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A2.T4.2.5.1" style="padding-top:0.75pt;padding-bottom:0.75pt;"></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A2.T4.2.5.2" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.5.2.1" style="width:55.2pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.5.2.1.1"><span class="ltx_text ltx_font_smallcaps" id="A2.T4.2.5.2.1.1.1">Rank</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A2.T4.2.5.3" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.5.3.1" style="width:82.8pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.5.3.1.1"><span class="ltx_text ltx_font_typewriter" id="A2.T4.2.5.3.1.1.1">table</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.5.3.1.1.2">target_column_expression</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.5.3.1.1.3">order</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.5.3.1.1.4">optional_column_filters</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.5.3.1.1.5">result_budget</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A2.T4.2.5.4" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.5.4.1" style="width:69.0pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.5.4.1.1"><span class="ltx_text ltx_font_typewriter" id="A2.T4.2.5.4.1.1.1">ranked_rows</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left" id="A2.T4.2.5.5" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.5.5.1">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.5.5.1.1">Returns the top- or bottom-ranked records.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A2.T4.2.6">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A2.T4.2.6.1" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.6.1.1" style="width:34.5pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.6.1.1.1">Retrieval</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A2.T4.2.6.2" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.6.2.1" style="width:55.2pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.6.2.1.1"><span class="ltx_text ltx_font_smallcaps" id="A2.T4.2.6.2.1.1.1">SemanticMatch</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A2.T4.2.6.3" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.6.3.1" style="width:82.8pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.6.3.1.1"><span class="ltx_text ltx_font_typewriter" id="A2.T4.2.6.3.1.1.1">query_content</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.6.3.1.1.2">retrieval_scope</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.6.3.1.1.3">result_budget</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A2.T4.2.6.4" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.6.4.1" style="width:69.0pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.6.4.1.1"><span class="ltx_text ltx_font_typewriter" id="A2.T4.2.6.4.1.1.1">ranked_memory_units</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.6.4.1.1.2">relevance_scores</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A2.T4.2.6.5" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.6.5.1">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.6.5.1.1">Retrieves semantically relevant memory units.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A2.T4.2.7">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A2.T4.2.7.1" style="padding-top:0.75pt;padding-bottom:0.75pt;"></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A2.T4.2.7.2" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.7.2.1" style="width:55.2pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.7.2.1.1"><span class="ltx_text ltx_font_smallcaps" id="A2.T4.2.7.2.1.1.1">EventLocate</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A2.T4.2.7.3" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.7.3.1" style="width:82.8pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.7.3.1.1"><span class="ltx_text ltx_font_typewriter" id="A2.T4.2.7.3.1.1.1">query_content</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.7.3.1.1.2">result_budget</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A2.T4.2.7.4" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.7.4.1" style="width:69.0pt;">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.7.4.1.1"><span class="ltx_text ltx_font_typewriter" id="A2.T4.2.7.4.1.1.1">ranked_memory_units</span>; <span class="ltx_text ltx_font_typewriter" id="A2.T4.2.7.4.1.1.2">relevance_scores</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A2.T4.2.7.5" style="padding-top:0.75pt;padding-bottom:0.75pt;">
+<span class="ltx_inline-block ltx_align_top" id="A2.T4.2.7.5.1">
+<span class="ltx_p ltx_align_left" id="A2.T4.2.7.5.1.1">Locates event occurrences and their surrounding context.</span>
+</span></td></tr>
+</table></figure><figure id="A3.T5"><figcaption>Table 5: Key hyperparameter settings.</figcaption><table class="ltx_tabular ltx_align_middle" id="A3.T5.2">
+<tr class="ltx_tr" id="A3.T5.2.1">
+<td class="ltx_td ltx_align_left ltx_border_tt" id="A3.T5.2.1.1" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.1.1.1">
+<span class="ltx_p ltx_align_left" id="A3.T5.2.1.1.1.1"><span class="ltx_text ltx_font_bold" id="A3.T5.2.1.1.1.1.1">Parameter</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A3.T5.2.1.2" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.1.2.1" style="width:96.6pt;">
+<span class="ltx_p ltx_align_right" id="A3.T5.2.1.2.1.1"><span class="ltx_text ltx_font_bold" id="A3.T5.2.1.2.1.1.1">Setting</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T5.2.2">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A3.T5.2.2.1" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.2.1.1">
+<span class="ltx_p ltx_align_left" id="A3.T5.2.2.1.1.1">Schema support threshold</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A3.T5.2.2.2" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.2.2.1" style="width:96.6pt;">
+<span class="ltx_p ltx_align_right" id="A3.T5.2.2.2.1.1"><math alttext="\theta_{s}=4" class="ltx_Math" display="inline" id="A3.T5.m1" intent=":literal"><semantics><mrow><msub><mi>θ</mi><mi>s</mi></msub><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\theta_{s}=4</annotation></semantics></math> rounds</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T5.2.3">
+<td class="ltx_td ltx_align_left" id="A3.T5.2.3.1" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.3.1.1">
+<span class="ltx_p ltx_align_left" id="A3.T5.2.3.1.1.1">Schema all-confidence threshold</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A3.T5.2.3.2" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.3.2.1" style="width:96.6pt;">
+<span class="ltx_p ltx_align_right" id="A3.T5.2.3.2.1.1"><math alttext="\theta_{a}=0.60" class="ltx_Math" display="inline" id="A3.T5.m2" intent=":literal"><semantics><mrow><msub><mi>θ</mi><mi>a</mi></msub><mo>=</mo><mn>0.60</mn></mrow><annotation encoding="application/x-tex">\theta_{a}=0.60</annotation></semantics></math></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T5.2.4">
+<td class="ltx_td ltx_align_left" id="A3.T5.2.4.1" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.4.1.1">
+<span class="ltx_p ltx_align_left" id="A3.T5.2.4.1.1.1">Schema extension-confidence threshold</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A3.T5.2.4.2" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.4.2.1" style="width:96.6pt;">
+<span class="ltx_p ltx_align_right" id="A3.T5.2.4.2.1.1"><math alttext="\theta_{e}=0.80" class="ltx_Math" display="inline" id="A3.T5.m3" intent=":literal"><semantics><mrow><msub><mi>θ</mi><mi>e</mi></msub><mo>=</mo><mn>0.80</mn></mrow><annotation encoding="application/x-tex">\theta_{e}=0.80</annotation></semantics></math></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T5.2.5">
+<td class="ltx_td ltx_align_left" id="A3.T5.2.5.1" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.5.1.1">
+<span class="ltx_p ltx_align_left" id="A3.T5.2.5.1.1.1">Episode similarity threshold</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A3.T5.2.5.2" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.5.2.1" style="width:96.6pt;">
+<span class="ltx_p ltx_align_right" id="A3.T5.2.5.2.1.1"><math alttext="\theta_{\mathrm{epi}}=0.60" class="ltx_Math" display="inline" id="A3.T5.m4" intent=":literal"><semantics><mrow><msub><mi>θ</mi><mi>epi</mi></msub><mo>=</mo><mn>0.60</mn></mrow><annotation encoding="application/x-tex">\theta_{\mathrm{epi}}=0.60</annotation></semantics></math></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T5.2.6">
+<td class="ltx_td ltx_align_left" id="A3.T5.2.6.1" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.6.1.1">
+<span class="ltx_p ltx_align_left" id="A3.T5.2.6.1.1.1">Topic similarity threshold</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A3.T5.2.6.2" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.6.2.1" style="width:96.6pt;">
+<span class="ltx_p ltx_align_right" id="A3.T5.2.6.2.1.1"><math alttext="\theta_{\mathrm{topic}}=0.65" class="ltx_Math" display="inline" id="A3.T5.m5" intent=":literal"><semantics><mrow><msub><mi>θ</mi><mi>topic</mi></msub><mo>=</mo><mn>0.65</mn></mrow><annotation encoding="application/x-tex">\theta_{\mathrm{topic}}=0.65</annotation></semantics></math></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T5.2.7">
+<td class="ltx_td ltx_align_left" id="A3.T5.2.7.1" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.7.1.1">
+<span class="ltx_p ltx_align_left" id="A3.T5.2.7.1.1.1">Text/visual fusion weights</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A3.T5.2.7.2" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.7.2.1" style="width:96.6pt;">
+<span class="ltx_p ltx_align_right" id="A3.T5.2.7.2.1.1"><math alttext="0.60/0.40" class="ltx_Math" display="inline" id="A3.T5.m6" intent=":literal"><semantics><mrow><mn>0.60</mn><mo>/</mo><mn>0.40</mn></mrow><annotation encoding="application/x-tex">0.60/0.40</annotation></semantics></math></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T5.2.8">
+<td class="ltx_td ltx_align_left" id="A3.T5.2.8.1" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.8.1.1">
+<span class="ltx_p ltx_align_left" id="A3.T5.2.8.1.1.1">Metadata semantic/token weights</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A3.T5.2.8.2" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.8.2.1" style="width:96.6pt;">
+<span class="ltx_p ltx_align_right" id="A3.T5.2.8.2.1.1"><math alttext="0.70/0.30" class="ltx_Math" display="inline" id="A3.T5.m7" intent=":literal"><semantics><mrow><mn>0.70</mn><mo>/</mo><mn>0.30</mn></mrow><annotation encoding="application/x-tex">0.70/0.30</annotation></semantics></math></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T5.2.9">
+<td class="ltx_td ltx_align_left" id="A3.T5.2.9.1" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.9.1.1">
+<span class="ltx_p ltx_align_left" id="A3.T5.2.9.1.1.1">Retrieved table/episode metadata</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A3.T5.2.9.2" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.9.2.1" style="width:96.6pt;">
+<span class="ltx_p ltx_align_right" id="A3.T5.2.9.2.1.1"><math alttext="k_{\mathrm{tab}}=k_{\mathrm{epi}}=5" class="ltx_Math" display="inline" id="A3.T5.m8" intent=":literal"><semantics><mrow><msub><mi>k</mi><mi>tab</mi></msub><mo>=</mo><msub><mi>k</mi><mi>epi</mi></msub><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">k_{\mathrm{tab}}=k_{\mathrm{epi}}=5</annotation></semantics></math></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T5.2.10">
+<td class="ltx_td ltx_align_left" id="A3.T5.2.10.1" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.10.1.1">
+<span class="ltx_p ltx_align_left" id="A3.T5.2.10.1.1.1">Maximum planning steps</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A3.T5.2.10.2" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.10.2.1" style="width:96.6pt;">
+<span class="ltx_p ltx_align_right" id="A3.T5.2.10.2.1.1">3</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T5.2.11">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A3.T5.2.11.1" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.11.1.1">
+<span class="ltx_p ltx_align_left" id="A3.T5.2.11.1.1.1">Shared evidence budget</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A3.T5.2.11.2" style="padding-top:0.4pt;padding-bottom:0.4pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T5.2.11.2.1" style="width:96.6pt;">
+<span class="ltx_p ltx_align_right" id="A3.T5.2.11.2.1.1">10 units</span>
+</span></td></tr>
+</table></figure><figure id="A5.T6"><figcaption>Table 6: A representative analytic table constructed from the MemEye Health task.</figcaption><table class="ltx_tabular ltx_figure_panel ltx_align_middle" id="A5.T6.2">
+<tr class="ltx_tr" id="A5.T6.2.1">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A5.T6.2.1.1" style="padding-top:0.6pt;padding-bottom:0.6pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.2.1.1.1" style="width:41.4pt;">
+<span class="ltx_p ltx_align_left" id="A5.T6.2.1.1.1.1"><span class="ltx_text ltx_font_bold" id="A5.T6.2.1.1.1.1.1">Table name</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_border_tt" id="A5.T6.2.1.2" style="padding-top:0.6pt;padding-bottom:0.6pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.2.1.2.1">
+<span class="ltx_p ltx_align_left" id="A5.T6.2.1.2.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.2.1.2.1.1.1">daily_glucose_dashboard</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A5.T6.2.2">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.2.2.1" style="padding-top:0.6pt;padding-bottom:0.6pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.2.2.1.1" style="width:41.4pt;">
+<span class="ltx_p ltx_align_left" id="A5.T6.2.2.1.1.1"><span class="ltx_text ltx_font_bold" id="A5.T6.2.2.1.1.1.1">Description</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left" id="A5.T6.2.2.2" style="padding-top:0.6pt;padding-bottom:0.6pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.2.2.2.1">
+<span class="ltx_p ltx_align_left" id="A5.T6.2.2.2.1.1">Longitudinal daily-glucose records that support exact comparison and aggregation of recurring glucose patterns, behavioral targets, and time-in-range trends across interactions.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A5.T6.2.3">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A5.T6.2.3.1" style="padding-top:0.6pt;padding-bottom:0.6pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.2.3.1.1" style="width:41.4pt;">
+<span class="ltx_p ltx_align_left" id="A5.T6.2.3.1.1.1"><span class="ltx_text ltx_font_bold" id="A5.T6.2.3.1.1.1.1">Columns</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_border_bb" id="A5.T6.2.3.2" style="padding-top:0.6pt;padding-bottom:0.6pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.2.3.2.1">
+<span class="ltx_p ltx_align_left" id="A5.T6.2.3.2.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.2.3.2.1.1.1">source</span>, <span class="ltx_text ltx_font_typewriter" id="A5.T6.2.3.2.1.1.2">round_order</span>, <span class="ltx_text ltx_font_typewriter" id="A5.T6.2.3.2.1.1.3">captions</span>, <span class="ltx_text ltx_font_typewriter" id="A5.T6.2.3.2.1.1.4">date</span>, <span class="ltx_text ltx_font_typewriter" id="A5.T6.2.3.2.1.1.5">evening_drift</span>, <span class="ltx_text ltx_font_typewriter" id="A5.T6.2.3.2.1.1.6">late_window</span>, <span class="ltx_text ltx_font_typewriter" id="A5.T6.2.3.2.1.1.7">meal_variability</span>, <span class="ltx_text ltx_font_typewriter" id="A5.T6.2.3.2.1.1.8">morning_response</span>, <span class="ltx_text ltx_font_typewriter" id="A5.T6.2.3.2.1.1.9">movement_goal</span>, and <span class="ltx_text ltx_font_typewriter" id="A5.T6.2.3.2.1.1.10">time_range</span>.</span>
+</span></td></tr>
+</table><table class="ltx_tabular ltx_figure_panel ltx_align_middle" id="A5.T6.3">
+<tr class="ltx_tr" id="A5.T6.3.1">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A5.T6.3.1.1" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.1.1.1" style="width:35.2pt;">
+<span class="ltx_p ltx_align_left" id="A5.T6.3.1.1.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.3.1.1.1.1.1">source</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A5.T6.3.1.2" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.1.2.1" style="width:17.3pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.1.2.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.3.1.2.1.1.1">round
+<br class="ltx_break"/>_order</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_tt" id="A5.T6.3.1.3" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.1.3.1">
+<span class="ltx_p ltx_align_left" id="A5.T6.3.1.3.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.3.1.3.1.1.1">captions</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A5.T6.3.1.4" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.1.4.1" style="width:20.7pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.1.4.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.3.1.4.1.1.1">evening
+<br class="ltx_break"/>_drift</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A5.T6.3.1.5" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.1.5.1" style="width:17.9pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.1.5.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.3.1.5.1.1.1">late
+<br class="ltx_break"/>_window</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A5.T6.3.1.6" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.1.6.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.1.6.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.3.1.6.1.1.1">meal
+<br class="ltx_break"/>_vari...</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A5.T6.3.1.7" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.1.7.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.1.7.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.3.1.7.1.1.1">morning
+<br class="ltx_break"/>_response</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A5.T6.3.1.8" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.1.8.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.1.8.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.3.1.8.1.1.1">movement
+<br class="ltx_break"/>_goal</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top ltx_border_tt" id="A5.T6.3.1.9" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.1.9.1" style="width:19.0pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.1.9.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.3.1.9.1.1.1">time
+<br class="ltx_break"/>_range</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A5.T6.3.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A5.T6.3.2.1" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.2.1.1" style="width:35.2pt;">
+<span class="ltx_p ltx_align_left" id="A5.T6.3.2.1.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.3.2.1.1.1.1">HEALTH_S1:R2</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A5.T6.3.2.2" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.2.2.1" style="width:17.3pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.2.2.1.1">1</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T6.3.2.3" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.2.3.1">
+<span class="ltx_p ltx_align_left" id="A5.T6.3.2.3.1.1">Daily dashboard showing … stable glucose trends</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A5.T6.3.2.4" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.2.4.1" style="width:20.7pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.2.4.1.1">2.8</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A5.T6.3.2.5" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.2.5.1" style="width:17.9pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.2.5.1.1">47.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A5.T6.3.2.6" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.2.6.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.2.6.1.1">19.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A5.T6.3.2.7" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.2.7.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.2.7.1.1">84.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A5.T6.3.2.8" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.2.8.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.2.8.1.1">66.0</span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top ltx_border_t" id="A5.T6.3.2.9" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.2.9.1" style="width:19.0pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.2.9.1.1">82.0</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A5.T6.3.3">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.3.1" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.3.1.1" style="width:35.2pt;">
+<span class="ltx_p ltx_align_left" id="A5.T6.3.3.1.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.3.3.1.1.1.1">HEALTH_S1:R3</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.3.2" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.3.2.1" style="width:17.3pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.3.2.1.1">2</span>
+</span></td>
+<td class="ltx_td ltx_align_left" id="A5.T6.3.3.3" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.3.3.1">
+<span class="ltx_p ltx_align_left" id="A5.T6.3.3.3.1.1">A sleek daily … time in range</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.3.4" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.3.4.1" style="width:20.7pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.3.4.1.1">4.3</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.3.5" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.3.5.1" style="width:17.9pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.3.5.1.1">57.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.3.6" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.3.6.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.3.6.1.1">16.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.3.7" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.3.7.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.3.7.1.1">84.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.3.8" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.3.8.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.3.8.1.1">66.0</span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top" id="A5.T6.3.3.9" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.3.9.1" style="width:19.0pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.3.9.1.1">80.0</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A5.T6.3.4">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.4.1" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.4.1.1" style="width:35.2pt;">
+<span class="ltx_p ltx_align_left" id="A5.T6.3.4.1.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.3.4.1.1.1.1">HEALTH_S1:R6</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.4.2" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.4.2.1" style="width:17.3pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.4.2.1.1">5</span>
+</span></td>
+<td class="ltx_td ltx_align_left" id="A5.T6.3.4.3" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.4.3.1">
+<span class="ltx_p ltx_align_left" id="A5.T6.3.4.3.1.1">Daily Glucose Dashboard … stable glucose trends</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.4.4" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.4.4.1" style="width:20.7pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.4.4.1.1">2.1</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.4.5" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.4.5.1" style="width:17.9pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.4.5.1.1">57.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.4.6" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.4.6.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.4.6.1.1">12.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.4.7" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.4.7.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.4.7.1.1">84.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.4.8" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.4.8.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.4.8.1.1">66.0</span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top" id="A5.T6.3.4.9" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.4.9.1" style="width:19.0pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.4.9.1.1">92.0</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A5.T6.3.5">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.5.1" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.5.1.1" style="width:35.2pt;">
+<span class="ltx_p ltx_align_left" id="A5.T6.3.5.1.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.3.5.1.1.1.1">HEALTH_S6:R5</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.5.2" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.5.2.1" style="width:17.3pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.5.2.1.1">42</span>
+</span></td>
+<td class="ltx_td ltx_align_left" id="A5.T6.3.5.3" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.5.3.1">
+<span class="ltx_p ltx_align_left" id="A5.T6.3.5.3.1.1">Daily dashboard showing … metrics for meals</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.5.4" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.5.4.1" style="width:20.7pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.5.4.1.1">2.2</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.5.5" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.5.5.1" style="width:17.9pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.5.5.1.1">57.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.5.6" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.5.6.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.5.6.1.1">27.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.5.7" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.5.7.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.5.7.1.1">84.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.5.8" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.5.8.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.5.8.1.1">66.0</span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top" id="A5.T6.3.5.9" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.5.9.1" style="width:19.0pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.5.9.1.1">90.0</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A5.T6.3.6">
+<td class="ltx_td ltx_align_center ltx_align_top" colspan="9" id="A5.T6.3.6.1" style="padding:0.6pt 2.2pt;"><span class="ltx_text" id="A5.T6.3.6.1.1" style="position:relative; bottom:1.0pt;"><math alttext="\boldsymbol{\cdots}" class="ltx_Math" display="inline" id="A5.T6.m1" intent=":literal"><semantics><mo class="ltx_mathvariant_bold" mathvariant="bold">⋯</mo><annotation encoding="application/x-tex">\boldsymbol{\cdots}</annotation></semantics></math></span></td></tr>
+<tr class="ltx_tr" id="A5.T6.3.7">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.7.1" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.7.1.1" style="width:35.2pt;">
+<span class="ltx_p ltx_align_left" id="A5.T6.3.7.1.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.3.7.1.1.1.1">HEALTH_S8:R6</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.7.2" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.7.2.1" style="width:17.3pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.7.2.1.1">60</span>
+</span></td>
+<td class="ltx_td ltx_align_left" id="A5.T6.3.7.3" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.7.3.1">
+<span class="ltx_p ltx_align_left" id="A5.T6.3.7.3.1.1">A digital daily … time in range</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.7.4" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.7.4.1" style="width:20.7pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.7.4.1.1">4.3</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.7.5" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.7.5.1" style="width:17.9pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.7.5.1.1">57.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.7.6" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.7.6.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.7.6.1.1">17.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.7.7" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.7.7.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.7.7.1.1">84.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T6.3.7.8" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.7.8.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.7.8.1.1">66.0</span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top" id="A5.T6.3.7.9" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.7.9.1" style="width:19.0pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.7.9.1.1">91.0</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A5.T6.3.8">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A5.T6.3.8.1" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.8.1.1" style="width:35.2pt;">
+<span class="ltx_p ltx_align_left" id="A5.T6.3.8.1.1.1"><span class="ltx_text ltx_font_typewriter" id="A5.T6.3.8.1.1.1.1">HEALTH_S12:R8</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A5.T6.3.8.2" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.8.2.1" style="width:17.3pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.8.2.1.1">94</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A5.T6.3.8.3" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.8.3.1">
+<span class="ltx_p ltx_align_left" id="A5.T6.3.8.3.1.1">A daily glucose … time in range</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A5.T6.3.8.4" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.8.4.1" style="width:20.7pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.8.4.1.1">1.3</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A5.T6.3.8.5" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.8.5.1" style="width:17.9pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.8.5.1.1">57.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A5.T6.3.8.6" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.8.6.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.8.6.1.1">19.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A5.T6.3.8.7" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.8.7.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.8.7.1.1">84.0</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A5.T6.3.8.8" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.8.8.1" style="width:24.2pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.8.8.1.1">66.0</span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top ltx_border_bb" id="A5.T6.3.8.9" style="padding:0.6pt 2.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T6.3.8.9.1" style="width:19.0pt;">
+<span class="ltx_p ltx_align_center" id="A5.T6.3.8.9.1.1">82.0</span>
+</span></td></tr>
+</table></figure></html>

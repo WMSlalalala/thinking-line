@@ -1,0 +1,877 @@
+<p><a href="/notes/gui-odyssey/">← 返回阅读笔记 / Back to reading note</a></p><meta content="width=device-width, initial-scale=1" name="viewport"/><!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8"/><title>GUIOdyssey: A Comprehensive Dataset for Cross-App GUI Navigation on Mobile Devices (OdysseyAgent)</title><style>body{font:16px system-ui;margin:35px;line-height:1.6}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:7px}figure{overflow:auto;margin:30px 0}figcaption{font-weight:600}</style><h1>P001 原表</h1><p>来源：<a href="https://arxiv.org/html/2406.08451">作者原文</a>。2026-09-07抓取，原始行列，不是统一复跑成绩。</p><figure id="S2.T1"><figcaption>Table 1 : GUI navigation dataset comparison. GUIOdyssey is a comprehensive cross-app GUI navigation dataset with over 8 8 k+ episodes, featuring an average of 15.3 15.3 steps, which is the longest among mobile GUI datasets, and includes a diverse range of devices such as tablets.</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="S2.T1.5.1">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="S2.T1.5.1.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_r ltx_border_tt" id="S2.T1.5.1.1.1"><span class="ltx_text ltx_font_bold" id="S2.T1.5.1.1.1.1">Dataset</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S2.T1.5.1.1.2"><span class="ltx_text ltx_font_bold" id="S2.T1.5.1.1.2.1"># Episodes</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S2.T1.5.1.1.3"><span class="ltx_text ltx_font_bold" id="S2.T1.5.1.1.3.1"># Unique <math alttext="\bm{I_{user}}" class="ltx_Math" display="inline" id="S2.T1.m5" intent=":literal"><semantics><msub><mi>I</mi><mrow><mi>u</mi><mo lspace="0em" rspace="0em">​</mo><mi>s</mi><mo lspace="0em" rspace="0em">​</mo><mi>e</mi><mo lspace="0em" rspace="0em">​</mo><mi>r</mi></mrow></msub><annotation encoding="application/x-tex">\bm{I_{user}}</annotation></semantics></math></span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S2.T1.5.1.1.4"><span class="ltx_text ltx_font_bold" id="S2.T1.5.1.1.4.1"># Avg. Steps</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S2.T1.5.1.1.5"><span class="ltx_text ltx_font_bold" id="S2.T1.5.1.1.5.1">Cross-app?</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S2.T1.5.1.1.6"><span class="ltx_text ltx_font_bold" id="S2.T1.5.1.1.6.1">Platform</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S2.T1.5.1.1.7"><span class="ltx_text ltx_font_bold" id="S2.T1.5.1.1.7.1"># Domains</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S2.T1.5.1.1.8"><span class="ltx_text ltx_font_bold" id="S2.T1.5.1.1.8.1">Instruction Level</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S2.T1.5.1.1.9"><span class="ltx_text ltx_font_bold" id="S2.T1.5.1.1.9.1">Semantic Annotation</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S2.T1.5.1.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r ltx_border_t" id="S2.T1.5.1.2.1">Mind2Web  <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="https://arxiv.org/html/2406.08451#bib.bib17" title="">17</a>]</cite></th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.5.1.2.2">2,350</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.5.1.2.3">2,350</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.5.1.2.4">7.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.5.1.2.5">✗</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.5.1.2.6">Web</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.5.1.2.7">137 sites</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.5.1.2.8">high</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.5.1.2.9">✗</td></tr>
+<tr class="ltx_tr" id="S2.T1.5.1.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S2.T1.5.1.3.1">WebLINX  <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="https://arxiv.org/html/2406.08451#bib.bib32" title="">32</a>]</cite></th>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.3.2">2,337</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.3.3">2,337</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.3.4">43.0</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.3.5">✗</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.3.6">Web</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.3.7">155 sites</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.3.8">high</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.3.9">✗</td></tr>
+<tr class="ltx_tr" id="S2.T1.5.1.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S2.T1.5.1.4.1">PixelHelp <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="https://arxiv.org/html/2406.08451#bib.bib27" title="">27</a>]</cite></th>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.4.2">187</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.4.3">187</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.4.4">4.2</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.4.5">✗</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.4.6">Phone</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.4.7">4 apps</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.4.8">high &amp; low</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.4.9">✗</td></tr>
+<tr class="ltx_tr" id="S2.T1.5.1.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S2.T1.5.1.5.1">MoTIF <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="https://arxiv.org/html/2406.08451#bib.bib8" title="">8</a>]</cite></th>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.5.2">4,707</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.5.3">276</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.5.4">4.5</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.5.5">✗</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.5.6">Phone</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.5.7">125 apps</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.5.8">high &amp; low</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.5.9">✗</td></tr>
+<tr class="ltx_tr" id="S2.T1.5.1.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S2.T1.5.1.6.1">UGIF <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="https://arxiv.org/html/2406.08451#bib.bib47" title="">47</a>]</cite></th>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.6.2">523</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.6.3">480</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.6.4">5.3</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.6.5">✗</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.6.6">Phone</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.6.7">12 apps</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.6.8">high &amp; low</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.6.9">✓</td></tr>
+<tr class="ltx_tr" id="S2.T1.5.1.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S2.T1.5.1.7.1">Meta-GUI</th>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.7.2">4,684</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.7.3">1,125</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.7.4">5.3</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.7.5">✗</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.7.6">Phone</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.7.7">11 apps</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.7.8">high</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.7.9">✗</td></tr>
+<tr class="ltx_tr" id="S2.T1.5.1.8">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S2.T1.5.1.8.1">AITW  <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="https://arxiv.org/html/2406.08451#bib.bib66" title="">66</a>]</cite></th>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.8.2">715,142</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.8.3">30,378</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.8.4">6.5</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.8.5">✗</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.8.6">Phone</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.8.7">159 apps, 198+ sites</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.8.8">high</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.8.9">✗</td></tr>
+<tr class="ltx_tr" id="S2.T1.5.1.9">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S2.T1.5.1.9.1">AITZ  <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="https://arxiv.org/html/2406.08451#bib.bib66" title="">66</a>]</cite></th>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.9.2">2,504</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.9.3">2,504</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.9.4">7.5</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.9.5">✗</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.9.6">Phone</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.9.7">70+ apps</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.9.8">high</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.9.9">✓</td></tr>
+<tr class="ltx_tr" id="S2.T1.5.1.10">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S2.T1.5.1.10.1">AndroidControl  <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="https://arxiv.org/html/2406.08451#bib.bib26" title="">26</a>]</cite></th>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.10.2">15,283</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.10.3">14,548</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.10.4">5.5</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.10.5">✗</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.10.6">Phone</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.10.7">833 apps</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.10.8">high &amp; low</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.10.9">✗</td></tr>
+<tr class="ltx_tr" id="S2.T1.5.1.11">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S2.T1.5.1.11.1">AMEX  <cite class="ltx_cite ltx_citemacro_cite">[<a class="ltx_ref" href="https://arxiv.org/html/2406.08451#bib.bib9" title="">9</a>]</cite></th>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.11.2">2,946</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.11.3">2,946</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.11.4">12.8</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.11.5">✗</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.11.6">Phone</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.11.7">110 apps</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.11.8">high</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.5.1.11.9">✓</td></tr>
+<tr class="ltx_tr" id="S2.T1.5.1.12">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb ltx_border_r ltx_border_t" id="S2.T1.5.1.12.1"><span class="ltx_text ltx_font_bold" id="S2.T1.5.1.12.1.1">GUIOdyssey</span></th>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S2.T1.5.1.12.2">8,334</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S2.T1.5.1.12.3">8,334</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S2.T1.5.1.12.4">15.3</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S2.T1.5.1.12.5">✓</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S2.T1.5.1.12.6">Phone &amp; Tablet</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S2.T1.5.1.12.7">212 apps, 1,357 app combos</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S2.T1.5.1.12.8">high &amp; low</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S2.T1.5.1.12.9">✓</td></tr>
+</tbody>
+</table></figure><figure id="S5.T2"><figcaption>Table 2 : Results of different LVLMs on Test-Random split. The evaluation metric is the action matching score (AMS). ‘HL’ and ‘LL’ indicate that the task instruction is high-level and low-level, respectively. ∗ indicates that agent’s training also includes semantic annotations.</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="S5.T2.6.1">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S5.T2.6.1.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r ltx_border_tt" id="S5.T2.6.1.1.1" rowspan="2"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.1.1.1">Model</span></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" colspan="2" id="S5.T2.6.1.1.2"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.1.2.1">Tool</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" colspan="2" id="S5.T2.6.1.1.3"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.1.3.1">Information</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" colspan="2" id="S5.T2.6.1.1.4"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.1.4.1">Shopping</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" colspan="2" id="S5.T2.6.1.1.5"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.1.5.1">Media</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" colspan="2" id="S5.T2.6.1.1.6"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.1.6.1">Social</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" colspan="2" id="S5.T2.6.1.1.7"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.1.7.1">Multi-Apps</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="2" id="S5.T2.6.1.1.8"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.1.8.1">Overall</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.2">
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.2.1">HL</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.2.2">LL</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.2.3">HL</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.2.4">LL</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.2.5">HL</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.2.6">LL</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.2.7">HL</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.2.8">LL</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.2.9">HL</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.2.10">LL</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.2.11">HL</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.2.12">LL</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.2.13">HL</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.2.14">LL</td></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.3">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_t" colspan="15" id="S5.T2.6.1.3.1"><span class="ltx_text ltx_font_italic" id="S5.T2.6.1.3.1.1">zero-shot</span></th></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S5.T2.6.1.4.1">GPT-4V</th>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.4.2">14.93</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.4.3">40.86</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.4.4">14.69</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.4.5">38.56</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.4.6">12.17</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.4.7">36.04</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.4.8">10.80</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.4.9">48.40</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.4.10">16.79</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.4.11">43.21</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.4.12">11.54</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.4.13">40.61</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.4.14">13.49</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.4.15">41.28</td></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S5.T2.6.1.5.1">GPT-4o</th>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.5.2">14.15</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.5.3">38.11</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.5.4">13.86</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.5.5"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.5.5.1">42.40</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.5.6">11.69</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.5.7">40.57</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.5.8">12.00</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.5.9">52.40</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.5.10"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.5.10.1">18.14</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.5.11"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.5.11.1">44.44</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.5.12">9.28</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.5.13">38.35</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.5.14">13.19</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.5.15">42.71</td></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S5.T2.6.1.6.1">Claude3.5-sonnet</th>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.6.2"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.6.2.1">22.99</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.6.3">40.28</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.6.4">14.69</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.6.5">34.56</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.6.6">12.17</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.6.7">31.03</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.6.8">14.00</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.6.9">37.60</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.6.10">16.79</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.6.11">30.62</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.6.12">14.14</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.6.13">31.00</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.6.14">15.80</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.6.15">34.18</td></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S5.T2.6.1.7.1">InternVL2-Pro</th>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.7.2">19.45</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.7.3"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.7.3.1">49.51</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.7.4">15.86</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.7.5">40.23</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.7.6"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.7.6.1">17.18</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.7.7"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.7.7.1">41.05</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.7.8">13.20</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.7.9"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.7.9.1">51.60</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.7.10">14.81</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.7.11">40.00</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.7.12"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.7.12.1">15.72</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.7.13"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.7.13.1">41.52</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.7.14"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.7.14.1">16.04</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.7.15"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.7.15.1">43.98</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.8">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S5.T2.6.1.8.1">CogAgent</th>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.8.2">18.81</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.8.3">33.52</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.8.4">12.35</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.8.5">29.79</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.8.6">13.02</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.8.7">26.89</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.8.8">12.63</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.8.9">25.80</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.8.10">14.72</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.8.11">33.54</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.8.12">12.15</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.8.13">33.09</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.8.14">13.95</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.8.15">30.44</td></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.9">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S5.T2.6.1.9.1">SphAgent</th>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.9.2">22.24</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.9.3">36.81</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.9.4"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.9.4.1">17.43</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.9.5">29.95</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.9.6">13.60</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.9.7">25.08</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.9.8"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.9.8.1">15.54</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.9.9">33.03</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.9.10">14.20</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.9.11">28.83</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.9.12">12.89</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.9.13">26.32</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.9.14">15.98</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.9.15">30.00</td></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.10">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_t" colspan="15" id="S5.T2.6.1.10.1"><span class="ltx_text ltx_font_italic" id="S5.T2.6.1.10.1.1">zero-shot with OmniParser</span></th></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.11">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S5.T2.6.1.11.1">GPT-4V</th>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.11.2">24.37</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.11.3">56.03</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.11.4">22.44</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.11.5">51.10</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.11.6">17.16</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.11.7">46.75</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.11.8">18.65</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.11.9">62.18</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.11.10">32.28</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.11.11">59.18</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.11.12">24.21</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.11.13">54.58</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.11.14">23.18</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.11.15">54.97</td></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.12">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S5.T2.6.1.12.1">GPT-4o</th>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.12.2">26.63</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.12.3">55.28</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.12.4">23.45</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.12.5">53.91</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.12.6">18.34</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.12.7">47.63</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.12.8">19.17</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.12.9">63.21</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.12.10">31.01</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.12.11">61.08</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.12.12">23.39</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.12.13">55.95</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.12.14">23.67</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.12.15">56.18</td></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.13">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S5.T2.6.1.13.1">Claude3.5-sonnet</th>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.13.2"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.13.2.1">39.20</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.13.3"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.13.3.1">64.07</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.13.4"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.13.4.1">28.46</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.13.5"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.13.5.1">61.92</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.13.6"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.13.6.1">27.22</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.13.7"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.13.7.1">56.51</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.13.8"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.13.8.1">28.50</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.13.9"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.13.9.1">66.84</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.13.10"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.13.10.1">40.82</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.13.11"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.13.11.1">68.99</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.13.12"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.13.12.1">33.11</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.13.13"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.13.13.1">65.12</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.13.14"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.13.14.1">32.88</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.13.15"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.13.15.1">63.91</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.14">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S5.T2.6.1.14.1">InternVL2-Pro</th>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.14.2">16.58</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.14.3">58.04</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.14.4">16.03</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.14.5">51.30</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.14.6">8.88</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.14.7">49.70</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.14.8">16.58</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.14.9">60.62</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.14.10">16.14</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.14.11">53.80</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.14.12">13.95</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.14.13">52.39</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.14.14">14.69</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.14.15">54.31</td></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.15">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_t" colspan="15" id="S5.T2.6.1.15.1"><span class="ltx_text ltx_font_italic" id="S5.T2.6.1.15.1.1">fine-tuned</span></th></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.16">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S5.T2.6.1.16.1">Qwen-VL</th>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.16.2">85.55</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.16.3">90.79</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.16.4">68.04</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.16.5">83.36</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.16.6">62.28</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.16.7">80.67</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.16.8">77.56</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.16.9">88.15</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.16.10">80.29</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.16.11"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.16.11.1">88.36</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.16.12">74.27</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.16.13">86.56</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.16.14">74.67</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.16.15">86.32</td></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.17">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S5.T2.6.1.17.1"><math alttext="{\text{Qwen-VL}}^{\ast}" class="ltx_Math" display="inline" id="S5.T2.m3" intent=":literal"><semantics><msup><mtext>Qwen-VL</mtext><mo>∗</mo></msup><annotation encoding="application/x-tex">{\text{Qwen-VL}}^{\ast}</annotation></semantics></math></th>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.17.2">86.35</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.17.3">90.99</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.17.4"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.17.4.1">72.01</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.17.5">85.77</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.17.6">67.31</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.17.7">82.86</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.17.8">80.33</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.17.9">89.48</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.17.10">82.39</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.17.11">88.01</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.17.12">77.52</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.17.13"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.17.13.1">89.40</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.17.14">77.65</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.17.15">87.78</td></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.18">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S5.T2.6.1.18.1"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.18.1.1">OdysseyAgent</span></th>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.18.2">86.01</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.18.3">91.21</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.18.4">69.83</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.18.5">83.37</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.18.6">65.19</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.18.7">82.63</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.18.8">77.10</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.18.9">88.55</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.18.10">81.47</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.18.11">87.66</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.18.12">75.13</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T2.6.1.18.13">87.84</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.18.14">75.79</td>
+<td class="ltx_td ltx_align_center" id="S5.T2.6.1.18.15">86.88</td></tr>
+<tr class="ltx_tr" id="S5.T2.6.1.19">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb ltx_border_r" id="S5.T2.6.1.19.1"><math alttext="{\textbf{OdysseyAgent}}^{\ast}" class="ltx_Math" display="inline" id="S5.T2.m4" intent=":literal"><semantics><msup><mtext class="ltx_mathvariant_bold">OdysseyAgent</mtext><mo>∗</mo></msup><annotation encoding="application/x-tex">{\textbf{OdysseyAgent}}^{\ast}</annotation></semantics></math></th>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.6.1.19.2"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.19.2.1">86.82</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r" id="S5.T2.6.1.19.3"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.19.3.1">91.25</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.6.1.19.4">71.79</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r" id="S5.T2.6.1.19.5"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.19.5.1">86.58</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.6.1.19.6"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.19.6.1">68.58</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r" id="S5.T2.6.1.19.7"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.19.7.1">83.74</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.6.1.19.8"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.19.8.1">80.93</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r" id="S5.T2.6.1.19.9"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.19.9.1">89.66</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.6.1.19.10"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.19.10.1">82.88</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r" id="S5.T2.6.1.19.11">88.27</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.6.1.19.12"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.19.12.1">78.47</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r" id="S5.T2.6.1.19.13">89.39</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.6.1.19.14"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.19.14.1">78.24</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.6.1.19.15"><span class="ltx_text ltx_font_bold" id="S5.T2.6.1.19.15.1">88.15</span></td></tr>
+</tbody>
+</table></figure><figure id="S5.T3"><figcaption>Table 3 : OdyssseyAgent’s performance on out-of-domain tasks. ‘Semantic?’ indicates whether the model’s training includes semantic annotations. ‘HL’ and ‘LL’ indicate that the task instruction is high-level and low-level, respectively.</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="S5.T3.5.1">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S5.T3.5.1.1">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_tt" id="S5.T3.5.1.1.1" rowspan="2"><span class="ltx_text ltx_font_bold" id="S5.T3.5.1.1.1.1">Semantic?</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_tt" id="S5.T3.5.1.1.2"><span class="ltx_text ltx_font_bold" id="S5.T3.5.1.1.2.1">Task</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="2" id="S5.T3.5.1.1.3"><span class="ltx_text ltx_font_bold" id="S5.T3.5.1.1.3.1">Test-Task</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="2" id="S5.T3.5.1.1.4"><span class="ltx_text ltx_font_bold" id="S5.T3.5.1.1.4.1">Test-Device</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_tt" colspan="2" id="S5.T3.5.1.1.5"><span class="ltx_text ltx_font_bold" id="S5.T3.5.1.1.5.1">Test-App</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="2" id="S5.T3.5.1.1.6"><span class="ltx_text ltx_font_bold" id="S5.T3.5.1.1.6.1">Overall</span></th></tr>
+<tr class="ltx_tr" id="S5.T3.5.1.2">
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T3.5.1.2.1"><span class="ltx_text ltx_font_bold" id="S5.T3.5.1.2.1.1">Level</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T3.5.1.2.2">AMS</td>
+<td class="ltx_td ltx_align_center" id="S5.T3.5.1.2.3">SR</td>
+<td class="ltx_td ltx_align_center" id="S5.T3.5.1.2.4">AMS</td>
+<td class="ltx_td ltx_align_center" id="S5.T3.5.1.2.5">SR</td>
+<td class="ltx_td ltx_align_center" id="S5.T3.5.1.2.6">AMS</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T3.5.1.2.7">SR</td>
+<td class="ltx_td ltx_align_center" id="S5.T3.5.1.2.8">AMS</td>
+<td class="ltx_td ltx_align_center" id="S5.T3.5.1.2.9">SR</td></tr>
+<tr class="ltx_tr" id="S5.T3.5.1.3">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" id="S5.T3.5.1.3.1" rowspan="2"><span class="ltx_text" id="S5.T3.5.1.3.1.1">✗</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" id="S5.T3.5.1.3.2">HL</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T3.5.1.3.3">54.36</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T3.5.1.3.4">0.09</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T3.5.1.3.5">61.20</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T3.5.1.3.6">1.88</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T3.5.1.3.7">63.03</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" id="S5.T3.5.1.3.8">7.70</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T3.5.1.3.9">59.53</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T3.5.1.3.10">3.22</th></tr>
+<tr class="ltx_tr" id="S5.T3.5.1.4">
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T3.5.1.4.1">LL</td>
+<td class="ltx_td ltx_align_center" id="S5.T3.5.1.4.2">78.97</td>
+<td class="ltx_td ltx_align_center" id="S5.T3.5.1.4.3">2.20</td>
+<td class="ltx_td ltx_align_center" id="S5.T3.5.1.4.4">79.66</td>
+<td class="ltx_td ltx_align_center" id="S5.T3.5.1.4.5">8.47</td>
+<td class="ltx_td ltx_align_center" id="S5.T3.5.1.4.6">84.24</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T3.5.1.4.7">20.70</td>
+<td class="ltx_td ltx_align_center" id="S5.T3.5.1.4.8">80.96</td>
+<td class="ltx_td ltx_align_center" id="S5.T3.5.1.4.9">10.46</td></tr>
+<tr class="ltx_tr" id="S5.T3.5.1.5">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_bb ltx_border_r ltx_border_t" id="S5.T3.5.1.5.1" rowspan="2"><span class="ltx_text" id="S5.T3.5.1.5.1.1">✓</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" id="S5.T3.5.1.5.2">HL</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T3.5.1.5.3">56.19</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T3.5.1.5.4">0.26</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T3.5.1.5.5">66.63</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T3.5.1.5.6">5.07</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T3.5.1.5.7">65.89</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" id="S5.T3.5.1.5.8">8.81</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T3.5.1.5.9">62.90</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T3.5.1.5.10">4.71</th></tr>
+<tr class="ltx_tr" id="S5.T3.5.1.6">
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r" id="S5.T3.5.1.6.1">LL</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T3.5.1.6.2">80.19</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T3.5.1.6.3">2.29</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T3.5.1.6.4">79.93</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T3.5.1.6.5">11.66</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T3.5.1.6.6">83.47</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r" id="S5.T3.5.1.6.7">20.02</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T3.5.1.6.8">81.20</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T3.5.1.6.9">11.32</td></tr>
+</tbody>
+</table></figure><figure id="S5.T4"><figcaption>Table 4 : The impact of different historical components in GUIOdyssey across four splits. High-level instructions are used for both training and evaluation, and performance is measured by AMS and SR.</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="S5.T4.5.1">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="S5.T4.5.1.1">
+<th class="ltx_td ltx_th ltx_th_column ltx_border_r ltx_border_tt" id="S5.T4.5.1.1.1"></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_tt" colspan="3" id="S5.T4.5.1.1.2"><span class="ltx_text ltx_font_bold" id="S5.T4.5.1.1.2.1">Historical Information</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_tt" colspan="2" id="S5.T4.5.1.1.3"><span class="ltx_text ltx_font_bold" id="S5.T4.5.1.1.3.1">Test-Random</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_tt" colspan="2" id="S5.T4.5.1.1.4"><span class="ltx_text ltx_font_bold" id="S5.T4.5.1.1.4.1">Test-Task</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_tt" colspan="2" id="S5.T4.5.1.1.5"><span class="ltx_text ltx_font_bold" id="S5.T4.5.1.1.5.1">Test-Device</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_tt" colspan="2" id="S5.T4.5.1.1.6"><span class="ltx_text ltx_font_bold" id="S5.T4.5.1.1.6.1">Test-App</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="2" id="S5.T4.5.1.1.7"><span class="ltx_text ltx_font_bold" id="S5.T4.5.1.1.7.1">Overall</span></th></tr>
+<tr class="ltx_tr" id="S5.T4.5.1.2">
+<th class="ltx_td ltx_th ltx_th_column ltx_border_r" id="S5.T4.5.1.2.1"></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column" id="S5.T4.5.1.2.2">action</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column" id="S5.T4.5.1.2.3">screenshot</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r" id="S5.T4.5.1.2.4">context</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column" id="S5.T4.5.1.2.5">AMS</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r" id="S5.T4.5.1.2.6">SR</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column" id="S5.T4.5.1.2.7">AMS</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r" id="S5.T4.5.1.2.8">SR</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column" id="S5.T4.5.1.2.9">AMS</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r" id="S5.T4.5.1.2.10">SR</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column" id="S5.T4.5.1.2.11">AMS</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r" id="S5.T4.5.1.2.12">SR</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column" id="S5.T4.5.1.2.13">AMS</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column" id="S5.T4.5.1.2.14">SR</th></tr>
+<tr class="ltx_tr" id="S5.T4.5.1.3">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" id="S5.T4.5.1.3.1">(1)</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T4.5.1.3.2">✗</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T4.5.1.3.3">✗</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" id="S5.T4.5.1.3.4">✗</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T4.5.1.3.5">66.13</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" id="S5.T4.5.1.3.6">1.65</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T4.5.1.3.7">47.62</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" id="S5.T4.5.1.3.8">0.00</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T4.5.1.3.9">54.15</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" id="S5.T4.5.1.3.10">0.72</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T4.5.1.3.11">54.49</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t" id="S5.T4.5.1.3.12">3.59</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T4.5.1.3.13">55.60</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S5.T4.5.1.3.14">1.49</th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S5.T4.5.1.4">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S5.T4.5.1.4.1">(2)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T4.5.1.4.2">✓</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T4.5.1.4.3">✗</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S5.T4.5.1.4.4">✗</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T4.5.1.4.5">74.67</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S5.T4.5.1.4.6">9.70</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T4.5.1.4.7">55.00</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S5.T4.5.1.4.8">0.00</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T4.5.1.4.9">62.03</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S5.T4.5.1.4.10">2.03</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T4.5.1.4.11">62.06</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S5.T4.5.1.4.12"><span class="ltx_text ltx_font_bold" id="S5.T4.5.1.4.12.1">8.98</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T4.5.1.4.13">63.44</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T4.5.1.4.14">5.18</td></tr>
+<tr class="ltx_tr" id="S5.T4.5.1.5">
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T4.5.1.5.1">(3)</td>
+<td class="ltx_td ltx_align_center" id="S5.T4.5.1.5.2">✗</td>
+<td class="ltx_td ltx_align_center" id="S5.T4.5.1.5.3">✓</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T4.5.1.5.4">✗</td>
+<td class="ltx_td ltx_align_center" id="S5.T4.5.1.5.5">71.22</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T4.5.1.5.6">6.69</td>
+<td class="ltx_td ltx_align_center" id="S5.T4.5.1.5.7">51.69</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T4.5.1.5.8">0.09</td>
+<td class="ltx_td ltx_align_center" id="S5.T4.5.1.5.9">59.12</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T4.5.1.5.10">2.24</td>
+<td class="ltx_td ltx_align_center" id="S5.T4.5.1.5.11">59.16</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T4.5.1.5.12">7.78</td>
+<td class="ltx_td ltx_align_center" id="S5.T4.5.1.5.13">60.30</td>
+<td class="ltx_td ltx_align_center" id="S5.T4.5.1.5.14">4.20</td></tr>
+<tr class="ltx_tr" id="S5.T4.5.1.6">
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T4.5.1.6.1">(4)</td>
+<td class="ltx_td ltx_align_center" id="S5.T4.5.1.6.2">✗</td>
+<td class="ltx_td ltx_align_center" id="S5.T4.5.1.6.3">✗</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T4.5.1.6.4">✓</td>
+<td class="ltx_td ltx_align_center" id="S5.T4.5.1.6.5">75.25</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T4.5.1.6.6">9.50</td>
+<td class="ltx_td ltx_align_center" id="S5.T4.5.1.6.7">57.66</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T4.5.1.6.8"><span class="ltx_text ltx_font_bold" id="S5.T4.5.1.6.8.1">0.62</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T4.5.1.6.9">62.35</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T4.5.1.6.10">2.24</td>
+<td class="ltx_td ltx_align_center" id="S5.T4.5.1.6.11">63.82</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S5.T4.5.1.6.12">7.87</td>
+<td class="ltx_td ltx_align_center" id="S5.T4.5.1.6.13">64.77</td>
+<td class="ltx_td ltx_align_center" id="S5.T4.5.1.6.14">5.06</td></tr>
+<tr class="ltx_tr" id="S5.T4.5.1.7">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S5.T4.5.1.7.1">(5)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T4.5.1.7.2">✓</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T4.5.1.7.3">✓</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S5.T4.5.1.7.4">✗</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T4.5.1.7.5">75.79</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S5.T4.5.1.7.6">9.38</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T4.5.1.7.7">54.36</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S5.T4.5.1.7.8">0.09</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T4.5.1.7.9">61.20</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S5.T4.5.1.7.10">1.88</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T4.5.1.7.11">63.03</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S5.T4.5.1.7.12">7.70</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T4.5.1.7.13">63.60</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T4.5.1.7.14">4.76</td></tr>
+<tr class="ltx_tr" id="S5.T4.5.1.8">
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r ltx_border_t" id="S5.T4.5.1.8.1">(6)</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S5.T4.5.1.8.2">✓</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S5.T4.5.1.8.3">✓</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r ltx_border_t" id="S5.T4.5.1.8.4">✓</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S5.T4.5.1.8.5"><span class="ltx_text ltx_font_bold" id="S5.T4.5.1.8.5.1">77.06</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r ltx_border_t" id="S5.T4.5.1.8.6"><span class="ltx_text ltx_font_bold" id="S5.T4.5.1.8.6.1">11.61</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S5.T4.5.1.8.7"><span class="ltx_text ltx_font_bold" id="S5.T4.5.1.8.7.1">58.83</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r ltx_border_t" id="S5.T4.5.1.8.8">0.18</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S5.T4.5.1.8.9"><span class="ltx_text ltx_font_bold" id="S5.T4.5.1.8.9.1">65.85</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r ltx_border_t" id="S5.T4.5.1.8.10"><span class="ltx_text ltx_font_bold" id="S5.T4.5.1.8.10.1">5.00</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S5.T4.5.1.8.11"><span class="ltx_text ltx_font_bold" id="S5.T4.5.1.8.11.1">65.63</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r ltx_border_t" id="S5.T4.5.1.8.12">8.47</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S5.T4.5.1.8.13"><span class="ltx_text ltx_font_bold" id="S5.T4.5.1.8.13.1">66.84</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S5.T4.5.1.8.14"><span class="ltx_text ltx_font_bold" id="S5.T4.5.1.8.14.1">6.32</span></td></tr>
+</tbody>
+</table></figure><figure id="Sx1.T5"><figcaption>Table 5 : The argument and functionality of different actions in GUIOdyssey. ‘pos1’ and ‘pos2’ denote the position ( x , y ) (x,y) .</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="Sx1.T5.5">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="Sx1.T5.5.1">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_tt" id="Sx1.T5.5.1.1">Action</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_tt" id="Sx1.T5.5.1.2">Argument</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="Sx1.T5.5.1.3">Functionality</th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="Sx1.T5.5.2">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="Sx1.T5.5.2.1"><span class="ltx_text ltx_font_typewriter" id="Sx1.T5.5.2.1.1">CLICK</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="Sx1.T5.5.2.2">[pos1]</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="Sx1.T5.5.2.3">click the on-screen position</td></tr>
+<tr class="ltx_tr" id="Sx1.T5.5.3">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="Sx1.T5.5.3.1"><span class="ltx_text ltx_font_typewriter" id="Sx1.T5.5.3.1.1">LONG PRESS</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="Sx1.T5.5.3.2">[pos1]</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="Sx1.T5.5.3.3">press the screen for a long time to copy texts or download images</td></tr>
+<tr class="ltx_tr" id="Sx1.T5.5.4">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="Sx1.T5.5.4.1"><span class="ltx_text ltx_font_typewriter" id="Sx1.T5.5.4.1.1">SCROLL</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="Sx1.T5.5.4.2">[pos1, pos2]</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="Sx1.T5.5.4.3">scroll the screen from position 1 to position 2</td></tr>
+<tr class="ltx_tr" id="Sx1.T5.5.5">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="Sx1.T5.5.5.1"><span class="ltx_text ltx_font_typewriter" id="Sx1.T5.5.5.1.1">TYPE</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="Sx1.T5.5.5.2">text</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="Sx1.T5.5.5.3">type text with keyboard</td></tr>
+<tr class="ltx_tr" id="Sx1.T5.5.6">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="Sx1.T5.5.6.1"><span class="ltx_text ltx_font_typewriter" id="Sx1.T5.5.6.1.1">COMPLETE</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="Sx1.T5.5.6.2">-</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="Sx1.T5.5.6.3">the sign that the instruction has been completed</td></tr>
+<tr class="ltx_tr" id="Sx1.T5.5.7">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="Sx1.T5.5.7.1"><span class="ltx_text ltx_font_typewriter" id="Sx1.T5.5.7.1.1">IMPOSSIBLE</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="Sx1.T5.5.7.2">-</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="Sx1.T5.5.7.3">the sign that the instruction cannot be completed</td></tr>
+<tr class="ltx_tr" id="Sx1.T5.5.8">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="Sx1.T5.5.8.1"><span class="ltx_text ltx_font_typewriter" id="Sx1.T5.5.8.1.1">HOME</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="Sx1.T5.5.8.2">-</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="Sx1.T5.5.8.3">go to the home screen</td></tr>
+<tr class="ltx_tr" id="Sx1.T5.5.9">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="Sx1.T5.5.9.1"><span class="ltx_text ltx_font_typewriter" id="Sx1.T5.5.9.1.1">BACK</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="Sx1.T5.5.9.2">-</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="Sx1.T5.5.9.3">go to the previous screen</td></tr>
+<tr class="ltx_tr" id="Sx1.T5.5.10">
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r ltx_border_t" id="Sx1.T5.5.10.1"><span class="ltx_text ltx_font_typewriter" id="Sx1.T5.5.10.1.1">RECENT</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r ltx_border_t" id="Sx1.T5.5.10.2">-</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="Sx1.T5.5.10.3">go to the previous App</td></tr>
+</tbody>
+</table></figure><figure id="S8.T6"><figcaption>Table 6 : The impact of different semantic annotations on OdysseyAgent across four different splits. We use high-level instructions for both training and evaluation. Performance is assessed using AMS and SR as metrics. SD, CI, and DR denote screen description, contextual information, and decision rationale, respectively.</figcaption><table class="ltx_tabular ltx_align_middle" id="S8.T6.5.1">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S8.T6.5.1.1">
+<td class="ltx_td ltx_border_r ltx_border_tt" id="S8.T6.5.1.1.1"></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" colspan="3" id="S8.T6.5.1.1.2"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.1.2.1">Semantic Annotation</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" colspan="2" id="S8.T6.5.1.1.3"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.1.3.1">Test-Random</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" colspan="2" id="S8.T6.5.1.1.4"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.1.4.1">Test-Task</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" colspan="2" id="S8.T6.5.1.1.5"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.1.5.1">Test-Device</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_tt" colspan="2" id="S8.T6.5.1.1.6"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.1.6.1">Test-App</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="2" id="S8.T6.5.1.1.7"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.1.7.1">Overall</span></td></tr>
+<tr class="ltx_tr" id="S8.T6.5.1.2">
+<td class="ltx_td ltx_border_r" id="S8.T6.5.1.2.1"></td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.2.2">SD</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.2.3">CI</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.2.4">DR</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.2.5">AMS</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.2.6">SR</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.2.7">AMS</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.2.8">SR</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.2.9">AMS</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.2.10">SR</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.2.11">AMS</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.2.12">SR</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.2.13">AMS</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.2.14">SR</td></tr>
+<tr class="ltx_tr" id="S8.T6.5.1.3">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.3.1">(1)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.3.2">✗</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.3.3">✗</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.3.4">✗</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.3.5">75.79</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.3.6">9.38</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.3.7">54.36</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.3.8">0.09</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.3.9">61.20</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.3.10">1.88</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.3.11">63.03</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.3.12">7.70</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.3.13">63.60</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.3.14">4.76</td></tr>
+<tr class="ltx_tr" id="S8.T6.5.1.4">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.4.1">(2)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.4.2">✓</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.4.3">✗</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.4.4">✗</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.4.5">75.18</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.4.6">8.94</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.4.7">54.06</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.4.8">0.00</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.4.9">64.41</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.4.10">2.03</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.4.11">64.91</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.4.12">8.47</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.4.13">64.64</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.4.14">4.86</td></tr>
+<tr class="ltx_tr" id="S8.T6.5.1.5">
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.5.1">(3)</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.5.2">✗</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.5.3">✓</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.5.4">✗</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.5.5">75.42</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.5.6">10.04</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.5.7">55.71</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.5.8">0.00</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.5.9">62.52</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.5.10">3.19</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.5.11">64.24</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.5.12">5.30</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.5.13">64.47</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.5.14">4.63</td></tr>
+<tr class="ltx_tr" id="S8.T6.5.1.6">
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.6.1">(4)</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.6.2">✗</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.6.3">✗</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.6.4">✓</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.6.5">77.71</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.6.6">11.44</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.6.7">55.60</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.6.8"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.6.8.1">0.26</span></td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.6.9">65.88</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.6.10">4.63</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.6.11">65.74</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.6.12">7.96</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.6.13">66.23</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.6.14">6.07</td></tr>
+<tr class="ltx_tr" id="S8.T6.5.1.7">
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.7.1">(5)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.7.2">✗</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.7.3">✓</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.7.4">✓</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.7.5">77.23</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.7.6">11.16</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.7.7">56.93</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.7.8">0.18</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.7.9">63.87</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.7.10">2.24</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.7.11">66.32</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S8.T6.5.1.7.12">7.87</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.7.13">66.09</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S8.T6.5.1.7.14">5.36</td></tr>
+<tr class="ltx_tr" id="S8.T6.5.1.8">
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.8.1">(6)</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.8.2">✓</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.8.3">✗</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.8.4">✓</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.8.5">77.24</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.8.6">10.88</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.8.7"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.8.7.1">57.15</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.8.8">0.00</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.8.9">63.55</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.8.10">2.17</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.8.11"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.8.11.1">67.04</span></td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.8.12"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.8.12.1">9.67</span></td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.8.13">66.24</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.8.14">5.68</td></tr>
+<tr class="ltx_tr" id="S8.T6.5.1.9">
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.9.1">(7)</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.9.2">✓</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.9.3">✓</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.9.4">✗</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.9.5">76.58</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.9.6">10.14</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.9.7">57.13</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.9.8"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.9.8.1">0.26</span></td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.9.9">64.48</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.9.10">3.91</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.9.11">66.27</td>
+<td class="ltx_td ltx_align_center ltx_border_r" id="S8.T6.5.1.9.12">7.96</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.9.13">66.11</td>
+<td class="ltx_td ltx_align_center" id="S8.T6.5.1.9.14">5.57</td></tr>
+<tr class="ltx_tr" id="S8.T6.5.1.10">
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r ltx_border_t" id="S8.T6.5.1.10.1">(8)</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S8.T6.5.1.10.2">✓</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S8.T6.5.1.10.3">✓</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r ltx_border_t" id="S8.T6.5.1.10.4">✓</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S8.T6.5.1.10.5"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.10.5.1">78.24</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r ltx_border_t" id="S8.T6.5.1.10.6"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.10.6.1">11.62</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S8.T6.5.1.10.7">56.19</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r ltx_border_t" id="S8.T6.5.1.10.8"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.10.8.1">0.26</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S8.T6.5.1.10.9"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.10.9.1">66.63</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r ltx_border_t" id="S8.T6.5.1.10.10"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.10.10.1">5.07</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S8.T6.5.1.10.11">65.89</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r ltx_border_t" id="S8.T6.5.1.10.12">8.81</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S8.T6.5.1.10.13"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.10.13.1">66.74</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S8.T6.5.1.10.14"><span class="ltx_text ltx_font_bold" id="S8.T6.5.1.10.14.1">6.44</span></td></tr>
+</tbody>
+</table></figure><figure id="S10.T7"><figcaption>Table 7 : The average AMS for HL and LL instructions across 4 splits, along with the number of historical screenshot tokens, inference metrics (Time to First Token (TTFT) and Tokens per Second (TPS)), and training GPU hours.</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="S10.T7.5.1">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="S10.T7.5.1.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_r ltx_border_tt" id="S10.T7.5.1.1.1">strategy</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S10.T7.5.1.1.2">HL</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_tt" id="S10.T7.5.1.1.3">LL</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_tt" id="S10.T7.5.1.1.4">Token Count</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S10.T7.5.1.1.5">TTFT <math alttext="\downarrow" class="ltx_Math" display="inline" id="S10.T7.m1" intent=":literal"><semantics><mo stretchy="false">↓</mo><annotation encoding="application/x-tex">\downarrow</annotation></semantics></math></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_tt" id="S10.T7.5.1.1.6">TPS <math alttext="\uparrow" class="ltx_Math" display="inline" id="S10.T7.m2" intent=":literal"><semantics><mo stretchy="false">↑</mo><annotation encoding="application/x-tex">\uparrow</annotation></semantics></math></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S10.T7.5.1.1.7">GPU Hours</th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S10.T7.5.1.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r ltx_border_t" id="S10.T7.5.1.2.1">history resampler</th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S10.T7.5.1.2.2">63.60</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S10.T7.5.1.2.3">82.44</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S10.T7.5.1.2.4">256</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S10.T7.5.1.2.5">0.71</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t" id="S10.T7.5.1.2.6">20.27</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S10.T7.5.1.2.7">32</td></tr>
+<tr class="ltx_tr" id="S10.T7.5.1.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb ltx_border_r" id="S10.T7.5.1.3.1">multi-image</th>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S10.T7.5.1.3.2">65.04</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r" id="S10.T7.5.1.3.3">82.34</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r" id="S10.T7.5.1.3.4">1024</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S10.T7.5.1.3.5">0.98</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_r" id="S10.T7.5.1.3.6">17.05</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S10.T7.5.1.3.7">48</td></tr>
+</tbody>
+</table></figure><figure id="S10.T8"><figcaption>Table 8 : The results for OdysseyAgent trained and tested on Train-Random/Test-Random with both high-level and low-level instructions are presented, with AMS as the evaluation metric. HL and LL denote high-level and low-level instructions, respectively.</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="S10.T8.5.1">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S10.T8.5.1.1">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_tt" id="S10.T8.5.1.1.1" rowspan="2"><span class="ltx_text ltx_font_bold" id="S10.T8.5.1.1.1.1">Testing Instructions</span></th>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="3" id="S10.T8.5.1.1.2"><span class="ltx_text ltx_font_bold" id="S10.T8.5.1.1.2.1">Training Instructions</span></td></tr>
+<tr class="ltx_tr" id="S10.T8.5.1.2">
+<td class="ltx_td ltx_align_center" id="S10.T8.5.1.2.1">HL</td>
+<td class="ltx_td ltx_align_center" id="S10.T8.5.1.2.2">LL</td>
+<td class="ltx_td ltx_align_center" id="S10.T8.5.1.2.3">HL + LL</td></tr>
+<tr class="ltx_tr" id="S10.T8.5.1.3">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t" id="S10.T8.5.1.3.1">HL</th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S10.T8.5.1.3.2">75.79</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S10.T8.5.1.3.3">29.39</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S10.T8.5.1.3.4">78.96</td></tr>
+<tr class="ltx_tr" id="S10.T8.5.1.4">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_bb ltx_border_r" id="S10.T8.5.1.4.1">LL</th>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S10.T8.5.1.4.2">71.26</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S10.T8.5.1.4.3">86.88</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S10.T8.5.1.4.4">88.84</td></tr>
+</tbody>
+</table></figure><figure id="S10.T9"><figcaption>Table 9 : Performance Evaluation of OdysseyAgent Across Different Devices. Each Device serves as a test set while the remaining five devices are used as training sets.</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="S10.T9.5.1">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="S10.T9.5.1.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_r ltx_border_tt" id="S10.T9.5.1.1.1"><span class="ltx_text ltx_font_bold" id="S10.T9.5.1.1.1.1">Evaluation Device</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_r ltx_border_tt" id="S10.T9.5.1.1.2"><span class="ltx_text ltx_font_bold" id="S10.T9.5.1.1.2.1">Resolution</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S10.T9.5.1.1.3"><span class="ltx_text ltx_font_bold" id="S10.T9.5.1.1.3.1">AMS</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S10.T9.5.1.1.4"><span class="ltx_text ltx_font_bold" id="S10.T9.5.1.1.4.1">SR</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S10.T9.5.1.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r ltx_border_t" id="S10.T9.5.1.2.1">Pixel 7 Pro</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r ltx_border_t" id="S10.T9.5.1.2.2"><math alttext="1,440\times 3,120" class="ltx_Math" display="inline" id="S10.T9.m1" intent=":literal"><semantics><mrow><mn>1,440</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>3,120</mn></mrow><annotation encoding="application/x-tex">1,440\times 3,120</annotation></semantics></math></th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S10.T9.5.1.2.3">75.91</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S10.T9.5.1.2.4">7.44</td></tr>
+<tr class="ltx_tr" id="S10.T9.5.1.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S10.T9.5.1.3.1">Pixel 8 Pro</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S10.T9.5.1.3.2"><math alttext="1,344\times 2,992" class="ltx_Math" display="inline" id="S10.T9.m2" intent=":literal"><semantics><mrow><mn>1,344</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>2,992</mn></mrow><annotation encoding="application/x-tex">1,344\times 2,992</annotation></semantics></math></th>
+<td class="ltx_td ltx_align_center" id="S10.T9.5.1.3.3">74.67</td>
+<td class="ltx_td ltx_align_center" id="S10.T9.5.1.3.4">6.05</td></tr>
+<tr class="ltx_tr" id="S10.T9.5.1.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S10.T9.5.1.4.1">Small Phone</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S10.T9.5.1.4.2"><math alttext="720\times 1,280" class="ltx_Math" display="inline" id="S10.T9.m3" intent=":literal"><semantics><mrow><mn>720</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>1,280</mn></mrow><annotation encoding="application/x-tex">720\times 1,280</annotation></semantics></math></th>
+<td class="ltx_td ltx_align_center" id="S10.T9.5.1.4.3">71.68</td>
+<td class="ltx_td ltx_align_center" id="S10.T9.5.1.4.4">3.77</td></tr>
+<tr class="ltx_tr" id="S10.T9.5.1.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S10.T9.5.1.5.1">Medium Phone</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S10.T9.5.1.5.2"><math alttext="1,080\times 2,400" class="ltx_Math" display="inline" id="S10.T9.m4" intent=":literal"><semantics><mrow><mn>1,080</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>2,400</mn></mrow><annotation encoding="application/x-tex">1,080\times 2,400</annotation></semantics></math></th>
+<td class="ltx_td ltx_align_center" id="S10.T9.5.1.5.3">73.05</td>
+<td class="ltx_td ltx_align_center" id="S10.T9.5.1.5.4">5.45</td></tr>
+<tr class="ltx_tr" id="S10.T9.5.1.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S10.T9.5.1.6.1">Pixel Fold</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S10.T9.5.1.6.2"><math alttext="2,208\times 1,840" class="ltx_Math" display="inline" id="S10.T9.m5" intent=":literal"><semantics><mrow><mn>2,208</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>1,840</mn></mrow><annotation encoding="application/x-tex">2,208\times 1,840</annotation></semantics></math></th>
+<td class="ltx_td ltx_align_center" id="S10.T9.5.1.6.3">67.67</td>
+<td class="ltx_td ltx_align_center" id="S10.T9.5.1.6.4">4.48</td></tr>
+<tr class="ltx_tr" id="S10.T9.5.1.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb ltx_border_r" id="S10.T9.5.1.7.1">Pixel Tablet</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb ltx_border_r" id="S10.T9.5.1.7.2"><math alttext="2,560\times 1,600" class="ltx_Math" display="inline" id="S10.T9.m6" intent=":literal"><semantics><mrow><mn>2,560</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>1,600</mn></mrow><annotation encoding="application/x-tex">2,560\times 1,600</annotation></semantics></math></th>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S10.T9.5.1.7.3">61.20</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S10.T9.5.1.7.4">1.88</td></tr>
+</tbody>
+</table></figure><figure id="S10.T10"><figcaption>Table 10 : Effectiveness of Different Training Data on the AndroidControl. The evaluation metrics are the action matching score (AMS).</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="S10.T10.5.1">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="S10.T10.5.1.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_r ltx_border_tt" id="S10.T10.5.1.1.1">Training Data</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S10.T10.5.1.1.2">IDD</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S10.T10.5.1.1.3">category_unseen</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S10.T10.5.1.1.4">app_unseen</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S10.T10.5.1.1.5">task_unseen</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S10.T10.5.1.1.6">Overall</th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S10.T10.5.1.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r ltx_border_t" id="S10.T10.5.1.2.1">AC50k</th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S10.T10.5.1.2.2">60.43</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S10.T10.5.1.2.3">54.46</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S10.T10.5.1.2.4">50.00</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S10.T10.5.1.2.5">72.10</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S10.T10.5.1.2.6">59.25</td></tr>
+<tr class="ltx_tr" id="S10.T10.5.1.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_r" id="S10.T10.5.1.3.1">AC50k + AITW50k</th>
+<td class="ltx_td ltx_align_center" id="S10.T10.5.1.3.2">60.69</td>
+<td class="ltx_td ltx_align_center" id="S10.T10.5.1.3.3"><span class="ltx_text ltx_font_bold" id="S10.T10.5.1.3.3.1">55.26</span></td>
+<td class="ltx_td ltx_align_center" id="S10.T10.5.1.3.4">45.19</td>
+<td class="ltx_td ltx_align_center" id="S10.T10.5.1.3.5">68.84</td>
+<td class="ltx_td ltx_align_center" id="S10.T10.5.1.3.6">57.50</td></tr>
+<tr class="ltx_tr" id="S10.T10.5.1.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb ltx_border_r" id="S10.T10.5.1.4.1">AC50k + Ody50k</th>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S10.T10.5.1.4.2"><span class="ltx_text ltx_font_bold" id="S10.T10.5.1.4.2.1">61.48</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S10.T10.5.1.4.3">54.61</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S10.T10.5.1.4.4"><span class="ltx_text ltx_font_bold" id="S10.T10.5.1.4.4.1">50.96</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S10.T10.5.1.4.5"><span class="ltx_text ltx_font_bold" id="S10.T10.5.1.4.5.1">72.46</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S10.T10.5.1.4.6"><span class="ltx_text ltx_font_bold" id="S10.T10.5.1.4.6.1">59.88</span></td></tr>
+</tbody>
+</table></figure></html>

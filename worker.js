@@ -128,6 +128,12 @@ export default {
       return new Response(request.method==='HEAD'?null:upstream.body,{headers:{'Content-Type':upstream.headers.get('Content-Type')||'image/png','Cache-Control':'public, max-age=86400','X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'none'; style-src 'unsafe-inline'; sandbox"}});
     }
     if(url.pathname==='/assets/favicon.svg')return new Response(request.method==='HEAD'?null:FAVICON,{headers:{'Content-Type':'image/svg+xml','Cache-Control':'public, max-age=86400'}});
+    // GitHub Pages is the canonical notebook; Sites also carries these assets.
+    // Hosts without an ASSETS binding can still open the same public reading pages.
+    if(/^\/(notes|research|assets\/gui-memory)(\/|$)/.test(url.pathname)){
+      if(env.ASSETS){const asset=await env.ASSETS.fetch(request);if(asset.ok)return asset}
+      return Response.redirect('https://thinkingline.blog'+url.pathname+url.search,302);
+    }
     if(url.pathname!=='/'&&url.pathname!=='/index.html')return new Response('Not found',{status:404});
     return new Response(request.method==='HEAD'?null:PAGE,{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-cache','X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin'}});
   }

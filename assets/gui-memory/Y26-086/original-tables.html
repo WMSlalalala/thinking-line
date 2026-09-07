@@ -1,0 +1,2317 @@
+<p><a href="/notes/p0-y26-086/">← 返回阅读笔记 / Back to reading note</a></p><meta content="width=device-width, initial-scale=1" name="viewport"/><!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8"/><title>Where Did It Go Wrong? Process-Level Evaluation of Web Agents with Semantic State Tracking (WebStep) 原表</title><style>body{font:16px system-ui;max-width:1500px;margin:30px auto;padding:20px}table{border-collapse:collapse;width:100%;margin:20px 0}td,th{border:1px solid #bbb;padding:7px}figure{margin:30px 0;overflow:auto}caption,figcaption{font-weight:600}math{font-size:1em}</style><h1>Y26-086 原文表格</h1><p>抽取日期：2026-09-07。来自<a href="https://arxiv.org/html/2606.15673">原文</a>。保留原表行列，未统一实验配置；数值解释见中文分析。</p><figure id="S3.T1"><figcaption>Table 1: Comparison with existing web agent benchmarks. Deterministic : self-hosted deterministic websites. Process eval : Key node uses manual milestones; MDP enables automatic stage decomposition and skill attribution. Hard negative : controlled distractors.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="S3.T1.2">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S3.T1.2.1">
+<td class="ltx_td ltx_border_tt" id="S3.T1.2.1.1"></td>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S3.T1.2.1.2"><span class="ltx_text ltx_font_bold" id="S3.T1.2.1.2.1">Deterministic</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S3.T1.2.1.3"><span class="ltx_text ltx_font_bold" id="S3.T1.2.1.3.1">Tasks</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S3.T1.2.1.4"><span class="ltx_text ltx_font_bold" id="S3.T1.2.1.4.1">Process-eval</span></th>
+<th class="ltx_td ltx_nopad_r ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S3.T1.2.1.5"><span class="ltx_text ltx_font_bold" id="S3.T1.2.1.5.1">Hard negative</span></th></tr>
+<tr class="ltx_tr" id="S3.T1.2.2">
+<td class="ltx_td ltx_align_left ltx_border_t" id="S3.T1.2.2.1">Online-Mind2Web <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="https://arxiv.org/html/2606.15673#bib.bib12" title="">Xue et al., 2025</a>)</cite></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.2.2">✗</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.2.3">300</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T1.2.2.4">✗</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_t" id="S3.T1.2.2.5">✗</td></tr>
+<tr class="ltx_tr" id="S3.T1.2.3">
+<td class="ltx_td ltx_align_left" id="S3.T1.2.3.1">WebVoyager <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="https://arxiv.org/html/2606.15673#bib.bib3" title="">He et al., 2024</a>)</cite></td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.3.2">✗</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.3.3">643</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.3.4">✗</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.T1.2.3.5">✗</td></tr>
+<tr class="ltx_tr" id="S3.T1.2.4">
+<td class="ltx_td ltx_align_left" id="S3.T1.2.4.1">WebWalkerQA <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="https://arxiv.org/html/2606.15673#bib.bib14" title="">Wu et al., 2025</a>)</cite></td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.4.2">✗</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.4.3">680</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.4.4">✗</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.T1.2.4.5">✗</td></tr>
+<tr class="ltx_tr" id="S3.T1.2.5">
+<td class="ltx_td ltx_align_left" id="S3.T1.2.5.1">AssistantBench <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="https://arxiv.org/html/2606.15673#bib.bib15" title="">Yoran et al., 2024</a>)</cite></td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.5.2">✗</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.5.3">214</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.5.4">✗</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.T1.2.5.5">✗</td></tr>
+<tr class="ltx_tr" id="S3.T1.2.6">
+<td class="ltx_td ltx_align_left" id="S3.T1.2.6.1">WebArena <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="https://arxiv.org/html/2606.15673#bib.bib1" title="">Zhou et al., 2024</a>)</cite></td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.6.2"><span class="ltx_text" id="S3.T1.2.6.2.1" style="--ltx-fg-color:#009900;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.6.3">812</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.6.4">✗</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.T1.2.6.5">✗</td></tr>
+<tr class="ltx_tr" id="S3.T1.2.7">
+<td class="ltx_td ltx_align_left" id="S3.T1.2.7.1">VisualWebArena <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="https://arxiv.org/html/2606.15673#bib.bib4" title="">Koh et al., 2024</a>)</cite></td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.7.2"><span class="ltx_text" id="S3.T1.2.7.2.1" style="--ltx-fg-color:#009900;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.7.3">910</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.7.4">✗</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.T1.2.7.5">✗</td></tr>
+<tr class="ltx_tr" id="S3.T1.2.8">
+<td class="ltx_td ltx_align_left" id="S3.T1.2.8.1">WorkArena++ <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="https://arxiv.org/html/2606.15673#bib.bib13" title="">Boisvert et al., 2024</a>)</cite></td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.8.2"><span class="ltx_text" id="S3.T1.2.8.2.1" style="--ltx-fg-color:#009900;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.8.3">682</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.8.4">✗</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.T1.2.8.5">✗</td></tr>
+<tr class="ltx_tr" id="S3.T1.2.9">
+<td class="ltx_td ltx_align_left" id="S3.T1.2.9.1">Mind2Web-Live <cite class="ltx_cite ltx_citemacro_citep">(<a class="ltx_ref" href="https://arxiv.org/html/2606.15673#bib.bib17" title="">Pan et al., 2024</a>)</cite></td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.9.2">✗</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.9.3">542</td>
+<td class="ltx_td ltx_align_center" id="S3.T1.2.9.4">Key node</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.T1.2.9.5">✗</td></tr>
+<tr class="ltx_tr" id="S3.T1.2.10" style="--ltx-bg-color:#F0F0FF;">
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="S3.T1.2.10.1"><span class="ltx_text ltx_font_bold ltx_font_smallcaps" id="S3.T1.2.10.1.1" style="--ltx-bg-color:#F0F0FF;">WebStep</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S3.T1.2.10.2"><span class="ltx_text" id="S3.T1.2.10.2.1" style="--ltx-fg-color:#009900;--ltx-bg-color:#F0F0FF;">✓</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S3.T1.2.10.3"><span class="ltx_text ltx_font_bold" id="S3.T1.2.10.3.1" style="--ltx-bg-color:#F0F0FF;">1,800</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="S3.T1.2.10.4"><span class="ltx_text ltx_font_bold" id="S3.T1.2.10.4.1" style="--ltx-bg-color:#F0F0FF;">MDP</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_bb ltx_border_t" id="S3.T1.2.10.5"><span class="ltx_text" id="S3.T1.2.10.5.1" style="--ltx-fg-color:#009900;--ltx-bg-color:#F0F0FF;">✓</span></td></tr>
+</tbody>
+</table></figure><figure id="S4.T2"><figcaption>Table 2: Aggregate evaluation results. We report terminal success together with process-level metrics from semantic MDP traces: exploration, execution, and information coverage. These metrics reveal behavioral differences not visible from terminal success alone.</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="S4.T2.2.1">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="S4.T2.2.1.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="S4.T2.2.1.1.1" rowspan="2"><span class="ltx_text ltx_font_bold" id="S4.T2.2.1.1.1.1">Agent</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="3" id="S4.T2.2.1.1.2"><span class="ltx_text ltx_font_bold" id="S4.T2.2.1.1.2.1">Success Rate</span> (%) <math alttext="\uparrow" class="ltx_Math" display="inline" id="S4.T2.m1" intent=":literal"><semantics><mo stretchy="false">↑</mo><annotation encoding="application/x-tex">\uparrow</annotation></semantics></math></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S4.T2.2.1.1.3"><span class="ltx_text ltx_font_bold" id="S4.T2.2.1.1.3.1">Information</span> <math alttext="\uparrow" class="ltx_Math" display="inline" id="S4.T2.m2" intent=":literal"><semantics><mo stretchy="false">↑</mo><annotation encoding="application/x-tex">\uparrow</annotation></semantics></math></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="3" id="S4.T2.2.1.1.4"><span class="ltx_text ltx_font_bold" id="S4.T2.2.1.1.4.1">Steps</span></th></tr>
+<tr class="ltx_tr" id="S4.T2.2.1.2">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S4.T2.2.1.2.1" style="--ltx-bg-color:#ECECEC;"><span class="ltx_text ltx_font_bold" id="S4.T2.2.1.2.1.1" style="--ltx-bg-color:#ECECEC;">Terminal</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S4.T2.2.1.2.2"><span class="ltx_text ltx_font_bold" id="S4.T2.2.1.2.2.1">Exploration</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S4.T2.2.1.2.3"><span class="ltx_text ltx_font_bold" id="S4.T2.2.1.2.3.1">Execution</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S4.T2.2.1.2.4"><span class="ltx_text ltx_font_bold" id="S4.T2.2.1.2.4.1">Coverage (%)</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S4.T2.2.1.2.5"><span class="ltx_text ltx_font_bold" id="S4.T2.2.1.2.5.1">GUI</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S4.T2.2.1.2.6"><span class="ltx_text ltx_font_bold" id="S4.T2.2.1.2.6.1">Semantic</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S4.T2.2.1.2.7"><math alttext="\nicefrac{{\mathrm{GUI}}}{{\mathrm{Semantic}}}" class="ltx_Math" display="inline" id="S4.T2.m3" intent=":literal"><semantics><mrow><mpadded voffset="0.3em"><mi mathsize="0.700em">GUI</mi></mpadded><mpadded lspace="-0.1em" style="width:-0.15em;" width="-0.15em"><mo stretchy="true" symmetric="true">/</mo></mpadded><mi mathsize="0.700em">Semantic</mi></mrow><annotation encoding="application/x-tex">\nicefrac{{\mathrm{GUI}}}{{\mathrm{Semantic}}}</annotation></semantics></math> <math alttext="\downarrow" class="ltx_Math" display="inline" id="S4.T2.m4" intent=":literal"><semantics><mo stretchy="false">↓</mo><annotation encoding="application/x-tex">\downarrow</annotation></semantics></math></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S4.T2.2.1.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="S4.T2.2.1.3.1">Fara-7B</th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T2.2.1.3.2" style="--ltx-bg-color:#ECECEC;"><span class="ltx_text" id="S4.T2.2.1.3.2.1" style="--ltx-bg-color:#ECECEC;">35.7</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T2.2.1.3.3">47.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T2.2.1.3.4">75.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T2.2.1.3.5">76.4</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T2.2.1.3.6">18.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T2.2.1.3.7">8.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T2.2.1.3.8">2.3</td></tr>
+<tr class="ltx_tr" id="S4.T2.2.1.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S4.T2.2.1.4.1">GUI-Owl-1.5-8B</th>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.4.2" style="--ltx-bg-color:#ECECEC;"><span class="ltx_text" id="S4.T2.2.1.4.2.1" style="--ltx-bg-color:#ECECEC;">34.4</span></td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.4.3">43.3</td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.4.4">78.6</td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.4.5">79.5</td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.4.6">28.3</td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.4.7">10.4</td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.4.8">2.7</td></tr>
+<tr class="ltx_tr" id="S4.T2.2.1.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S4.T2.2.1.5.1">UI-TARS-1.5-7B</th>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.5.2" style="--ltx-bg-color:#ECECEC;"><span class="ltx_text" id="S4.T2.2.1.5.2.1" style="--ltx-bg-color:#ECECEC;">37.1</span></td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.5.3">49.2</td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.5.4">73.9</td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.5.5">80.3</td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.5.6">35.0</td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.5.7">14.0</td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.5.8">2.5</td></tr>
+<tr class="ltx_tr" id="S4.T2.2.1.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="S4.T2.2.1.6.1">Qwen3.5-122B</th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T2.2.1.6.2" style="--ltx-bg-color:#ECECEC;"><span class="ltx_text" id="S4.T2.2.1.6.2.1" style="--ltx-bg-color:#ECECEC;">58.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T2.2.1.6.3">66.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T2.2.1.6.4">86.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T2.2.1.6.5">89.1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T2.2.1.6.6">22.1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T2.2.1.6.7">9.8</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T2.2.1.6.8">2.3</td></tr>
+<tr class="ltx_tr" id="S4.T2.2.1.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S4.T2.2.1.7.1">OpenAI CUA</th>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.7.2" style="--ltx-bg-color:#ECECEC;"><span class="ltx_text" id="S4.T2.2.1.7.2.1" style="--ltx-bg-color:#ECECEC;">82.7</span></td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.7.3">89.4</td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.7.4">92.4</td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.7.5">96.8</td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.7.6">19.7</td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.7.7">10.0</td>
+<td class="ltx_td ltx_align_center" id="S4.T2.2.1.7.8">2.0</td></tr>
+<tr class="ltx_tr" id="S4.T2.2.1.8">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="S4.T2.2.1.8.1">Claude CUA</th>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T2.2.1.8.2" style="--ltx-bg-color:#ECECEC;"><span class="ltx_text" id="S4.T2.2.1.8.2.1" style="--ltx-bg-color:#ECECEC;">85.3</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T2.2.1.8.3">91.0</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T2.2.1.8.4">93.7</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T2.2.1.8.5">96.3</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T2.2.1.8.6">14.3</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T2.2.1.8.7">9.3</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T2.2.1.8.8">1.5</td></tr>
+</tbody>
+</table></figure><figure id="A3.T3"><figcaption>Table 3: Agent configurations. Input : what the agent receives each turn. Action space : how the agent specifies actions. Max imgs : number of recent screenshots retained in context. Claude CUA follows Anthropic’s DOM-augmented browser harness (ref-based targeting with coordinate fallback), whereas all other agents operate purely from pixels.</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="A3.T3.2.1">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A3.T3.2.1.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A3.T3.2.1.1.1"><span class="ltx_text ltx_font_bold" id="A3.T3.2.1.1.1.1">Agent</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A3.T3.2.1.1.2"><span class="ltx_text ltx_font_bold" id="A3.T3.2.1.1.2.1">Model</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A3.T3.2.1.1.3"><span class="ltx_text ltx_font_bold" id="A3.T3.2.1.1.3.1">Backend</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A3.T3.2.1.1.4"><span class="ltx_text ltx_font_bold" id="A3.T3.2.1.1.4.1">Input</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A3.T3.2.1.1.5"><span class="ltx_text ltx_font_bold" id="A3.T3.2.1.1.5.1">Action Space</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A3.T3.2.1.1.6"><span class="ltx_text ltx_font_bold" id="A3.T3.2.1.1.6.1">Max Imgs</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A3.T3.2.1.1.7"><span class="ltx_text ltx_font_bold" id="A3.T3.2.1.1.7.1">Temp.</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A3.T3.2.1.1.8"><span class="ltx_text ltx_font_bold" id="A3.T3.2.1.1.8.1">Max Tokens</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A3.T3.2.1.2">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A3.T3.2.1.2.1">Fara</td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A3.T3.2.1.2.2">microsoft/Fara-7B</td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A3.T3.2.1.2.3">vLLM</td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A3.T3.2.1.2.4">Screenshot</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A3.T3.2.1.2.5">Function call (coordinate)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A3.T3.2.1.2.6">3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A3.T3.2.1.2.7">0.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A3.T3.2.1.2.8">800</td></tr>
+<tr class="ltx_tr" id="A3.T3.2.1.3">
+<td class="ltx_td ltx_align_left" id="A3.T3.2.1.3.1">UI-TARS</td>
+<td class="ltx_td ltx_align_left" id="A3.T3.2.1.3.2">ByteDance-Seed/UI-TARS-1.5-7B</td>
+<td class="ltx_td ltx_align_left" id="A3.T3.2.1.3.3">vLLM</td>
+<td class="ltx_td ltx_align_left" id="A3.T3.2.1.3.4">Screenshot</td>
+<td class="ltx_td ltx_align_center" id="A3.T3.2.1.3.5">Thought + Action (coordinate)</td>
+<td class="ltx_td ltx_align_center" id="A3.T3.2.1.3.6">5</td>
+<td class="ltx_td ltx_align_center" id="A3.T3.2.1.3.7">0.0</td>
+<td class="ltx_td ltx_align_center" id="A3.T3.2.1.3.8">2048</td></tr>
+<tr class="ltx_tr" id="A3.T3.2.1.4">
+<td class="ltx_td ltx_align_left" id="A3.T3.2.1.4.1">GUI-Owl</td>
+<td class="ltx_td ltx_align_left" id="A3.T3.2.1.4.2">mPLUG/GUI-Owl-1.5-8B</td>
+<td class="ltx_td ltx_align_left" id="A3.T3.2.1.4.3">vLLM</td>
+<td class="ltx_td ltx_align_left" id="A3.T3.2.1.4.4">Screenshot</td>
+<td class="ltx_td ltx_align_center" id="A3.T3.2.1.4.5">Tool call (coordinate)</td>
+<td class="ltx_td ltx_align_center" id="A3.T3.2.1.4.6">4</td>
+<td class="ltx_td ltx_align_center" id="A3.T3.2.1.4.7">0.0</td>
+<td class="ltx_td ltx_align_center" id="A3.T3.2.1.4.8">2048</td></tr>
+<tr class="ltx_tr" id="A3.T3.2.1.5">
+<td class="ltx_td ltx_align_left" id="A3.T3.2.1.5.1">Qwen3.5</td>
+<td class="ltx_td ltx_align_left" id="A3.T3.2.1.5.2">Qwen/Qwen3.5-122B-FP8</td>
+<td class="ltx_td ltx_align_left" id="A3.T3.2.1.5.3">vLLM</td>
+<td class="ltx_td ltx_align_left" id="A3.T3.2.1.5.4">Screenshot</td>
+<td class="ltx_td ltx_align_center" id="A3.T3.2.1.5.5">Thought + Action (coordinate)</td>
+<td class="ltx_td ltx_align_center" id="A3.T3.2.1.5.6">5</td>
+<td class="ltx_td ltx_align_center" id="A3.T3.2.1.5.7">0.7</td>
+<td class="ltx_td ltx_align_center" id="A3.T3.2.1.5.8">2048</td></tr>
+<tr class="ltx_tr" id="A3.T3.2.1.6">
+<td class="ltx_td ltx_align_left" id="A3.T3.2.1.6.1">OpenAI CUA</td>
+<td class="ltx_td ltx_align_left" id="A3.T3.2.1.6.2">GPT-5.4</td>
+<td class="ltx_td ltx_align_left" id="A3.T3.2.1.6.3">OpenAI API</td>
+<td class="ltx_td ltx_align_left" id="A3.T3.2.1.6.4">Screenshot</td>
+<td class="ltx_td ltx_align_center" id="A3.T3.2.1.6.5">Built-in computer tool (coordinate)</td>
+<td class="ltx_td ltx_align_center" id="A3.T3.2.1.6.6">–</td>
+<td class="ltx_td ltx_align_center" id="A3.T3.2.1.6.7">–</td>
+<td class="ltx_td ltx_align_center" id="A3.T3.2.1.6.8">–</td></tr>
+<tr class="ltx_tr" id="A3.T3.2.1.7">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A3.T3.2.1.7.1">Claude CUA</td>
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A3.T3.2.1.7.2">claude-sonnet-4-6</td>
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A3.T3.2.1.7.3">Anthropic API</td>
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A3.T3.2.1.7.4">Screenshot + DOM</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A3.T3.2.1.7.5">Tool call (ref + coordinate)</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A3.T3.2.1.7.6">3</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A3.T3.2.1.7.7">–</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A3.T3.2.1.7.8">–</td></tr>
+</tbody>
+</table></figure><figure id="A4.T4"><figcaption>Table 4: Per-site MDP statistics. Surfaces : distinct UI views (pages, modals). Actions : typed semantic action count. Templates : task template count. Tasks : total task instances. Card fields : attributes visible on list views. Detail fields : attributes requiring detail-page navigation.</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="A4.T4.2.1">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A4.T4.2.1.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A4.T4.2.1.1.1"><span class="ltx_text ltx_font_bold" id="A4.T4.2.1.1.1.1">Site</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A4.T4.2.1.1.2"><span class="ltx_text ltx_font_bold" id="A4.T4.2.1.1.2.1">Domain</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A4.T4.2.1.1.3"><span class="ltx_text ltx_font_bold" id="A4.T4.2.1.1.3.1">Surfaces</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A4.T4.2.1.1.4"><span class="ltx_text ltx_font_bold" id="A4.T4.2.1.1.4.1">Actions</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A4.T4.2.1.1.5"><span class="ltx_text ltx_font_bold" id="A4.T4.2.1.1.5.1">Templates</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A4.T4.2.1.1.6"><span class="ltx_text ltx_font_bold" id="A4.T4.2.1.1.6.1">Tasks</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A4.T4.2.1.1.7"><span class="ltx_text ltx_font_bold" id="A4.T4.2.1.1.7.1">Card / Detail Fields</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A4.T4.2.1.1.8"><span class="ltx_text ltx_font_bold" id="A4.T4.2.1.1.8.1">Decision Object</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A4.T4.2.1.2">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T4.2.1.2.1">Mail</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A4.T4.2.1.2.2">Productivity</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A4.T4.2.1.2.3">3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A4.T4.2.1.2.4">36</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A4.T4.2.1.2.5">6</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A4.T4.2.1.2.6">180</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A4.T4.2.1.2.7">10 / 9</td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T4.2.1.2.8">Thread</td></tr>
+<tr class="ltx_tr" id="A4.T4.2.1.3">
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.3.1">Calendar</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.3.2">Productivity</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.3.3">6</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.3.4">14</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.3.5">6</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.3.6">180</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.3.7">8 / 6</td>
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.3.8">Event</td></tr>
+<tr class="ltx_tr" id="A4.T4.2.1.4">
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.4.1">Team Chat</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.4.2">Productivity</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.4.3">3</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.4.4">24</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.4.5">12</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.4.6">180</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.4.7">6 / 5</td>
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.4.8">Message</td></tr>
+<tr class="ltx_tr" id="A4.T4.2.1.5">
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.5.1">Shopping</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.5.2">E-Commerce</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.5.3">6</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.5.4">23</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.5.5">6</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.5.6">180</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.5.7">12 / 12</td>
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.5.8">Product</td></tr>
+<tr class="ltx_tr" id="A4.T4.2.1.6">
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.6.1">Food Delivery</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.6.2">E-Commerce</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.6.3">6</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.6.4">24</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.6.5">15</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.6.6">180</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.6.7">8 / 7</td>
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.6.8">Restaurant / Item</td></tr>
+<tr class="ltx_tr" id="A4.T4.2.1.7">
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.7.1">Accommodation</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.7.2">Discovery</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.7.3">4</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.7.4">16</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.7.5">12</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.7.6">180</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.7.7">9 / 8</td>
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.7.8">Listing</td></tr>
+<tr class="ltx_tr" id="A4.T4.2.1.8">
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.8.1">Housing</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.8.2">Discovery</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.8.3">4</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.8.4">16</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.8.5">12</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.8.6">180</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.8.7">8 / 10</td>
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.8.8">Property</td></tr>
+<tr class="ltx_tr" id="A4.T4.2.1.9">
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.9.1">Coding Q&amp;A</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.9.2">Information</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.9.3">4</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.9.4">18</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.9.5">12</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.9.6">180</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.9.7">7 / 6</td>
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.9.8">Question</td></tr>
+<tr class="ltx_tr" id="A4.T4.2.1.10">
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.10.1">Code Repo</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.10.2">Collaboration</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.10.3">6</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.10.4">32</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.10.5">12</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.10.6">180</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.10.7">9 / 8</td>
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.10.8">Repository / Issue</td></tr>
+<tr class="ltx_tr" id="A4.T4.2.1.11">
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.11.1">Job Network</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.11.2">Social</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.11.3">6</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.11.4">26</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.11.5">12</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.11.6">180</td>
+<td class="ltx_td ltx_align_center" id="A4.T4.2.1.11.7">7 / 9</td>
+<td class="ltx_td ltx_align_left" id="A4.T4.2.1.11.8">Job / Profile</td></tr>
+<tr class="ltx_tr" id="A4.T4.2.1.12">
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="A4.T4.2.1.12.1"><span class="ltx_text ltx_font_bold" id="A4.T4.2.1.12.1.1">Total</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A4.T4.2.1.12.2">–</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A4.T4.2.1.12.3">48</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A4.T4.2.1.12.4">229</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A4.T4.2.1.12.5">105</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A4.T4.2.1.12.6"><span class="ltx_text ltx_font_bold" id="A4.T4.2.1.12.6.1">1,800</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A4.T4.2.1.12.7">84 / 80</td>
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="A4.T4.2.1.12.8">–</td></tr>
+</tbody>
+</table></figure><figure id="A4.T5"><figcaption>Table 5: Visibility partition for each site. | 𝒱 card | |\mathcal{V}_{\text{card}}| : attributes visible on list surfaces. | 𝒱 detail | |\mathcal{V}_{\text{detail}}| : attributes visible only on detail surfaces. Surfaces are categorized as Card (list views), Detail (entity detail pages), and Commit (surfaces where task-completing actions are available).</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="A4.T5.2.1">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A4.T5.2.1.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A4.T5.2.1.1.1"><span class="ltx_text ltx_font_bold" id="A4.T5.2.1.1.1.1">Site</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A4.T5.2.1.1.2"><span class="ltx_text ltx_font_bold" id="A4.T5.2.1.1.2.1">Card Surfaces</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A4.T5.2.1.1.3"><span class="ltx_text ltx_font_bold" id="A4.T5.2.1.1.3.1">Detail Surfaces</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A4.T5.2.1.1.4"><span class="ltx_text ltx_font_bold" id="A4.T5.2.1.1.4.1">Commit Surfaces</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A4.T5.2.1.1.5"><math alttext="|\mathcal{V}_{\text{card}}|" class="ltx_Math" display="inline" id="A4.T5.m1" intent=":literal"><semantics><mrow><mo stretchy="false">|</mo><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>card</mtext></msub><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|\mathcal{V}_{\text{card}}|</annotation></semantics></math></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A4.T5.2.1.1.6"><math alttext="|\mathcal{V}_{\text{detail}}|" class="ltx_Math" display="inline" id="A4.T5.m2" intent=":literal"><semantics><mrow><mo stretchy="false">|</mo><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>detail</mtext></msub><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|\mathcal{V}_{\text{detail}}|</annotation></semantics></math></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A4.T5.2.1.2">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T5.2.1.2.1">Mail</td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T5.2.1.2.2">ThreadList</td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T5.2.1.2.3">ThreadView</td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T5.2.1.2.4">ComposeModal, ThreadList, ThreadView</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A4.T5.2.1.2.5">10</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A4.T5.2.1.2.6">9</td></tr>
+<tr class="ltx_tr" id="A4.T5.2.1.3">
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.3.1">Calendar</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.3.2">WeekView, DayView, MonthView</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.3.3">EventDetail</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.3.4">EventEditor</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.2.1.3.5">8</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.2.1.3.6">6</td></tr>
+<tr class="ltx_tr" id="A4.T5.2.1.4">
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.4.1">Team Chat</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.4.2">ChannelView, SearchResults</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.4.3">ChannelView (thread)</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.4.4">ChannelView, DirectMessageView</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.2.1.4.5">6</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.2.1.4.6">5</td></tr>
+<tr class="ltx_tr" id="A4.T5.2.1.5">
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.5.1">Shopping</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.5.2">SearchResults</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.5.3">ProductDetail</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.5.4">Checkout, OrderConfirmation</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.2.1.5.5">12</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.2.1.5.6">12</td></tr>
+<tr class="ltx_tr" id="A4.T5.2.1.6">
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.6.1">Food Delivery</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.6.2">RestaurantList</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.6.3">RestaurantDetail, MenuItemDetail</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.6.4">Checkout, OrderStatus</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.2.1.6.5">8</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.2.1.6.6">7</td></tr>
+<tr class="ltx_tr" id="A4.T5.2.1.7">
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.7.1">Accommodation</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.7.2">SearchResults</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.7.3">ListingDetail</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.7.4">Checkout, Reservations</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.2.1.7.5">9</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.2.1.7.6">8</td></tr>
+<tr class="ltx_tr" id="A4.T5.2.1.8">
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.8.1">Housing</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.8.2">SearchResults</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.8.3">PropertyDetail</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.8.4">PropertyDetail, SavedHomes</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.2.1.8.5">8</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.2.1.8.6">10</td></tr>
+<tr class="ltx_tr" id="A4.T5.2.1.9">
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.9.1">Coding Q&amp;A</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.9.2">QuestionList</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.9.3">QuestionDetail</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.9.4">QuestionDetail</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.2.1.9.5">7</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.2.1.9.6">6</td></tr>
+<tr class="ltx_tr" id="A4.T5.2.1.10">
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.10.1">Code Repo</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.10.2">RepoList, IssueList, PullRequestList</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.10.3">RepoDetail, IssueDetail, PRDetail</td>
+<td class="ltx_td ltx_align_left" id="A4.T5.2.1.10.4">IssueDetail, RepoDetail</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.2.1.10.5">9</td>
+<td class="ltx_td ltx_align_center" id="A4.T5.2.1.10.6">8</td></tr>
+<tr class="ltx_tr" id="A4.T5.2.1.11">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A4.T5.2.1.11.1">Job Network</td>
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A4.T5.2.1.11.2">JobList, ConnectionList</td>
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A4.T5.2.1.11.3">JobDetail, ProfileView</td>
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A4.T5.2.1.11.4">JobDetail, Messaging</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A4.T5.2.1.11.5">7</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A4.T5.2.1.11.6">9</td></tr>
+</tbody>
+</table></figure><figure id="A4.T6"><figcaption>Table 6: Skill category definitions. The four exploration categories (Navigate, Search, Filter, Inspect) are global action-type sets; Commit is task-relative, defined per task as the final step of its oracle trajectory.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A4.T6.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A4.T6.2.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A4.T6.2.1.1"><span class="ltx_text ltx_font_bold" id="A4.T6.2.1.1.1">Category</span></th>
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A4.T6.2.1.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T6.2.1.2.1" style="width:341.4pt;">
+<span class="ltx_p" id="A4.T6.2.1.2.1.1"><span class="ltx_text ltx_font_bold" id="A4.T6.2.1.2.1.1.1">Description</span></span>
+</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A4.T6.2.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A4.T6.2.2.1" style="padding-bottom: 4.0pt;">Navigate</th>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T6.2.2.2" style="padding-bottom: 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T6.2.2.2.1" style="width:341.4pt;">
+<span class="ltx_p" id="A4.T6.2.2.2.1.1">Actions that move between surfaces or manage the current view without modifying application state. Includes pagination, folder/tab switching, back navigation, closing detail views, and temporal navigation (e.g., next/previous week).</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T6.2.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A4.T6.2.3.1" style="padding-bottom: 4.0pt;">Search</th>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T6.2.3.2" style="padding-bottom: 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T6.2.3.2.1" style="width:341.4pt;">
+<span class="ltx_p" id="A4.T6.2.3.2.1.1">Actions that issue or clear search queries to change the visible entity set. Includes keyword search, people search, repository search, and clearing search context.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T6.2.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A4.T6.2.4.1" style="padding-bottom: 4.0pt;">Filter</th>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T6.2.4.2" style="padding-bottom: 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T6.2.4.2.1" style="width:341.4pt;">
+<span class="ltx_p" id="A4.T6.2.4.2.1.1">Actions that narrow or reorder the visible entities within the current result set. Includes applying categorical or range filters, sorting, and clearing filters.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T6.2.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A4.T6.2.5.1" style="padding-bottom: 4.0pt;">Inspect</th>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T6.2.5.2" style="padding-bottom: 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T6.2.5.2.1" style="width:341.4pt;">
+<span class="ltx_p" id="A4.T6.2.5.2.1.1">Actions that reveal additional information about an entity without modifying application state. Includes opening detail views, expanding hidden content, viewing profiles, and selecting entities for closer examination.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T6.2.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A4.T6.2.6.1">Commit</th>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A4.T6.2.6.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T6.2.6.2.1" style="width:341.4pt;">
+<span class="ltx_p" id="A4.T6.2.6.2.1.1">The task-completing action: the final step of the task’s oracle trajectory, performed on the target entity—e.g., placing the order, sending the reply, starring the target thread, or, for read-only tasks, opening the target item. State-modifying actions that are not the task’s commit (e.g., adding an item to the cart before placing the order, or filling a form before sending) form the task’s <em class="ltx_emph ltx_font_italic" id="A4.T6.2.6.2.1.1.1">pre-commit sequence</em>; in trajectory analyses these steps are merged into the step that follows them rather than counted as a separate category.</span>
+</span></td></tr>
+</tbody>
+</table></figure><figure id="A4.T7"><figcaption>Table 7: Skill taxonomy per site (Part 1 of 2). Skills are organized into five categories: Navigate (surface traversal), Search (query formulation), Filter (attribute filtering and sorting), Inspect (entity viewing), and Commit (task-completing actions).</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="A4.T7.2.1">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A4.T7.2.1.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A4.T7.2.1.1.1"><span class="ltx_text ltx_font_bold" id="A4.T7.2.1.1.1.1">Site</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A4.T7.2.1.1.2"><span class="ltx_text ltx_font_bold" id="A4.T7.2.1.1.2.1">Category</span></th>
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A4.T7.2.1.1.3">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.1.3.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.1.3.1.1"><span class="ltx_text ltx_font_bold" id="A4.T7.2.1.1.3.1.1.1">Skills</span></span>
+</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A4.T7.2.1.2">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T7.2.1.2.1" rowspan="5"><span class="ltx_text" id="A4.T7.2.1.2.1.1">Mail</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T7.2.1.2.2">Navigate</td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T7.2.1.2.3">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.2.3.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.2.3.1.1">folder_navigation, pagination, backtrack_navigation</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.3">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.3.1">Search</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.3.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.3.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.3.2.1.1">search_refinement</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.4">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.4.1">Filter</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.4.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.4.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.4.2.1.1">filter_application</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.5">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.5.1">Inspect</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.5.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.5.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.5.2.1.1">thread_inspection, message_expansion</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.6">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.6.1">Commit</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.6.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.6.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.6.2.1.1">compose_setup, compose_field_entry, email_management, bulk_management, send_commit</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.7">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T7.2.1.7.1" rowspan="5"><span class="ltx_text" id="A4.T7.2.1.7.1.1">Calendar</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T7.2.1.7.2">Navigate</td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T7.2.1.7.3">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.7.3.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.7.3.1.1">temporal_navigation, view_switching, backtrack_navigation</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.8">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.8.1">Search</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.8.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.8.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.8.2.1.1">search_query</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.9">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.9.1">Filter</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.9.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.9.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.9.2.1.1">calendar_filtering</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.10">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.10.1">Inspect</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.10.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.10.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.10.2.1.1">event_inspection, information_extraction, comparison, conflict_detection</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.11">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.11.1">Commit</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.11.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.11.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.11.2.1.1">event_creation, event_editing, field_entry, commit_timing</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.12">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T7.2.1.12.1" rowspan="5"><span class="ltx_text" id="A4.T7.2.1.12.1.1">Shopping</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T7.2.1.12.2">Navigate</td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T7.2.1.12.3">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.12.3.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.12.3.1.1">pagination</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.13">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.13.1">Search</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.13.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.13.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.13.2.1.1">query_formulation</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.14">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.14.1">Filter</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.14.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.14.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.14.2.1.1">department_filtering, category_filtering, brand_filtering, price_filtering, attribute_filtering, sort_usage</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.15">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.15.1">Inspect</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.15.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.15.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.15.2.1.1">product_inspection, review_inspection, comparison</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.16">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.16.1">Commit</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.16.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.16.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.16.2.1.1">option_selection, cart_management, checkout_flow, commit_timing</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.17">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T7.2.1.17.1" rowspan="5"><span class="ltx_text" id="A4.T7.2.1.17.1.1">Accommodation</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T7.2.1.17.2">Navigate</td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T7.2.1.17.3">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.17.3.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.17.3.1.1">pagination, search_return</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.18">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.18.1">Search</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.18.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.18.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.18.2.1.1">query_formulation</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.19">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.19.1">Filter</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.19.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.19.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.19.2.1.1">property_type_filtering, price_filtering, beds_filtering, amenity_filtering, sort_usage</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.20">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.20.1">Inspect</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.20.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.20.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.20.2.1.1">listing_inspection, amenity_expansion, comparison</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.21">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.21.1">Commit</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.21.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.21.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.21.2.1.1">booking_initiation, booking_confirmation, booking_cancellation, checkout_cancellation</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.22">
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="A4.T7.2.1.22.1" rowspan="5"><span class="ltx_text" id="A4.T7.2.1.22.1.1">Food Delivery</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T7.2.1.22.2">Navigate</td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T7.2.1.22.3">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.22.3.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.22.3.1.1">pagination</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.23">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.23.1">Search</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.23.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.23.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.23.2.1.1">query_formulation</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.24">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.24.1">Filter</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.24.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.24.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.24.2.1.1">cuisine_filtering, price_filtering, dietary_filtering, attribute_filtering, sort_usage</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.25">
+<td class="ltx_td ltx_align_left" id="A4.T7.2.1.25.1">Inspect</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T7.2.1.25.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.25.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.25.2.1.1">restaurant_inspection, menu_item_inspection, comparison</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T7.2.1.26">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A4.T7.2.1.26.1">Commit</td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A4.T7.2.1.26.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T7.2.1.26.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T7.2.1.26.2.1.1">customization_selection, cart_management, checkout_flow, commit_timing</span>
+</span></td></tr>
+</tbody>
+</table></figure><figure id="A4.T8"><figcaption>Table 8: Skill taxonomy per site (Part 2 of 2). See Table 6 for category definitions.</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="A4.T8.2.1">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A4.T8.2.1.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A4.T8.2.1.1.1"><span class="ltx_text ltx_font_bold" id="A4.T8.2.1.1.1.1">Site</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A4.T8.2.1.1.2"><span class="ltx_text ltx_font_bold" id="A4.T8.2.1.1.2.1">Category</span></th>
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A4.T8.2.1.1.3">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.1.3.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.1.3.1.1"><span class="ltx_text ltx_font_bold" id="A4.T8.2.1.1.3.1.1.1">Skills</span></span>
+</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A4.T8.2.1.2">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T8.2.1.2.1" rowspan="5"><span class="ltx_text" id="A4.T8.2.1.2.1.1">Housing</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T8.2.1.2.2">Navigate</td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T8.2.1.2.3">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.2.3.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.2.3.1.1">pagination</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.3">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.3.1">Search</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.3.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.3.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.3.2.1.1">query_formulation</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.4">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.4.1">Filter</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.4.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.4.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.4.2.1.1">price_filtering, beds_filtering, baths_filtering, sqft_filtering, type_filtering, attribute_filtering, sort_usage</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.5">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.5.1">Inspect</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.5.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.5.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.5.2.1.1">property_inspection, agent_inspection, comparison</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.6">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.6.1">Commit</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.6.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.6.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.6.2.1.1">save_management, tour_scheduling, agent_contact, saved_homes_review</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.7">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T8.2.1.7.1" rowspan="5"><span class="ltx_text" id="A4.T8.2.1.7.1.1">Coding Q&amp;A</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T8.2.1.7.2">Navigate</td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T8.2.1.7.3">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.7.3.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.7.3.1.1">back_navigation, pagination</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.8">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.8.1">Search</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.8.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.8.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.8.2.1.1">query_formulation</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.9">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.9.1">Filter</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.9.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.9.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.9.2.1.1">tag_filtering, acceptance_filtering, date_filtering, vote_filtering, sort_usage, answer_sort_usage, filter_reset</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.10">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.10.1">Inspect</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.10.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.10.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.10.2.1.1">question_inspection, user_inspection, tag_inspection</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.11">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.11.1">Commit</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.11.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.11.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.11.2.1.1">voting, answer_posting, commenting, answer_acceptance, bookmarking</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.12">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T8.2.1.12.1" rowspan="5"><span class="ltx_text" id="A4.T8.2.1.12.1.1">Code Repo</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T8.2.1.12.2">Navigate</td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T8.2.1.12.3">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.12.3.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.12.3.1.1">navigate_to_issues, navigate_to_prs, back_navigation, pagination</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.13">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.13.1">Search</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.13.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.13.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.13.2.1.1">repo_search</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.14">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.14.1">Filter</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.14.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.14.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.14.2.1.1">language_filtering, stars_filtering, license_filtering, topic_filtering, repo_attribute_filtering, repo_sort_usage, issue_state_filtering, issue_label_filtering, issue_author_filtering, issue_sort_usage, pr_filtering, pr_sort_usage</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.15">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.15.1">Inspect</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.15.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.15.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.15.2.1.1">repo_inspection, issue_inspection, pr_inspection</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.16">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.16.1">Commit</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.16.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.16.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.16.2.1.1">issue_creation, issue_commenting, issue_assignment, issue_labeling, issue_state_change, star_management, commit_timing</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.17">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T8.2.1.17.1" rowspan="5"><span class="ltx_text" id="A4.T8.2.1.17.1.1">Job Network</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T8.2.1.17.2">Navigate</td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T8.2.1.17.3">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.17.3.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.17.3.1.1">tab_navigation, pagination</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.18">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.18.1">Search</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.18.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.18.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.18.2.1.1">job_query_formulation, people_query_formulation</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.19">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.19.1">Filter</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.19.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.19.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.19.2.1.1">location_filtering, job_type_filtering, remote_filtering, salary_filtering, experience_filtering, sort_usage, filter_clearing</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.20">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.20.1">Inspect</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.20.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.20.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.20.2.1.1">job_inspection, profile_inspection, job_comparison, profile_comparison</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.21">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.21.1">Commit</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.21.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.21.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.21.2.1.1">job_application, connection_request, messaging, job_save_action, conversation_management, feed_interaction</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.22">
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="A4.T8.2.1.22.1" rowspan="5"><span class="ltx_text" id="A4.T8.2.1.22.1.1">Team Chat</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T8.2.1.22.2">Navigate</td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T8.2.1.22.3">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.22.3.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.22.3.1.1">channel_navigation, dm_navigation, scroll_navigation, search_result_navigation</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.23">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.23.1">Search</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.23.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.23.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.23.2.1.1">search_query, search_clear</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.24">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.24.1">Filter</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.24.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.24.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.24.2.1.1">—</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.25">
+<td class="ltx_td ltx_align_left" id="A4.T8.2.1.25.1">Inspect</td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A4.T8.2.1.25.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.25.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.25.2.1.1">thread_inspection, member_inspection, thread_close, member_close</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T8.2.1.26">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A4.T8.2.1.26.1">Commit</td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A4.T8.2.1.26.2">
+<span class="ltx_inline-block ltx_align_top" id="A4.T8.2.1.26.2.1" style="width:298.8pt;">
+<span class="ltx_p" id="A4.T8.2.1.26.2.1.1">send_channel_message, send_thread_reply, send_dm, message_reaction, message_pin, message_edit, message_delete, channel_mute, commit_timing</span>
+</span></td></tr>
+</tbody>
+</table></figure><figure id="A6.T9"><figcaption>Table 9: Terminal Success Rate (%) by site. Best per site in bold.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A6.T9.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A6.T9.2.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A6.T9.2.1.1">Agent</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T9.2.1.2"><span class="ltx_text ltx_font_bold" id="A6.T9.2.1.2.1">Mail</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T9.2.1.3"><span class="ltx_text ltx_font_bold" id="A6.T9.2.1.3.1">Cal.</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T9.2.1.4"><span class="ltx_text ltx_font_bold" id="A6.T9.2.1.4.1">Shop.</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T9.2.1.5"><span class="ltx_text ltx_font_bold" id="A6.T9.2.1.5.1">Acco.</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T9.2.1.6"><span class="ltx_text ltx_font_bold" id="A6.T9.2.1.6.1">Food</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T9.2.1.7"><span class="ltx_text ltx_font_bold" id="A6.T9.2.1.7.1">Hous.</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T9.2.1.8"><span class="ltx_text ltx_font_bold" id="A6.T9.2.1.8.1">Q&amp;A</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T9.2.1.9"><span class="ltx_text ltx_font_bold" id="A6.T9.2.1.9.1">Code</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T9.2.1.10"><span class="ltx_text ltx_font_bold" id="A6.T9.2.1.10.1">Jobs</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T9.2.1.11"><span class="ltx_text ltx_font_bold" id="A6.T9.2.1.11.1">Chat</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A6.T9.2.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T9.2.2.1">Claude CUA</th>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T9.2.2.2"><span class="ltx_text ltx_font_bold" id="A6.T9.2.2.2.1">91.7</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T9.2.2.3"><span class="ltx_text ltx_font_bold" id="A6.T9.2.2.3.1">79.4</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T9.2.2.4"><span class="ltx_text ltx_font_bold" id="A6.T9.2.2.4.1">82.8</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T9.2.2.5">87.2</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T9.2.2.6"><span class="ltx_text ltx_font_bold" id="A6.T9.2.2.6.1">86.1</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T9.2.2.7"><span class="ltx_text ltx_font_bold" id="A6.T9.2.2.7.1">79.4</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T9.2.2.8">77.8</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T9.2.2.9"><span class="ltx_text ltx_font_bold" id="A6.T9.2.2.9.1">91.1</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T9.2.2.10">84.4</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T9.2.2.11"><span class="ltx_text ltx_font_bold" id="A6.T9.2.2.11.1">93.3</span></td></tr>
+<tr class="ltx_tr" id="A6.T9.2.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T9.2.3.1">OpenAI CUA</th>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.3.2">89.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.3.3">73.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.3.4">78.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.3.5"><span class="ltx_text ltx_font_bold" id="A6.T9.2.3.5.1">88.3</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.3.6">81.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.3.7">66.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.3.8"><span class="ltx_text ltx_font_bold" id="A6.T9.2.3.8.1">79.4</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.3.9">88.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.3.10"><span class="ltx_text ltx_font_bold" id="A6.T9.2.3.10.1">91.1</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.3.11">90.0</td></tr>
+<tr class="ltx_tr" id="A6.T9.2.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T9.2.4.1">Qwen3.5-122B</th>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.4.2">60.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.4.3">52.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.4.4">56.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.4.5">53.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.4.6">73.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.4.7">25.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.4.8">63.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.4.9">65.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.4.10">66.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.4.11">63.9</td></tr>
+<tr class="ltx_tr" id="A6.T9.2.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T9.2.5.1">Fara</th>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.5.2">50.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.5.3">16.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.5.4">37.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.5.5">31.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.5.6">63.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.5.7">13.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.5.8">37.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.5.9">41.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.5.10">40.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.5.11">26.1</td></tr>
+<tr class="ltx_tr" id="A6.T9.2.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T9.2.6.1">GUI-Owl</th>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.6.2">58.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.6.3">10.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.6.4">12.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.6.5">11.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.6.6">67.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.6.7">20.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.6.8">50.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.6.9">43.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.6.10">35.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T9.2.6.11">33.9</td></tr>
+<tr class="ltx_tr" id="A6.T9.2.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A6.T9.2.7.1">UI-TARS</th>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T9.2.7.2">71.1</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T9.2.7.3">18.9</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T9.2.7.4">16.7</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T9.2.7.5">8.9</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T9.2.7.6">65.6</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T9.2.7.7">27.2</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T9.2.7.8">46.1</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T9.2.7.9">36.7</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T9.2.7.10">48.3</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T9.2.7.11">31.1</td></tr>
+</tbody>
+</table></figure><figure id="A6.T10"><figcaption>Table 10: Exploration Success Rate (%) by site. Best per site in bold.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A6.T10.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A6.T10.2.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A6.T10.2.1.1">Agent</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T10.2.1.2"><span class="ltx_text ltx_font_bold" id="A6.T10.2.1.2.1">Mail</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T10.2.1.3"><span class="ltx_text ltx_font_bold" id="A6.T10.2.1.3.1">Cal.</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T10.2.1.4"><span class="ltx_text ltx_font_bold" id="A6.T10.2.1.4.1">Shop.</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T10.2.1.5"><span class="ltx_text ltx_font_bold" id="A6.T10.2.1.5.1">Acco.</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T10.2.1.6"><span class="ltx_text ltx_font_bold" id="A6.T10.2.1.6.1">Food</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T10.2.1.7"><span class="ltx_text ltx_font_bold" id="A6.T10.2.1.7.1">Hous.</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T10.2.1.8"><span class="ltx_text ltx_font_bold" id="A6.T10.2.1.8.1">Q&amp;A</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T10.2.1.9"><span class="ltx_text ltx_font_bold" id="A6.T10.2.1.9.1">Code</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T10.2.1.10"><span class="ltx_text ltx_font_bold" id="A6.T10.2.1.10.1">Jobs</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T10.2.1.11"><span class="ltx_text ltx_font_bold" id="A6.T10.2.1.11.1">Chat</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A6.T10.2.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T10.2.2.1">Claude CUA</th>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T10.2.2.2"><span class="ltx_text ltx_font_bold" id="A6.T10.2.2.2.1">91.7</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T10.2.2.3"><span class="ltx_text ltx_font_bold" id="A6.T10.2.2.3.1">79.4</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T10.2.2.4"><span class="ltx_text ltx_font_bold" id="A6.T10.2.2.4.1">98.9</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T10.2.2.5"><span class="ltx_text ltx_font_bold" id="A6.T10.2.2.5.1">93.3</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T10.2.2.6"><span class="ltx_text ltx_font_bold" id="A6.T10.2.2.6.1">97.8</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T10.2.2.7"><span class="ltx_text ltx_font_bold" id="A6.T10.2.2.7.1">82.8</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T10.2.2.8">85.6</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T10.2.2.9"><span class="ltx_text ltx_font_bold" id="A6.T10.2.2.9.1">91.1</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T10.2.2.10"><span class="ltx_text ltx_font_bold" id="A6.T10.2.2.10.1">93.3</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T10.2.2.11"><span class="ltx_text ltx_font_bold" id="A6.T10.2.2.11.1">93.3</span></td></tr>
+<tr class="ltx_tr" id="A6.T10.2.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T10.2.3.1">OpenAI CUA</th>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.3.2">90.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.3.3">77.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.3.4">95.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.3.5">91.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.3.6">97.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.3.7">70.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.3.8"><span class="ltx_text ltx_font_bold" id="A6.T10.2.3.8.1">89.4</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.3.9">88.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.3.10">92.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.3.11">92.2</td></tr>
+<tr class="ltx_tr" id="A6.T10.2.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T10.2.4.1">Qwen3.5-122B</th>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.4.2">62.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.4.3">58.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.4.4">71.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.4.5">70.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.4.6">91.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.4.7">27.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.4.8">78.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.4.9">65.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.4.10">67.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.4.11">66.7</td></tr>
+<tr class="ltx_tr" id="A6.T10.2.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T10.2.5.1">Fara</th>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.5.2">53.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.5.3">22.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.5.4">47.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.5.5">52.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.5.6">82.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.5.7">13.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.5.8">52.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.5.9">46.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.5.10">43.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.5.11">55.6</td></tr>
+<tr class="ltx_tr" id="A6.T10.2.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T10.2.6.1">GUI-Owl</th>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.6.2">58.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.6.3">13.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.6.4">13.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.6.5">47.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.6.6">82.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.6.7">22.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.6.8">60.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.6.9">50.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.6.10">34.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T10.2.6.11">47.2</td></tr>
+<tr class="ltx_tr" id="A6.T10.2.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A6.T10.2.7.1">UI-TARS</th>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T10.2.7.2">76.1</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T10.2.7.3">26.7</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T10.2.7.4">20.0</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T10.2.7.5">51.1</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T10.2.7.6">82.8</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T10.2.7.7">28.9</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T10.2.7.8">55.6</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T10.2.7.9">41.7</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T10.2.7.10">53.3</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T10.2.7.11">53.3</td></tr>
+</tbody>
+</table></figure><figure id="A6.T11"><figcaption>Table 11: Execution SR | | Exploration Success (%) by site. Best per site in bold.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A6.T11.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A6.T11.2.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A6.T11.2.1.1">Agent</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T11.2.1.2"><span class="ltx_text ltx_font_bold" id="A6.T11.2.1.2.1">Mail</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T11.2.1.3"><span class="ltx_text ltx_font_bold" id="A6.T11.2.1.3.1">Cal.</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T11.2.1.4"><span class="ltx_text ltx_font_bold" id="A6.T11.2.1.4.1">Shop.</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T11.2.1.5"><span class="ltx_text ltx_font_bold" id="A6.T11.2.1.5.1">Acco.</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T11.2.1.6"><span class="ltx_text ltx_font_bold" id="A6.T11.2.1.6.1">Food</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T11.2.1.7"><span class="ltx_text ltx_font_bold" id="A6.T11.2.1.7.1">Hous.</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T11.2.1.8"><span class="ltx_text ltx_font_bold" id="A6.T11.2.1.8.1">Q&amp;A</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T11.2.1.9"><span class="ltx_text ltx_font_bold" id="A6.T11.2.1.9.1">Code</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T11.2.1.10"><span class="ltx_text ltx_font_bold" id="A6.T11.2.1.10.1">Jobs</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T11.2.1.11"><span class="ltx_text ltx_font_bold" id="A6.T11.2.1.11.1">Chat</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A6.T11.2.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T11.2.2.1">Claude CUA</th>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T11.2.2.2"><span class="ltx_text ltx_font_bold" id="A6.T11.2.2.2.1">100.0</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T11.2.2.3"><span class="ltx_text ltx_font_bold" id="A6.T11.2.2.3.1">100.0</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T11.2.2.4">83.7</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T11.2.2.5">93.5</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T11.2.2.6"><span class="ltx_text ltx_font_bold" id="A6.T11.2.2.6.1">88.1</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T11.2.2.7"><span class="ltx_text ltx_font_bold" id="A6.T11.2.2.7.1">96.0</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T11.2.2.8"><span class="ltx_text ltx_font_bold" id="A6.T11.2.2.8.1">89.6</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T11.2.2.9"><span class="ltx_text ltx_font_bold" id="A6.T11.2.2.9.1">100.0</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T11.2.2.10">90.5</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T11.2.2.11"><span class="ltx_text ltx_font_bold" id="A6.T11.2.2.11.1">100.0</span></td></tr>
+<tr class="ltx_tr" id="A6.T11.2.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T11.2.3.1">OpenAI CUA</th>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.3.2">99.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.3.3">94.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.3.4">82.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.3.5"><span class="ltx_text ltx_font_bold" id="A6.T11.2.3.5.1">96.4</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.3.6">83.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.3.7">95.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.3.8">88.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.3.9"><span class="ltx_text ltx_font_bold" id="A6.T11.2.3.9.1">100.0</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.3.10">97.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.3.11">97.6</td></tr>
+<tr class="ltx_tr" id="A6.T11.2.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T11.2.4.1">Qwen3.5-122B</th>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.4.2">94.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.4.3">88.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.4.4">78.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.4.5">77.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.4.6">80.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.4.7">80.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.4.8">79.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.4.9"><span class="ltx_text ltx_font_bold" id="A6.T11.2.4.9.1">100.0</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.4.10">96.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.4.11">95.8</td></tr>
+<tr class="ltx_tr" id="A6.T11.2.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T11.2.5.1">Fara</th>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.5.2">93.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.5.3">72.5</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.5.4">79.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.5.5">59.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.5.6">77.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.5.7">92.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.5.8">70.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.5.9">89.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.5.10">91.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.5.11">47.0</td></tr>
+<tr class="ltx_tr" id="A6.T11.2.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T11.2.6.1">GUI-Owl</th>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.6.2">99.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.6.3">79.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.6.4"><span class="ltx_text ltx_font_bold" id="A6.T11.2.6.4.1">95.8</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.6.5">24.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.6.6">81.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.6.7">77.5</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.6.8">84.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.6.9">85.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.6.10"><span class="ltx_text ltx_font_bold" id="A6.T11.2.6.10.1">100.0</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T11.2.6.11">71.8</td></tr>
+<tr class="ltx_tr" id="A6.T11.2.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A6.T11.2.7.1">UI-TARS</th>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T11.2.7.2">93.4</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T11.2.7.3">70.8</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T11.2.7.4">83.3</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T11.2.7.5">17.4</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T11.2.7.6">77.9</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T11.2.7.7">82.7</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T11.2.7.8">82.0</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T11.2.7.9">88.0</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T11.2.7.10">87.5</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T11.2.7.11">58.3</td></tr>
+</tbody>
+</table></figure><figure id="A6.T12"><figcaption>Table 12: Informational Coverage at Commit (%) by site. Best per site in bold.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A6.T12.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A6.T12.2.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A6.T12.2.1.1">Agent</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T12.2.1.2"><span class="ltx_text ltx_font_bold" id="A6.T12.2.1.2.1">Mail</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T12.2.1.3"><span class="ltx_text ltx_font_bold" id="A6.T12.2.1.3.1">Cal.</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T12.2.1.4"><span class="ltx_text ltx_font_bold" id="A6.T12.2.1.4.1">Shop.</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T12.2.1.5"><span class="ltx_text ltx_font_bold" id="A6.T12.2.1.5.1">Acco.</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T12.2.1.6"><span class="ltx_text ltx_font_bold" id="A6.T12.2.1.6.1">Food</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T12.2.1.7"><span class="ltx_text ltx_font_bold" id="A6.T12.2.1.7.1">Hous.</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T12.2.1.8"><span class="ltx_text ltx_font_bold" id="A6.T12.2.1.8.1">Q&amp;A</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T12.2.1.9"><span class="ltx_text ltx_font_bold" id="A6.T12.2.1.9.1">Code</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T12.2.1.10"><span class="ltx_text ltx_font_bold" id="A6.T12.2.1.10.1">Jobs</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T12.2.1.11"><span class="ltx_text ltx_font_bold" id="A6.T12.2.1.11.1">Chat</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A6.T12.2.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T12.2.2.1">Claude CUA</th>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T12.2.2.2">91.3</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T12.2.2.3">96.7</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T12.2.2.4"><span class="ltx_text ltx_font_bold" id="A6.T12.2.2.4.1">100.0</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T12.2.2.5">95.5</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T12.2.2.6">97.8</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T12.2.2.7"><span class="ltx_text ltx_font_bold" id="A6.T12.2.2.7.1">100.0</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T12.2.2.8">93.3</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T12.2.2.9"><span class="ltx_text ltx_font_bold" id="A6.T12.2.2.9.1">90.9</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T12.2.2.10">98.4</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T12.2.2.11"><span class="ltx_text ltx_font_bold" id="A6.T12.2.2.11.1">99.1</span></td></tr>
+<tr class="ltx_tr" id="A6.T12.2.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T12.2.3.1">OpenAI CUA</th>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.3.2">88.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.3.3"><span class="ltx_text ltx_font_bold" id="A6.T12.2.3.3.1">97.2</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.3.4">99.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.3.5"><span class="ltx_text ltx_font_bold" id="A6.T12.2.3.5.1">97.3</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.3.6"><span class="ltx_text ltx_font_bold" id="A6.T12.2.3.6.1">98.9</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.3.7">98.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.3.8"><span class="ltx_text ltx_font_bold" id="A6.T12.2.3.8.1">98.9</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.3.9">90.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.3.10"><span class="ltx_text ltx_font_bold" id="A6.T12.2.3.10.1">98.4</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.3.11">98.7</td></tr>
+<tr class="ltx_tr" id="A6.T12.2.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T12.2.4.1">Qwen3.5-122B</th>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.4.2">83.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.4.3">94.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.4.4">97.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.4.5">83.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.4.6">93.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.4.7">94.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.4.8">88.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.4.9">68.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.4.10">92.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.4.11">94.1</td></tr>
+<tr class="ltx_tr" id="A6.T12.2.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T12.2.5.1">Fara</th>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.5.2">85.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.5.3">80.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.5.4">93.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.5.5">76.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.5.6">89.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.5.7">62.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.5.8">65.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.5.9">53.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.5.10">76.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.5.11">81.7</td></tr>
+<tr class="ltx_tr" id="A6.T12.2.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T12.2.6.1">GUI-Owl</th>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.6.2"><span class="ltx_text ltx_font_bold" id="A6.T12.2.6.2.1">93.9</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.6.3">76.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.6.4">74.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.6.5">78.5</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.6.6">80.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.6.7">96.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.6.8">80.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.6.9">55.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.6.10">72.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T12.2.6.11">86.8</td></tr>
+<tr class="ltx_tr" id="A6.T12.2.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A6.T12.2.7.1">UI-TARS</th>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T12.2.7.2">84.9</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T12.2.7.3">83.1</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T12.2.7.4">79.6</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T12.2.7.5">81.7</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T12.2.7.6">82.5</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T12.2.7.7">82.2</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T12.2.7.8">81.9</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T12.2.7.9">52.5</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T12.2.7.10">87.4</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T12.2.7.11">86.9</td></tr>
+</tbody>
+</table></figure><figure id="A6.T13"><figcaption>Table 13: Skill invocation rates (%) by site and agent (Part 1 of 2). ”–” = fewer than 20 required episodes. Commit is task-relative: the final task-completing action of each task’s oracle trajectory. Best value per site–skill cell across all six agents in bold.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A6.T13.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A6.T13.2.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A6.T13.2.1.1">Agent</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A6.T13.2.1.2"><span class="ltx_text ltx_font_bold" id="A6.T13.2.1.2.1">Site</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T13.2.1.3"><span class="ltx_text ltx_font_bold" id="A6.T13.2.1.3.1">Search</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T13.2.1.4"><span class="ltx_text ltx_font_bold" id="A6.T13.2.1.4.1">Filter</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T13.2.1.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.1.5.1">Inspect</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T13.2.1.6"><span class="ltx_text ltx_font_bold" id="A6.T13.2.1.6.1">Navigate</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T13.2.1.7"><span class="ltx_text ltx_font_bold" id="A6.T13.2.1.7.1">Commit</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A6.T13.2.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T13.2.2.1"><span class="ltx_text ltx_font_italic" id="A6.T13.2.2.1.1">Claude CUA</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T13.2.2.2">Mail</th>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T13.2.2.3">94</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T13.2.2.4">–</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T13.2.2.5">88</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T13.2.2.6">70</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T13.2.2.7"><span class="ltx_text ltx_font_bold" id="A6.T13.2.2.7.1">79</span></td></tr>
+<tr class="ltx_tr" id="A6.T13.2.3">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.3.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.3.2">Cal.</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.3.3">–</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.3.4">–</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.3.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.3.5.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.3.6">92</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.3.7"><span class="ltx_text ltx_font_bold" id="A6.T13.2.3.7.1">81</span></td></tr>
+<tr class="ltx_tr" id="A6.T13.2.4">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.4.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.4.2">Shop.</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.4.3"><span class="ltx_text ltx_font_bold" id="A6.T13.2.4.3.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.4.4">21</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.4.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.4.5.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.4.6">89</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.4.7"><span class="ltx_text ltx_font_bold" id="A6.T13.2.4.7.1">99</span></td></tr>
+<tr class="ltx_tr" id="A6.T13.2.5">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.5.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.5.2">Acco.</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.5.3"><span class="ltx_text ltx_font_bold" id="A6.T13.2.5.3.1">97</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.5.4">99</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.5.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.5.5.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.5.6">71</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.5.7"><span class="ltx_text ltx_font_bold" id="A6.T13.2.5.7.1">97</span></td></tr>
+<tr class="ltx_tr" id="A6.T13.2.6">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.6.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.6.2">Food</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.6.3">70</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.6.4">85</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.6.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.6.5.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.6.6">63</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.6.7">76</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.7">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.7.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.7.2">Hous.</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.7.3"><span class="ltx_text ltx_font_bold" id="A6.T13.2.7.3.1">99</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.7.4"><span class="ltx_text ltx_font_bold" id="A6.T13.2.7.4.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.7.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.7.5.1">91</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.7.6">69</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.7.7"><span class="ltx_text ltx_font_bold" id="A6.T13.2.7.7.1">98</span></td></tr>
+<tr class="ltx_tr" id="A6.T13.2.8">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.8.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.8.2">Q&amp;A</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.8.3">86</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.8.4">84</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.8.5">92</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.8.6"><span class="ltx_text ltx_font_bold" id="A6.T13.2.8.6.1">73</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.8.7">82</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.9">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.9.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.9.2">Code</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.9.3">91</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.9.4"><span class="ltx_text ltx_font_bold" id="A6.T13.2.9.4.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.9.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.9.5.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.9.6">61</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.9.7"><span class="ltx_text ltx_font_bold" id="A6.T13.2.9.7.1">93</span></td></tr>
+<tr class="ltx_tr" id="A6.T13.2.10">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.10.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.10.2">Jobs</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.10.3">92</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.10.4"><span class="ltx_text ltx_font_bold" id="A6.T13.2.10.4.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.10.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.10.5.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.10.6"><span class="ltx_text ltx_font_bold" id="A6.T13.2.10.6.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.10.7">81</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.11">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.11.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.11.2">Chat</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.11.3"><span class="ltx_text ltx_font_bold" id="A6.T13.2.11.3.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.11.4">–</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.11.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.11.5.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.11.6"><span class="ltx_text ltx_font_bold" id="A6.T13.2.11.6.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.11.7"><span class="ltx_text ltx_font_bold" id="A6.T13.2.11.7.1">98</span></td></tr>
+<tr class="ltx_tr" id="A6.T13.2.12">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T13.2.12.1"><span class="ltx_text ltx_font_italic" id="A6.T13.2.12.1.1">OpenAI CUA</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T13.2.12.2">Mail</th>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T13.2.12.3"><span class="ltx_text ltx_font_bold" id="A6.T13.2.12.3.1">100</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T13.2.12.4">–</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T13.2.12.5">86</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T13.2.12.6">62</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T13.2.12.7">66</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.13">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.13.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.13.2">Cal.</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.13.3">–</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.13.4">–</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.13.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.13.5.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.13.6"><span class="ltx_text ltx_font_bold" id="A6.T13.2.13.6.1">92</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.13.7">67</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.14">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.14.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.14.2">Shop.</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.14.3"><span class="ltx_text ltx_font_bold" id="A6.T13.2.14.3.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.14.4">21</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.14.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.14.5.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.14.6"><span class="ltx_text ltx_font_bold" id="A6.T13.2.14.6.1">90</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.14.7">94</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.15">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.15.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.15.2">Acco.</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.15.3"><span class="ltx_text ltx_font_bold" id="A6.T13.2.15.3.1">97</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.15.4">69</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.15.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.15.5.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.15.6"><span class="ltx_text ltx_font_bold" id="A6.T13.2.15.6.1">77</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.15.7">91</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.16">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.16.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.16.2">Food</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.16.3"><span class="ltx_text ltx_font_bold" id="A6.T13.2.16.3.1">77</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.16.4">86</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.16.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.16.5.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.16.6"><span class="ltx_text ltx_font_bold" id="A6.T13.2.16.6.1">68</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.16.7"><span class="ltx_text ltx_font_bold" id="A6.T13.2.16.7.1">81</span></td></tr>
+<tr class="ltx_tr" id="A6.T13.2.17">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.17.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.17.2">Hous.</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.17.3">98</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.17.4">84</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.17.5">88</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.17.6"><span class="ltx_text ltx_font_bold" id="A6.T13.2.17.6.1">73</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.17.7">87</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.18">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.18.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.18.2">Q&amp;A</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.18.3">91</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.18.4">85</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.18.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.18.5.1">99</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.18.6">43</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.18.7"><span class="ltx_text ltx_font_bold" id="A6.T13.2.18.7.1">85</span></td></tr>
+<tr class="ltx_tr" id="A6.T13.2.19">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.19.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.19.2">Code</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.19.3"><span class="ltx_text ltx_font_bold" id="A6.T13.2.19.3.1">93</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.19.4">90</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.19.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.19.5.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.19.6"><span class="ltx_text ltx_font_bold" id="A6.T13.2.19.6.1">65</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.19.7">83</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.20">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.20.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.20.2">Jobs</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.20.3">92</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.20.4">97</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.20.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.20.5.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.20.6"><span class="ltx_text ltx_font_bold" id="A6.T13.2.20.6.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.20.7"><span class="ltx_text ltx_font_bold" id="A6.T13.2.20.7.1">95</span></td></tr>
+<tr class="ltx_tr" id="A6.T13.2.21">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.21.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.21.2">Chat</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.21.3"><span class="ltx_text ltx_font_bold" id="A6.T13.2.21.3.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.21.4">–</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.21.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.21.5.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.21.6">84</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.21.7">89</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.22">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T13.2.22.1"><span class="ltx_text ltx_font_italic" id="A6.T13.2.22.1.1">Qwen3.5-122B</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T13.2.22.2">Mail</th>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T13.2.22.3">86</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T13.2.22.4">–</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T13.2.22.5">86</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T13.2.22.6">76</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T13.2.22.7">47</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.23">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.23.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.23.2">Cal.</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.23.3">–</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.23.4">–</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.23.5"><span class="ltx_text ltx_font_bold" id="A6.T13.2.23.5.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.23.6">89</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.23.7">54</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.24">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.24.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.24.2">Shop.</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.24.3">99</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.24.4">35</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.24.5">99</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.24.6">85</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.24.7">72</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.25">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.25.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.25.2">Acco.</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.25.3">87</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.25.4">85</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.25.5">96</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.25.6">57</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.25.7">44</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.26">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.26.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.26.2">Food</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.26.3">71</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.26.4">86</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.26.5">99</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.26.6">61</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.26.7">48</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.27">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.27.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.27.2">Hous.</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.27.3">97</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.27.4"><span class="ltx_text ltx_font_bold" id="A6.T13.2.27.4.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.27.5">87</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.27.6">63</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.27.7">44</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.28">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.28.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.28.2">Q&amp;A</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.28.3">90</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.28.4"><span class="ltx_text ltx_font_bold" id="A6.T13.2.28.4.1">91</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.28.5">93</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.28.6"><span class="ltx_text ltx_font_bold" id="A6.T13.2.28.6.1">73</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.28.7">61</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.29">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.29.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.29.2">Code</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.29.3">82</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.29.4">93</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.29.5">99</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.29.6">39</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.29.7">74</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.30">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T13.2.30.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T13.2.30.2">Jobs</th>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.30.3"><span class="ltx_text ltx_font_bold" id="A6.T13.2.30.3.1">99</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.30.4"><span class="ltx_text ltx_font_bold" id="A6.T13.2.30.4.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.30.5">99</td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.30.6"><span class="ltx_text ltx_font_bold" id="A6.T13.2.30.6.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T13.2.30.7">64</td></tr>
+<tr class="ltx_tr" id="A6.T13.2.31">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_bb" id="A6.T13.2.31.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A6.T13.2.31.2">Chat</th>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T13.2.31.3"><span class="ltx_text ltx_font_bold" id="A6.T13.2.31.3.1">100</span></td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T13.2.31.4">–</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T13.2.31.5">99</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T13.2.31.6"><span class="ltx_text ltx_font_bold" id="A6.T13.2.31.6.1">100</span></td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T13.2.31.7">76</td></tr>
+</tbody>
+</table></figure><figure id="A6.T14"><figcaption>Table 14: Skill invocation rates (%) by site and agent (Part 2 of 2). ”–” = fewer than 20 required episodes. Commit is task-relative: the final task-completing action of each task’s oracle trajectory. Best value per site–skill cell across all six agents in bold.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A6.T14.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A6.T14.2.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A6.T14.2.1.1">Agent</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A6.T14.2.1.2"><span class="ltx_text ltx_font_bold" id="A6.T14.2.1.2.1">Site</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T14.2.1.3"><span class="ltx_text ltx_font_bold" id="A6.T14.2.1.3.1">Search</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T14.2.1.4"><span class="ltx_text ltx_font_bold" id="A6.T14.2.1.4.1">Filter</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T14.2.1.5"><span class="ltx_text ltx_font_bold" id="A6.T14.2.1.5.1">Inspect</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T14.2.1.6"><span class="ltx_text ltx_font_bold" id="A6.T14.2.1.6.1">Navigate</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T14.2.1.7"><span class="ltx_text ltx_font_bold" id="A6.T14.2.1.7.1">Commit</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A6.T14.2.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T14.2.2.1"><span class="ltx_text ltx_font_italic" id="A6.T14.2.2.1.1">Fara</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T14.2.2.2">Mail</th>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T14.2.2.3">97</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T14.2.2.4">–</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T14.2.2.5">89</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T14.2.2.6">41</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T14.2.2.7">39</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.3">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.3.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.3.2">Cal.</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.3.3">–</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.3.4">–</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.3.5">88</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.3.6">63</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.3.7">21</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.4">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.4.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.4.2">Shop.</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.4.3">99</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.4.4">71</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.4.5">88</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.4.6">64</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.4.7">35</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.5">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.5.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.5.2">Acco.</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.5.3">77</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.5.4">83</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.5.5">88</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.5.6">53</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.5.7">6</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.6">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.6.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.6.2">Food</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.6.3">63</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.6.4">81</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.6.5">96</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.6.6">40</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.6.7">23</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.7">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.7.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.7.2">Hous.</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.7.3">69</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.7.4">81</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.7.5">71</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.7.6">43</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.7.7">21</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.8">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.8.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.8.2">Q&amp;A</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.8.3">77</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.8.4">53</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.8.5">70</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.8.6">23</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.8.7">29</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.9">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.9.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.9.2">Code</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.9.3">71</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.9.4">58</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.9.5">93</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.9.6">32</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.9.7">51</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.10">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.10.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.10.2">Jobs</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.10.3">88</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.10.4">58</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.10.5">68</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.10.6">94</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.10.7">38</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.11">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.11.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.11.2">Chat</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.11.3">93</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.11.4">–</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.11.5">88</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.11.6">94</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.11.7">31</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.12">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T14.2.12.1"><span class="ltx_text ltx_font_italic" id="A6.T14.2.12.1.1">GUI-Owl</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T14.2.12.2">Mail</th>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T14.2.12.3">56</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T14.2.12.4">–</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T14.2.12.5"><span class="ltx_text ltx_font_bold" id="A6.T14.2.12.5.1">93</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T14.2.12.6"><span class="ltx_text ltx_font_bold" id="A6.T14.2.12.6.1">82</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T14.2.12.7">67</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.13">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.13.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.13.2">Cal.</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.13.3">–</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.13.4">–</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.13.5">35</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.13.6">35</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.13.7">11</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.14">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.14.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.14.2">Shop.</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.14.3"><span class="ltx_text ltx_font_bold" id="A6.T14.2.14.3.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.14.4"><span class="ltx_text ltx_font_bold" id="A6.T14.2.14.4.1">85</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.14.5">58</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.14.6">46</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.14.7">23</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.15">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.15.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.15.2">Acco.</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.15.3">91</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.15.4"><span class="ltx_text ltx_font_bold" id="A6.T14.2.15.4.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.15.5">75</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.15.6">22</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.15.7">15</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.16">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.16.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.16.2">Food</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.16.3">62</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.16.4"><span class="ltx_text ltx_font_bold" id="A6.T14.2.16.4.1">90</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.16.5">97</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.16.6">55</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.16.7">26</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.17">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.17.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.17.2">Hous.</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.17.3"><span class="ltx_text ltx_font_bold" id="A6.T14.2.17.3.1">99</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.17.4"><span class="ltx_text ltx_font_bold" id="A6.T14.2.17.4.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.17.5">70</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.17.6">48</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.17.7">38</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.18">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.18.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.18.2">Q&amp;A</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.18.3">89</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.18.4"><span class="ltx_text ltx_font_bold" id="A6.T14.2.18.4.1">91</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.18.5">87</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.18.6">57</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.18.7">60</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.19">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.19.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.19.2">Code</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.19.3">81</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.19.4">90</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.19.5">97</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.19.6">10</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.19.7">55</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.20">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.20.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.20.2">Jobs</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.20.3">63</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.20.4"><span class="ltx_text ltx_font_bold" id="A6.T14.2.20.4.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.20.5">79</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.20.6"><span class="ltx_text ltx_font_bold" id="A6.T14.2.20.6.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.20.7">48</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.21">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.21.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.21.2">Chat</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.21.3">80</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.21.4">–</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.21.5">73</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.21.6"><span class="ltx_text ltx_font_bold" id="A6.T14.2.21.6.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.21.7">54</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.22">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T14.2.22.1"><span class="ltx_text ltx_font_italic" id="A6.T14.2.22.1.1">UI-TARS</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T14.2.22.2">Mail</th>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T14.2.22.3">95</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T14.2.22.4">–</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T14.2.22.5">81</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T14.2.22.6">73</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T14.2.22.7">54</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.23">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.23.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.23.2">Cal.</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.23.3">–</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.23.4">–</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.23.5">62</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.23.6">52</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.23.7">17</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.24">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.24.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.24.2">Shop.</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.24.3">99</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.24.4">56</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.24.5">60</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.24.6">49</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.24.7">13</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.25">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.25.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.25.2">Acco.</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.25.3">89</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.25.4"><span class="ltx_text ltx_font_bold" id="A6.T14.2.25.4.1">100</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.25.5">88</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.25.6">44</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.25.7">3</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.26">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.26.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.26.2">Food</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.26.3">68</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.26.4">85</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.26.5">99</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.26.6">64</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.26.7">19</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.27">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.27.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.27.2">Hous.</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.27.3">87</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.27.4">97</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.27.5">74</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.27.6">52</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.27.7">19</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.28">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.28.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.28.2">Q&amp;A</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.28.3"><span class="ltx_text ltx_font_bold" id="A6.T14.2.28.3.1">96</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.28.4">59</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.28.5">84</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.28.6">43</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.28.7">41</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.29">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.29.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.29.2">Code</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.29.3">87</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.29.4">42</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.29.5">93</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.29.6">42</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.29.7">43</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.30">
+<th class="ltx_td ltx_th ltx_th_row" id="A6.T14.2.30.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T14.2.30.2">Jobs</th>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.30.3">94</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.30.4">90</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.30.5">88</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.30.6">98</td>
+<td class="ltx_td ltx_align_right" id="A6.T14.2.30.7">36</td></tr>
+<tr class="ltx_tr" id="A6.T14.2.31">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_bb" id="A6.T14.2.31.1"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A6.T14.2.31.2">Chat</th>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T14.2.31.3">97</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T14.2.31.4">–</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T14.2.31.5">84</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T14.2.31.6">98</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T14.2.31.7">32</td></tr>
+</tbody>
+</table></figure><figure id="A6.T15"><figcaption>Table 15: Aggregate skill invocation rates (%). Each cell shows the fraction of episodes requiring that skill where the agent invoked it. Commit invocation requires the trajectory to end with the task’s commit action. Best per column in bold.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A6.T15.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A6.T15.2.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A6.T15.2.1.1">Agent</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T15.2.1.2">Search</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T15.2.1.3">Filter</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T15.2.1.4">Inspect</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T15.2.1.5">Navigate</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T15.2.1.6">Commit</th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A6.T15.2.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T15.2.2.1">Claude CUA</th>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T15.2.2.2">92.9</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T15.2.2.3">87.8</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T15.2.2.4">97.1</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T15.2.2.5"><span class="ltx_text ltx_font_bold" id="A6.T15.2.2.5.1">80.9</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T15.2.2.6"><span class="ltx_text ltx_font_bold" id="A6.T15.2.2.6.1">88.3</span></td></tr>
+<tr class="ltx_tr" id="A6.T15.2.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T15.2.3.1">OpenAI CUA</th>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.3.2"><span class="ltx_text ltx_font_bold" id="A6.T15.2.3.2.1">94.5</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.3.3">78.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.3.4"><span class="ltx_text ltx_font_bold" id="A6.T15.2.3.4.1">97.2</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.3.5">79.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.3.6">83.8</td></tr>
+<tr class="ltx_tr" id="A6.T15.2.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T15.2.4.1">Qwen3.5-122B</th>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.4.2">90.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.4.3">87.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.4.4">95.5</td>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.4.5">76.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.4.6">58.5</td></tr>
+<tr class="ltx_tr" id="A6.T15.2.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T15.2.5.1">Fara</th>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.5.2">80.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.5.3">70.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.5.4">82.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.5.5">60.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.5.6">29.4</td></tr>
+<tr class="ltx_tr" id="A6.T15.2.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T15.2.6.1">GUI-Owl</th>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.6.2">83.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.6.3"><span class="ltx_text ltx_font_bold" id="A6.T15.2.6.3.1">94.0</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.6.4">78.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.6.5">58.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T15.2.6.6">39.7</td></tr>
+<tr class="ltx_tr" id="A6.T15.2.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A6.T15.2.7.1">UI-TARS</th>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T15.2.7.2">90.5</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T15.2.7.3">77.3</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T15.2.7.4">82.9</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T15.2.7.5">65.2</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T15.2.7.6">27.7</td></tr>
+</tbody>
+</table></figure><figure id="A6.T16"><figcaption>Table 16: Exploration SR (%) by hard negative count (the number of card-level confusables planted by the generator; a designed lower bound). Best per column in bold. HN = = 0 tasks have no identification ambiguity but vary on other difficulty axes, so monotone trends should be read over HN ≥ \geq 1.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A6.T16.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A6.T16.2.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A6.T16.2.1.1">Agent</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T16.2.1.2"><span class="ltx_text ltx_font_bold" id="A6.T16.2.1.2.1">HN=0</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T16.2.1.3"><span class="ltx_text ltx_font_bold" id="A6.T16.2.1.3.1">HN=1</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T16.2.1.4"><span class="ltx_text ltx_font_bold" id="A6.T16.2.1.4.1">HN=2</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T16.2.1.5"><span class="ltx_text ltx_font_bold" id="A6.T16.2.1.5.1">HN=3</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A6.T16.2.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T16.2.2.1">Claude CUA</th>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T16.2.2.2">90.6</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T16.2.2.3"><span class="ltx_text ltx_font_bold" id="A6.T16.2.2.3.1">98.7</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T16.2.2.4"><span class="ltx_text ltx_font_bold" id="A6.T16.2.2.4.1">90.3</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T16.2.2.5"><span class="ltx_text ltx_font_bold" id="A6.T16.2.2.5.1">89.8</span></td></tr>
+<tr class="ltx_tr" id="A6.T16.2.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T16.2.3.1">OpenAI CUA</th>
+<td class="ltx_td ltx_align_right" id="A6.T16.2.3.2"><span class="ltx_text ltx_font_bold" id="A6.T16.2.3.2.1">91.7</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T16.2.3.3">93.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T16.2.3.4">87.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T16.2.3.5">83.5</td></tr>
+<tr class="ltx_tr" id="A6.T16.2.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T16.2.4.1">Qwen3.5-122B</th>
+<td class="ltx_td ltx_align_right" id="A6.T16.2.4.2">76.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T16.2.4.3">78.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T16.2.4.4">65.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T16.2.4.5">51.4</td></tr>
+<tr class="ltx_tr" id="A6.T16.2.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T16.2.5.1">Fara</th>
+<td class="ltx_td ltx_align_right" id="A6.T16.2.5.2">60.5</td>
+<td class="ltx_td ltx_align_right" id="A6.T16.2.5.3">64.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T16.2.5.4">41.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T16.2.5.5">32.8</td></tr>
+<tr class="ltx_tr" id="A6.T16.2.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T16.2.6.1">GUI-Owl</th>
+<td class="ltx_td ltx_align_right" id="A6.T16.2.6.2">59.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T16.2.6.3">43.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T16.2.6.4">34.5</td>
+<td class="ltx_td ltx_align_right" id="A6.T16.2.6.5">32.3</td></tr>
+<tr class="ltx_tr" id="A6.T16.2.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A6.T16.2.7.1">UI-TARS</th>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T16.2.7.2">60.6</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T16.2.7.3">53.8</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T16.2.7.4">45.6</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T16.2.7.5">37.3</td></tr>
+</tbody>
+</table></figure><figure id="A6.T17"><figcaption>Table 17: Exploration SR (%) by oracle trajectory length. Best per column in bold.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A6.T17.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A6.T17.2.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A6.T17.2.1.1">Agent</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T17.2.1.2">1</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T17.2.1.3">2</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T17.2.1.4">3</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T17.2.1.5">4</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T17.2.1.6">5</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T17.2.1.7">6</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T17.2.1.8">7</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T17.2.1.9">8</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T17.2.1.10">9</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T17.2.1.11">10</th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A6.T17.2.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T17.2.2.1">Claude CUA</th>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T17.2.2.2"><span class="ltx_text ltx_font_bold" id="A6.T17.2.2.2.1">96.3</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T17.2.2.3">96.4</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T17.2.2.4">89.9</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T17.2.2.5">93.9</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T17.2.2.6"><span class="ltx_text ltx_font_bold" id="A6.T17.2.2.6.1">87.4</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T17.2.2.7"><span class="ltx_text ltx_font_bold" id="A6.T17.2.2.7.1">84.9</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T17.2.2.8"><span class="ltx_text ltx_font_bold" id="A6.T17.2.2.8.1">86.7</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T17.2.2.9"><span class="ltx_text ltx_font_bold" id="A6.T17.2.2.9.1">89.7</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T17.2.2.10"><span class="ltx_text ltx_font_bold" id="A6.T17.2.2.10.1">95.4</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T17.2.2.11"><span class="ltx_text ltx_font_bold" id="A6.T17.2.2.11.1">85.9</span></td></tr>
+<tr class="ltx_tr" id="A6.T17.2.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T17.2.3.1">OpenAI CUA</th>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.3.2">94.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.3.3"><span class="ltx_text ltx_font_bold" id="A6.T17.2.3.3.1">96.7</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.3.4"><span class="ltx_text ltx_font_bold" id="A6.T17.2.3.4.1">92.9</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.3.5"><span class="ltx_text ltx_font_bold" id="A6.T17.2.3.5.1">94.7</span></td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.3.6">80.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.3.7">82.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.3.8">80.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.3.9">87.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.3.10">93.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.3.11">73.2</td></tr>
+<tr class="ltx_tr" id="A6.T17.2.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T17.2.4.1">Qwen3.5-122B</th>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.4.2">72.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.4.3">73.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.4.4">83.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.4.5">75.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.4.6">67.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.4.7">60.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.4.8">51.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.4.9">53.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.4.10">68.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.4.11">45.1</td></tr>
+<tr class="ltx_tr" id="A6.T17.2.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T17.2.5.1">Fara</th>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.5.2">42.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.5.3">45.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.5.4">61.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.5.5">57.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.5.6">48.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.5.7">44.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.5.8">40.5</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.5.9">36.9</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.5.10">42.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.5.11">40.8</td></tr>
+<tr class="ltx_tr" id="A6.T17.2.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T17.2.6.1">GUI-Owl</th>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.6.2">50.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.6.3">43.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.6.4">57.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.6.5">65.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.6.6">41.5</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.6.7">43.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.6.8">27.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.6.9">31.3</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.6.10">38.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T17.2.6.11">35.2</td></tr>
+<tr class="ltx_tr" id="A6.T17.2.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A6.T17.2.7.1">UI-TARS</th>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T17.2.7.2">50.0</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T17.2.7.3">52.3</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T17.2.7.4">54.2</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T17.2.7.5">62.9</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T17.2.7.6">58.5</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T17.2.7.7">52.2</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T17.2.7.8">40.8</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T17.2.7.9">35.4</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T17.2.7.10">43.4</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T17.2.7.11">38.0</td></tr>
+</tbody>
+</table></figure><figure id="A6.T18"><figcaption>Table 18: Exploration SR (%) by information access level. Best per column in bold. Detail tasks require opening detail pages (non-empty information gap); Filter tasks have no detail gap but their oracle trajectory uses search/filter/sort actions (classified with the shared action taxonomy); Card tasks are solvable from list-level cards alone.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A6.T18.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A6.T18.2.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A6.T18.2.1.1">Agent</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T18.2.1.2"><span class="ltx_text ltx_font_bold" id="A6.T18.2.1.2.1">Card</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T18.2.1.3"><span class="ltx_text ltx_font_bold" id="A6.T18.2.1.3.1">Filter</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A6.T18.2.1.4"><span class="ltx_text ltx_font_bold" id="A6.T18.2.1.4.1">Detail</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A6.T18.2.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T18.2.2.1">Claude CUA</th>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T18.2.2.2"><span class="ltx_text ltx_font_bold" id="A6.T18.2.2.2.1">95.1</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T18.2.2.3"><span class="ltx_text ltx_font_bold" id="A6.T18.2.2.3.1">98.2</span></td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A6.T18.2.2.4"><span class="ltx_text ltx_font_bold" id="A6.T18.2.2.4.1">88.3</span></td></tr>
+<tr class="ltx_tr" id="A6.T18.2.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T18.2.3.1">OpenAI CUA</th>
+<td class="ltx_td ltx_align_right" id="A6.T18.2.3.2">93.2</td>
+<td class="ltx_td ltx_align_right" id="A6.T18.2.3.3">96.7</td>
+<td class="ltx_td ltx_align_right" id="A6.T18.2.3.4">85.8</td></tr>
+<tr class="ltx_tr" id="A6.T18.2.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T18.2.4.1">Qwen3.5-122B</th>
+<td class="ltx_td ltx_align_right" id="A6.T18.2.4.2">70.4</td>
+<td class="ltx_td ltx_align_right" id="A6.T18.2.4.3">90.1</td>
+<td class="ltx_td ltx_align_right" id="A6.T18.2.4.4">59.4</td></tr>
+<tr class="ltx_tr" id="A6.T18.2.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T18.2.5.1">Fara</th>
+<td class="ltx_td ltx_align_right" id="A6.T18.2.5.2">58.6</td>
+<td class="ltx_td ltx_align_right" id="A6.T18.2.5.3">72.8</td>
+<td class="ltx_td ltx_align_right" id="A6.T18.2.5.4">38.9</td></tr>
+<tr class="ltx_tr" id="A6.T18.2.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T18.2.6.1">GUI-Owl</th>
+<td class="ltx_td ltx_align_right" id="A6.T18.2.6.2">60.5</td>
+<td class="ltx_td ltx_align_right" id="A6.T18.2.6.3">65.0</td>
+<td class="ltx_td ltx_align_right" id="A6.T18.2.6.4">35.2</td></tr>
+<tr class="ltx_tr" id="A6.T18.2.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A6.T18.2.7.1">UI-TARS</th>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T18.2.7.2">61.7</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T18.2.7.3">61.4</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A6.T18.2.7.4">44.2</td></tr>
+</tbody>
+</table></figure><figure id="A8.T19"><figcaption>Table 19: Task template: find_email_extract (Mail). Requires searching, inspecting multiple threads to find one matching body-level content, and starring it.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A8.T19.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A8.T19.2.1">
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A8.T19.2.1.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.1.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T19.2.1.1.1.1"><span class="ltx_text ltx_font_bold" id="A8.T19.2.1.1.1.1.1">Field</span></span>
+</span></th>
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A8.T19.2.1.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.1.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T19.2.1.2.1.1"><span class="ltx_text ltx_font_bold" id="A8.T19.2.1.2.1.1.1">Value</span></span>
+</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A8.T19.2.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A8.T19.2.2.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.2.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T19.2.2.1.1.1">Template</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A8.T19.2.2.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.2.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T19.2.2.2.1.1"><span class="ltx_text ltx_font_typewriter" id="A8.T19.2.2.2.1.1.1">find_email_extract</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T19.2.3">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T19.2.3.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.3.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T19.2.3.1.1.1">Site</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T19.2.3.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.3.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T19.2.3.2.1.1">Mail</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T19.2.4">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T19.2.4.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.4.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T19.2.4.1.1.1">Instruction pattern</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T19.2.4.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.4.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T19.2.4.2.1.1">”{sender} has sent you several similar emails. Find the one that mentions ’{keyword}’ in its body and {action} it.”</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T19.2.5">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T19.2.5.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.5.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T19.2.5.1.1.1">Information gap</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T19.2.5.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.5.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T19.2.5.2.1.1">body, cc, attachments (detail-only fields)</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T19.2.6">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T19.2.6.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.6.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T19.2.6.1.1.1">Constraint count</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T19.2.6.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.6.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T19.2.6.2.1.1">3</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T19.2.7">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T19.2.7.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.7.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T19.2.7.1.1.1">Commit action</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T19.2.7.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.7.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T19.2.7.2.1.1">Star / Archive / Label</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T19.2.8">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" colspan="2" id="A8.T19.2.8.1"><span class="ltx_text ltx_font_bold" id="A8.T19.2.8.1.1">Concrete instance</span> (<span class="ltx_text ltx_font_typewriter" id="A8.T19.2.8.1.2">gmail_0001</span>)</td></tr>
+<tr class="ltx_tr" id="A8.T19.2.9">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A8.T19.2.9.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.9.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T19.2.9.1.1.1">Instruction</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A8.T19.2.9.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.9.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T19.2.9.2.1.1">”Priya Patel has sent you several similar emails. Find the one that mentions ’ProjectAlpha006’ in its body and star it.”</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T19.2.10">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T19.2.10.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.10.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T19.2.10.1.1.1">Target entity</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T19.2.10.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.10.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T19.2.10.2.1.1">THR-006</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T19.2.11">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T19.2.11.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.11.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T19.2.11.1.1.1">Hard negatives</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T19.2.11.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.11.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T19.2.11.2.1.1">THR-019, THR-050 (same sender, different body content)</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T19.2.12">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T19.2.12.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.12.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T19.2.12.1.1.1">Oracle trajectory</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T19.2.12.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.12.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T19.2.12.2.1.1">SearchEmails <math alttext="\to" class="ltx_Math" display="inline" id="A8.T19.m1" intent=":literal"><semantics><mo stretchy="false">→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math> OpenThread(THR-019) <math alttext="\to" class="ltx_Math" display="inline" id="A8.T19.m2" intent=":literal"><semantics><mo stretchy="false">→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math> CloseThread <math alttext="\to" class="ltx_Math" display="inline" id="A8.T19.m3" intent=":literal"><semantics><mo stretchy="false">→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math> OpenThread(THR-050) <math alttext="\to" class="ltx_Math" display="inline" id="A8.T19.m4" intent=":literal"><semantics><mo stretchy="false">→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math> CloseThread <math alttext="\to" class="ltx_Math" display="inline" id="A8.T19.m5" intent=":literal"><semantics><mo stretchy="false">→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math> OpenThread(THR-006) <math alttext="\to" class="ltx_Math" display="inline" id="A8.T19.m6" intent=":literal"><semantics><mo stretchy="false">→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math> Star(THR-006)</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T19.2.13">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A8.T19.2.13.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.13.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T19.2.13.1.1.1">Optimal length</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A8.T19.2.13.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T19.2.13.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T19.2.13.2.1.1">7 steps</span>
+</span></td></tr>
+</tbody>
+</table></figure><figure id="A8.T20"><figcaption>Table 20: Task template: find_product_extract (Shopping). Requires searching, navigating to product detail pages, and adding the correct product to cart based on a detail-only attribute.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A8.T20.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A8.T20.2.1">
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A8.T20.2.1.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.1.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T20.2.1.1.1.1"><span class="ltx_text ltx_font_bold" id="A8.T20.2.1.1.1.1.1">Field</span></span>
+</span></th>
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A8.T20.2.1.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.1.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T20.2.1.2.1.1"><span class="ltx_text ltx_font_bold" id="A8.T20.2.1.2.1.1.1">Value</span></span>
+</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A8.T20.2.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A8.T20.2.2.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.2.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T20.2.2.1.1.1">Template</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A8.T20.2.2.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.2.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T20.2.2.2.1.1"><span class="ltx_text ltx_font_typewriter" id="A8.T20.2.2.2.1.1.1">find_product_extract</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T20.2.3">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T20.2.3.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.3.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T20.2.3.1.1.1">Site</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T20.2.3.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.3.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T20.2.3.2.1.1">Shopping</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T20.2.4">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T20.2.4.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.4.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T20.2.4.1.1.1">Instruction pattern</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T20.2.4.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.4.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T20.2.4.2.1.1">”Search for {query} in {department}. Find the one with {detail_attr}: ’{value}’ and add it to your cart.”</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T20.2.5">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T20.2.5.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.5.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T20.2.5.1.1.1">Information gap</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T20.2.5.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.5.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T20.2.5.2.1.1">specifications, bullet_points, seller, shipping_cost</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T20.2.6">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T20.2.6.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.6.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T20.2.6.1.1.1">Constraint count</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T20.2.6.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.6.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T20.2.6.2.1.1">1–3</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T20.2.7">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T20.2.7.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.7.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T20.2.7.1.1.1">Commit action</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T20.2.7.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.7.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T20.2.7.2.1.1">AddToCart</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T20.2.8">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" colspan="2" id="A8.T20.2.8.1"><span class="ltx_text ltx_font_bold" id="A8.T20.2.8.1.1">Concrete instance</span> (<span class="ltx_text ltx_font_typewriter" id="A8.T20.2.8.1.2">amazon_0010</span>)</td></tr>
+<tr class="ltx_tr" id="A8.T20.2.9">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A8.T20.2.9.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.9.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T20.2.9.1.1.1">Instruction</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A8.T20.2.9.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.9.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T20.2.9.2.1.1">”Search for fiction in Books. Find the one with Material: ’Leather’ and add it to your cart.”</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T20.2.10">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T20.2.10.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.10.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T20.2.10.1.1.1">Target entity</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T20.2.10.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.10.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T20.2.10.2.1.1">PRD-039 (”Apple Essential Biography”, $12.90, Books, rating 4.7)</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T20.2.11">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T20.2.11.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.11.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T20.2.11.1.1.1">Hard negatives</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T20.2.11.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.11.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T20.2.11.2.1.1">Products matching ”fiction” + ”Books” but with different Material</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T20.2.12">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T20.2.12.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.12.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T20.2.12.1.1.1">Oracle trajectory</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T20.2.12.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.12.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T20.2.12.2.1.1">Search(”fiction”) <math alttext="\to" class="ltx_Math" display="inline" id="A8.T20.m1" intent=":literal"><semantics><mo stretchy="false">→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math> OpenProduct(PRD-039) <math alttext="\to" class="ltx_Math" display="inline" id="A8.T20.m2" intent=":literal"><semantics><mo stretchy="false">→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math> AddToCart</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T20.2.13">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A8.T20.2.13.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.13.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T20.2.13.1.1.1">Optimal length</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A8.T20.2.13.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T20.2.13.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T20.2.13.2.1.1">3 steps</span>
+</span></td></tr>
+</tbody>
+</table></figure><figure id="A8.T21"><figcaption>Table 21: Task template: search_filter_book (Accommodation). A multi-step booking task requiring search, filter application, sort, listing inspection, and checkout completion.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A8.T21.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A8.T21.2.1">
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A8.T21.2.1.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.1.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T21.2.1.1.1.1"><span class="ltx_text ltx_font_bold" id="A8.T21.2.1.1.1.1.1">Field</span></span>
+</span></th>
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A8.T21.2.1.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.1.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T21.2.1.2.1.1"><span class="ltx_text ltx_font_bold" id="A8.T21.2.1.2.1.1.1">Value</span></span>
+</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A8.T21.2.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A8.T21.2.2.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.2.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T21.2.2.1.1.1">Template</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A8.T21.2.2.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.2.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T21.2.2.2.1.1"><span class="ltx_text ltx_font_typewriter" id="A8.T21.2.2.2.1.1.1">search_filter_book</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T21.2.3">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T21.2.3.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.3.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T21.2.3.1.1.1">Site</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T21.2.3.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.3.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T21.2.3.2.1.1">Accommodation</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T21.2.4">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T21.2.4.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.4.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T21.2.4.1.1.1">Instruction pattern</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T21.2.4.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.4.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T21.2.4.2.1.1">”Book the {superlative} {property_type} in {location} that has {amenity} for {guests} guests, {dates}.”</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T21.2.5">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T21.2.5.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.5.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T21.2.5.1.1.1">Information gap</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T21.2.5.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.5.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T21.2.5.2.1.1">amenities, cancellation_policy, host details</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T21.2.6">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T21.2.6.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.6.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T21.2.6.1.1.1">Constraint count</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T21.2.6.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.6.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T21.2.6.2.1.1">4–6</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T21.2.7">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T21.2.7.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.7.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T21.2.7.1.1.1">Commit action</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T21.2.7.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.7.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T21.2.7.2.1.1">ConfirmBooking</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T21.2.8">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" colspan="2" id="A8.T21.2.8.1"><span class="ltx_text ltx_font_bold" id="A8.T21.2.8.1.1">Concrete instance</span> (<span class="ltx_text ltx_font_typewriter" id="A8.T21.2.8.1.2">airbnb_0005</span>)</td></tr>
+<tr class="ltx_tr" id="A8.T21.2.9">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A8.T21.2.9.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.9.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T21.2.9.1.1.1">Instruction</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A8.T21.2.9.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.9.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T21.2.9.2.1.1">”Book the cheapest cabin in Chicago that has a Pool for 3 guests, April 15–19.”</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T21.2.10">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T21.2.10.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.10.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T21.2.10.1.1.1">Target entity</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T21.2.10.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.10.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T21.2.10.2.1.1">LST-011</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T21.2.11">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T21.2.11.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.11.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T21.2.11.1.1.1">Constraints</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T21.2.11.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.11.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T21.2.11.2.1.1">property_type=Cabin, amenity=Pool, sort=price_asc, location=Chicago</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T21.2.12">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T21.2.12.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.12.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T21.2.12.1.1.1">Oracle trajectory</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A8.T21.2.12.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.12.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T21.2.12.2.1.1">Search(”chicago”) <math alttext="\to" class="ltx_Math" display="inline" id="A8.T21.m1" intent=":literal"><semantics><mo stretchy="false">→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math> SetFilter(property_type, Cabin) <math alttext="\to" class="ltx_Math" display="inline" id="A8.T21.m2" intent=":literal"><semantics><mo stretchy="false">→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math> SetFilter(amenities, Pool) <math alttext="\to" class="ltx_Math" display="inline" id="A8.T21.m3" intent=":literal"><semantics><mo stretchy="false">→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math> SortBy(price_asc) <math alttext="\to" class="ltx_Math" display="inline" id="A8.T21.m4" intent=":literal"><semantics><mo stretchy="false">→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math> ViewListing(LST-011) <math alttext="\to" class="ltx_Math" display="inline" id="A8.T21.m5" intent=":literal"><semantics><mo stretchy="false">→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math> BookListing(dates, guests) <math alttext="\to" class="ltx_Math" display="inline" id="A8.T21.m6" intent=":literal"><semantics><mo stretchy="false">→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math> ConfirmBooking</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A8.T21.2.13">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A8.T21.2.13.1">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.13.1.1" style="width:85.4pt;">
+<span class="ltx_p" id="A8.T21.2.13.1.1.1">Optimal length</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A8.T21.2.13.2">
+<span class="ltx_inline-block ltx_align_top" id="A8.T21.2.13.2.1" style="width:284.5pt;">
+<span class="ltx_p" id="A8.T21.2.13.2.1.1">7 steps</span>
+</span></td></tr>
+</tbody>
+</table></figure><figure id="A8.T22"><figcaption>Table 22: Semantic trajectory comparison on mail_0001 . All trajectories are shown as semantic MDP actions extracted from the environment trace. The oracle systematically inspects hard negatives before committing; both agents find target item without sufficient information.</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="A8.T22.2.1">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A8.T22.2.1.1">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A8.T22.2.1.1.1"><span class="ltx_text ltx_font_bold" id="A8.T22.2.1.1.1.1">Step</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A8.T22.2.1.1.2"><span class="ltx_text ltx_font_bold" id="A8.T22.2.1.1.2.1">Oracle</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A8.T22.2.1.1.3"><span class="ltx_text ltx_font_bold" id="A8.T22.2.1.1.3.1">Fara</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A8.T22.2.1.1.4"><span class="ltx_text ltx_font_bold" id="A8.T22.2.1.1.4.1">UI-TARS</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A8.T22.2.1.2">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_t" id="A8.T22.2.1.2.1">0</th>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A8.T22.2.1.2.2"><span class="ltx_text ltx_font_typewriter" id="A8.T22.2.1.2.2.1">SearchEmails("Priya Patel")</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A8.T22.2.1.2.3"><span class="ltx_text ltx_font_typewriter" id="A8.T22.2.1.2.3.1">OpenThread(THR-006)</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A8.T22.2.1.2.4"><span class="ltx_text ltx_font_typewriter" id="A8.T22.2.1.2.4.1">SearchEmails("ProjectAlpha006")</span></td></tr>
+<tr class="ltx_tr" id="A8.T22.2.1.3">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row" id="A8.T22.2.1.3.1">1</th>
+<td class="ltx_td ltx_align_left" id="A8.T22.2.1.3.2"><span class="ltx_text ltx_font_typewriter" id="A8.T22.2.1.3.2.1">OpenThread(THR-019)</span></td>
+<td class="ltx_td ltx_align_left" id="A8.T22.2.1.3.3"><span class="ltx_text ltx_font_typewriter" id="A8.T22.2.1.3.3.1">SearchEmails("ProjectAlpha006")</span></td>
+<td class="ltx_td ltx_align_left" id="A8.T22.2.1.3.4"><span class="ltx_text ltx_font_typewriter" id="A8.T22.2.1.3.4.1">Star(THR-006)</span></td></tr>
+<tr class="ltx_tr" id="A8.T22.2.1.4">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row" id="A8.T22.2.1.4.1">2</th>
+<td class="ltx_td ltx_align_left" id="A8.T22.2.1.4.2"><span class="ltx_text ltx_font_typewriter" id="A8.T22.2.1.4.2.1">CloseThread()</span></td>
+<td class="ltx_td ltx_align_left" id="A8.T22.2.1.4.3"><span class="ltx_text ltx_font_typewriter" id="A8.T22.2.1.4.3.1">OpenThread(THR-006)</span></td>
+<td class="ltx_td ltx_align_left" id="A8.T22.2.1.4.4"><span class="ltx_text ltx_font_typewriter" id="A8.T22.2.1.4.4.1">SwitchFolder(STARRED)</span></td></tr>
+<tr class="ltx_tr" id="A8.T22.2.1.5">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row" id="A8.T22.2.1.5.1">3</th>
+<td class="ltx_td ltx_align_left" id="A8.T22.2.1.5.2"><span class="ltx_text ltx_font_typewriter" id="A8.T22.2.1.5.2.1">OpenThread(THR-050)</span></td>
+<td class="ltx_td ltx_align_left" id="A8.T22.2.1.5.3"><span class="ltx_text ltx_font_typewriter" id="A8.T22.2.1.5.3.1">Star(THR-006)</span></td>
+<td class="ltx_td" id="A8.T22.2.1.5.4"></td></tr>
+<tr class="ltx_tr" id="A8.T22.2.1.6">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row" id="A8.T22.2.1.6.1">4</th>
+<td class="ltx_td ltx_align_left" id="A8.T22.2.1.6.2"><span class="ltx_text ltx_font_typewriter" id="A8.T22.2.1.6.2.1">CloseThread()</span></td>
+<td class="ltx_td" id="A8.T22.2.1.6.3"></td>
+<td class="ltx_td" id="A8.T22.2.1.6.4"></td></tr>
+<tr class="ltx_tr" id="A8.T22.2.1.7">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row" id="A8.T22.2.1.7.1">5</th>
+<td class="ltx_td ltx_align_left" id="A8.T22.2.1.7.2"><span class="ltx_text ltx_font_typewriter" id="A8.T22.2.1.7.2.1">OpenThread(THR-006)</span></td>
+<td class="ltx_td" id="A8.T22.2.1.7.3"></td>
+<td class="ltx_td" id="A8.T22.2.1.7.4"></td></tr>
+<tr class="ltx_tr" id="A8.T22.2.1.8">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row" id="A8.T22.2.1.8.1">6</th>
+<td class="ltx_td ltx_align_left" id="A8.T22.2.1.8.2"><span class="ltx_text ltx_font_typewriter" id="A8.T22.2.1.8.2.1">Star(THR-006)</span></td>
+<td class="ltx_td" id="A8.T22.2.1.8.3"></td>
+<td class="ltx_td" id="A8.T22.2.1.8.4"></td></tr>
+<tr class="ltx_tr" id="A8.T22.2.1.9">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_bb ltx_border_t" id="A8.T22.2.1.9.1"></th>
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="A8.T22.2.1.9.2"><span class="ltx_text ltx_font_bold" id="A8.T22.2.1.9.2.1">7 actions</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="A8.T22.2.1.9.3"><span class="ltx_text ltx_font_bold" id="A8.T22.2.1.9.3.1">4 actions (success)</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="A8.T22.2.1.9.4"><span class="ltx_text ltx_font_bold" id="A8.T22.2.1.9.4.1">3 actions (success)</span></td></tr>
+</tbody>
+</table></figure><figure id="A8.T23"><figcaption>Table 23: Semantic trajectory comparison on shopping_0010 . The oracle executes a minimal 3-action sequence. Fara searches but inspects wrong products before adding one to cart (failure-wrong product). UI-TARS repeatedly reformulates queries without reaching the target.</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="A8.T23.2.1">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A8.T23.2.1.1">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A8.T23.2.1.1.1"><span class="ltx_text ltx_font_bold" id="A8.T23.2.1.1.1.1">Step</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A8.T23.2.1.1.2"><span class="ltx_text ltx_font_bold" id="A8.T23.2.1.1.2.1">Oracle</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A8.T23.2.1.1.3"><span class="ltx_text ltx_font_bold" id="A8.T23.2.1.1.3.1">Fara</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A8.T23.2.1.1.4"><span class="ltx_text ltx_font_bold" id="A8.T23.2.1.1.4.1">UI-TARS</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A8.T23.2.1.2">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_t" id="A8.T23.2.1.2.1">0</th>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A8.T23.2.1.2.2"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.2.2.1">Search("fiction")</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A8.T23.2.1.2.3"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.2.3.1">Search("Books")</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A8.T23.2.1.2.4"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.2.4.1">Search("Books")</span></td></tr>
+<tr class="ltx_tr" id="A8.T23.2.1.3">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row" id="A8.T23.2.1.3.1">1</th>
+<td class="ltx_td ltx_align_left" id="A8.T23.2.1.3.2"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.3.2.1">OpenProduct(PRD-039)</span></td>
+<td class="ltx_td ltx_align_left" id="A8.T23.2.1.3.3"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.3.3.1">ApplyFilter(dept=Books)</span></td>
+<td class="ltx_td ltx_align_left" id="A8.T23.2.1.3.4"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.3.4.1">ApplyFilter(dept=Books)</span></td></tr>
+<tr class="ltx_tr" id="A8.T23.2.1.4">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row" id="A8.T23.2.1.4.1">2</th>
+<td class="ltx_td ltx_align_left" id="A8.T23.2.1.4.2"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.4.2.1">AddToCart()</span></td>
+<td class="ltx_td ltx_align_left" id="A8.T23.2.1.4.3"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.4.3.1">OpenProduct(PRD-009)</span></td>
+<td class="ltx_td ltx_align_left" id="A8.T23.2.1.4.4"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.4.4.1">ClearFilters()</span></td></tr>
+<tr class="ltx_tr" id="A8.T23.2.1.5">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row" id="A8.T23.2.1.5.1">3</th>
+<td class="ltx_td" id="A8.T23.2.1.5.2"></td>
+<td class="ltx_td ltx_align_left" id="A8.T23.2.1.5.3"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.5.3.1">GoBack()</span></td>
+<td class="ltx_td ltx_align_left" id="A8.T23.2.1.5.4"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.5.4.1">ApplyFilter(dept=Books)</span></td></tr>
+<tr class="ltx_tr" id="A8.T23.2.1.6">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row" id="A8.T23.2.1.6.1">4</th>
+<td class="ltx_td" id="A8.T23.2.1.6.2"></td>
+<td class="ltx_td ltx_align_left" id="A8.T23.2.1.6.3"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.6.3.1">OpenProduct(PRD-027)</span></td>
+<td class="ltx_td ltx_align_left" id="A8.T23.2.1.6.4"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.6.4.1">NewSearch("Leather")</span></td></tr>
+<tr class="ltx_tr" id="A8.T23.2.1.7">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row" id="A8.T23.2.1.7.1">5</th>
+<td class="ltx_td" id="A8.T23.2.1.7.2"></td>
+<td class="ltx_td ltx_align_left" id="A8.T23.2.1.7.3"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.7.3.1">GoBack()</span></td>
+<td class="ltx_td ltx_align_left" id="A8.T23.2.1.7.4"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.7.4.1">NewSearch("Leather")</span></td></tr>
+<tr class="ltx_tr" id="A8.T23.2.1.8">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row" id="A8.T23.2.1.8.1">6</th>
+<td class="ltx_td" id="A8.T23.2.1.8.2"></td>
+<td class="ltx_td ltx_align_left" id="A8.T23.2.1.8.3"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.8.3.1">OpenProduct(PRD-036)</span></td>
+<td class="ltx_td ltx_align_left" id="A8.T23.2.1.8.4"><em class="ltx_emph ltx_font_italic" id="A8.T23.2.1.8.4.1">…no further progress</em></td></tr>
+<tr class="ltx_tr" id="A8.T23.2.1.9">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row" id="A8.T23.2.1.9.1">7</th>
+<td class="ltx_td" id="A8.T23.2.1.9.2"></td>
+<td class="ltx_td ltx_align_left" id="A8.T23.2.1.9.3"><span class="ltx_text ltx_font_typewriter" id="A8.T23.2.1.9.3.1">AddToCart()</span> <math alttext="\times" class="ltx_Math" display="inline" id="A8.T23.m1" intent=":literal"><semantics><mo mathcolor="#FF0000" style="--ltx-fg-color:#FF0000;">×</mo><annotation encoding="application/x-tex">\times</annotation></semantics></math></td>
+<td class="ltx_td" id="A8.T23.2.1.9.4"></td></tr>
+<tr class="ltx_tr" id="A8.T23.2.1.10">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_bb ltx_border_t" id="A8.T23.2.1.10.1"></th>
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="A8.T23.2.1.10.2"><span class="ltx_text ltx_font_bold" id="A8.T23.2.1.10.2.1">3 actions (success)</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="A8.T23.2.1.10.3"><span class="ltx_text ltx_font_bold" id="A8.T23.2.1.10.3.1">8 actions (failure)</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="A8.T23.2.1.10.4"><span class="ltx_text ltx_font_bold" id="A8.T23.2.1.10.4.1">6 actions (failure)</span></td></tr>
+</tbody>
+</table></figure></html>

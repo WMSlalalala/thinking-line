@@ -7,8 +7,11 @@ photo (base64), and writes:
 Run:  python build.py
 """
 import base64, json, pathlib, shutil, math
+from memory_pages import collection_link, reading_html, taxonomy_body, taxonomy_svg
 
 root = pathlib.Path(__file__).parent
+memory_data = json.loads((root / 'gui-memory.json').read_text(encoding='utf-8'))
+memory_css = (root / 'memory.css').read_text(encoding='utf-8')
 tpl = (root / "template.html").read_text(encoding="utf-8")
 trips = json.loads((root/'trips.json').read_text(encoding='utf-8'))
 for trip in trips:
@@ -51,9 +54,16 @@ portrait = base64.b64encode((root / "assets" / "portrait.jpg").read_bytes()).dec
 
 posts = json.loads((root / 'posts.json').read_text(encoding='utf-8'))
 public_papers = [{k:v for k,v in p.items() if k not in ('sourceDeck', 'sourceSlides')} for p in papers]
+for p in public_papers:
+    if p.get('readingNote'):
+        p['readingRenderedHtml'] = reading_html(p)
+        # Ship one rendered copy, rather than duplicating the full note in the app.
+        p.pop('readingNote')
 def script_json(value):
     return json.dumps(value, ensure_ascii=False).replace('<', '\\u003c').replace('\u2028', '\\u2028').replace('\u2029', '\\u2029')
 page = (tpl.replace("__PAPERS_JSON__", script_json(public_papers))
+           .replace("__MEMORY_CSS__", memory_css)
+           .replace("__MEMORY_LINK_JSON__", script_json(collection_link()))
            .replace("__PORTRAIT_B64__", portrait)
            .replace("__POSTS_JSON__", script_json(posts))
            .replace("__SHARED_JS__", (root/'shared.js').read_text(encoding='utf-8'))
@@ -102,6 +112,8 @@ if (root/'assets/figures').exists():
     shutil.copytree(root/'assets/figures',client/'assets/figures',dirs_exist_ok=True)
 for folder in ('map','vendor','fishing'):
     shutil.copytree(root/'assets'/folder,client/'assets'/folder,dirs_exist_ok=True)
+shutil.copytree(root/'assets/gui-memory',client/'assets/gui-memory',dirs_exist_ok=True)
+(client/'assets/gui-memory/taxonomy.svg').write_text(taxonomy_svg(memory_data), encoding='utf-8')
 
 
 # ---- SEO: crawlable static pages (hash routes are invisible to crawlers), sitemap, robots, IndexNow key
@@ -151,14 +163,18 @@ for p in papers:
             f'<h1 class="title">{_esc(p["title"])}</h1>'
             f'<p class="static-meta">{_esc(p.get("authors", ""))}<br>{_esc(p.get("venue", ""))}' + (' · ' + ' · '.join(links) if links else '') + '</p>'
             + (f'<p class="static-take">{_esc(p["take"])}</p>' if p.get('take') else ''))
+    if p.get('readingNote'):
+        body += '<p class="static-meta"><a href="#detailed-notes">直接阅读中文详解 ↓</a> · <a href="/research/gui-memory/">P0 分类树 ↗</a></p>'
     for label, vals in sections:
         if vals:
             body += f'<section class="note-section"><h2>{label}</h2><div class="prose">{_paras(vals)}</div>' + (fig if label == 'Method' else '') + '</section>'
+    if p.get('readingNote'):
+        body += '<div id="detailed-notes">' + reading_html(p) + '</div>'
     if n.get('myTake'):
         body += f'<section class="note-section"><h2>My take</h2><div class="prose">{_paras([n["myTake"]])}</div></section>'
     body += f'<p class="static-cta"><a href="/#/post/{_esc(p["id"])}">Open this note in the interactive notebook (comments, hooks) →</a> · <a href="/notes/">All notes</a></p>'
     ld = {'@context': 'https://schema.org', '@type': 'BlogPosting', 'headline': p['title'], 'description': desc, 'url': url, 'mainEntityOfPage': url,
-          'datePublished': p.get('date', ''), 'dateModified': p.get('revised') or p.get('date', ''), 'inLanguage': 'en',
+          'datePublished': p.get('date', ''), 'dateModified': p.get('noteUpdated') or p.get('date', ''), 'inLanguage': ['en','zh-CN'] if p.get('readingNote') else 'en',
           'author': {'@type': 'Person', 'name': 'Mingshuo Wang', 'url': SITE + '/'}, 'isPartOf': {'@type': 'WebSite', 'name': 'Thinking Line', 'url': SITE + '/'},
           'about': {'@type': 'ScholarlyArticle', 'name': p['title'], 'author': p.get('authors', ''), 'url': p.get('url') or (f"https://arxiv.org/abs/{p['arxiv']}" if p.get('arxiv') else '')}}
     (notes_dir / p['id']).mkdir(parents=True, exist_ok=True)
@@ -168,7 +184,13 @@ for p in papers:
 items = ''.join(f'<li><a href="/notes/{_esc(p["id"])}/">{_esc(p["title"])}</a><small>{_esc(p.get("authors", ""))} · {_esc(p.get("venue", ""))} · {_esc(TOPIC_NAMES.get(p.get("topic"), ""))}</small></li>'
                 for p in sorted(papers, key=lambda q: q.get('date', ''), reverse=True))
 (notes_dir / 'index.html').write_text(_shell('Research notes · Thinking Line', "All of Mingshuo Wang's paper notes on GUI agents, agent security and agent systems.", SITE + '/notes/',
-    f'<h1 class="title">Research notes</h1><p class="static-meta">{len(papers)} notes · <a href="/#/research">interactive index with search and filters</a></p><ul class="static-list">{items}</ul>'), encoding='utf-8')
+    f'<h1 class="title">Research notes</h1><p class="static-meta">{len(papers)} notes · <a href="/#/research">interactive index with search and filters</a></p>{collection_link()}<ul class="static-list">{items}</ul>'), encoding='utf-8')
+memory_dir = client / 'research/gui-memory'
+memory_dir.mkdir(parents=True, exist_ok=True)
+memory_page = _shell('GUI memory research atlas · Thinking Line', '45篇GUI历史与记忆P0论文：方法、评测、分类树与完整阅读笔记。', SITE + '/research/gui-memory/', taxonomy_body(memory_data))
+memory_page = memory_page.replace('<html lang="en">', '<html lang="zh-CN">').replace('class="static-wrap"', 'class="memory-page"')
+(memory_dir / 'index.html').write_text(memory_page, encoding='utf-8')
+sitemap_urls.append((SITE + '/research/gui-memory/', memory_data['date']))
 sitemap_urls.insert(0, (SITE + '/notes/', latest)); sitemap_urls.insert(0, (SITE + '/', latest))
 (client / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     ''.join(f'  <url><loc>{u}</loc>' + (f'<lastmod>{d}</lastmod>' if d else '') + '</url>\n' for u, d in sitemap_urls) + '</urlset>\n', encoding='utf-8')

@@ -61,6 +61,7 @@
 @media(max-width:520px){.topic-card h2{font-size:22px}.note-section>h2{font-size:23px}.research-article .prose{font-size:16px}.flow-stages{grid-template-columns:1fr;gap:22px}.flow-step+ .flow-step::before,.flow-step:nth-child(3)::before{content:'↓';left:50%;top:-24px}.index-title{gap:12px}}
 
 __LIFE_CSS__
+__MEMORY_CSS__
 </style>
 <!-- /head -->
 <a class="skip" href="#app">Skip to content</a>
@@ -93,6 +94,7 @@ __LIFE_CSS__
 var HOOK='<svg viewBox="0 0 24 40" aria-hidden="true"><path d="M3 2 V24 C3 34 21 34 21 24 V14 L17.5 17"/></svg>';
 var PORTRAIT='data:image/jpeg;base64,__PORTRAIT_B64__';
 var PAPERS=__PAPERS_JSON__;
+var MEMORY_COLLECTION_LINK=__MEMORY_LINK_JSON__;
 var LINKS=[
   ['LinkedIn','https://www.linkedin.com/in/mingshuo-wang-87139533a/'],
   ['GitHub','https://github.com/WMSlalalala'],
@@ -160,7 +162,7 @@ function home(){var latest=POSTS.slice().sort(byDate).slice(0,5);
   '<h1>Mingshuo Wang</h1><p class="role">PhD student at NC State · since 2021</p>'+
   '<p class="intro">I study large language models and agentic AI, with a focus on agent systems and agent security. Thinking Line is where I work through the papers I read, the things I make, and life beyond the screen.</p>'+
   '<div class="links">'+LINKS.map(function(l){return '<a href="'+l[1]+'" target="_blank" rel="noopener">'+l[0]+' ↗</a>'}).join('')+'</div></div></section>'+
-  '<section class="home-main"><h2 class="h">Latest notes <a href="#/research">Browse topics ↗</a></h2><div class="ledger">'+latest.map(function(p){return rowHTML(p,{track:false,take:true})}).join('')+'</div></section>'+
+  '<section class="home-main">'+MEMORY_COLLECTION_LINK+'<h2 class="h">Latest notes <a href="#/research">Browse topics ↗</a></h2><div class="ledger">'+latest.map(function(p){return rowHTML(p,{track:false,take:true})}).join('')+'</div></section>'+
   '<aside class="home-explore"><nav class="explore-links" aria-label="Explore"><h2 class="h">Explore</h2>'+Object.keys(TRACKS).map(function(k){return '<a href="#/'+k+'">'+TRACKS[k].name+'</a>'}).join('')+'</nav><a class="feedback" href="mailto:mwang49@ncsu.edu"><span>Feedback</span>mwang49@ncsu.edu ↗</a></aside>'}
 
 var RS={q:'',tags:{},topic:''};
@@ -169,7 +171,7 @@ function research(topic){
   if(!RESEARCH_TOPICS[topic]){RS={q:'',tags:{},topic:''};return '<div class="index-title"><h1 class="title">Research notes</h1><small>'+rlist().length+' notes</small></div><p class="intro muted">Choose a topic to explore the papers.</p><div class="topic-grid">'+Object.keys(RESEARCH_TOPICS).map(function(key){var t=RESEARCH_TOPICS[key];return '<a class="topic-card" data-research-topic="'+key+'" href="#/research/'+key+'"><h2>'+esc(t.name)+'</h2><p>'+esc(t.description)+'</p><span class="topic-count"><span>'+rlist(key).length+' notes</span><span class="arrow" aria-hidden="true">→</span></span></a>'}).join('')+'</div>'}
   if(RS.topic!==topic)RS={q:'',tags:{},topic:topic};
   return '<a class="back" href="#/research">← Research topics</a><div class="index-title module-title"><h1 class="title">'+esc(RESEARCH_TOPICS[topic].name)+'</h1></div><p class="intro muted">'+esc(RESEARCH_TOPICS[topic].description)+'</p>'+
-  '<div class="research-browser"><aside class="research-sidebar" aria-label="Filter '+esc(RESEARCH_TOPICS[topic].name)+'"><h2>Filter topics</h2><div id="topic-filters"></div></aside><div class="research-results"><div class="search"><input id="q" aria-label="Search '+esc(RESEARCH_TOPICS[topic].name)+' notes" type="search" placeholder="Search this topic…" value="'+esc(RS.q)+'" autocomplete="off"><span id="cnt" role="status" aria-live="polite"></span><span>/ to focus</span></div><div class="active-filters" id="active-filters"></div><div class="ledger" id="rlist"></div></div></div>'}
+  (topic==='gui-agent'?MEMORY_COLLECTION_LINK:'')+'<div class="research-browser"><aside class="research-sidebar" aria-label="Filter '+esc(RESEARCH_TOPICS[topic].name)+'"><h2>Filter topics</h2><div id="topic-filters"></div></aside><div class="research-results"><div class="search"><input id="q" aria-label="Search '+esc(RESEARCH_TOPICS[topic].name)+' notes" type="search" placeholder="Search this topic…" value="'+esc(RS.q)+'" autocomplete="off"><span id="cnt" role="status" aria-live="polite"></span><span>/ to focus</span></div><div class="active-filters" id="active-filters"></div><div class="ledger" id="rlist"></div></div></div>'}
 function filterResearch(){var list=rlist(RS.topic);var q=RS.q.trim().toLowerCase();var on=Object.keys(RS.tags).filter(function(t){return RS.tags[t]});
   var searched=list.filter(function(p){if(!q)return true;var hay=[p.title,p.authors||'',p.venue||'',p.take||'',p.bib||'',p.arxiv||'',p.tags.join(' '),(p.keywords||[]).join(' ')].join(' ').toLowerCase();return q.split(/\s+/).every(function(w){return hay.indexOf(w)>=0})});
   var out=searched.filter(function(p){return !on.length||on.some(function(t){return p.tags.indexOf(t)>=0})});
@@ -191,7 +193,7 @@ function researchBody(p){var n=p.note;if(!n)return '<div class="prose">'+p.body+
   '<section class="note-section"><h2>Method</h2><div class="prose">'+paragraphs(n.method)+'</div>'+(p.methodDiagram?methodFlow(p):figureHTML(p))+'</section>'+
   '<section class="note-section"><h2>Evaluation</h2><div class="prose">'+paragraphs(n.evaluation)+'</div></section>'+
   '<section class="note-section"><h2>My take</h2><div class="prose personal-note">'+(n.myTake?'<p>'+esc(n.myTake)+'</p>':'')+'</div></section>'+
-  '<section class="note-section source-note"><h2>Sources</h2><ul class="note-sources">'+sources.map(function(url,i){return '<li><a href="'+esc(url)+'" target="_blank" rel="noopener">'+(i===0?'Paper / source':'Reference '+(i+1))+' ↗</a></li>'}).join('')+'</ul></section></div>'}
+  '<section class="note-section source-note"><h2>Sources</h2><ul class="note-sources">'+sources.map(function(url,i){return '<li><a href="'+esc(url)+'" target="_blank" rel="noopener">'+(i===0?'Paper / source':'Reference '+(i+1))+' ↗</a></li>'}).join('')+'</ul></section>'+(p.readingRenderedHtml||'')+'</div>'}
 
 function post(id){var p=BY[id];if(!p)return '<p class="empty" style="margin-top:2rem">No such note. <a href="#/" style="text-decoration:underline">Back home</a>.</p>';
 
@@ -201,7 +203,7 @@ function post(id){var p=BY[id];if(!p)return '<p class="empty" style="margin-top:
   return '<a class="back" href="#/'+(topic?'research/'+topic:p.track)+'">← '+(topic?RESEARCH_TOPICS[topic].name:TRACKS[p.track].name)+'</a>'+
   '<div class="kick"><span>'+p.date+'</span><span>·</span><span>'+p.read+' min</span><span>·</span><span><span data-views="'+p.id+'">'+fmt(nviews(p))+'</span> reads</span>'+(p.kind==='essay'?'<span>·</span><span>essay</span>':'')+'</div>'+
   '<h1 class="title">'+p.title+'</h1>'+((p.kind==='paper'||p.kind==='standard')&&p.take?'<p class="take">'+p.take+'</p>':'')+meta+
-  (p.track==='research'?researchBody(p):'<div class="prose">'+p.body+'</div>')+
+  (p.readingRenderedHtml?'<p class="static-meta"><a href="/notes/'+esc(p.id)+'/#detailed-notes">直接阅读中文详解 ↓</a> · <a href="/research/gui-memory/">P0 分类树 ↗</a></p>':'')+(p.track==='research'?researchBody(p):'<div class="prose">'+p.body+'</div>')+
   '<div class="hookrow"><button type="button" class="hook'+(sharedMine[p.id]?' on':'')+'" id="hook">'+HOOK+'<span id="hooklbl">'+(sharedMine[p.id]?'Hooked':'Hook this')+' · '+nhooks(p)+'</span></button><span class="vw">'+tagsHTML(p)+'</span></div>'+
   '<section class="comments"><h2 class="h">Comments <small id="ccount">'+cs.length+'</small></h2><div class="clist" id="clist">'+(cs.length?cs.map(cHTML).join(''):'<p class="empty">Loading comments…</p>')+'</div>'+
   '<form class="form" id="cform" autocomplete="off"><input id="cname" aria-label="Name (optional)" maxlength="40" placeholder="Name (optional)"><textarea id="cbody" aria-label="Comment" required maxlength="1500" placeholder="Say something — no account needed."></textarea><div class="honeypot" aria-hidden="true"><label>Website<input id="website" tabindex="-1" autocomplete="off"></label></div><div class="frow"><button class="btn" type="submit">Post comment</button><p class="note">No account needed. Your comment and optional name will be public.</p></div><p class="note" id="comment-status" role="status" aria-live="polite"></p></form></section>'}

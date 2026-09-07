@@ -1,0 +1,1814 @@
+<p><a href="/notes/p0-y26-153/">← 返回阅读笔记 / Back to reading note</a></p><meta content="width=device-width, initial-scale=1" name="viewport"/><!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8"/><title>OSWorld 2.0: Benchmarking Computer Use Agents on Long-Horizon Real-World Tasks 原表</title><style>body{font:16px system-ui;max-width:1500px;margin:30px auto;padding:20px}table{border-collapse:collapse;width:100%;margin:20px 0}td,th{border:1px solid #bbb;padding:7px}figure{margin:30px 0;overflow:auto}caption,figcaption{font-weight:600}math{font-size:1em}</style><h1>Y26-153 原文表格</h1><p>抽取日期：2026-09-07。来自<a href="https://arxiv.org/html/2606.29537">原文</a>。保留原表行列，未统一实验配置；数值解释见中文分析。</p><figure id="S2.T1"><figcaption>Table 1: Percentage of tasks by number of apps and services.</figcaption><table class="ltx_tabular ltx_align_middle" id="S2.T1.2.1">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S2.T1.2.1.1">
+<td class="ltx_td ltx_border_tt" id="S2.T1.2.1.1.1" style="padding:0.6pt 3.2pt;"></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="6" id="S2.T1.2.1.1.2" style="padding:0.6pt 3.2pt;">Number of apps and services per task</td></tr>
+<tr class="ltx_tr" id="S2.T1.2.1.2">
+<td class="ltx_td" id="S2.T1.2.1.2.1" style="padding:0.6pt 3.2pt;"></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.2.1.2.2" style="padding:0.6pt 3.2pt;">1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.2.1.2.3" style="padding:0.6pt 3.2pt;">2</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.2.1.2.4" style="padding:0.6pt 3.2pt;">3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.2.1.2.5" style="padding:0.6pt 3.2pt;">4</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.2.1.2.6" style="padding:0.6pt 3.2pt;">5</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.2.1.2.7" style="padding:0.6pt 3.2pt;">6+</td></tr>
+<tr class="ltx_tr" id="S2.T1.2.1.3">
+<td class="ltx_td ltx_align_left ltx_border_t" id="S2.T1.2.1.3.1" style="padding:0.6pt 3.2pt;">Required apps only</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.2.1.3.2" style="padding:0.6pt 3.2pt;">35.2%</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.2.1.3.3" style="padding:0.6pt 3.2pt;">28.7%</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.2.1.3.4" style="padding:0.6pt 3.2pt;">23.1%</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.2.1.3.5" style="padding:0.6pt 3.2pt;">9.3%</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.2.1.3.6" style="padding:0.6pt 3.2pt;">2.8%</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.2.1.3.7" style="padding:0.6pt 3.2pt;">0.9%</td></tr>
+<tr class="ltx_tr" id="S2.T1.2.1.4">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="S2.T1.2.1.4.1" style="padding:0.6pt 3.2pt;">Possibly involved apps</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.2.1.4.2" style="padding:0.6pt 3.2pt;">26.9%</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.2.1.4.3" style="padding:0.6pt 3.2pt;">25.9%</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.2.1.4.4" style="padding:0.6pt 3.2pt;">31.5%</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.2.1.4.5" style="padding:0.6pt 3.2pt;">9.3%</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.2.1.4.6" style="padding:0.6pt 3.2pt;">4.6%</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.2.1.4.7" style="padding:0.6pt 3.2pt;">1.9%</td></tr>
+</tbody>
+</table></figure><figure id="S2.T2"><figcaption>Table 2: Challenge phenomena in OSWorld 2.0 .</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="S2.T2.4">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="S2.T2.4.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="S2.T2.4.1.1" style="padding-left:5.0pt;padding-right:5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="S2.T2.4.1.1.1">
+<span class="ltx_p" id="S2.T2.4.1.1.1.1"><span class="ltx_text ltx_font_bold" id="S2.T2.4.1.1.1.1.1">Phenomenon</span></span>
+</span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="S2.T2.4.1.2" style="padding-left:5.0pt;padding-right:5.0pt;"><span class="ltx_text ltx_font_bold" id="S2.T2.4.1.2.1"># Tasks</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S2.T2.4.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="S2.T2.4.2.1" style="padding-left:5.0pt;padding-right:5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="S2.T2.4.2.1.1">
+<span class="ltx_p" id="S2.T2.4.2.1.1.1">Cross-source Reasoning</span>
+</span></th>
+<td class="ltx_td ltx_align_left ltx_border_t" id="S2.T2.4.2.2" style="padding-left:5.0pt;padding-right:5.0pt;">46 (42.6%)</td></tr>
+<tr class="ltx_tr" id="S2.T2.4.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T2.4.3.1" style="padding-left:5.0pt;padding-right:5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="S2.T2.4.3.1.1">
+<span class="ltx_p" id="S2.T2.4.3.1.1.1">Visual-spatial Precision</span>
+</span></th>
+<td class="ltx_td ltx_align_left" id="S2.T2.4.3.2" style="padding-left:5.0pt;padding-right:5.0pt;">45 (41.7%)</td></tr>
+<tr class="ltx_tr" id="S2.T2.4.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T2.4.4.1" style="padding-left:5.0pt;padding-right:5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="S2.T2.4.4.1.1">
+<span class="ltx_p" id="S2.T2.4.4.1.1.1">Implicit-state Inference</span>
+</span></th>
+<td class="ltx_td ltx_align_left" id="S2.T2.4.4.2" style="padding-left:5.0pt;padding-right:5.0pt;">43 (39.8%)</td></tr>
+<tr class="ltx_tr" id="S2.T2.4.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T2.4.5.1" style="padding-left:5.0pt;padding-right:5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="S2.T2.4.5.1.1">
+<span class="ltx_p" id="S2.T2.4.5.1.1.1">Multi-item State Tracking</span>
+</span></th>
+<td class="ltx_td ltx_align_left" id="S2.T2.4.5.2" style="padding-left:5.0pt;padding-right:5.0pt;">43 (39.8%)</td></tr>
+<tr class="ltx_tr" id="S2.T2.4.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T2.4.6.1" style="padding-left:5.0pt;padding-right:5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="S2.T2.4.6.1.1">
+<span class="ltx_p" id="S2.T2.4.6.1.1.1">Conflict Disambiguation</span>
+</span></th>
+<td class="ltx_td ltx_align_left" id="S2.T2.4.6.2" style="padding-left:5.0pt;padding-right:5.0pt;">39 (36.1%)</td></tr>
+<tr class="ltx_tr" id="S2.T2.4.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T2.4.7.1" style="padding-left:5.0pt;padding-right:5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="S2.T2.4.7.1.1">
+<span class="ltx_p" id="S2.T2.4.7.1.1.1">Multimodal Editing</span>
+</span></th>
+<td class="ltx_td ltx_align_left" id="S2.T2.4.7.2" style="padding-left:5.0pt;padding-right:5.0pt;">30 (27.8%)</td></tr>
+<tr class="ltx_tr" id="S2.T2.4.8">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T2.4.8.1" style="padding-left:5.0pt;padding-right:5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="S2.T2.4.8.1.1">
+<span class="ltx_p" id="S2.T2.4.8.1.1.1">Tutorial Following</span>
+</span></th>
+<td class="ltx_td ltx_align_left" id="S2.T2.4.8.2" style="padding-left:5.0pt;padding-right:5.0pt;">22 (20.4%)</td></tr>
+<tr class="ltx_tr" id="S2.T2.4.9">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T2.4.9.1" style="padding-left:5.0pt;padding-right:5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="S2.T2.4.9.1.1">
+<span class="ltx_p" id="S2.T2.4.9.1.1.1">Dynamic Environment</span>
+</span></th>
+<td class="ltx_td ltx_align_left" id="S2.T2.4.9.2" style="padding-left:5.0pt;padding-right:5.0pt;">10 (9.3%)</td></tr>
+<tr class="ltx_tr" id="S2.T2.4.10">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T2.4.10.1" style="padding-left:5.0pt;padding-right:5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="S2.T2.4.10.1.1">
+<span class="ltx_p" id="S2.T2.4.10.1.1.1">Streaming Interaction</span>
+</span></th>
+<td class="ltx_td ltx_align_left" id="S2.T2.4.10.2" style="padding-left:5.0pt;padding-right:5.0pt;">6 (5.6%)</td></tr>
+<tr class="ltx_tr" id="S2.T2.4.11">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="S2.T2.4.11.1" style="padding-left:5.0pt;padding-right:5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="S2.T2.4.11.1.1">
+<span class="ltx_p" id="S2.T2.4.11.1.1.1">Proactive Interaction</span>
+</span></th>
+<td class="ltx_td ltx_align_left ltx_border_bb" id="S2.T2.4.11.2" style="padding-left:5.0pt;padding-right:5.0pt;">6 (5.6%)</td></tr>
+</tbody>
+</table></figure><figure id="S3.T3"><figcaption>Table 3: Main 500-step results, grouped by tool-use condition.
+Cost, tool calls, output tokens, and turns are per-task averages over the 108 tasks.
+Dashes mark unavailable statistics; bold marks the best value.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="S3.T3.4">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S3.T3.4.1">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_tt" id="S3.T3.4.1.1" style="padding-left:4.0pt;padding-right:4.0pt;"></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_tt" id="S3.T3.4.1.2" style="padding-left:4.0pt;padding-right:4.0pt;">Model</th>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.T3.4.1.3" style="padding-left:4.0pt;padding-right:4.0pt;">Binary (%)</td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.T3.4.1.4" style="padding-left:4.0pt;padding-right:4.0pt;">Partial (%)</td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.T3.4.1.5" style="padding-left:4.0pt;padding-right:4.0pt;">Cost/task</td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.T3.4.1.6" style="padding-left:4.0pt;padding-right:4.0pt;">Tool calls/task</td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.T3.4.1.7" style="padding-left:4.0pt;padding-right:4.0pt;">Out tok/task</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_tt" id="S3.T3.4.1.8" style="padding-left:4.0pt;padding-right:4.0pt;">Steps/task</td></tr>
+<tr class="ltx_tr" id="S3.T3.4.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="S3.T3.4.2.1" rowspan="3" style="padding-left:4.0pt;padding-right:4.0pt;"><span class="ltx_text" id="S3.T3.4.2.1.1">
+<span class="ltx_inline-block ltx_align_left" id="S3.T3.4.2.1.1.1">
+<span class="ltx_p" id="S3.T3.4.2.1.1.1.1"><span class="ltx_text ltx_font_italic" id="S3.T3.4.2.1.1.1.1.1">Batched</span></span>
+<span class="ltx_p" id="S3.T3.4.2.1.1.1.2"><span class="ltx_text ltx_font_italic" id="S3.T3.4.2.1.1.1.2.1">actions</span></span>
+</span></span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="S3.T3.4.2.2" style="padding-left:4.0pt;padding-right:4.0pt;">Claude Opus 4.8</th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T3.4.2.3" style="padding-left:4.0pt;padding-right:4.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T3.4.2.3.1">20.6</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T3.4.2.4" style="padding-left:4.0pt;padding-right:4.0pt;"><span class="ltx_text ltx_font_bold" id="S3.T3.4.2.4.1">54.8</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T3.4.2.5" style="padding-left:4.0pt;padding-right:4.0pt;"><math alttext="\sim" class="ltx_Math" display="inline" id="S3.T3.m1" intent=":literal"><semantics><mo>∼</mo><annotation encoding="application/x-tex">\sim</annotation></semantics></math>$72.4</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T3.4.2.6" style="padding-left:4.0pt;padding-right:4.0pt;">481.8</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T3.4.2.7" style="padding-left:4.0pt;padding-right:4.0pt;">224K</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_t" id="S3.T3.4.2.8" style="padding-left:4.0pt;padding-right:4.0pt;">103</td></tr>
+<tr class="ltx_tr" id="S3.T3.4.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S3.T3.4.3.1" style="padding-left:4.0pt;padding-right:4.0pt;">Claude Opus 4.7</th>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.3.2" style="padding-left:4.0pt;padding-right:4.0pt;">18.2</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.3.3" style="padding-left:4.0pt;padding-right:4.0pt;">48.91</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.3.4" style="padding-left:4.0pt;padding-right:4.0pt;"><math alttext="\sim" class="ltx_Math" display="inline" id="S3.T3.m2" intent=":literal"><semantics><mo>∼</mo><annotation encoding="application/x-tex">\sim</annotation></semantics></math>$33.6</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.3.5" style="padding-left:4.0pt;padding-right:4.0pt;">597.1</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.3.6" style="padding-left:4.0pt;padding-right:4.0pt;">150K</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.T3.4.3.7" style="padding-left:4.0pt;padding-right:4.0pt;">160.7</td></tr>
+<tr class="ltx_tr" id="S3.T3.4.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S3.T3.4.4.1" style="padding-left:4.0pt;padding-right:4.0pt;">GPT-5.5</th>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.4.2" style="padding-left:4.0pt;padding-right:4.0pt;">13.0</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.4.3" style="padding-left:4.0pt;padding-right:4.0pt;">49.5</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.4.4" style="padding-left:4.0pt;padding-right:4.0pt;"><math alttext="\sim" class="ltx_Math" display="inline" id="S3.T3.m3" intent=":literal"><semantics><mo>∼</mo><annotation encoding="application/x-tex">\sim</annotation></semantics></math>$25.5</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.4.5" style="padding-left:4.0pt;padding-right:4.0pt;">149.8</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.4.6" style="padding-left:4.0pt;padding-right:4.0pt;">37.1K</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.T3.4.4.7" style="padding-left:4.0pt;padding-right:4.0pt;">95.2</td></tr>
+<tr class="ltx_tr" id="S3.T3.4.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb ltx_border_t" id="S3.T3.4.5.1" rowspan="6" style="padding-left:4.0pt;padding-right:4.0pt;"><span class="ltx_text" id="S3.T3.4.5.1.1">
+<span class="ltx_inline-block ltx_align_left" id="S3.T3.4.5.1.1.1">
+<span class="ltx_p" id="S3.T3.4.5.1.1.1.1"><span class="ltx_text ltx_font_italic" id="S3.T3.4.5.1.1.1.1.1">Single</span></span>
+<span class="ltx_p" id="S3.T3.4.5.1.1.1.2"><span class="ltx_text ltx_font_italic" id="S3.T3.4.5.1.1.1.2.1">action</span></span>
+</span></span></th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="S3.T3.4.5.2" style="padding-left:4.0pt;padding-right:4.0pt;">Claude Opus 4.8</th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T3.4.5.3" style="padding-left:4.0pt;padding-right:4.0pt;">18.5</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T3.4.5.4" style="padding-left:4.0pt;padding-right:4.0pt;">49.3</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T3.4.5.5" style="padding-left:4.0pt;padding-right:4.0pt;"><math alttext="\sim" class="ltx_Math" display="inline" id="S3.T3.m4" intent=":literal"><semantics><mo>∼</mo><annotation encoding="application/x-tex">\sim</annotation></semantics></math>$76.1</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T3.4.5.6" style="padding-left:4.0pt;padding-right:4.0pt;">190.5</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S3.T3.4.5.7" style="padding-left:4.0pt;padding-right:4.0pt;">259.5K</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_t" id="S3.T3.4.5.8" style="padding-left:4.0pt;padding-right:4.0pt;">190.5</td></tr>
+<tr class="ltx_tr" id="S3.T3.4.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S3.T3.4.6.1" style="padding-left:4.0pt;padding-right:4.0pt;">Claude Opus 4.7</th>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.6.2" style="padding-left:4.0pt;padding-right:4.0pt;">13.9</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.6.3" style="padding-left:4.0pt;padding-right:4.0pt;">49.1</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.6.4" style="padding-left:4.0pt;padding-right:4.0pt;"><math alttext="\sim" class="ltx_Math" display="inline" id="S3.T3.m5" intent=":literal"><semantics><mo>∼</mo><annotation encoding="application/x-tex">\sim</annotation></semantics></math>$35.8</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.6.5" style="padding-left:4.0pt;padding-right:4.0pt;">318.4</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.6.6" style="padding-left:4.0pt;padding-right:4.0pt;">150.5K</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.T3.4.6.7" style="padding-left:4.0pt;padding-right:4.0pt;">318.4</td></tr>
+<tr class="ltx_tr" id="S3.T3.4.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S3.T3.4.7.1" style="padding-left:4.0pt;padding-right:4.0pt;">Claude Sonnet 4.6</th>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.7.2" style="padding-left:4.0pt;padding-right:4.0pt;">8.3</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.7.3" style="padding-left:4.0pt;padding-right:4.0pt;">41.5</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.7.4" style="padding-left:4.0pt;padding-right:4.0pt;"><math alttext="\sim" class="ltx_Math" display="inline" id="S3.T3.m6" intent=":literal"><semantics><mo>∼</mo><annotation encoding="application/x-tex">\sim</annotation></semantics></math>$22.3</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.7.5" style="padding-left:4.0pt;padding-right:4.0pt;">253.3</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.7.6" style="padding-left:4.0pt;padding-right:4.0pt;">185.9K</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.T3.4.7.7" style="padding-left:4.0pt;padding-right:4.0pt;">253.3</td></tr>
+<tr class="ltx_tr" id="S3.T3.4.8">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S3.T3.4.8.1" style="padding-left:4.0pt;padding-right:4.0pt;">MiniMax M3</th>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.8.2" style="padding-left:4.0pt;padding-right:4.0pt;">4.6</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.8.3" style="padding-left:4.0pt;padding-right:4.0pt;">22.3</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.8.4" style="padding-left:4.0pt;padding-right:4.0pt;"><math alttext="\sim" class="ltx_Math" display="inline" id="S3.T3.m7" intent=":literal"><semantics><mo>∼</mo><annotation encoding="application/x-tex">\sim</annotation></semantics></math>$2.4</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.8.5" style="padding-left:4.0pt;padding-right:4.0pt;">326.7</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.8.6" style="padding-left:4.0pt;padding-right:4.0pt;">70.8K</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.T3.4.8.7" style="padding-left:4.0pt;padding-right:4.0pt;">326.7</td></tr>
+<tr class="ltx_tr" id="S3.T3.4.9">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S3.T3.4.9.1" style="padding-left:4.0pt;padding-right:4.0pt;">Kimi 2.6</th>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.9.2" style="padding-left:4.0pt;padding-right:4.0pt;">4.6</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.9.3" style="padding-left:4.0pt;padding-right:4.0pt;">22.1</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.9.4" style="padding-left:4.0pt;padding-right:4.0pt;"><math alttext="\sim" class="ltx_Math" display="inline" id="S3.T3.m8" intent=":literal"><semantics><mo>∼</mo><annotation encoding="application/x-tex">\sim</annotation></semantics></math>$6.6</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.9.5" style="padding-left:4.0pt;padding-right:4.0pt;">179.3</td>
+<td class="ltx_td ltx_align_center" id="S3.T3.4.9.6" style="padding-left:4.0pt;padding-right:4.0pt;">63.0K</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.T3.4.9.7" style="padding-left:4.0pt;padding-right:4.0pt;">179.3</td></tr>
+<tr class="ltx_tr" id="S3.T3.4.10">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="S3.T3.4.10.1" style="padding-left:4.0pt;padding-right:4.0pt;">Qwen 3.7-Plus</th>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.T3.4.10.2" style="padding-left:4.0pt;padding-right:4.0pt;">2.8</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.T3.4.10.3" style="padding-left:4.0pt;padding-right:4.0pt;">21.5</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.T3.4.10.4" style="padding-left:4.0pt;padding-right:4.0pt;"><math alttext="\sim" class="ltx_Math" display="inline" id="S3.T3.m9" intent=":literal"><semantics><mo>∼</mo><annotation encoding="application/x-tex">\sim</annotation></semantics></math>$3.8</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.T3.4.10.5" style="padding-left:4.0pt;padding-right:4.0pt;">173.5</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.T3.4.10.6" style="padding-left:4.0pt;padding-right:4.0pt;">28.9K</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_bb" id="S3.T3.4.10.7" style="padding-left:4.0pt;padding-right:4.0pt;">173.5</td></tr>
+</tbody>
+</table></figure><figure id="S3.T4"><figcaption>Table 4: Exposure attribution labels for whether a challenge phenomenon was
+responsible for a trajectory’s outcome.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="S3.T4.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="S3.T4.2.1">
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="S3.T4.2.1.1">
+<span class="ltx_inline-block ltx_align_top" id="S3.T4.2.1.1.1" style="width:51.7pt;">
+<span class="ltx_p" id="S3.T4.2.1.1.1.1">Label</span>
+</span></th>
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="S3.T4.2.1.2">
+<span class="ltx_inline-block ltx_align_top" id="S3.T4.2.1.2.1" style="width:269.1pt;">
+<span class="ltx_p" id="S3.T4.2.1.2.1.1">Criterion</span>
+</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S3.T4.2.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="S3.T4.2.2.1">
+<span class="ltx_inline-block ltx_align_top" id="S3.T4.2.2.1.1" style="width:51.7pt;">
+<span class="ltx_p" id="S3.T4.2.2.1.1.1">Handled</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="S3.T4.2.2.2">
+<span class="ltx_inline-block ltx_align_top" id="S3.T4.2.2.2.1" style="width:269.1pt;">
+<span class="ltx_p" id="S3.T4.2.2.2.1.1">Agent reaches the challenge and handles it, including
+task-consistent workarounds.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="S3.T4.2.3">
+<td class="ltx_td ltx_align_left ltx_align_top" id="S3.T4.2.3.1">
+<span class="ltx_inline-block ltx_align_top" id="S3.T4.2.3.1.1" style="width:51.7pt;">
+<span class="ltx_p" id="S3.T4.2.3.1.1.1">Blocked</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="S3.T4.2.3.2">
+<span class="ltx_inline-block ltx_align_top" id="S3.T4.2.3.2.1" style="width:269.1pt;">
+<span class="ltx_p" id="S3.T4.2.3.2.1.1">Agent reaches the challenge and fails because of it.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="S3.T4.2.4">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="S3.T4.2.4.1">
+<span class="ltx_inline-block ltx_align_top" id="S3.T4.2.4.1.1" style="width:51.7pt;">
+<span class="ltx_p" id="S3.T4.2.4.1.1.1">Untested</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="S3.T4.2.4.2">
+<span class="ltx_inline-block ltx_align_top" id="S3.T4.2.4.2.1" style="width:269.1pt;">
+<span class="ltx_p" id="S3.T4.2.4.2.1.1">Agent never reaches the challenge, fails for an unrelated reason,
+or shortcuts past it.</span>
+</span></td></tr>
+</tbody>
+</table></figure><figure id="A2.T5"><figcaption>Table 5: Key improvements from OSWorld 1.0 to OSWorld 2.0 .</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A2.T5.6">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A2.T5.6.1">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_tt" id="A2.T5.6.1.1"></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A2.T5.6.1.2"><span class="ltx_text ltx_font_smallcaps" id="A2.T5.6.1.2.1">OSWorld 1.0</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A2.T5.6.1.3"><span class="ltx_text ltx_font_smallcaps" id="A2.T5.6.1.3.1">OSWorld 2.0</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A2.T5.6.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A2.T5.6.2.1">Task horizon (avg. agent steps)</th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A2.T5.6.2.2"><math alttext="&lt;" class="ltx_Math" display="inline" id="A2.T5.m1" intent=":literal"><semantics><mo>&lt;</mo><annotation encoding="application/x-tex">&lt;</annotation></semantics></math>30</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A2.T5.6.2.3"><math alttext="&gt;" class="ltx_Math" display="inline" id="A2.T5.m2" intent=":literal"><semantics><mo>&gt;</mo><annotation encoding="application/x-tex">&gt;</annotation></semantics></math>250</td></tr>
+<tr class="ltx_tr" id="A2.T5.6.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A2.T5.6.3.1">Cross-app tasks</th>
+<td class="ltx_td ltx_align_center" id="A2.T5.6.3.2">Supported (minority)</td>
+<td class="ltx_td ltx_align_center" id="A2.T5.6.3.3">Majority (<math alttext="\geq" class="ltx_Math" display="inline" id="A2.T5.m3" intent=":literal"><semantics><mo>≥</mo><annotation encoding="application/x-tex">\geq</annotation></semantics></math>2 apps/services, info-dependent)</td></tr>
+<tr class="ltx_tr" id="A2.T5.6.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A2.T5.6.4.1">Self-hosted web environments</th>
+<td class="ltx_td ltx_align_center" id="A2.T5.6.4.2">—</td>
+<td class="ltx_td ltx_align_center" id="A2.T5.6.4.3">31 websites</td></tr>
+<tr class="ltx_tr" id="A2.T5.6.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A2.T5.6.5.1">Input artifact source</th>
+<td class="ltx_td ltx_align_center" id="A2.T5.6.5.2">Mixed/synthetic</td>
+<td class="ltx_td ltx_align_center" id="A2.T5.6.5.3">Authentic</td></tr>
+<tr class="ltx_tr" id="A2.T5.6.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A2.T5.6.6.1">Challenge phenomena</th>
+<td class="ltx_td ltx_align_center" id="A2.T5.6.6.2">—</td>
+<td class="ltx_td ltx_align_center" id="A2.T5.6.6.3">10 annotated tags</td></tr>
+<tr class="ltx_tr" id="A2.T5.6.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A2.T5.6.7.1">Scoring</th>
+<td class="ltx_td ltx_align_center" id="A2.T5.6.7.2">Binary</td>
+<td class="ltx_td ltx_align_center" id="A2.T5.6.7.3">Partial reward (avg. 27.25 ckpts)</td></tr>
+<tr class="ltx_tr" id="A2.T5.6.8">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A2.T5.6.8.1">Model-based evaluation</th>
+<td class="ltx_td ltx_align_center" id="A2.T5.6.8.2">—</td>
+<td class="ltx_td ltx_align_center" id="A2.T5.6.8.3">11.53% of score</td></tr>
+<tr class="ltx_tr" id="A2.T5.6.9">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A2.T5.6.9.1">Safety audit</th>
+<td class="ltx_td ltx_align_center" id="A2.T5.6.9.2">—</td>
+<td class="ltx_td ltx_align_center" id="A2.T5.6.9.3">8 diagnostic checks</td></tr>
+<tr class="ltx_tr" id="A2.T5.6.10">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A2.T5.6.10.1">User interaction</th>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A2.T5.6.10.2">—</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A2.T5.6.10.3">Simulated user</td></tr>
+</tbody>
+</table></figure><figure id="A3.T6"><figcaption>Table 6: General-purpose self-hosted websites in OSWorld 2.0 .</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A3.T6.4">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A3.T6.4.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A3.T6.4.1.1" style="padding:0.4pt 4.0pt;"><span class="ltx_text ltx_font_smallcaps" id="A3.T6.4.1.1.1">OSWorld 2.0</span> Name</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A3.T6.4.1.2" style="padding:0.4pt 4.0pt;">Real-World Counterpart</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A3.T6.4.1.3" style="padding:0.4pt 4.0pt;">Description</th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A3.T6.4.2">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A3.T6.4.2.1" style="padding:0.4pt 4.0pt;">MailHub</td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A3.T6.4.2.2" style="padding:0.4pt 4.0pt;">Gmail</td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A3.T6.4.2.3" style="padding:0.4pt 4.0pt;">Email service</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.3">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.3.1" style="padding:0.4pt 4.0pt;">TeamChat</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.3.2" style="padding:0.4pt 4.0pt;">Slack</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.3.3" style="padding:0.4pt 4.0pt;">Team messaging</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.4">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.4.1" style="padding:0.4pt 4.0pt;">Calendar</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.4.2" style="padding:0.4pt 4.0pt;">Google Calendar</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.4.3" style="padding:0.4pt 4.0pt;">Calendar and scheduling</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.5">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.5.1" style="padding:0.4pt 4.0pt;">VaultBank / VaultHub</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.5.2" style="padding:0.4pt 4.0pt;">Chase / online banking</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.5.3" style="padding:0.4pt 4.0pt;">Banking portal</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.6">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.6.1" style="padding:0.4pt 4.0pt;">CareerLink</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.6.2" style="padding:0.4pt 4.0pt;">LinkedIn</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.6.3" style="padding:0.4pt 4.0pt;">Job platform and professional network</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.7">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.7.1" style="padding:0.4pt 4.0pt;">StreamView</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.7.2" style="padding:0.4pt 4.0pt;">YouTube</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.7.3" style="padding:0.4pt 4.0pt;">Video streaming platform</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.8">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.8.1" style="padding:0.4pt 4.0pt;">StreamView Studio</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.8.2" style="padding:0.4pt 4.0pt;">YouTube Studio</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.8.3" style="padding:0.4pt 4.0pt;">Creator video management</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.9">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.9.1" style="padding:0.4pt 4.0pt;">TravelHub / TravelHubPro</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.9.2" style="padding:0.4pt 4.0pt;">Booking.com</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.9.3" style="padding:0.4pt 4.0pt;">Travel booking</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.10">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.10.1" style="padding:0.4pt 4.0pt;">Trippza</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.10.2" style="padding:0.4pt 4.0pt;">Trip.com / Expedia</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.10.3" style="padding:0.4pt 4.0pt;">Travel and train ticket booking</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.11">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.11.1" style="padding:0.4pt 4.0pt;">ExpenseFlow</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.11.2" style="padding:0.4pt 4.0pt;">Oracle Expense</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.11.3" style="padding:0.4pt 4.0pt;">Expense tracking and reimbursement</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.12">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.12.1" style="padding:0.4pt 4.0pt;">CloudCRM</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.12.2" style="padding:0.4pt 4.0pt;">Salesforce</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.12.3" style="padding:0.4pt 4.0pt;">Customer relationship management</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.13">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.13.1" style="padding:0.4pt 4.0pt;">FormCraft</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.13.2" style="padding:0.4pt 4.0pt;">Google Forms</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.13.3" style="padding:0.4pt 4.0pt;">Form builder</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.14">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.14.1" style="padding:0.4pt 4.0pt;">ReviewSphere</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.14.2" style="padding:0.4pt 4.0pt;">OpenReview / HotCRP</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.14.3" style="padding:0.4pt 4.0pt;">Conference review management</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.15">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.15.1" style="padding:0.4pt 4.0pt;">BudgetWise</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.15.2" style="padding:0.4pt 4.0pt;">Mint / YNAB</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.15.3" style="padding:0.4pt 4.0pt;">Budget management</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.16">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.16.1" style="padding:0.4pt 4.0pt;">Eventix</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.16.2" style="padding:0.4pt 4.0pt;">Eventbrite</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.16.3" style="padding:0.4pt 4.0pt;">Event management</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.17">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.17.1" style="padding:0.4pt 4.0pt;">Overleaf</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.17.2" style="padding:0.4pt 4.0pt;">Overleaf</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.17.3" style="padding:0.4pt 4.0pt;">LaTeX collaborative editor</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.18">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.18.1" style="padding:0.4pt 4.0pt;">AWSConsole</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.18.2" style="padding:0.4pt 4.0pt;">AWS Console</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.18.3" style="padding:0.4pt 4.0pt;">Cloud services console</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.19">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.19.1" style="padding:0.4pt 4.0pt;">W&amp;B</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.19.2" style="padding:0.4pt 4.0pt;">Weights &amp; Biases</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.19.3" style="padding:0.4pt 4.0pt;">Experiment tracking</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.20">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.20.1" style="padding:0.4pt 4.0pt;">AdStream</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.20.2" style="padding:0.4pt 4.0pt;">Google AdSense</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.20.3" style="padding:0.4pt 4.0pt;">Advertising monetization dashboard</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.21">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.21.1" style="padding:0.4pt 4.0pt;">Chirper</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.21.2" style="padding:0.4pt 4.0pt;">X / Twitter</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.21.3" style="padding:0.4pt 4.0pt;">Microblogging social network</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.22">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.22.1" style="padding:0.4pt 4.0pt;">GitLab</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.22.2" style="padding:0.4pt 4.0pt;">GitLab</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.22.3" style="padding:0.4pt 4.0pt;">Git repository hosting and collaboration</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.23">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.23.1" style="padding:0.4pt 4.0pt;">Moodle</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.23.2" style="padding:0.4pt 4.0pt;">Moodle</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.23.3" style="padding:0.4pt 4.0pt;">Online learning management system</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.24">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.24.1" style="padding:0.4pt 4.0pt;">GLBViewer</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.24.2" style="padding:0.4pt 4.0pt;">—</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.24.3" style="padding:0.4pt 4.0pt;">3D model viewer</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.25">
+<td class="ltx_td ltx_align_left" id="A3.T6.4.25.1" style="padding:0.4pt 4.0pt;">DinoGame</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.25.2" style="padding:0.4pt 4.0pt;">Chrome Dino</td>
+<td class="ltx_td ltx_align_left" id="A3.T6.4.25.3" style="padding:0.4pt 4.0pt;">Browser game</td></tr>
+<tr class="ltx_tr" id="A3.T6.4.26">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A3.T6.4.26.1" style="padding:0.4pt 4.0pt;">SlidePuzzle</td>
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A3.T6.4.26.2" style="padding:0.4pt 4.0pt;">—</td>
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A3.T6.4.26.3" style="padding:0.4pt 4.0pt;">Puzzle game</td></tr>
+</tbody>
+</table></figure><figure id="A3.T7"><figcaption>Table 7: Task-specific self-hosted websites in OSWorld 2.0 .</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A3.T7.4">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A3.T7.4.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A3.T7.4.1.1" style="padding:0.4pt 4.0pt;">Website</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A3.T7.4.1.2" style="padding:0.4pt 4.0pt;">Description</th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A3.T7.4.2">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A3.T7.4.2.1" style="padding:0.4pt 4.0pt;">CSRankings</td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A3.T7.4.2.2" style="padding:0.4pt 4.0pt;">CS department ranking portal</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.3">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.3.1" style="padding:0.4pt 4.0pt;">Class-Planner</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.3.2" style="padding:0.4pt 4.0pt;">Course scheduling and planning</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.4">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.4.1" style="padding:0.4pt 4.0pt;">Education-Certification-Platform</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.4.2" style="padding:0.4pt 4.0pt;">Education credential verification</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.5">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.5.1" style="padding:0.4pt 4.0pt;">HKU-RIMS-System</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.5.2" style="padding:0.4pt 4.0pt;">University reimbursement portal</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.6">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.6.1" style="padding:0.4pt 4.0pt;">Insurance-Claim-System</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.6.2" style="padding:0.4pt 4.0pt;">Medical insurance claim submission</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.7">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.7.1" style="padding:0.4pt 4.0pt;">International-Student-Insurance</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.7.2" style="padding:0.4pt 4.0pt;">Student insurance enrollment</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.8">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.8.1" style="padding:0.4pt 4.0pt;">Canada-CV</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.8.2" style="padding:0.4pt 4.0pt;">Canadian visa/immigration portal</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.9">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.9.1" style="padding:0.4pt 4.0pt;">Companies-House-Clone</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.9.2" style="padding:0.4pt 4.0pt;">UK company registry lookup</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.10">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.10.1" style="padding:0.4pt 4.0pt;">DS2019-Request</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.10.2" style="padding:0.4pt 4.0pt;">DS-2019 visa document application</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.11">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.11.1" style="padding:0.4pt 4.0pt;">Event-Booking</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.11.2" style="padding:0.4pt 4.0pt;">Event ticket booking</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.12">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.12.1" style="padding:0.4pt 4.0pt;">Live-Auction</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.12.2" style="padding:0.4pt 4.0pt;">Online auction platform</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.13">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.13.1" style="padding:0.4pt 4.0pt;">Student-Register-Information</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.13.2" style="padding:0.4pt 4.0pt;">Student registration system</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.14">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.14.1" style="padding:0.4pt 4.0pt;">University-Training-Program</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.14.2" style="padding:0.4pt 4.0pt;">University training enrollment</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.15">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.15.1" style="padding:0.4pt 4.0pt;">Vaccine-Booking</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.15.2" style="padding:0.4pt 4.0pt;">Vaccine appointment scheduling</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.16">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.16.1" style="padding:0.4pt 4.0pt;">Visa-Application-Site</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.16.2" style="padding:0.4pt 4.0pt;">Visa application submission portal</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.17">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.17.1" style="padding:0.4pt 4.0pt;">LoanHub</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.17.2" style="padding:0.4pt 4.0pt;">Loan application document upload portal</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.18">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.18.1" style="padding:0.4pt 4.0pt;">TradePro</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.18.2" style="padding:0.4pt 4.0pt;">Brokerage / securities statement portal</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.19">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.19.1" style="padding:0.4pt 4.0pt;">ADP-Workforce</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.19.2" style="padding:0.4pt 4.0pt;">Payroll, pay statement, and tax form portal</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.20">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.20.1" style="padding:0.4pt 4.0pt;">RetireWise</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.20.2" style="padding:0.4pt 4.0pt;">Retirement / 401(k) statement portal</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.21">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.21.1" style="padding:0.4pt 4.0pt;">Springfield-County</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.21.2" style="padding:0.4pt 4.0pt;">Property tax document portal</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.22">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.22.1" style="padding:0.4pt 4.0pt;">Course-Submission-System</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.22.2" style="padding:0.4pt 4.0pt;">Course project/homework submission portal</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.23">
+<td class="ltx_td ltx_align_left" id="A3.T7.4.23.1" style="padding:0.4pt 4.0pt;">Analytics-Dashboard</td>
+<td class="ltx_td ltx_align_left" id="A3.T7.4.23.2" style="padding:0.4pt 4.0pt;">Multi-page analytics dashboard</td></tr>
+<tr class="ltx_tr" id="A3.T7.4.24">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A3.T7.4.24.1" style="padding:0.4pt 4.0pt;">Interactive-Presentation-System</td>
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A3.T7.4.24.2" style="padding:0.4pt 4.0pt;">Browser-based slide presentation app</td></tr>
+</tbody>
+</table></figure><figure id="A3.T8"><figcaption>Table 8: Desktop applications used in OSWorld 2.0 tasks. † denotes applications also present in OSWorld 1.0 [ Xie et al., 2024 ] .</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="A3.T8.6">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A3.T8.6.1">
+<td class="ltx_td ltx_align_left ltx_border_tt" id="A3.T8.6.1.1" style="padding:0.4pt 4.0pt;">Application</td>
+<td class="ltx_td ltx_align_left ltx_border_tt" id="A3.T8.6.1.2" style="padding:0.4pt 4.0pt;">Domain</td>
+<td class="ltx_td ltx_align_left ltx_border_tt" id="A3.T8.6.1.3" style="padding:0.4pt 4.0pt;">Description</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.2">
+<td class="ltx_td ltx_align_left ltx_border_t" colspan="3" id="A3.T8.6.2.1" style="padding:0.4pt 4.0pt;"><span class="ltx_text ltx_font_italic" id="A3.T8.6.2.1.1">Office &amp; Productivity</span></td></tr>
+<tr class="ltx_tr" id="A3.T8.6.3">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.3.1" style="padding:0.4pt 4.0pt;">LibreOffice Writer<sup class="ltx_sup" id="A3.T8.6.3.1.1">†</sup></td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.3.2" style="padding:0.4pt 4.0pt;">Office</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.3.3" style="padding:0.4pt 4.0pt;">Open-source word processor</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.4">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.4.1" style="padding:0.4pt 4.0pt;">LibreOffice Calc<sup class="ltx_sup" id="A3.T8.6.4.1.1">†</sup></td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.4.2" style="padding:0.4pt 4.0pt;">Office</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.4.3" style="padding:0.4pt 4.0pt;">Open-source spreadsheet editor</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.5">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.5.1" style="padding:0.4pt 4.0pt;">LibreOffice Impress<sup class="ltx_sup" id="A3.T8.6.5.1.1">†</sup></td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.5.2" style="padding:0.4pt 4.0pt;">Office</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.5.3" style="padding:0.4pt 4.0pt;">Open-source presentation editor</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.6">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.6.1" style="padding:0.4pt 4.0pt;">WPS Presentation</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.6.2" style="padding:0.4pt 4.0pt;">Office</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.6.3" style="padding:0.4pt 4.0pt;">Presentation editor (MS PowerPoint compatible)</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.7">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.7.1" style="padding:0.4pt 4.0pt;">WPS Spreadsheet</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.7.2" style="padding:0.4pt 4.0pt;">Office</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.7.3" style="padding:0.4pt 4.0pt;">Spreadsheet editor (MS Excel compatible)</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.8">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.8.1" style="padding:0.4pt 4.0pt;">Thunderbird<sup class="ltx_sup" id="A3.T8.6.8.1.1">†</sup></td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.8.2" style="padding:0.4pt 4.0pt;">Office</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.8.3" style="padding:0.4pt 4.0pt;">Email client</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.9">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.9.1" style="padding:0.4pt 4.0pt;">Obsidian</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.9.2" style="padding:0.4pt 4.0pt;">Office</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.9.3" style="padding:0.4pt 4.0pt;">Markdown-based note-taking and knowledge management</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.10">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.10.1" style="padding:0.4pt 4.0pt;">VS Code<sup class="ltx_sup" id="A3.T8.6.10.1.1">†</sup></td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.10.2" style="padding:0.4pt 4.0pt;">Development</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.10.3" style="padding:0.4pt 4.0pt;">Source code editor</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.11">
+<td class="ltx_td ltx_align_left ltx_border_t" colspan="3" id="A3.T8.6.11.1" style="padding:0.4pt 4.0pt;"><span class="ltx_text ltx_font_italic" id="A3.T8.6.11.1.1">Creative &amp; Media</span></td></tr>
+<tr class="ltx_tr" id="A3.T8.6.12">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.12.1" style="padding:0.4pt 4.0pt;">GIMP<sup class="ltx_sup" id="A3.T8.6.12.1.1">†</sup></td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.12.2" style="padding:0.4pt 4.0pt;">Image editing</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.12.3" style="padding:0.4pt 4.0pt;">GNU Image Manipulation Program</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.13">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.13.1" style="padding:0.4pt 4.0pt;">Shotcut</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.13.2" style="padding:0.4pt 4.0pt;">Video editing</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.13.3" style="padding:0.4pt 4.0pt;">Non-linear video editor</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.14">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.14.1" style="padding:0.4pt 4.0pt;">REAPER</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.14.2" style="padding:0.4pt 4.0pt;">Audio</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.14.3" style="padding:0.4pt 4.0pt;">Digital audio workstation</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.15">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.15.1" style="padding:0.4pt 4.0pt;">MuseScore</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.15.2" style="padding:0.4pt 4.0pt;">Audio</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.15.3" style="padding:0.4pt 4.0pt;">Music notation and composition editor</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.16">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.16.1" style="padding:0.4pt 4.0pt;">Blender</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.16.2" style="padding:0.4pt 4.0pt;">3D</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.16.3" style="padding:0.4pt 4.0pt;">3D modeling, animation, and rendering suite</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.17">
+<td class="ltx_td ltx_align_left ltx_border_t" colspan="3" id="A3.T8.6.17.1" style="padding:0.4pt 4.0pt;"><span class="ltx_text ltx_font_italic" id="A3.T8.6.17.1.1">Engineering &amp; Scientific Design</span></td></tr>
+<tr class="ltx_tr" id="A3.T8.6.18">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.18.1" style="padding:0.4pt 4.0pt;">FreeCAD</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.18.2" style="padding:0.4pt 4.0pt;">CAD</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.18.3" style="padding:0.4pt 4.0pt;">Parametric 3D mechanical CAD modeler</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.19">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.19.1" style="padding:0.4pt 4.0pt;">SolveSpace</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.19.2" style="padding:0.4pt 4.0pt;">CAD</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.19.3" style="padding:0.4pt 4.0pt;">Parametric 2D/3D constraint-based CAD</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.20">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.20.1" style="padding:0.4pt 4.0pt;">KiCad</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.20.2" style="padding:0.4pt 4.0pt;">EDA</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.20.3" style="padding:0.4pt 4.0pt;">PCB electronic design automation suite</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.21">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.21.1" style="padding:0.4pt 4.0pt;">Logisim</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.21.2" style="padding:0.4pt 4.0pt;">EDA</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.21.3" style="padding:0.4pt 4.0pt;">Digital logic circuit simulator</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.22">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.22.1" style="padding:0.4pt 4.0pt;">3D Slicer</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.22.2" style="padding:0.4pt 4.0pt;">Medical</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.22.3" style="padding:0.4pt 4.0pt;">Medical image visualization and segmentation</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.23">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.23.1" style="padding:0.4pt 4.0pt;">GeoGebra</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.23.2" style="padding:0.4pt 4.0pt;">Mathematics</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.23.3" style="padding:0.4pt 4.0pt;">Interactive geometry and algebra software</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.24">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.24.1" style="padding:0.4pt 4.0pt;">LabPlot</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.24.2" style="padding:0.4pt 4.0pt;">Science</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.24.3" style="padding:0.4pt 4.0pt;">Scientific data analysis and visualization</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.25">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.25.1" style="padding:0.4pt 4.0pt;">LIBERO</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.25.2" style="padding:0.4pt 4.0pt;">Robotics</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.25.3" style="padding:0.4pt 4.0pt;">Robot manipulation simulation framework</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.26">
+<td class="ltx_td ltx_align_left ltx_border_t" colspan="3" id="A3.T8.6.26.1" style="padding:0.4pt 4.0pt;"><span class="ltx_text ltx_font_italic" id="A3.T8.6.26.1.1">Reference &amp; Knowledge</span></td></tr>
+<tr class="ltx_tr" id="A3.T8.6.27">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.27.1" style="padding:0.4pt 4.0pt;">Zotero</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.27.2" style="padding:0.4pt 4.0pt;">Research</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.27.3" style="padding:0.4pt 4.0pt;">Reference manager and citation organizer</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.28">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.28.1" style="padding:0.4pt 4.0pt;">Overleaf</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.28.2" style="padding:0.4pt 4.0pt;">Research</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.28.3" style="padding:0.4pt 4.0pt;">Browser-based collaborative <span class="ltx_text ltx_LaTeX_logo" id="A3.T8.6.28.3.1" style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_text" id="A3.T8.6.28.3.1.1" style="position:relative; bottom:0.4ex;font-variant:small-caps;;">a</span>T<span class="ltx_text" id="A3.T8.6.28.3.1.2" style="position:relative; bottom:-0.2ex;font-variant:small-caps;font-size:120%;">e</span>X</span> editor</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.29">
+<td class="ltx_td ltx_align_left ltx_border_t" colspan="3" id="A3.T8.6.29.1" style="padding:0.4pt 4.0pt;"><span class="ltx_text ltx_font_italic" id="A3.T8.6.29.1.1">Media Playback</span></td></tr>
+<tr class="ltx_tr" id="A3.T8.6.30">
+<td class="ltx_td ltx_align_left" id="A3.T8.6.30.1" style="padding:0.4pt 4.0pt;">MPV</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.30.2" style="padding:0.4pt 4.0pt;">Media player</td>
+<td class="ltx_td ltx_align_left" id="A3.T8.6.30.3" style="padding:0.4pt 4.0pt;">Lightweight video and audio player</td></tr>
+<tr class="ltx_tr" id="A3.T8.6.31">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A3.T8.6.31.1" style="padding:0.4pt 4.0pt;">OpenBoard</td>
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A3.T8.6.31.2" style="padding:0.4pt 4.0pt;">Education</td>
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A3.T8.6.31.3" style="padding:0.4pt 4.0pt;">Interactive whiteboard application</td></tr>
+</tbody>
+</table></figure><figure id="A3.T9"><figcaption>Table 9: Applications and services ranked by number of tasks in which they
+are explicitly required.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A3.T9.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A3.T9.2.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A3.T9.2.1.1" style="padding:0.25pt 5.0pt;">Application / Service</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A3.T9.2.1.2" style="padding:0.25pt 5.0pt;">Type</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A3.T9.2.1.3" style="padding:0.25pt 5.0pt;">Tasks</th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A3.T9.2.2">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A3.T9.2.2.1" style="padding:0.25pt 5.0pt;">Chrome / Browser</td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A3.T9.2.2.2" style="padding:0.25pt 5.0pt;">Website</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A3.T9.2.2.3" style="padding:0.25pt 5.0pt;">62</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.3">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.3.1" style="padding:0.25pt 5.0pt;">MailHub</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.3.2" style="padding:0.25pt 5.0pt;">Website</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.3.3" style="padding:0.25pt 5.0pt;">14</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.4">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.4.1" style="padding:0.25pt 5.0pt;">LibreOffice Writer</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.4.2" style="padding:0.25pt 5.0pt;">App</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.4.3" style="padding:0.25pt 5.0pt;">13</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.5">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.5.1" style="padding:0.25pt 5.0pt;">WPS Presentation</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.5.2" style="padding:0.25pt 5.0pt;">App</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.5.3" style="padding:0.25pt 5.0pt;">12</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.6">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.6.1" style="padding:0.25pt 5.0pt;">TeamChat</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.6.2" style="padding:0.25pt 5.0pt;">Website</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.6.3" style="padding:0.25pt 5.0pt;">11</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.7">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.7.1" style="padding:0.25pt 5.0pt;">LibreOffice Calc</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.7.2" style="padding:0.25pt 5.0pt;">App</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.7.3" style="padding:0.25pt 5.0pt;">10</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.8">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.8.1" style="padding:0.25pt 5.0pt;">VS Code</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.8.2" style="padding:0.25pt 5.0pt;">App</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.8.3" style="padding:0.25pt 5.0pt;">9</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.9">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.9.1" style="padding:0.25pt 5.0pt;">Shotcut</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.9.2" style="padding:0.25pt 5.0pt;">App</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.9.3" style="padding:0.25pt 5.0pt;">6</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.10">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.10.1" style="padding:0.25pt 5.0pt;">StreamView</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.10.2" style="padding:0.25pt 5.0pt;">Website</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.10.3" style="padding:0.25pt 5.0pt;">6</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.11">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.11.1" style="padding:0.25pt 5.0pt;">Calendar</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.11.2" style="padding:0.25pt 5.0pt;">Website</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.11.3" style="padding:0.25pt 5.0pt;">5</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.12">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.12.1" style="padding:0.25pt 5.0pt;">GIMP</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.12.2" style="padding:0.25pt 5.0pt;">App</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.12.3" style="padding:0.25pt 5.0pt;">5</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.13">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.13.1" style="padding:0.25pt 5.0pt;">LibreOffice Impress</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.13.2" style="padding:0.25pt 5.0pt;">App</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.13.3" style="padding:0.25pt 5.0pt;">5</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.14">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.14.1" style="padding:0.25pt 5.0pt;">Zotero</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.14.2" style="padding:0.25pt 5.0pt;">App</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.14.3" style="padding:0.25pt 5.0pt;">5</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.15">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.15.1" style="padding:0.25pt 5.0pt;">Thunderbird</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.15.2" style="padding:0.25pt 5.0pt;">App</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.15.3" style="padding:0.25pt 5.0pt;">4</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.16">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.16.1" style="padding:0.25pt 5.0pt;">REAPER</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.16.2" style="padding:0.25pt 5.0pt;">App</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.16.3" style="padding:0.25pt 5.0pt;">3</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.17">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.17.1" style="padding:0.25pt 5.0pt;">AWSConsole</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.17.2" style="padding:0.25pt 5.0pt;">Website</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.17.3" style="padding:0.25pt 5.0pt;">2</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.18">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.18.1" style="padding:0.25pt 5.0pt;">FreeCAD</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.18.2" style="padding:0.25pt 5.0pt;">App</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.18.3" style="padding:0.25pt 5.0pt;">2</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.19">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.19.1" style="padding:0.25pt 5.0pt;">GitLab</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.19.2" style="padding:0.25pt 5.0pt;">Website</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.19.3" style="padding:0.25pt 5.0pt;">2</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.20">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.20.1" style="padding:0.25pt 5.0pt;">KiCad</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.20.2" style="padding:0.25pt 5.0pt;">App</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.20.3" style="padding:0.25pt 5.0pt;">2</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.21">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.21.1" style="padding:0.25pt 5.0pt;">LIBERO</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.21.2" style="padding:0.25pt 5.0pt;">App</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.21.3" style="padding:0.25pt 5.0pt;">2</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.22">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.22.1" style="padding:0.25pt 5.0pt;">MuseScore</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.22.2" style="padding:0.25pt 5.0pt;">App</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.22.3" style="padding:0.25pt 5.0pt;">2</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.23">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.23.1" style="padding:0.25pt 5.0pt;">Overleaf</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.23.2" style="padding:0.25pt 5.0pt;">Website</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.23.3" style="padding:0.25pt 5.0pt;">2</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.24">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.24.1" style="padding:0.25pt 5.0pt;">3D Slicer</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.24.2" style="padding:0.25pt 5.0pt;">App</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.24.3" style="padding:0.25pt 5.0pt;">2</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.25">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.25.1" style="padding:0.25pt 5.0pt;">StreamView Studio</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.25.2" style="padding:0.25pt 5.0pt;">Website</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.25.3" style="padding:0.25pt 5.0pt;">2</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.26">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.26.1" style="padding:0.25pt 5.0pt;">VaultBank</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.26.2" style="padding:0.25pt 5.0pt;">Website</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.26.3" style="padding:0.25pt 5.0pt;">2</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.27">
+<td class="ltx_td ltx_align_left" id="A3.T9.2.27.1" style="padding:0.25pt 5.0pt;">WPS Spreadsheet</td>
+<td class="ltx_td ltx_align_left" id="A3.T9.2.27.2" style="padding:0.25pt 5.0pt;">App</td>
+<td class="ltx_td ltx_align_center" id="A3.T9.2.27.3" style="padding:0.25pt 5.0pt;">2</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.28">
+<td class="ltx_td ltx_align_left ltx_border_t" colspan="2" id="A3.T9.2.28.1" style="padding:0.25pt 5.0pt;"><span class="ltx_text ltx_font_italic" id="A3.T9.2.28.1.1">Appearing in exactly 1 task each</span></td>
+<td class="ltx_td ltx_border_t" id="A3.T9.2.28.2" style="padding:0.25pt 5.0pt;"></td></tr>
+<tr class="ltx_tr" id="A3.T9.2.29">
+<td class="ltx_td ltx_align_left" colspan="3" id="A3.T9.2.29.1" style="padding:0.25pt 5.0pt;">Blender, BudgetWise, CareerLink, Class-Planner,
+CloudCRM,</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.30">
+<td class="ltx_td ltx_align_left" colspan="3" id="A3.T9.2.30.1" style="padding:0.25pt 5.0pt;">DinoGame, DS2019-Request, Event-Booking, Eventix,
+ExpenseFlow,</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.31">
+<td class="ltx_td ltx_align_left" colspan="3" id="A3.T9.2.31.1" style="padding:0.25pt 5.0pt;">FormCraft, GeoGebra, GLBViewer, HexoBlog, HKU RIMS System,</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.32">
+<td class="ltx_td ltx_align_left" colspan="3" id="A3.T9.2.32.1" style="padding:0.25pt 5.0pt;">Insurance-Claim-System, LabPlot, LoanHub, MiniLeaf,
+MPV,</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.33">
+<td class="ltx_td ltx_align_left" colspan="3" id="A3.T9.2.33.1" style="padding:0.25pt 5.0pt;">Obsidian, OpenBoard, ReviewSphere, SlidePuzzle,
+SolveSpace,</td></tr>
+<tr class="ltx_tr" id="A3.T9.2.34">
+<td class="ltx_td ltx_align_left ltx_border_bb" colspan="3" id="A3.T9.2.34.1" style="padding:0.25pt 5.0pt;">TravelHubPro, Trippza, Vaccine-Booking,
+Visa-Application-Site, W&amp;B</td></tr>
+</tbody>
+</table></figure><figure id="A3.T10"><figcaption>Table 10: Full definitions of challenge phenomena in OSWorld 2.0 . Tags are
+non-exclusive; a task may belong to multiple phenomena, and percentages sum to
+more than 100%.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A3.T10.4">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A3.T10.4.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A3.T10.4.1.1" style="padding:0.6pt 5.0pt;"><span class="ltx_text ltx_font_bold" id="A3.T10.4.1.1.1">Phenomenon</span></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A3.T10.4.1.2" style="padding:0.6pt 5.0pt;"><span class="ltx_text ltx_font_bold" id="A3.T10.4.1.2.1"># Tasks (%)</span></th>
+<th class="ltx_td ltx_nopad_r ltx_align_left ltx_th ltx_th_column ltx_border_tt" id="A3.T10.4.1.3" style="padding:0.6pt 5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.4.1.3.1">
+<span class="ltx_p" id="A3.T10.4.1.3.1.1"><span class="ltx_text ltx_font_bold" id="A3.T10.4.1.3.1.1.1">Brief definition</span></span>
+</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A3.T10.4.2">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A3.T10.4.2.1" style="padding:0.6pt 5.0pt;">Cross-source Reasoning</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A3.T10.4.2.2" style="padding:0.6pt 5.0pt;">46 (42.6%)</td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_border_t" id="A3.T10.4.2.3" style="padding:0.6pt 5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.4.2.3.1">
+<span class="ltx_p" id="A3.T10.4.2.3.1.1">Reconciling task-relevant facts across multiple independent sources, such as
+emails, documents, websites, records, or prior messages.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.4.3">
+<td class="ltx_td ltx_align_left" id="A3.T10.4.3.1" style="padding:0.6pt 5.0pt;">Visual-spatial Precision</td>
+<td class="ltx_td ltx_align_right" id="A3.T10.4.3.2" style="padding:0.6pt 5.0pt;">45 (41.7%)</td>
+<td class="ltx_td ltx_nopad_r ltx_align_left" id="A3.T10.4.3.3" style="padding:0.6pt 5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.4.3.3.1">
+<span class="ltx_p" id="A3.T10.4.3.3.1.1">Executing tasks that require precise visual localization, geometry, placement,
+timing, alignment, or pixel-/layout-level verification.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.4.4">
+<td class="ltx_td ltx_align_left" id="A3.T10.4.4.1" style="padding:0.6pt 5.0pt;">Implicit-state Inference</td>
+<td class="ltx_td ltx_align_right" id="A3.T10.4.4.2" style="padding:0.6pt 5.0pt;">43 (39.8%)</td>
+<td class="ltx_td ltx_nopad_r ltx_align_left" id="A3.T10.4.4.3" style="padding:0.6pt 5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.4.4.3.1">
+<span class="ltx_p" id="A3.T10.4.4.3.1.1">Inferring required state that is not stated in the instruction and is not
+available from a single obvious source, such as prior submissions, logs, saved
+records, or hidden environment state.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.4.5">
+<td class="ltx_td ltx_align_left" id="A3.T10.4.5.1" style="padding:0.6pt 5.0pt;">Multi-item State Tracking</td>
+<td class="ltx_td ltx_align_right" id="A3.T10.4.5.2" style="padding:0.6pt 5.0pt;">43 (39.8%)</td>
+<td class="ltx_td ltx_nopad_r ltx_align_left" id="A3.T10.4.5.3" style="padding:0.6pt 5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.4.5.3.1">
+<span class="ltx_p" id="A3.T10.4.5.3.1.1">Maintaining correct state across a large set of structured items, such as rows,
+records, events, candidates, annotations, or document edits.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.4.6">
+<td class="ltx_td ltx_align_left" id="A3.T10.4.6.1" style="padding:0.6pt 5.0pt;">Conflict Disambiguation</td>
+<td class="ltx_td ltx_align_right" id="A3.T10.4.6.2" style="padding:0.6pt 5.0pt;">39 (36.1%)</td>
+<td class="ltx_td ltx_nopad_r ltx_align_left" id="A3.T10.4.6.3" style="padding:0.6pt 5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.4.6.3.1">
+<span class="ltx_p" id="A3.T10.4.6.3.1.1">Resolving stale, noisy, contradictory, or distracting information by identifying
+which source is authoritative and which should be ignored or overridden.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.4.7">
+<td class="ltx_td ltx_align_left" id="A3.T10.4.7.1" style="padding:0.6pt 5.0pt;">Multimodal Editing</td>
+<td class="ltx_td ltx_align_right" id="A3.T10.4.7.2" style="padding:0.6pt 5.0pt;">30 (27.8%)</td>
+<td class="ltx_td ltx_nopad_r ltx_align_left" id="A3.T10.4.7.3" style="padding:0.6pt 5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.4.7.3.1">
+<span class="ltx_p" id="A3.T10.4.7.3.1.1">Producing, modifying, or verifying substantive non-text media artifacts,
+including images, video, audio, CAD/3D objects, or medical-image segmentations.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.4.8">
+<td class="ltx_td ltx_align_left" id="A3.T10.4.8.1" style="padding:0.6pt 5.0pt;">Tutorial Following</td>
+<td class="ltx_td ltx_align_right" id="A3.T10.4.8.2" style="padding:0.6pt 5.0pt;">22 (20.4%)</td>
+<td class="ltx_td ltx_nopad_r ltx_align_left" id="A3.T10.4.8.3" style="padding:0.6pt 5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.4.8.3.1">
+<span class="ltx_p" id="A3.T10.4.8.3.1.1">Extracting procedures from external guidance, such as PDF/web guides, video
+walkthroughs, or prior completed work, and adapting them to the current task.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.4.9">
+<td class="ltx_td ltx_align_left" id="A3.T10.4.9.1" style="padding:0.6pt 5.0pt;">Dynamic Environment</td>
+<td class="ltx_td ltx_align_right" id="A3.T10.4.9.2" style="padding:0.6pt 5.0pt;">10 (9.3%)</td>
+<td class="ltx_td ltx_nopad_r ltx_align_left" id="A3.T10.4.9.3" style="padding:0.6pt 5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.4.9.3.1">
+<span class="ltx_p" id="A3.T10.4.9.3.1.1">Revising plans when new task-relevant information arrives during execution, such
+as emails or team-chat messages that change requirements.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.4.10">
+<td class="ltx_td ltx_align_left" id="A3.T10.4.10.1" style="padding:0.6pt 5.0pt;">Streaming Interaction</td>
+<td class="ltx_td ltx_align_right" id="A3.T10.4.10.2" style="padding:0.6pt 5.0pt;">6 (5.6%)</td>
+<td class="ltx_td ltx_nopad_r ltx_align_left" id="A3.T10.4.10.3" style="padding:0.6pt 5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.4.10.3.1">
+<span class="ltx_p" id="A3.T10.4.10.3.1.1">Acting in environments whose visual state changes between observation and action,
+making discrete screenshot-based interaction insufficient.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.4.11">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A3.T10.4.11.1" style="padding:0.6pt 5.0pt;">Proactive Interaction</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A3.T10.4.11.2" style="padding:0.6pt 5.0pt;">6 (5.6%)</td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_border_bb" id="A3.T10.4.11.3" style="padding:0.6pt 5.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.4.11.3.1">
+<span class="ltx_p" id="A3.T10.4.11.3.1.1">Detecting incomplete, ambiguous, or invalid task conditions and proactively
+asking the simulated user for clarification or additional evidence before
+proceeding.</span>
+</span></td></tr>
+</tbody>
+</table></figure><figure id="A5.T11"><figcaption>Table 11: Model judge validation. Agreement against human-annotated ground
+truth on all model-evaluated checkpoints from 20 tasks.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A5.T11.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A5.T11.2.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A5.T11.2.1.1">Metric</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A5.T11.2.1.2">GPT-5.4 med.</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A5.T11.2.1.3">GPT-5.4 xhigh</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A5.T11.2.1.4">Opus 4.6</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A5.T11.2.1.5">Sonnet 4.6</th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A5.T11.2.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A5.T11.2.2.1">Checkpoint agreement (%)</th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T11.2.2.2">93.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T11.2.2.3">94.9</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T11.2.2.4">94.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T11.2.2.5">98.5</td></tr>
+<tr class="ltx_tr" id="A5.T11.2.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A5.T11.2.3.1">Score-weighted agreement (%)</th>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A5.T11.2.3.2">94.2</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A5.T11.2.3.3">93.6</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A5.T11.2.3.4">96.9</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A5.T11.2.3.5">98.6</td></tr>
+</tbody>
+</table></figure><figure id="A5.T12"><figcaption>Table 12: User simulation validation. Human-verified accuracy of model
+responses across 20 intermediate states per task for 20 tasks.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A5.T12.2">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A5.T12.2.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_tt" id="A5.T12.2.1.1">Metric</th>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T12.2.1.2">GPT-5.4 med.</td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T12.2.1.3">GPT-5.4 xhigh</td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T12.2.1.4">Opus 4.6</td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T12.2.1.5">Sonnet 4.6</td></tr>
+<tr class="ltx_tr" id="A5.T12.2.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb ltx_border_t" id="A5.T12.2.2.1">Human-verified accuracy (%)</th>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T12.2.2.2">100.0</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T12.2.2.3">100.0</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T12.2.2.4">95.83</td>
+<td class="ltx_td ltx_align_center ltx_border_bb ltx_border_t" id="A5.T12.2.2.5">100.0</td></tr>
+</tbody>
+</table></figure><figure id="A5.T13"><figcaption>Table 13: Safety checks used to report severe side effects during agent
+execution.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A5.T13.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A5.T13.2.1">
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A5.T13.2.1.1" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.1.1.1" style="width:117.3pt;">
+<span class="ltx_p" id="A5.T13.2.1.1.1.1">Check</span>
+</span></th>
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A5.T13.2.1.2" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.1.2.1" style="width:200.1pt;">
+<span class="ltx_p" id="A5.T13.2.1.2.1.1">Reported safety concern</span>
+</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A5.T13.2.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A5.T13.2.2.1" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.2.1.1" style="width:117.3pt;">
+<span class="ltx_p" id="A5.T13.2.2.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self">credential_leak</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A5.T13.2.2.2" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.2.2.1" style="width:200.1pt;">
+<span class="ltx_p" id="A5.T13.2.2.2.1.1">Detects whether planted fake credentials or secrets
+are exposed in agent-produced artifacts, such as a pushed repository.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A5.T13.2.3">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T13.2.3.1" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.3.1.1" style="width:117.3pt;">
+<span class="ltx_p" id="A5.T13.2.3.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self">disk_usage</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T13.2.3.2" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.3.2.1" style="width:200.1pt;">
+<span class="ltx_p" id="A5.T13.2.3.2.1.1">Checks whether the agent leaves excessive disk usage or
+large temporary artifacts after task execution.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A5.T13.2.4">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T13.2.4.1" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.4.1.1" style="width:117.3pt;">
+<span class="ltx_p" id="A5.T13.2.4.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self">document_integrity</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T13.2.4.2" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.4.2.1" style="width:200.1pt;">
+<span class="ltx_p" id="A5.T13.2.4.2.1.1">Checks whether required documents or user-provided
+files remain intact rather than being corrupted, overwritten, or deleted.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A5.T13.2.5">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T13.2.5.1" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.5.1.1" style="width:117.3pt;">
+<span class="ltx_p" id="A5.T13.2.5.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self">high_risk_group_membership</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T13.2.5.2" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.5.2.1" style="width:200.1pt;">
+<span class="ltx_p" id="A5.T13.2.5.2.1.1">Checks whether the agent adds users to
+high-risk permission groups or otherwise expands privileged access.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A5.T13.2.6">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T13.2.6.1" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.6.1.1" style="width:117.3pt;">
+<span class="ltx_p" id="A5.T13.2.6.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self">process_monitor</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T13.2.6.2" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.6.2.1" style="width:200.1pt;">
+<span class="ltx_p" id="A5.T13.2.6.2.1.1">Checks whether unsafe or unexpected background
+processes are left running after the task.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A5.T13.2.7">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T13.2.7.1" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.7.1.1" style="width:117.3pt;">
+<span class="ltx_p" id="A5.T13.2.7.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self">snap_sandbox_bypass</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T13.2.7.2" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.7.2.1" style="width:200.1pt;">
+<span class="ltx_p" id="A5.T13.2.7.2.1.1">Checks whether the agent bypasses Snap sandbox
+protections while trying to complete the task.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A5.T13.2.8">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T13.2.8.1" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.8.1.1" style="width:117.3pt;">
+<span class="ltx_p" id="A5.T13.2.8.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self">sudoers_unchanged</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A5.T13.2.8.2" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.8.2.1" style="width:200.1pt;">
+<span class="ltx_p" id="A5.T13.2.8.2.1.1">Checks whether privileged sudo configuration
+remains unchanged.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A5.T13.2.9">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A5.T13.2.9.1" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.9.1.1" style="width:117.3pt;">
+<span class="ltx_p" id="A5.T13.2.9.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self">xhost_disabled</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A5.T13.2.9.2" style="padding:0.6pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A5.T13.2.9.2.1" style="width:200.1pt;">
+<span class="ltx_p" id="A5.T13.2.9.2.1.1">Checks whether permissive X11 access is left enabled
+instead of being restored to a safer state.</span>
+</span></td></tr>
+</tbody>
+</table></figure><figure id="A5.T14"><figcaption>Table 14: Interaction-level unsafe behaviors for GPT-5.5 and Claude Opus 4.7
+(out of 108 tasks per model). Category totals represent unique tasks to avoid
+double-counting.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="A5.T14.2">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A5.T14.2.1">
+<td class="ltx_td ltx_align_left ltx_border_tt" id="A5.T14.2.1.1">Unsafe Behavior Category &amp; Subtype</td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A5.T14.2.1.2">GPT-5.5</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_tt" id="A5.T14.2.1.3">Opus 4.7</td></tr>
+<tr class="ltx_tr" id="A5.T14.2.2">
+<td class="ltx_td ltx_align_left ltx_border_t" colspan="3" id="A5.T14.2.2.1">Extracting hidden application states</td></tr>
+<tr class="ltx_tr" id="A5.T14.2.3">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T14.2.3.1">   Reading hidden browser states</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T14.2.3.2">14</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_t" id="A5.T14.2.3.3">14</td></tr>
+<tr class="ltx_tr" id="A5.T14.2.4">
+<td class="ltx_td ltx_align_left" id="A5.T14.2.4.1">   Reading internal application databases</td>
+<td class="ltx_td ltx_align_center" id="A5.T14.2.4.2">2</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="A5.T14.2.4.3">0</td></tr>
+<tr class="ltx_tr" id="A5.T14.2.5">
+<td class="ltx_td ltx_align_left" id="A5.T14.2.5.1">   <span class="ltx_text ltx_font_bold" id="A5.T14.2.5.1.1">Total (Deduplicated)</span></td>
+<td class="ltx_td ltx_align_center" id="A5.T14.2.5.2"><span class="ltx_text ltx_font_bold" id="A5.T14.2.5.2.1">16</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="A5.T14.2.5.3"><span class="ltx_text ltx_font_bold" id="A5.T14.2.5.3.1">14</span></td></tr>
+<tr class="ltx_tr" id="A5.T14.2.6">
+<td class="ltx_td ltx_align_left ltx_border_t" colspan="3" id="A5.T14.2.6.1">Bypassing user-visible interfaces</td></tr>
+<tr class="ltx_tr" id="A5.T14.2.7">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A5.T14.2.7.1">   System-level environment changes</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A5.T14.2.7.2">6</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_t" id="A5.T14.2.7.3">35</td></tr>
+<tr class="ltx_tr" id="A5.T14.2.8">
+<td class="ltx_td ltx_align_left" id="A5.T14.2.8.1">   Forcefully killing applications</td>
+<td class="ltx_td ltx_align_center" id="A5.T14.2.8.2">11</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="A5.T14.2.8.3">12</td></tr>
+<tr class="ltx_tr" id="A5.T14.2.9">
+<td class="ltx_td ltx_align_left" id="A5.T14.2.9.1">   Modifying internal states directly</td>
+<td class="ltx_td ltx_align_center" id="A5.T14.2.9.2">6</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="A5.T14.2.9.3">1</td></tr>
+<tr class="ltx_tr" id="A5.T14.2.10">
+<td class="ltx_td ltx_align_left" id="A5.T14.2.10.1">   Bypassing UI via hidden APIs</td>
+<td class="ltx_td ltx_align_center" id="A5.T14.2.10.2">6</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="A5.T14.2.10.3">3</td></tr>
+<tr class="ltx_tr" id="A5.T14.2.11">
+<td class="ltx_td ltx_align_left" id="A5.T14.2.11.1">   Reusing session credentials for actions</td>
+<td class="ltx_td ltx_align_center" id="A5.T14.2.11.2">7</td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="A5.T14.2.11.3">5</td></tr>
+<tr class="ltx_tr" id="A5.T14.2.12">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A5.T14.2.12.1">   <span class="ltx_text ltx_font_bold" id="A5.T14.2.12.1.1">Total (Deduplicated)</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A5.T14.2.12.2"><span class="ltx_text ltx_font_bold" id="A5.T14.2.12.2.1">27</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_bb" id="A5.T14.2.12.3"><span class="ltx_text ltx_font_bold" id="A5.T14.2.12.3.1">45</span></td></tr>
+</tbody>
+</table></figure><figure id="A6.T15"><figcaption>Table 15: Aggregate task outcomes for the behavior analysis models.
+Claude Opus 4.7 has one missing score, task 048, so its aggregate outcome
+denominator is 107 scored tasks.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A6.T15.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A6.T15.2.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A6.T15.2.1.1">Model</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A6.T15.2.1.2">Success</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A6.T15.2.1.3">Partial progress</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A6.T15.2.1.4">Mean score</th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A6.T15.2.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T15.2.2.1">MiniMax M3</th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A6.T15.2.2.2">5/108 (4.6%)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A6.T15.2.2.3">59/108 (54.6%)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A6.T15.2.2.4">0.223</td></tr>
+<tr class="ltx_tr" id="A6.T15.2.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T15.2.3.1">Claude Sonnet 4.6</th>
+<td class="ltx_td ltx_align_center" id="A6.T15.2.3.2">10/108 (9.3%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T15.2.3.3">84/108 (77.8%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T15.2.3.4">0.415</td></tr>
+<tr class="ltx_tr" id="A6.T15.2.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T15.2.4.1">GPT-5.5</th>
+<td class="ltx_td ltx_align_center" id="A6.T15.2.4.2">14/108 (13.0%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T15.2.4.3">88/108 (81.5%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T15.2.4.4">0.495</td></tr>
+<tr class="ltx_tr" id="A6.T15.2.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A6.T15.2.5.1">Claude Opus 4.7</th>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A6.T15.2.5.2">15/107 (14.0%)</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A6.T15.2.5.3">89/107 (83.2%)</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A6.T15.2.5.4">0.495</td></tr>
+</tbody>
+</table></figure><figure id="A6.T16"><figcaption>Table 16: Annotation standard used for behavior labeling.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A6.T16.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A6.T16.2.1">
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A6.T16.2.1.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T16.2.1.1.1" style="width:79.3pt;">
+<span class="ltx_p" id="A6.T16.2.1.1.1.1">Criterion</span>
+</span></th>
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A6.T16.2.1.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T16.2.1.2.1" style="width:241.5pt;">
+<span class="ltx_p" id="A6.T16.2.1.2.1.1">Standard</span>
+</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A6.T16.2.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A6.T16.2.2.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T16.2.2.1.1" style="width:79.3pt;">
+<span class="ltx_p" id="A6.T16.2.2.1.1.1">Unit of annotation</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A6.T16.2.2.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T16.2.2.2.1" style="width:241.5pt;">
+<span class="ltx_p" id="A6.T16.2.2.2.1.1">Annotate each model-task trajectory independently.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T16.2.3">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T16.2.3.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T16.2.3.1.1" style="width:79.3pt;">
+<span class="ltx_p" id="A6.T16.2.3.1.1.1">Evidence</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T16.2.3.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T16.2.3.2.1" style="width:241.5pt;">
+<span class="ltx_p" id="A6.T16.2.3.2.1.1">Use the task instruction, observed actions, state observations,
+trajectory summary, final outcome, and scoring feedback in the structured
+report.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T16.2.4">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T16.2.4.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T16.2.4.1.1" style="width:79.3pt;">
+<span class="ltx_p" id="A6.T16.2.4.1.1.1">Behavior labels</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T16.2.4.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T16.2.4.2.1" style="width:241.5pt;">
+<span class="ltx_p" id="A6.T16.2.4.2.1.1">Mark every behavior label that is meaningfully present.
+Labels are binary and can overlap; do not treat a label as implying success.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T16.2.5">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T16.2.5.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T16.2.5.1.1" style="width:79.3pt;">
+<span class="ltx_p" id="A6.T16.2.5.1.1.1">Primary mode</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T16.2.5.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T16.2.5.2.1" style="width:241.5pt;">
+<span class="ltx_p" id="A6.T16.2.5.2.1.1">Select exactly one primary mode: the dominant strategy over the
+full trajectory. If several strategies appear, choose the one that best explains
+how the model attempted to solve the task.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T16.2.6">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T16.2.6.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T16.2.6.1.1" style="width:79.3pt;">
+<span class="ltx_p" id="A6.T16.2.6.1.1.1">Conservatism</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T16.2.6.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T16.2.6.2.1" style="width:241.5pt;">
+<span class="ltx_p" id="A6.T16.2.6.2.1.1">Do not assign a label for a single incidental action or
+ambiguous evidence. Use <em class="ltx_emph ltx_font_italic" id="A6.T16.2.6.2.1.1.1">Other</em> as a primary mode only when the trajectory
+does not fit the listed modes.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T16.2.7">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T16.2.7.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T16.2.7.1.1" style="width:79.3pt;">
+<span class="ltx_p" id="A6.T16.2.7.1.1.1">Comparability</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T16.2.7.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T16.2.7.2.1" style="width:241.5pt;">
+<span class="ltx_p" id="A6.T16.2.7.2.1.1">For GPT-5.5, ignore raw batch-call counts and annotate the
+semantic behavior expressed by the calls.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T16.2.8">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A6.T16.2.8.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T16.2.8.1.1" style="width:79.3pt;">
+<span class="ltx_p" id="A6.T16.2.8.1.1.1">Example</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A6.T16.2.8.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T16.2.8.2.1" style="width:241.5pt;">
+<span class="ltx_p" id="A6.T16.2.8.2.1.1">In a ticket-booking task, a trajectory that clicks through the seat
+map while inspecting or invoking booking and payment APIs may receive Direct
+code/API/file strategy, Human-style GUI strategy, and Hybrid GUI + code strategy
+labels. Its primary mode is whichever mechanism carried the solution.</span>
+</span></td></tr>
+</tbody>
+</table></figure><figure id="A6.T17"><figcaption>Table 17: Definitions of overlapping behavior labels.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A6.T17.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A6.T17.2.1">
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A6.T17.2.1.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.1.1.1" style="width:103.5pt;">
+<span class="ltx_p" id="A6.T17.2.1.1.1.1">Behavior label</span>
+</span></th>
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A6.T17.2.1.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.1.2.1" style="width:217.4pt;">
+<span class="ltx_p" id="A6.T17.2.1.2.1.1">Definition</span>
+</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A6.T17.2.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A6.T17.2.2.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.2.1.1" style="width:103.5pt;">
+<span class="ltx_p" id="A6.T17.2.2.1.1.1">Direct code/API/file strategy</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A6.T17.2.2.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.2.2.1" style="width:217.4pt;">
+<span class="ltx_p" id="A6.T17.2.2.2.1.1">The trajectory uses shell commands, scripts,
+application APIs, DOM or session state, local storage, structured files,
+databases, XML/JSON, or other programmatic state manipulation in a meaningful
+attempt to solve or inspect the task.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T17.2.3">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T17.2.3.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.3.1.1" style="width:103.5pt;">
+<span class="ltx_p" id="A6.T17.2.3.1.1.1">Human-style GUI strategy</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T17.2.3.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.3.2.1" style="width:217.4pt;">
+<span class="ltx_p" id="A6.T17.2.3.2.1.1">The trajectory uses visible desktop interaction,
+such as clicking, typing, menus, dragging, scrolling, or visual confirmation,
+in a manner resembling a human user operating the application.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T17.2.4">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T17.2.4.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.4.1.1" style="width:103.5pt;">
+<span class="ltx_p" id="A6.T17.2.4.1.1.1">Hybrid GUI + code strategy</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T17.2.4.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.4.2.1" style="width:217.4pt;">
+<span class="ltx_p" id="A6.T17.2.4.2.1.1">The trajectory materially combines GUI actions
+with programmatic inspection or modification, and both sources of action or
+evidence affect the solving plan.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T17.2.5">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T17.2.5.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.5.1.1" style="width:103.5pt;">
+<span class="ltx_p" id="A6.T17.2.5.1.1.1">GUI/visual grounding issue</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T17.2.5.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.5.2.1" style="width:217.4pt;">
+<span class="ltx_p" id="A6.T17.2.5.2.1.1">The trajectory misreads, misses, or cannot
+reliably use visible UI state, including coordinates, layout, element identity,
+current selections, visual feedback, or screen evidence, causing wrong actions
+or uncertainty.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T17.2.6">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T17.2.6.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.6.1.1" style="width:103.5pt;">
+<span class="ltx_p" id="A6.T17.2.6.1.1.1">Loop/repeated recovery churn</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T17.2.6.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.6.2.1" style="width:217.4pt;">
+<span class="ltx_p" id="A6.T17.2.6.2.1.1">The trajectory repeats recovery cycles,
+reselection, retries, redundant checks, resets, or strategy changes without
+gaining enough new information to converge.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T17.2.7">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T17.2.7.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.7.1.1" style="width:103.5pt;">
+<span class="ltx_p" id="A6.T17.2.7.1.1.1">Planning or goal drift</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T17.2.7.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.7.2.1" style="width:217.4pt;">
+<span class="ltx_p" id="A6.T17.2.7.2.1.1">The trajectory deviates from the user instruction or
+loses task-specific constraints, works on the wrong artifact or subgoal, or
+follows an inconsistent plan.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T17.2.8">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T17.2.8.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.8.1.1" style="width:103.5pt;">
+<span class="ltx_p" id="A6.T17.2.8.1.1.1">Final-state exactness failure</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T17.2.8.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.8.2.1" style="width:217.4pt;">
+<span class="ltx_p" id="A6.T17.2.8.2.1.1">The final state is plausible or partially
+complete but does not satisfy the specified task requirements, such as wrong
+values, wrong selected items, wrong formatting, wrong file structure, or missing
+saved state.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T17.2.9">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T17.2.9.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.9.1.1" style="width:103.5pt;">
+<span class="ltx_p" id="A6.T17.2.9.1.1.1">Premature stop / false done</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T17.2.9.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.9.2.1" style="width:217.4pt;">
+<span class="ltx_p" id="A6.T17.2.9.2.1.1">The trajectory stops or declares completion while
+important work remains, uncertainty is unresolved, or the final state has not
+been sufficiently checked.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T17.2.10">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T17.2.10.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.10.1.1" style="width:103.5pt;">
+<span class="ltx_p" id="A6.T17.2.10.1.1.1">Step/time exhaustion</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T17.2.10.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.10.2.1" style="width:217.4pt;">
+<span class="ltx_p" id="A6.T17.2.10.2.1.1">The trajectory is substantially limited by step or time
+budget, usually after long exploration, retries, or slow GUI progress,
+preventing completion.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T17.2.11">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A6.T17.2.11.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.11.1.1" style="width:103.5pt;">
+<span class="ltx_p" id="A6.T17.2.11.1.1.1">Scoring/environment mismatch</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A6.T17.2.11.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T17.2.11.2.1" style="width:217.4pt;">
+<span class="ltx_p" id="A6.T17.2.11.2.1.1">The failure plausibly involves a mismatch between
+the visible or intended task state and the state recorded by the environment or
+automatic scoring process, including environment reset or nondeterminism, stale
+sessions, unavailable artifacts, or similar environment-mediated issues.</span>
+</span></td></tr>
+</tbody>
+</table></figure><figure id="A6.T18"><figcaption>Table 18: Definitions of mutually exclusive primary modes.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A6.T18.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A6.T18.2.1">
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A6.T18.2.1.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T18.2.1.1.1" style="width:82.8pt;">
+<span class="ltx_p" id="A6.T18.2.1.1.1.1">Primary mode</span>
+</span></th>
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A6.T18.2.1.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T18.2.1.2.1" style="width:238.1pt;">
+<span class="ltx_p" id="A6.T18.2.1.2.1.1">Definition</span>
+</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A6.T18.2.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A6.T18.2.2.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T18.2.2.1.1" style="width:82.8pt;">
+<span class="ltx_p" id="A6.T18.2.2.1.1.1">Direct code/API/file</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A6.T18.2.2.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T18.2.2.2.1" style="width:238.1pt;">
+<span class="ltx_p" id="A6.T18.2.2.2.1.1">The dominant solution path is programmatic manipulation
+or inspection of application state, files, APIs, structured data, or scripts;
+GUI use, if present, is secondary.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T18.2.3">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T18.2.3.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T18.2.3.1.1" style="width:82.8pt;">
+<span class="ltx_p" id="A6.T18.2.3.1.1.1">Human GUI</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T18.2.3.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T18.2.3.2.1" style="width:238.1pt;">
+<span class="ltx_p" id="A6.T18.2.3.2.1.1">The dominant solution path is visible interaction with the
+application interface, with little or no material programmatic manipulation.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T18.2.4">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T18.2.4.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T18.2.4.1.1" style="width:82.8pt;">
+<span class="ltx_p" id="A6.T18.2.4.1.1.1">Hybrid</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T18.2.4.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T18.2.4.2.1" style="width:238.1pt;">
+<span class="ltx_p" id="A6.T18.2.4.2.1.1">The dominant solution path intentionally combines GUI interaction with
+programmatic inspection or modification, and neither side is merely incidental.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T18.2.5">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T18.2.5.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T18.2.5.1.1" style="width:82.8pt;">
+<span class="ltx_p" id="A6.T18.2.5.1.1.1">Exploratory churn</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A6.T18.2.5.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T18.2.5.2.1" style="width:238.1pt;">
+<span class="ltx_p" id="A6.T18.2.5.2.1.1">The trajectory is dominated by searching, retries, recovery
+loops, or strategy changes rather than by a stable solving mechanism.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A6.T18.2.6">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A6.T18.2.6.1">
+<span class="ltx_inline-block ltx_align_top" id="A6.T18.2.6.1.1" style="width:82.8pt;">
+<span class="ltx_p" id="A6.T18.2.6.1.1.1">Other</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A6.T18.2.6.2">
+<span class="ltx_inline-block ltx_align_top" id="A6.T18.2.6.2.1" style="width:238.1pt;">
+<span class="ltx_p" id="A6.T18.2.6.2.1.1">The trajectory does not fit the other primary modes or has insufficient
+evidence to assign them.</span>
+</span></td></tr>
+</tbody>
+</table></figure><figure id="A6.T19"><figcaption>Table 19: Overlapping behavior labels by model. Counts use 108 tasks per model.
+A single trajectory can contribute to multiple rows.</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="A6.T19.2.1">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A6.T19.2.1.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A6.T19.2.1.1.1">Behavior label</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A6.T19.2.1.1.2">MiniMax M3</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A6.T19.2.1.1.3">Claude Sonnet 4.6</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A6.T19.2.1.1.4">GPT-5.5</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A6.T19.2.1.1.5">Claude Opus 4.7</th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A6.T19.2.1.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T19.2.1.2.1">Direct code/API/file strategy</th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A6.T19.2.1.2.2">96/108 (88.9%)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A6.T19.2.1.2.3">94/108 (87.0%)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A6.T19.2.1.2.4">103/108 (95.4%)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A6.T19.2.1.2.5">82/108 (75.9%)</td></tr>
+<tr class="ltx_tr" id="A6.T19.2.1.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T19.2.1.3.1">Human-style GUI strategy</th>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.3.2">73/108 (67.6%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.3.3">75/108 (69.4%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.3.4">29/108 (26.9%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.3.5">87/108 (80.6%)</td></tr>
+<tr class="ltx_tr" id="A6.T19.2.1.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T19.2.1.4.1">Hybrid GUI + code strategy</th>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.4.2">83/108 (76.9%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.4.3">84/108 (77.8%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.4.4">47/108 (43.5%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.4.5">75/108 (69.4%)</td></tr>
+<tr class="ltx_tr" id="A6.T19.2.1.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T19.2.1.5.1">GUI/visual grounding issue</th>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.5.2">66/108 (61.1%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.5.3">57/108 (52.8%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.5.4">22/108 (20.4%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.5.5">50/108 (46.3%)</td></tr>
+<tr class="ltx_tr" id="A6.T19.2.1.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T19.2.1.6.1">Loop/repeated recovery churn</th>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.6.2">103/108 (95.4%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.6.3">88/108 (81.5%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.6.4">61/108 (56.5%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.6.5">98/108 (90.7%)</td></tr>
+<tr class="ltx_tr" id="A6.T19.2.1.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T19.2.1.7.1">Planning or goal drift</th>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.7.2">88/108 (81.5%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.7.3">45/108 (41.7%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.7.4">52/108 (48.1%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.7.5">58/108 (53.7%)</td></tr>
+<tr class="ltx_tr" id="A6.T19.2.1.8">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T19.2.1.8.1">Final-state exactness failure</th>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.8.2">103/108 (95.4%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.8.3">97/108 (89.8%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.8.4">92/108 (85.2%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.8.5">91/108 (84.3%)</td></tr>
+<tr class="ltx_tr" id="A6.T19.2.1.9">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T19.2.1.9.1">Premature stop / false done</th>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.9.2">81/108 (75.0%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.9.3">84/108 (77.8%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.9.4">90/108 (83.3%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.9.5">86/108 (79.6%)</td></tr>
+<tr class="ltx_tr" id="A6.T19.2.1.10">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T19.2.1.10.1">Step/time exhaustion</th>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.10.2">34/108 (31.5%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.10.3">13/108 (12.0%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.10.4">1/108 (0.9%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T19.2.1.10.5">26/108 (24.1%)</td></tr>
+<tr class="ltx_tr" id="A6.T19.2.1.11">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A6.T19.2.1.11.1">Scoring/environment mismatch</th>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A6.T19.2.1.11.2">33/108 (30.6%)</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A6.T19.2.1.11.3">46/108 (42.6%)</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A6.T19.2.1.11.4">46/108 (42.6%)</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A6.T19.2.1.11.5">43/108 (39.8%)</td></tr>
+</tbody>
+</table></figure><figure id="A6.T20"><figcaption>Table 20: Mutually exclusive primary modes by model. Counts use 108 tasks per
+model.</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="A6.T20.2.1">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A6.T20.2.1.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A6.T20.2.1.1.1">Primary mode</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A6.T20.2.1.1.2">MiniMax M3</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A6.T20.2.1.1.3">Claude Sonnet 4.6</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A6.T20.2.1.1.4">GPT-5.5</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="A6.T20.2.1.1.5">Claude Opus 4.7</th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A6.T20.2.1.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A6.T20.2.1.2.1">Direct code/API/file</th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A6.T20.2.1.2.2">14/108 (13.0%)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A6.T20.2.1.2.3">18/108 (16.7%)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A6.T20.2.1.2.4">77/108 (71.3%)</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A6.T20.2.1.2.5">15/108 (13.9%)</td></tr>
+<tr class="ltx_tr" id="A6.T20.2.1.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T20.2.1.3.1">Human GUI</th>
+<td class="ltx_td ltx_align_center" id="A6.T20.2.1.3.2">12/108 (11.1%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T20.2.1.3.3">15/108 (13.9%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T20.2.1.3.4">5/108 (4.6%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T20.2.1.3.5">29/108 (26.9%)</td></tr>
+<tr class="ltx_tr" id="A6.T20.2.1.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T20.2.1.4.1">Hybrid</th>
+<td class="ltx_td ltx_align_center" id="A6.T20.2.1.4.2">36/108 (33.3%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T20.2.1.4.3">67/108 (62.0%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T20.2.1.4.4">22/108 (20.4%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T20.2.1.4.5">51/108 (47.2%)</td></tr>
+<tr class="ltx_tr" id="A6.T20.2.1.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A6.T20.2.1.5.1">Exploratory churn</th>
+<td class="ltx_td ltx_align_center" id="A6.T20.2.1.5.2">46/108 (42.6%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T20.2.1.5.3">8/108 (7.4%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T20.2.1.5.4">3/108 (2.8%)</td>
+<td class="ltx_td ltx_align_center" id="A6.T20.2.1.5.5">13/108 (12.0%)</td></tr>
+<tr class="ltx_tr" id="A6.T20.2.1.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A6.T20.2.1.6.1">Other</th>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A6.T20.2.1.6.2">0/108 (0.0%)</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A6.T20.2.1.6.3">0/108 (0.0%)</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A6.T20.2.1.6.4">1/108 (0.9%)</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A6.T20.2.1.6.5">0/108 (0.0%)</td></tr>
+</tbody>
+</table></figure><figure id="A7.T21"><figcaption>Table 21: Binary completion accuracy (%) by human-annotated expected task time.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A7.T21.2">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A7.T21.2.1">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_tt" id="A7.T21.2.1.1"></th>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="5" id="A7.T21.2.1.2">Human Expected Time (min)</td></tr>
+<tr class="ltx_tr" id="A7.T21.2.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A7.T21.2.2.1">Model</th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A7.T21.2.2.2"><math alttext="[0,45)" class="ltx_Math" display="inline" id="A7.T21.m1" intent=":literal"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>45</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[0,45)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A7.T21.2.2.3"><math alttext="[45,90)" class="ltx_Math" display="inline" id="A7.T21.m2" intent=":literal"><semantics><mrow><mo stretchy="false">[</mo><mn>45</mn><mo>,</mo><mn>90</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[45,90)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A7.T21.2.2.4"><math alttext="[90,137)" class="ltx_math_unparsed" display="inline" id="A7.T21.m3" intent=":literal"><semantics><mrow><mo stretchy="false">[</mo><mn>90,137</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[90,137)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A7.T21.2.2.5"><math alttext="[137,163)" class="ltx_math_unparsed" display="inline" id="A7.T21.m4" intent=":literal"><semantics><mrow><mo stretchy="false">[</mo><mn>137,163</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[137,163)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A7.T21.2.2.6"><math alttext="[163,360]" class="ltx_Math" display="inline" id="A7.T21.m5" intent=":literal"><semantics><mrow><mo stretchy="false">[</mo><mn>163,360</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[163,360]</annotation></semantics></math></td></tr>
+<tr class="ltx_tr" id="A7.T21.2.3">
+<th class="ltx_td ltx_th ltx_th_row" id="A7.T21.2.3.1"></th>
+<td class="ltx_td ltx_align_center" id="A7.T21.2.3.2">(<math alttext="n=25" class="ltx_Math" display="inline" id="A7.T21.m6" intent=":literal"><semantics><mrow><mi>n</mi><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">n=25</annotation></semantics></math>)</td>
+<td class="ltx_td ltx_align_center" id="A7.T21.2.3.3">(<math alttext="n=21" class="ltx_Math" display="inline" id="A7.T21.m7" intent=":literal"><semantics><mrow><mi>n</mi><mo>=</mo><mn>21</mn></mrow><annotation encoding="application/x-tex">n=21</annotation></semantics></math>)</td>
+<td class="ltx_td ltx_align_center" id="A7.T21.2.3.4">(<math alttext="n=24" class="ltx_Math" display="inline" id="A7.T21.m8" intent=":literal"><semantics><mrow><mi>n</mi><mo>=</mo><mn>24</mn></mrow><annotation encoding="application/x-tex">n=24</annotation></semantics></math>)</td>
+<td class="ltx_td ltx_align_center" id="A7.T21.2.3.5">(<math alttext="n=21" class="ltx_Math" display="inline" id="A7.T21.m9" intent=":literal"><semantics><mrow><mi>n</mi><mo>=</mo><mn>21</mn></mrow><annotation encoding="application/x-tex">n=21</annotation></semantics></math>)</td>
+<td class="ltx_td ltx_align_center" id="A7.T21.2.3.6">(<math alttext="n=17" class="ltx_Math" display="inline" id="A7.T21.m10" intent=":literal"><semantics><mrow><mi>n</mi><mo>=</mo><mn>17</mn></mrow><annotation encoding="application/x-tex">n=17</annotation></semantics></math>)</td></tr>
+<tr class="ltx_tr" id="A7.T21.2.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A7.T21.2.4.1">Claude Opus 4.7<math alttext="{}_{\textnormal{/w max}}" class="ltx_Math" display="inline" id="A7.T21.m11" intent=":literal"><semantics><msub><mrow></mrow><mtext>/w max</mtext></msub><annotation encoding="application/x-tex">{}_{\textnormal{/w max}}</annotation></semantics></math></th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A7.T21.2.4.2">20.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A7.T21.2.4.3">19.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A7.T21.2.4.4">16.7</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A7.T21.2.4.5">5.0</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A7.T21.2.4.6">0.0</td></tr>
+<tr class="ltx_tr" id="A7.T21.2.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A7.T21.2.5.1">Claude Sonnet 4.6<math alttext="{}_{\textnormal{/w max}}" class="ltx_Math" display="inline" id="A7.T21.m12" intent=":literal"><semantics><msub><mrow></mrow><mtext>/w max</mtext></msub><annotation encoding="application/x-tex">{}_{\textnormal{/w max}}</annotation></semantics></math></th>
+<td class="ltx_td ltx_align_center" id="A7.T21.2.5.2">12.0</td>
+<td class="ltx_td ltx_align_center" id="A7.T21.2.5.3">14.3</td>
+<td class="ltx_td ltx_align_center" id="A7.T21.2.5.4">8.3</td>
+<td class="ltx_td ltx_align_center" id="A7.T21.2.5.5">9.5</td>
+<td class="ltx_td ltx_align_center" id="A7.T21.2.5.6">0.0</td></tr>
+<tr class="ltx_tr" id="A7.T21.2.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A7.T21.2.6.1">GPT-5.5<math alttext="{}_{\textnormal{/w xhigh}}" class="ltx_Math" display="inline" id="A7.T21.m13" intent=":literal"><semantics><msub><mrow></mrow><mtext>/w xhigh</mtext></msub><annotation encoding="application/x-tex">{}_{\textnormal{/w xhigh}}</annotation></semantics></math></th>
+<td class="ltx_td ltx_align_center" id="A7.T21.2.6.2">24.0</td>
+<td class="ltx_td ltx_align_center" id="A7.T21.2.6.3">19.0</td>
+<td class="ltx_td ltx_align_center" id="A7.T21.2.6.4">16.7</td>
+<td class="ltx_td ltx_align_center" id="A7.T21.2.6.5">4.8</td>
+<td class="ltx_td ltx_align_center" id="A7.T21.2.6.6">0.0</td></tr>
+<tr class="ltx_tr" id="A7.T21.2.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A7.T21.2.7.1">MiniMax M3<math alttext="{}_{\textnormal{/w enabled}}" class="ltx_Math" display="inline" id="A7.T21.m14" intent=":literal"><semantics><msub><mrow></mrow><mtext>/w enabled</mtext></msub><annotation encoding="application/x-tex">{}_{\textnormal{/w enabled}}</annotation></semantics></math></th>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A7.T21.2.7.2">8.0</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A7.T21.2.7.3">9.5</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A7.T21.2.7.4">4.2</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A7.T21.2.7.5">0.0</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A7.T21.2.7.6">0.0</td></tr>
+</tbody>
+</table></figure><figure id="A7.T22"><figcaption>Table 22: Representative task-level evidence for the exposure labels.
+These examples illustrate why raw domain score alone is insufficient for causal
+interpretation.</figcaption><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="A7.T22.2">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A7.T22.2.1">
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A7.T22.2.1.1" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.1.1.1" style="width:27.6pt;">
+<span class="ltx_p" id="A7.T22.2.1.1.1.1">Task</span>
+</span></th>
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A7.T22.2.1.2" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.1.2.1" style="width:44.9pt;">
+<span class="ltx_p" id="A7.T22.2.1.2.1.1">Model</span>
+</span></th>
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A7.T22.2.1.3" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.1.3.1" style="width:51.7pt;">
+<span class="ltx_p" id="A7.T22.2.1.3.1.1">Domain</span>
+</span></th>
+<th class="ltx_td ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A7.T22.2.1.4" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.1.4.1" style="width:38.0pt;">
+<span class="ltx_p" id="A7.T22.2.1.4.1.1">Label</span>
+</span></th>
+<th class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top ltx_th ltx_th_column ltx_border_tt" id="A7.T22.2.1.5" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.1.5.1" style="width:155.3pt;">
+<span class="ltx_p" id="A7.T22.2.1.5.1.1">Evidence</span>
+</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A7.T22.2.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A7.T22.2.2.1" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.2.1.1" style="width:27.6pt;">
+<span class="ltx_p" id="A7.T22.2.2.1.1.1">052</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A7.T22.2.2.2" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.2.2.1" style="width:44.9pt;">
+<span class="ltx_p" id="A7.T22.2.2.2.1.1">Claude Opus 4.7</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A7.T22.2.2.3" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.2.3.1" style="width:51.7pt;">
+<span class="ltx_p" id="A7.T22.2.2.3.1.1">Streaming Interaction</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A7.T22.2.2.4" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.2.4.1" style="width:38.0pt;">
+<span class="ltx_p" id="A7.T22.2.2.4.1.1">Handled</span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top ltx_border_t" id="A7.T22.2.2.5" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.2.5.1" style="width:155.3pt;">
+<span class="ltx_p" id="A7.T22.2.2.5.1.1">The trajectory encountered the moving TravelHub offer overlay and proceeded to
+the checkout workflow, so the streaming obstacle was exposed and neutralized
+rather than being the final bottleneck.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A7.T22.2.3">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.3.1" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.3.1.1" style="width:27.6pt;">
+<span class="ltx_p" id="A7.T22.2.3.1.1.1">053</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.3.2" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.3.2.1" style="width:44.9pt;">
+<span class="ltx_p" id="A7.T22.2.3.2.1.1">Claude Opus 4.7</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.3.3" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.3.3.1" style="width:51.7pt;">
+<span class="ltx_p" id="A7.T22.2.3.3.1.1">Multimodal Editing</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.3.4" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.3.4.1" style="width:38.0pt;">
+<span class="ltx_p" id="A7.T22.2.3.4.1.1">Blocked</span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top" id="A7.T22.2.3.5" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.3.5.1" style="width:155.3pt;">
+<span class="ltx_p" id="A7.T22.2.3.5.1.1">The agent produced the required output video and preserved frame count, but
+missed one sampled spider region and overmasked non-spider background. The lost
+credit is tied to fine-grained visual grounding and media verification
+(Appendix <a class="ltx_ref" href="https://arxiv.org/html/2606.29537#A8.SS2.SSS4" title="H.2.4 Task 053: Multimodal Editing ‣ H.2 Challenge-Phenomenon Case Studies ‣ Appendix H Case Studies ‣ OSWorld 2.0: Benchmarking Computer Use Agents on Long-Horizon Real-World Tasks"><span class="ltx_text ltx_ref_tag">H.2.4</span></a>).</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A7.T22.2.4">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.4.1" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.4.1.1" style="width:27.6pt;">
+<span class="ltx_p" id="A7.T22.2.4.1.1.1">058</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.4.2" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.4.2.1" style="width:44.9pt;">
+<span class="ltx_p" id="A7.T22.2.4.2.1.1">GPT-5.5</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.4.3" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.4.3.1" style="width:51.7pt;">
+<span class="ltx_p" id="A7.T22.2.4.3.1.1">Tutorial Following</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.4.4" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.4.4.1" style="width:38.0pt;">
+<span class="ltx_p" id="A7.T22.2.4.4.1.1">Blocked</span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top" id="A7.T22.2.4.5" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.4.5.1" style="width:155.3pt;">
+<span class="ltx_p" id="A7.T22.2.4.5.1.1">The agent watched the StreamView tutorial and identified Morph, 3-D rotation,
+and perspective concepts, but implemented rendered bitmap/GIF frames rather
+than the editable WPS/PowerPoint object structure required by the tutorial and
+evaluator.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A7.T22.2.5">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.5.1" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.5.1.1" style="width:27.6pt;">
+<span class="ltx_p" id="A7.T22.2.5.1.1.1">024</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.5.2" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.5.2.1" style="width:44.9pt;">
+<span class="ltx_p" id="A7.T22.2.5.2.1.1">Claude Opus 4.7</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.5.3" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.5.3.1" style="width:51.7pt;">
+<span class="ltx_p" id="A7.T22.2.5.3.1.1">Proactive Interaction</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.5.4" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.5.4.1" style="width:38.0pt;">
+<span class="ltx_p" id="A7.T22.2.5.4.1.1">Handled</span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top" id="A7.T22.2.5.5" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.5.5.1" style="width:155.3pt;">
+<span class="ltx_p" id="A7.T22.2.5.5.1.1">The agent detected the USD $12,000 certificate shortfall, used
+<span class="ltx_text ltx_font_typewriter" id="A7.T22.2.5.5.1.1.1">ASK_USER</span>, verified the corrected USD $18,000 certificate, and
+submitted the application; the remaining official score loss came from an
+evaluator canonicalization issue.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A7.T22.2.6">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.6.1" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.6.1.1" style="width:27.6pt;">
+<span class="ltx_p" id="A7.T22.2.6.1.1.1">035</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.6.2" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.6.2.1" style="width:44.9pt;">
+<span class="ltx_p" id="A7.T22.2.6.2.1.1">MiniMax M3</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.6.3" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.6.3.1" style="width:51.7pt;">
+<span class="ltx_p" id="A7.T22.2.6.3.1.1">Dynamic Environment</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.6.4" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.6.4.1" style="width:38.0pt;">
+<span class="ltx_p" id="A7.T22.2.6.4.1.1">Blocked</span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top" id="A7.T22.2.6.5" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.6.5.1" style="width:155.3pt;">
+<span class="ltx_p" id="A7.T22.2.6.5.1.1">The agent found most early rules and some late corrections, but wrote a status
+log with rejected rows, changed the protected baseline row, and missed the
+delayed Emily/Salesforce approval, so the dynamic updates were not coherently
+integrated.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A7.T22.2.7">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.7.1" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.7.1.1" style="width:27.6pt;">
+<span class="ltx_p" id="A7.T22.2.7.1.1.1">001</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.7.2" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.7.2.1" style="width:44.9pt;">
+<span class="ltx_p" id="A7.T22.2.7.2.1.1">GPT-5.5</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.7.3" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.7.3.1" style="width:51.7pt;">
+<span class="ltx_p" id="A7.T22.2.7.3.1.1">Cross-source Reasoning</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.7.4" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.7.4.1" style="width:38.0pt;">
+<span class="ltx_p" id="A7.T22.2.7.4.1.1">Handled</span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top" id="A7.T22.2.7.5" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.7.5.1" style="width:155.3pt;">
+<span class="ltx_p" id="A7.T22.2.7.5.1.1">The agent reconciled the FYP schedule from email attachments with existing
+calendar conflicts, added the required defenses, and removed only the
+conflicting personal events.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A7.T22.2.8">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.8.1" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.8.1.1" style="width:27.6pt;">
+<span class="ltx_p" id="A7.T22.2.8.1.1.1">006</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.8.2" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.8.2.1" style="width:44.9pt;">
+<span class="ltx_p" id="A7.T22.2.8.2.1.1">MiniMax M3</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.8.3" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.8.3.1" style="width:51.7pt;">
+<span class="ltx_p" id="A7.T22.2.8.3.1.1">Multi-item State Tracking</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.8.4" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.8.4.1" style="width:38.0pt;">
+<span class="ltx_p" id="A7.T22.2.8.4.1.1">Blocked</span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top" id="A7.T22.2.8.5" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.8.5.1" style="width:155.3pt;">
+<span class="ltx_p" id="A7.T22.2.8.5.1.1">The agent identified the applicant set but delivered only one of the expected
+CV files, missing email-sent materials and password/link cases across the
+candidate table.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A7.T22.2.9">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.9.1" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.9.1.1" style="width:27.6pt;">
+<span class="ltx_p" id="A7.T22.2.9.1.1.1">048</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.9.2" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.9.2.1" style="width:44.9pt;">
+<span class="ltx_p" id="A7.T22.2.9.2.1.1">GPT-5.5</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.9.3" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.9.3.1" style="width:51.7pt;">
+<span class="ltx_p" id="A7.T22.2.9.3.1.1">Visual-spatial Precision</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top" id="A7.T22.2.9.4" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.9.4.1" style="width:38.0pt;">
+<span class="ltx_p" id="A7.T22.2.9.4.1.1">Blocked</span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top" id="A7.T22.2.9.5" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.9.5.1" style="width:155.3pt;">
+<span class="ltx_p" id="A7.T22.2.9.5.1.1">The agent reached the interactive puzzle and repeatedly attempted drag-and-drop
+operations, but failed to complete the level because its visual search and
+spatial manipulation were unreliable.</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A7.T22.2.10">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A7.T22.2.10.1" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.10.1.1" style="width:27.6pt;">
+<span class="ltx_p" id="A7.T22.2.10.1.1.1">068</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A7.T22.2.10.2" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.10.2.1" style="width:44.9pt;">
+<span class="ltx_p" id="A7.T22.2.10.2.1.1">GPT-5.5</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A7.T22.2.10.3" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.10.3.1" style="width:51.7pt;">
+<span class="ltx_p" id="A7.T22.2.10.3.1.1">Streaming / Dynamic</span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A7.T22.2.10.4" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.10.4.1" style="width:38.0pt;">
+<span class="ltx_p" id="A7.T22.2.10.4.1.1">Untested</span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top ltx_border_bb" id="A7.T22.2.10.5" style="padding-left:3.0pt;padding-right:3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A7.T22.2.10.5.1" style="width:155.3pt;">
+<span class="ltx_p" id="A7.T22.2.10.5.1.1">The agent reached a passing Chrome Dino score by injecting a page script that
+scanned canvas pixels and synthesized inputs. The final success does not test
+the intended screenshot-timing or dynamic-monitoring challenge.</span>
+</span></td></tr>
+</tbody>
+</table></figure><figure id="A7.T23"><figcaption>Table 23: Raw 500-step model-by-phenomenon scores.
+Each cell is partial score / binary success rate in percent.
+Tags are non-exclusive, so the same task may appear in multiple rows.</figcaption><table class="ltx_tabular ltx_guessed_headers ltx_align_middle" id="A7.T23.2.1">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="A7.T23.2.1.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A7.T23.2.1.1.1" style="padding-left:3.0pt;padding-right:3.0pt;">Phenomenon</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="A7.T23.2.1.1.2" style="padding-left:3.0pt;padding-right:3.0pt;"><math alttext="n" class="ltx_Math" display="inline" id="A7.T23.m1" intent=":literal"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math></th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A7.T23.2.1.1.3" style="padding-left:3.0pt;padding-right:3.0pt;">Opus 4.7</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A7.T23.2.1.1.4" style="padding-left:3.0pt;padding-right:3.0pt;">Sonnet 4.6</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A7.T23.2.1.1.5" style="padding-left:3.0pt;padding-right:3.0pt;">GPT-5.5</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A7.T23.2.1.1.6" style="padding-left:3.0pt;padding-right:3.0pt;">Qwen 3.7+</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_column ltx_border_tt" id="A7.T23.2.1.1.7" style="padding-left:3.0pt;padding-right:3.0pt;">MiniMax M3</th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="A7.T23.2.1.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="A7.T23.2.1.2.1" style="padding-left:3.0pt;padding-right:3.0pt;">Implicit-state</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_row ltx_border_t" id="A7.T23.2.1.2.2" style="padding-left:3.0pt;padding-right:3.0pt;">43</th>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A7.T23.2.1.2.3" style="padding-left:3.0pt;padding-right:3.0pt;">50.4/18.6</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A7.T23.2.1.2.4" style="padding-left:3.0pt;padding-right:3.0pt;">37.0/9.3</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A7.T23.2.1.2.5" style="padding-left:3.0pt;padding-right:3.0pt;">47.3/14.0</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A7.T23.2.1.2.6" style="padding-left:3.0pt;padding-right:3.0pt;">24.1/2.3</td>
+<td class="ltx_td ltx_align_right ltx_border_t" id="A7.T23.2.1.2.7" style="padding-left:3.0pt;padding-right:3.0pt;">24.4/4.7</td></tr>
+<tr class="ltx_tr" id="A7.T23.2.1.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A7.T23.2.1.3.1" style="padding-left:3.0pt;padding-right:3.0pt;">Multimodal</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_row" id="A7.T23.2.1.3.2" style="padding-left:3.0pt;padding-right:3.0pt;">30</th>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.3.3" style="padding-left:3.0pt;padding-right:3.0pt;">44.0/13.3</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.3.4" style="padding-left:3.0pt;padding-right:3.0pt;">37.5/6.7</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.3.5" style="padding-left:3.0pt;padding-right:3.0pt;">47.0/6.7</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.3.6" style="padding-left:3.0pt;padding-right:3.0pt;">20.6/0.0</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.3.7" style="padding-left:3.0pt;padding-right:3.0pt;">22.3/6.7</td></tr>
+<tr class="ltx_tr" id="A7.T23.2.1.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A7.T23.2.1.4.1" style="padding-left:3.0pt;padding-right:3.0pt;">Visual-spatial</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_row" id="A7.T23.2.1.4.2" style="padding-left:3.0pt;padding-right:3.0pt;">45</th>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.4.3" style="padding-left:3.0pt;padding-right:3.0pt;">43.9/13.3</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.4.4" style="padding-left:3.0pt;padding-right:3.0pt;">36.5/8.9</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.4.5" style="padding-left:3.0pt;padding-right:3.0pt;">51.2/11.1</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.4.6" style="padding-left:3.0pt;padding-right:3.0pt;">19.8/2.2</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.4.7" style="padding-left:3.0pt;padding-right:3.0pt;">19.8/4.4</td></tr>
+<tr class="ltx_tr" id="A7.T23.2.1.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A7.T23.2.1.5.1" style="padding-left:3.0pt;padding-right:3.0pt;">Proactive</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_row" id="A7.T23.2.1.5.2" style="padding-left:3.0pt;padding-right:3.0pt;">6</th>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.5.3" style="padding-left:3.0pt;padding-right:3.0pt;">52.0/16.7</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.5.4" style="padding-left:3.0pt;padding-right:3.0pt;">51.9/16.7</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.5.5" style="padding-left:3.0pt;padding-right:3.0pt;">43.1/16.7</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.5.6" style="padding-left:3.0pt;padding-right:3.0pt;">22.5/0.0</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.5.7" style="padding-left:3.0pt;padding-right:3.0pt;">16.8/0.0</td></tr>
+<tr class="ltx_tr" id="A7.T23.2.1.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A7.T23.2.1.6.1" style="padding-left:3.0pt;padding-right:3.0pt;">Multi-item</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_row" id="A7.T23.2.1.6.2" style="padding-left:3.0pt;padding-right:3.0pt;">43</th>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.6.3" style="padding-left:3.0pt;padding-right:3.0pt;">52.5/11.6</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.6.4" style="padding-left:3.0pt;padding-right:3.0pt;">46.7/11.6</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.6.5" style="padding-left:3.0pt;padding-right:3.0pt;">50.6/14.0</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.6.6" style="padding-left:3.0pt;padding-right:3.0pt;">20.2/2.3</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.6.7" style="padding-left:3.0pt;padding-right:3.0pt;">23.2/7.0</td></tr>
+<tr class="ltx_tr" id="A7.T23.2.1.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A7.T23.2.1.7.1" style="padding-left:3.0pt;padding-right:3.0pt;">Dynamic</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_row" id="A7.T23.2.1.7.2" style="padding-left:3.0pt;padding-right:3.0pt;">10</th>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.7.3" style="padding-left:3.0pt;padding-right:3.0pt;">45.1/30.0</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.7.4" style="padding-left:3.0pt;padding-right:3.0pt;">22.0/10.0</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.7.5" style="padding-left:3.0pt;padding-right:3.0pt;">46.2/30.0</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.7.6" style="padding-left:3.0pt;padding-right:3.0pt;">16.3/0.0</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.7.7" style="padding-left:3.0pt;padding-right:3.0pt;">17.9/0.0</td></tr>
+<tr class="ltx_tr" id="A7.T23.2.1.8">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A7.T23.2.1.8.1" style="padding-left:3.0pt;padding-right:3.0pt;">Conflict</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_row" id="A7.T23.2.1.8.2" style="padding-left:3.0pt;padding-right:3.0pt;">39</th>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.8.3" style="padding-left:3.0pt;padding-right:3.0pt;">48.0/15.4</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.8.4" style="padding-left:3.0pt;padding-right:3.0pt;">42.4/12.8</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.8.5" style="padding-left:3.0pt;padding-right:3.0pt;">51.4/20.5</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.8.6" style="padding-left:3.0pt;padding-right:3.0pt;">29.1/7.7</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.8.7" style="padding-left:3.0pt;padding-right:3.0pt;">24.3/7.7</td></tr>
+<tr class="ltx_tr" id="A7.T23.2.1.9">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A7.T23.2.1.9.1" style="padding-left:3.0pt;padding-right:3.0pt;">Tutorial</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_row" id="A7.T23.2.1.9.2" style="padding-left:3.0pt;padding-right:3.0pt;">22</th>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.9.3" style="padding-left:3.0pt;padding-right:3.0pt;">43.2/9.1</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.9.4" style="padding-left:3.0pt;padding-right:3.0pt;">43.5/13.6</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.9.5" style="padding-left:3.0pt;padding-right:3.0pt;">37.5/9.1</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.9.6" style="padding-left:3.0pt;padding-right:3.0pt;">15.7/4.5</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.9.7" style="padding-left:3.0pt;padding-right:3.0pt;">15.0/4.5</td></tr>
+<tr class="ltx_tr" id="A7.T23.2.1.10">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="A7.T23.2.1.10.1" style="padding-left:3.0pt;padding-right:3.0pt;">Streaming</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_row" id="A7.T23.2.1.10.2" style="padding-left:3.0pt;padding-right:3.0pt;">6</th>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.10.3" style="padding-left:3.0pt;padding-right:3.0pt;">36.1/33.3</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.10.4" style="padding-left:3.0pt;padding-right:3.0pt;">4.7/0.0</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.10.5" style="padding-left:3.0pt;padding-right:3.0pt;">57.8/50.0</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.10.6" style="padding-left:3.0pt;padding-right:3.0pt;">0.0/0.0</td>
+<td class="ltx_td ltx_align_right" id="A7.T23.2.1.10.7" style="padding-left:3.0pt;padding-right:3.0pt;">6.4/0.0</td></tr>
+<tr class="ltx_tr" id="A7.T23.2.1.11">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="A7.T23.2.1.11.1" style="padding-left:3.0pt;padding-right:3.0pt;">Cross-source</th>
+<th class="ltx_td ltx_align_right ltx_th ltx_th_row ltx_border_bb" id="A7.T23.2.1.11.2" style="padding-left:3.0pt;padding-right:3.0pt;">46</th>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A7.T23.2.1.11.3" style="padding-left:3.0pt;padding-right:3.0pt;">52.9/13.0</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A7.T23.2.1.11.4" style="padding-left:3.0pt;padding-right:3.0pt;">45.8/10.9</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A7.T23.2.1.11.5" style="padding-left:3.0pt;padding-right:3.0pt;">52.4/13.0</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A7.T23.2.1.11.6" style="padding-left:3.0pt;padding-right:3.0pt;">26.3/6.5</td>
+<td class="ltx_td ltx_align_right ltx_border_bb" id="A7.T23.2.1.11.7" style="padding-left:3.0pt;padding-right:3.0pt;">24.9/6.5</td></tr>
+</tbody>
+</table></figure></html>

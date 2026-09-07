@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {readFileSync,writeFileSync,mkdirSync,mkdtempSync,copyFileSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdtempSync,copyFileSync,cpSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {join} from 'node:path';
 import vm from 'node:vm';
@@ -57,7 +57,7 @@ test('source contains no frontend login, editor UI, file input or write path',()
 });
 test('all source routes have unique IDs, distinct colors, ordered stops and valid geometry (loops closed)',()=>{
   assert.equal(repository.length,4);assert.equal(new Set(repository.map(t=>t.id)).size,4);assert.equal(new Set(repository.map(t=>t.color)).size,4);
-  for(const t of repository){assert.equal(t.managed,true);assert.equal(t.geometry.type,'LineString');assert.ok(t.geometry.coordinates.length>t.points.length);if(t.loop===false){assert.notDeepEqual(t.geometry.coordinates[0],t.geometry.coordinates.at(-1))}else{assert.deepEqual(t.geometry.coordinates[0],t.geometry.coordinates.at(-1));assert.equal(t.points[0].lat,t.points.at(-1).lat);assert.equal(t.points[0].lng,t.points.at(-1).lng));assert.ok(t.points.every(p=>p.id&&p.label));for(const p of t.geometry.coordinates)assert.ok(p.length===2&&p.every(Number.isFinite)&&Math.abs(p[0])<=180&&Math.abs(p[1])<=85);}
+  for(const t of repository){assert.equal(t.managed,true);assert.equal(t.geometry.type,'LineString');assert.ok(t.geometry.coordinates.length>t.points.length);if(t.loop===false){assert.notDeepEqual(t.geometry.coordinates[0],t.geometry.coordinates.at(-1))}else{assert.deepEqual(t.geometry.coordinates[0],t.geometry.coordinates.at(-1));assert.equal(t.points[0].lat,t.points.at(-1).lat);assert.equal(t.points[0].lng,t.points.at(-1).lng)}assert.ok(t.points.every(p=>p.id&&p.label));for(const p of t.geometry.coordinates)assert.ok(p.length===2&&p.every(Number.isFinite)&&Math.abs(p[0])<=180&&Math.abs(p[1])<=85);}
 });
 test('map uses routed geometry in Leaflet latitude/longitude order and draws every closure',async()=>{
   const f=fixture();await f.ready();assert.equal(f.context.LIFE.lines.length,4);
@@ -74,7 +74,7 @@ test('route hover highlights one route and mouseout restores the selected route'
 });
 test('route line and stop marker click select matching route with full geometry fitting',async()=>{
   const f=fixture();await f.ready();f.context.LIFE.lines[1].line.events.click();assert.equal(f.context.LIFE.selected,repository[1].id);assert.equal(f.fit.at(-1).bounds.length,repository[1].geometry.coordinates.length);assert.equal(f.context.LIFE.markers.length,repository[1].points.length-1);assert.match(f.nodes.get('trip-detail').innerHTML,/Las Vegas, NV/);
-  f.context.LIFE.selected=null;f.context.updateMapData();f.context.LIFE.markers.at(-1).events.click();assert.equal(f.context.LIFE.selected,repository[2].id);
+  f.context.LIFE.selected=null;f.context.updateMapData();f.context.LIFE.markers.at(-1).events.click();assert.equal(f.context.LIFE.selected,repository.at(-1).id);
 });
 test('US overview clears selected detail and returns all routes to normal emphasis',async()=>{
   const f=fixture();await f.ready();f.context.selectTrip(repository[1].id);f.context.handleLifeClick({target:{closest:s=>s==='[data-camera]'?{}:null}});assert.equal(f.context.LIFE.selected,null);assert.equal(f.nodes.get('trip-detail').innerHTML,'');assert.equal(f.context.LIFE.overview,true);f.context.LIFE.lines.forEach(l=>assert.equal(l.line.style.opacity,.95));
@@ -98,7 +98,7 @@ test('backend merges uploaded photos into repository routes without overriding s
   const t=repository[0],photo={id:'2adbe10f-c966-435f-9f5f-a193c45ed46c',trip:t.id,width:800,height:600,caption:'Stored image',stop:t.points[1].id,status:'ready'};
   const rows=[{...t,title:'Older DB title',points:JSON.stringify(t.points),states:JSON.stringify(t.states)}];
   const DB={prepare:sql=>({bind(){return this;},all:async()=>({results:sql.includes('FROM life_photos')?[photo]:rows})})};
-  const response=await lifeApi(new Request(apiOrigin+'/api/life/trips'),{DB},clone(repository));assert.equal(response.status,200);const data=await response.json();assert.equal(data.trips.length,3);assert.equal(data.trips[0].title,t.title);assert.deepEqual(data.trips[0].geometry,t.geometry);assert.equal(data.trips[0].photos[0]?.id,photo.id);assert.equal(data.trips[0].photos[0]?.stopId,photo.stop);
+  const response=await lifeApi(new Request(apiOrigin+'/api/life/trips'),{DB},clone(repository));assert.equal(response.status,200);const data=await response.json();assert.equal(data.trips.length,repository.length);assert.equal(data.trips[0].title,t.title);assert.deepEqual(data.trips[0].geometry,t.geometry);assert.equal(data.trips[0].photos[0]?.id,photo.id);assert.equal(data.trips[0].photos[0]?.stopId,photo.stop);
 });
 test('backend serves repository trips even when D1 is unavailable',async()=>{
   const response=await lifeApi(new Request(apiOrigin+'/api/life/trips'),{},repository);assert.equal(response.status,200);assert.deepEqual((await response.json()).trips,repository);
@@ -112,15 +112,14 @@ for(const first of ['css','js'])test(`Leaflet waits for both assets when ${first
 });
 test('isolated build emits identical repository trips into client asset and Worker module',async()=>{
   const scratch=mkdtempSync(new URL('./public-trips-build-',import.meta.url).pathname.replace(/^\/(\w):/,'$1:'));
-  for(const folder of ['assets/map','assets/vendor','assets/fishing'])mkdirSync(join(scratch,folder),{recursive:true});
-  for(const name of ['build.py','worker.js','life-api.js','life.js','life-map.js','life.css','wrangler.json','trips.json'])copyFileSync(new URL(name,root),join(scratch,name));
-  writeFileSync(join(scratch,'template.html'),'__LIFE_CSS__<!-- /head -->__LIFE_JS__\n__LIFE_MAP_JS__\n__SHARED_JS__\n__PAPERS_JSON__\n__POSTS_JSON__');
-  for(const name of ['papers.json','posts.json','fishing.json'])writeFileSync(join(scratch,name),'[]');writeFileSync(join(scratch,'shared.js'),'');writeFileSync(join(scratch,'assets/portrait.jpg'),'unused');writeFileSync(join(scratch,'assets/favicon.svg'),'<svg/>');
-  execFileSync('C:/Users/42836/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe',['-X','utf8',join(scratch,'build.py')],{stdio:'pipe'});
+  for(const name of ['build.py','memory_pages.py','gui-memory.json','memory.css','worker.js','life-api.js','life.js','life-map.js','life.css','wrangler.json','trips.json','template.html','papers.json','posts.json','fishing.json','shared.js','indexnow-key.txt'])copyFileSync(new URL(name,root),join(scratch,name));
+  cpSync(new URL('assets/',root),join(scratch,'assets'),{recursive:true});
+  const python=process.env.PYTHON||'python';
+  execFileSync(python,['-X','utf8',join(scratch,'build.py')],{stdio:'pipe'});
   assert.deepEqual(JSON.parse(readFileSync(join(scratch,'dist/client/assets/map/trips.json'),'utf8')),repository);
   const {REPOSITORY_TRIPS}=await import('data:text/javascript;base64,'+readFileSync(join(scratch,'dist/server/page.js')).toString('base64'));assert.deepEqual(REPOSITORY_TRIPS,repository);
   const {LIFE_ASSETS}=await import('data:text/javascript;base64,'+readFileSync(join(scratch,'dist/server/life-assets.js')).toString('base64'));assert.deepEqual(JSON.parse(Buffer.from(LIFE_ASSETS['/assets/map/trips.json'].base64,'base64').toString()),repository);
-  const bad=clone(repository);bad[0].geometry.coordinates.pop();writeFileSync(join(scratch,'trips.json'),JSON.stringify(bad));assert.throws(()=>execFileSync('C:/Users/42836/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe',['-X','utf8',join(scratch,'build.py')],{stdio:'pipe'}),/must close into a loop/);
+  const bad=clone(repository);bad[0].geometry.coordinates.pop();writeFileSync(join(scratch,'trips.json'),JSON.stringify(bad));assert.throws(()=>execFileSync(python,['-X','utf8',join(scratch,'build.py')],{stdio:'pipe'}),/must close into a loop/);
 });
 
 let failed=0;for(const {name,fn} of tests){try{await fn();console.log('PASS '+name);}catch(error){failed++;console.error('FAIL '+name+'\n  '+error.stack);}}

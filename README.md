@@ -1,5 +1,9 @@
 # Thinking Line
 
+The GUI memory research atlas at `/research/gui-memory/` groups 45 priority reading notes into 10 branches. `gui-memory.json` holds the editorial taxonomy; each linked record in `papers.json` preserves its Chinese detailed reading note alongside the English overview. P0 denotes reading priority, not paper quality. The tree supports search and branch expansion, and the build produces a downloadable SVG.
+
+Run `python build.py`, `python memory_collection_test.py`, and `node --test public-trips.test.mjs` after editing the collection. The build uses only Python's standard library. Original figures and table extracts under `assets/gui-memory/` retain their source attribution in the notes; raw paper caches and private implementation drafts are not published.
+
 Thinking Line is Mingshuo Wang's public notebook for research notes, creative experiments, and life outside the screen.
 
 This repository is the public source for the static site and its managed road-trip data. The three routes in `trips.json` are repository-managed loops. The public page is read-only: route stops, geometry, colors, and highlighted states are edited in source and rebuilt through GitHub Actions. There is no visitor-facing route editor or upload form.

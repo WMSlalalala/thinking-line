@@ -1,0 +1,1161 @@
+<p><a href="/notes/p0-sup-a04/">← 返回阅读笔记 / Back to reading note</a></p><meta content="width=device-width, initial-scale=1" name="viewport"/><!DOCTYPE html>
+<html lang="zh"><meta charset="utf-8"/><title>LongMemEval-V2: Evaluating Long-Term Agent Memory Toward Experienced Colleagues</title><style>body{font:16px system-ui;margin:35px;line-height:1.6}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:7px}figure{overflow:auto;margin:30px 0}figcaption{font-weight:600}</style><h1>SUP-A04 原表</h1><p>来源：<a href="https://arxiv.org/html/2605.12493">作者原文</a>。2026-09-07抓取，原始行列，不是统一复跑成绩。</p><figure id="S1.T1"><figcaption>Table 1: Comparison with existing memory and long-context benchmarks. # Sess., # Tok., and # Q denote the history size in sessions or tokens, as well as the total number of questions. MM denotes whether the context or question is a multimodal mixture of text and images. For benchmarks with multiple preset length tiers, we report a range between the minimum length tier and the maximum length tier. For the other benchmarks, we report the averaged context size over all examples.</figcaption><table class="ltx_tabular ltx_align_middle" id="S1.T1.5.1">
+<tr class="ltx_tr" id="S1.T1.5.1.1">
+<td class="ltx_td ltx_align_left ltx_border_tt" id="S1.T1.5.1.1.1" rowspan="2" style="padding:0.55pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="S1.T1.5.1.1.1.1" style="font-size:90%;">Benchmark</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S1.T1.5.1.1.2" rowspan="2" style="padding:0.55pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="S1.T1.5.1.1.2.1" style="font-size:90%;">Domain</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="3" id="S1.T1.5.1.1.3" style="padding:0.55pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="S1.T1.5.1.1.3.1" style="font-size:90%;">Context Profile</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="2" id="S1.T1.5.1.1.4" style="padding:0.55pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="S1.T1.5.1.1.4.1" style="font-size:90%;">Question Profile</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="5" id="S1.T1.5.1.1.5" style="padding:0.55pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="S1.T1.5.1.1.5.1" style="font-size:90%;">Memory Ability</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.2">
+<td class="ltx_td ltx_align_center ltx_border_t" id="S1.T1.5.1.2.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.2.1.1"></span><span class="ltx_text" id="S1.T1.5.1.2.1.2" style="font-size:90%;"> </span><span class="ltx_text" id="S1.T1.5.1.2.1.3" style="font-size:90%;">
+<span class="ltx_tabular ltx_align_middle" id="S1.T1.5.1.2.1.3.1">
+<span class="ltx_tr" id="S1.T1.5.1.2.1.3.1.1">
+<span class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.2.1.3.1.1.1" style="padding:0.55pt 2.0pt;"># Sess.</span></span>
+</span></span><span class="ltx_text" id="S1.T1.5.1.2.1.4"></span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S1.T1.5.1.2.2" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.2.2.1"></span><span class="ltx_text" id="S1.T1.5.1.2.2.2" style="font-size:90%;"> </span><span class="ltx_text" id="S1.T1.5.1.2.2.3" style="font-size:90%;">
+<span class="ltx_tabular ltx_align_middle" id="S1.T1.5.1.2.2.3.1">
+<span class="ltx_tr" id="S1.T1.5.1.2.2.3.1.1">
+<span class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.2.2.3.1.1.1" style="padding:0.55pt 2.0pt;"># Tok.</span></span>
+</span></span><span class="ltx_text" id="S1.T1.5.1.2.2.4"></span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S1.T1.5.1.2.3" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.2.3.1"></span><span class="ltx_text" id="S1.T1.5.1.2.3.2" style="font-size:90%;"> </span><span class="ltx_text" id="S1.T1.5.1.2.3.3" style="font-size:90%;">
+<span class="ltx_tabular ltx_align_middle" id="S1.T1.5.1.2.3.3.1">
+<span class="ltx_tr" id="S1.T1.5.1.2.3.3.1.1">
+<span class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.2.3.3.1.1.1" style="padding:0.55pt 2.0pt;">MM</span></span>
+</span></span><span class="ltx_text" id="S1.T1.5.1.2.3.4"></span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S1.T1.5.1.2.4" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.2.4.1"></span><span class="ltx_text" id="S1.T1.5.1.2.4.2" style="font-size:90%;"> </span><span class="ltx_text" id="S1.T1.5.1.2.4.3" style="font-size:90%;">
+<span class="ltx_tabular ltx_align_middle" id="S1.T1.5.1.2.4.3.1">
+<span class="ltx_tr" id="S1.T1.5.1.2.4.3.1.1">
+<span class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.2.4.3.1.1.1" style="padding:0.55pt 2.0pt;"># Q</span></span>
+</span></span><span class="ltx_text" id="S1.T1.5.1.2.4.4"></span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S1.T1.5.1.2.5" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.2.5.1"></span><span class="ltx_text" id="S1.T1.5.1.2.5.2" style="font-size:90%;"> </span><span class="ltx_text" id="S1.T1.5.1.2.5.3" style="font-size:90%;">
+<span class="ltx_tabular ltx_align_middle" id="S1.T1.5.1.2.5.3.1">
+<span class="ltx_tr" id="S1.T1.5.1.2.5.3.1.1">
+<span class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.2.5.3.1.1.1" style="padding:0.55pt 2.0pt;">MM</span></span>
+</span></span><span class="ltx_text" id="S1.T1.5.1.2.5.4"></span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S1.T1.5.1.2.6" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.2.6.1"></span><span class="ltx_text" id="S1.T1.5.1.2.6.2" style="font-size:90%;"> </span><span class="ltx_text" id="S1.T1.5.1.2.6.3" style="font-size:90%;">
+<span class="ltx_tabular ltx_align_middle" id="S1.T1.5.1.2.6.3.1">
+<span class="ltx_tr" id="S1.T1.5.1.2.6.3.1.1">
+<span class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.2.6.3.1.1.1" style="padding:0.55pt 2.0pt;">Static</span></span>
+</span></span><span class="ltx_text" id="S1.T1.5.1.2.6.4"></span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S1.T1.5.1.2.7" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.2.7.1"></span><span class="ltx_text" id="S1.T1.5.1.2.7.2" style="font-size:90%;"> </span><span class="ltx_text" id="S1.T1.5.1.2.7.3" style="font-size:90%;">
+<span class="ltx_tabular ltx_align_middle" id="S1.T1.5.1.2.7.3.1">
+<span class="ltx_tr" id="S1.T1.5.1.2.7.3.1.1">
+<span class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.2.7.3.1.1.1" style="padding:0.55pt 2.0pt;">Dynamic</span></span>
+</span></span><span class="ltx_text" id="S1.T1.5.1.2.7.4"></span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S1.T1.5.1.2.8" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.2.8.1"></span><span class="ltx_text" id="S1.T1.5.1.2.8.2" style="font-size:90%;"> </span><span class="ltx_text" id="S1.T1.5.1.2.8.3" style="font-size:90%;">
+<span class="ltx_tabular ltx_align_middle" id="S1.T1.5.1.2.8.3.1">
+<span class="ltx_tr" id="S1.T1.5.1.2.8.3.1.1">
+<span class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.2.8.3.1.1.1" style="padding:0.55pt 2.0pt;">Workflows</span></span>
+</span></span><span class="ltx_text" id="S1.T1.5.1.2.8.4"></span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S1.T1.5.1.2.9" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.2.9.1"></span><span class="ltx_text" id="S1.T1.5.1.2.9.2" style="font-size:90%;"> </span><span class="ltx_text" id="S1.T1.5.1.2.9.3" style="font-size:90%;">
+<span class="ltx_tabular ltx_align_middle" id="S1.T1.5.1.2.9.3.1">
+<span class="ltx_tr" id="S1.T1.5.1.2.9.3.1.1">
+<span class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.2.9.3.1.1.1" style="padding:0.55pt 2.0pt;">Gotchas</span></span>
+</span></span><span class="ltx_text" id="S1.T1.5.1.2.9.4"></span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_t" id="S1.T1.5.1.2.10" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.2.10.1"></span><span class="ltx_text" id="S1.T1.5.1.2.10.2" style="font-size:90%;"> </span><span class="ltx_text" id="S1.T1.5.1.2.10.3" style="font-size:90%;">
+<span class="ltx_tabular ltx_align_middle" id="S1.T1.5.1.2.10.3.1">
+<span class="ltx_tr" id="S1.T1.5.1.2.10.3.1.1">
+<span class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.2.10.3.1.1.1" style="padding:0.55pt 2.0pt;">Premise</span></span>
+</span></span><span class="ltx_text" id="S1.T1.5.1.2.10.4"></span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.3">
+<td class="ltx_td ltx_align_left ltx_border_t" colspan="12" id="S1.T1.5.1.3.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text ltx_font_italic" id="S1.T1.5.1.3.1.1" style="font-size:90%;">General Long Context</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.4">
+<td class="ltx_td ltx_align_left" id="S1.T1.5.1.4.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.4.1.1" style="font-size:90%;">LongBench V2</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.4.2" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.4.2.1" style="font-size:90%;">Mixed</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.4.3" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.4.3.1" style="font-size:90%;">N/A</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.4.4" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.4.4.1" style="font-size:90%;">260k</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.4.5" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.4.5.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.4.6" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.4.6.1" style="font-size:90%;">503</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.4.7" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.4.7.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.4.8" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.4.8.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.4.9" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.4.9.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.4.10" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.4.10.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.4.11" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.4.11.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.4.12" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.4.12.1" style="font-size:90%;">✗</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.5">
+<td class="ltx_td ltx_align_left" id="S1.T1.5.1.5.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.5.1.1" style="font-size:90%;">MemoryAgentBench</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.5.2" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.5.2.1" style="font-size:90%;">Mixed</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.5.3" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.5.3.1" style="font-size:90%;">N/A</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.5.4" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.5.4.1" style="font-size:90%;">285k</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.5.5" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.5.5.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.5.6" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.5.6.1" style="font-size:90%;">2,071</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.5.7" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.5.7.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.5.8" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.5.8.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.5.9" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.5.9.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.5.10" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.5.10.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.5.11" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.5.11.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.5.12" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.5.12.1" style="font-size:90%;">✗</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.6">
+<td class="ltx_td ltx_align_left" id="S1.T1.5.1.6.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.6.1.1" style="font-size:90%;">CL-Bench</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.6.2" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.6.2.1" style="font-size:90%;">Mixed</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.6.3" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.6.3.1" style="font-size:90%;">N/A</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.6.4" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.6.4.1" style="font-size:90%;">10k</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.6.5" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.6.5.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.6.6" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.6.6.1" style="font-size:90%;">1,899</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.6.7" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.6.7.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.6.8" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.6.8.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.6.9" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.6.9.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.6.10" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.6.10.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.6.11" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.6.11.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.6.12" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.6.12.1" style="font-size:90%;">✗</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.7">
+<td class="ltx_td ltx_align_left ltx_border_t" colspan="12" id="S1.T1.5.1.7.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text ltx_font_italic" id="S1.T1.5.1.7.1.1" style="font-size:90%;">Conversational Long Context</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.8">
+<td class="ltx_td ltx_align_left" id="S1.T1.5.1.8.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.8.1.1" style="font-size:90%;">LoCoMo</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.8.2" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.8.2.1" style="font-size:90%;">User-user chat</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.8.3" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.8.3.1" style="font-size:90%;">28</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.8.4" style="padding:0.55pt 2.0pt;"><math alttext="\sim" class="ltx_Math" display="inline" id="S1.T1.m1" intent=":literal"><semantics><mo mathsize="0.900em">∼</mo><annotation encoding="application/x-tex">\sim</annotation></semantics></math><span class="ltx_text" id="S1.T1.5.1.8.4.1" style="font-size:90%;">16k</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.8.5" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.8.5.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.8.6" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.8.6.1" style="font-size:90%;">7,512</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.8.7" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.8.7.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.8.8" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.8.8.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.8.9" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.8.9.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.8.10" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.8.10.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.8.11" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.8.11.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.8.12" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.8.12.1" style="font-size:90%;">✓</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.9">
+<td class="ltx_td ltx_align_left" id="S1.T1.5.1.9.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.9.1.1" style="font-size:90%;">LongMemEval-V1</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.9.2" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.9.2.1" style="font-size:90%;">User-assistant chat</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.9.3" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.9.3.1" style="font-size:90%;">48–475</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.9.4" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.9.4.1" style="font-size:90%;">115k–1.5M</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.9.5" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.9.5.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.9.6" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.9.6.1" style="font-size:90%;">500</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.9.7" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.9.7.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.9.8" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.9.8.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.9.9" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.9.9.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.9.10" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.9.10.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.9.11" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.9.11.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.9.12" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.9.12.1" style="font-size:90%;">✓</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.10">
+<td class="ltx_td ltx_align_left" id="S1.T1.5.1.10.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.10.1.1" style="font-size:90%;">PersonaMem</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.10.2" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.10.2.1" style="font-size:90%;">User-assistant chat</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.10.3" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.10.3.1" style="font-size:90%;">5–60</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.10.4" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.10.4.1" style="font-size:90%;">26k–951k</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.10.5" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.10.5.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.10.6" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.10.6.1" style="font-size:90%;">5,990</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.10.7" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.10.7.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.10.8" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.10.8.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.10.9" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.10.9.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.10.10" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.10.10.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.10.11" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.10.11.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.10.12" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.10.12.1" style="font-size:90%;">✗</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.11">
+<td class="ltx_td ltx_align_left" id="S1.T1.5.1.11.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.11.1.1" style="font-size:90%;">PersonaMem-v2</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.11.2" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.11.2.1" style="font-size:90%;">User-assistant chat</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.11.3" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.11.3.1" style="font-size:90%;">10–20</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.11.4" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.11.4.1" style="font-size:90%;">33k–124k</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.11.5" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.11.5.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.11.6" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.11.6.1" style="font-size:90%;">5,000</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.11.7" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.11.7.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.11.8" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.11.8.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.11.9" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.11.9.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.11.10" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.11.10.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.11.11" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.11.11.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.11.12" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.11.12.1" style="font-size:90%;">✗</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.12">
+<td class="ltx_td ltx_align_left" id="S1.T1.5.1.12.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.12.1.1" style="font-size:90%;">BEAM</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.12.2" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.12.2.1" style="font-size:90%;">User-assistant chat</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.12.3" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.12.3.1" style="font-size:90%;">4.5–100</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.12.4" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.12.4.1" style="font-size:90%;">124k–10M</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.12.5" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.12.5.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.12.6" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.12.6.1" style="font-size:90%;">2,000</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.12.7" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.12.7.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.12.8" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.12.8.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.12.9" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.12.9.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.12.10" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.12.10.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.12.11" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.12.11.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.12.12" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.12.12.1" style="font-size:90%;">✓</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.13">
+<td class="ltx_td ltx_align_left ltx_border_t" colspan="12" id="S1.T1.5.1.13.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text ltx_font_italic" id="S1.T1.5.1.13.1.1" style="font-size:90%;">Agentic Long Context</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.14">
+<td class="ltx_td ltx_align_left" id="S1.T1.5.1.14.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.14.1.1" style="font-size:90%;">MemoryArena</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.14.2" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.14.2.1" style="font-size:90%;">Agent (mixed)</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.14.3" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.14.3.1" style="font-size:90%;">7</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.14.4" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.14.4.1" style="font-size:90%;">40k+</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.14.5" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.14.5.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.14.6" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.14.6.1" style="font-size:90%;">766</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.14.7" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.14.7.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.14.8" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.14.8.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.14.9" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.14.9.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.14.10" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.14.10.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.14.11" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.14.11.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.14.12" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.14.12.1" style="font-size:90%;">✗</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.15">
+<td class="ltx_td ltx_align_left" id="S1.T1.5.1.15.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.15.1.1" style="font-size:90%;">AgentLongBench</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.15.2" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.15.2.1" style="font-size:90%;">Game agent</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.15.3" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.15.3.1" style="font-size:90%;">1</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.15.4" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.15.4.1" style="font-size:90%;">31k–4M</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.15.5" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.15.5.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.15.6" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.15.6.1" style="font-size:90%;">6,400</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.15.7" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.15.7.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.15.8" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.15.8.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.15.9" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.15.9.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.15.10" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.15.10.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.15.11" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.15.11.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.15.12" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.15.12.1" style="font-size:90%;">✗</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.16">
+<td class="ltx_td ltx_align_left" id="S1.T1.5.1.16.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.16.1.1" style="font-size:90%;">EMemBench</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.16.2" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.16.2.1" style="font-size:90%;">Game agent</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.16.3" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.16.3.1" style="font-size:90%;">1</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.16.4" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.16.4.1" style="font-size:90%;">2k–</span><math alttext="\infty" class="ltx_Math" display="inline" id="S1.T1.m2" intent=":literal"><semantics><mi mathsize="0.900em" mathvariant="normal">∞</mi><annotation encoding="application/x-tex">\infty</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.16.5" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.16.5.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.16.6" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.16.6.1" style="font-size:90%;">1,280+</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.16.7" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.16.7.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.16.8" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.16.8.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.16.9" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.16.9.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.16.10" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.16.10.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.16.11" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.16.11.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.16.12" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.16.12.1" style="font-size:90%;">✓</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.17">
+<td class="ltx_td ltx_align_left" id="S1.T1.5.1.17.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.17.1.1" style="font-size:90%;">FileGramBench</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.17.2" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.17.2.1" style="font-size:90%;">File-system agent</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.17.3" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.17.3.1" style="font-size:90%;">12</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.17.4" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.17.4.1" style="font-size:90%;">11k</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.17.5" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.17.5.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.17.6" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.17.6.1" style="font-size:90%;">4,333</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.17.7" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.17.7.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.17.8" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.17.8.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.17.9" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.17.9.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.17.10" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.17.10.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.17.11" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.17.11.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.17.12" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.17.12.1" style="font-size:90%;">✗</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.18">
+<td class="ltx_td ltx_align_left" id="S1.T1.5.1.18.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.18.1.1" style="font-size:90%;">AMA-Bench</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.18.2" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.18.2.1" style="font-size:90%;">Agent (mixed)</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.18.3" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.18.3.1" style="font-size:90%;">1</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.18.4" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.18.4.1" style="font-size:90%;">57k</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.18.5" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.18.5.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.18.6" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.18.6.1" style="font-size:90%;">2,496</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.18.7" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.18.7.1" style="font-size:90%;">✗</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.18.8" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.18.8.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.18.9" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.18.9.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.18.10" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.18.10.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center" id="S1.T1.5.1.18.11" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.18.11.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S1.T1.5.1.18.12" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.18.12.1" style="font-size:90%;">✗</span></td></tr>
+<tr class="ltx_tr" id="S1.T1.5.1.19">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="S1.T1.5.1.19.1" style="padding:0.55pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="S1.T1.5.1.19.1.1" style="font-size:90%;">LongMemEval-V2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S1.T1.5.1.19.2" style="padding:0.55pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="S1.T1.5.1.19.2.1" style="font-size:90%;">Web agent</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S1.T1.5.1.19.3" style="padding:0.55pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="S1.T1.5.1.19.3.1" style="font-size:90%;">100–498</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S1.T1.5.1.19.4" style="padding:0.55pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="S1.T1.5.1.19.4.1" style="font-size:90%;">25M–115M</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S1.T1.5.1.19.5" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.19.5.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S1.T1.5.1.19.6" style="padding:0.55pt 2.0pt;"><span class="ltx_text ltx_font_bold" id="S1.T1.5.1.19.6.1" style="font-size:90%;">451</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S1.T1.5.1.19.7" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.19.7.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S1.T1.5.1.19.8" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.19.8.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S1.T1.5.1.19.9" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.19.9.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S1.T1.5.1.19.10" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.19.10.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S1.T1.5.1.19.11" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.19.11.1" style="font-size:90%;">✓</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_bb" id="S1.T1.5.1.19.12" style="padding:0.55pt 2.0pt;"><span class="ltx_text" id="S1.T1.5.1.19.12.1" style="font-size:90%;">✓</span></td></tr>
+</table></figure><figure id="S3.F4"><figcaption>Figure 4 : Pilot studies on LME-V2 non-abstention questions.
+(a) Frontier LLMs perform poorly without trajectory history, suggesting that parametric knowledge alone is insufficient for LME-V2.
+(b) LME-V2 is challenging to answer even with oracle answer-bearing trajectories and optimizations such as evidence slicing with notes or using a coding agent harness help improve performance.</figcaption><table class="ltx_tabular ltx_align_middle" id="S3.F4.4.1">
+<tr class="ltx_tr" id="S3.F4.4.1.1">
+<td class="ltx_td ltx_align_left ltx_border_tt" id="S3.F4.4.1.1.1" style="padding:0.15pt 3.0pt;"><span class="ltx_text ltx_font_bold" id="S3.F4.4.1.1.1.1" style="font-size:90%;">Context</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.F4.4.1.1.2" style="padding:0.15pt 3.0pt;"><span class="ltx_text ltx_font_bold" id="S3.F4.4.1.1.2.1" style="font-size:90%;">Overall</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.F4.4.1.1.3" style="padding:0.15pt 3.0pt;"><span class="ltx_text ltx_font_bold" id="S3.F4.4.1.1.3.1" style="font-size:90%;">Static</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.F4.4.1.1.4" style="padding:0.15pt 3.0pt;"><span class="ltx_text ltx_font_bold" id="S3.F4.4.1.1.4.1" style="font-size:90%;">Dynamic</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="S3.F4.4.1.1.5" style="padding:0.15pt 3.0pt;"><span class="ltx_text ltx_font_bold" id="S3.F4.4.1.1.5.1" style="font-size:90%;">Workflow</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_tt" id="S3.F4.4.1.1.6" style="padding:0.15pt 3.0pt;"><span class="ltx_text ltx_font_bold" id="S3.F4.4.1.1.6.1" style="font-size:90%;">Gotchas</span></td></tr>
+<tr class="ltx_tr" id="S3.F4.4.1.2">
+<td class="ltx_td ltx_align_left ltx_border_t" colspan="6" id="S3.F4.4.1.2.1" style="padding:0.15pt 3.0pt;"><span class="ltx_text ltx_font_bold ltx_font_italic" id="S3.F4.4.1.2.1.1" style="font-size:90%;">Qwen3.5-9B (thinking enabled)</span></td></tr>
+<tr class="ltx_tr" id="S3.F4.4.1.3">
+<td class="ltx_td ltx_align_left" id="S3.F4.4.1.3.1" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.3.1.1" style="font-size:90%;">No context</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.3.2" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.3.2.1" style="font-size:90%;">0.016</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.3.3" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.3.3.1" style="font-size:90%;">0.000</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.3.4" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.3.4.1" style="font-size:90%;">0.015</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.3.5" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.3.5.1" style="font-size:90%;">0.155</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.F4.4.1.3.6" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.3.6.1" style="font-size:90%;">0.136</span></td></tr>
+<tr class="ltx_tr" id="S3.F4.4.1.4">
+<td class="ltx_td ltx_align_left" id="S3.F4.4.1.4.1" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.4.1.1" style="font-size:90%;">Oracle trajectories</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.4.2" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.4.2.1" style="font-size:90%;">0.596</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.4.3" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.4.3.1" style="font-size:90%;">0.566</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.4.4" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.4.4.1" style="font-size:90%;">0.668</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.4.5" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.4.5.1" style="font-size:90%;">0.718</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.F4.4.1.4.6" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.4.6.1" style="font-size:90%;">0.310</span></td></tr>
+<tr class="ltx_tr" id="S3.F4.4.1.5">
+<td class="ltx_td ltx_align_left" id="S3.F4.4.1.5.1" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.5.1.1" style="font-size:90%;">Oracle slices + notes</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.5.2" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.5.2.1" style="font-size:90%;">0.825</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.5.3" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.5.3.1" style="font-size:90%;">0.908</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.5.4" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.5.4.1" style="font-size:90%;">0.879</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.5.5" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.5.5.1" style="font-size:90%;">0.750</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.F4.4.1.5.6" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.5.6.1" style="font-size:90%;">0.484</span></td></tr>
+<tr class="ltx_tr" id="S3.F4.4.1.6">
+<td class="ltx_td ltx_align_left ltx_border_t" colspan="6" id="S3.F4.4.1.6.1" style="padding:0.15pt 3.0pt;"><span class="ltx_text ltx_font_bold ltx_font_italic" id="S3.F4.4.1.6.1.1" style="font-size:90%;">GPT-5.4-mini (medium reasoning)</span></td></tr>
+<tr class="ltx_tr" id="S3.F4.4.1.7">
+<td class="ltx_td ltx_align_left" id="S3.F4.4.1.7.1" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.7.1.1" style="font-size:90%;">No context</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.7.2" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.7.2.1" style="font-size:90%;">0.045</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.7.3" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.7.3.1" style="font-size:90%;">0.025</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.7.4" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.7.4.1" style="font-size:90%;">0.010</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.7.5" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.7.5.1" style="font-size:90%;">0.075</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.F4.4.1.7.6" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.7.6.1" style="font-size:90%;">0.171</span></td></tr>
+<tr class="ltx_tr" id="S3.F4.4.1.8">
+<td class="ltx_td ltx_align_left" id="S3.F4.4.1.8.1" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.8.1.1" style="font-size:90%;">Oracle trajectories</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.8.2" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.8.2.1" style="font-size:90%;">0.653</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.8.3" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.8.3.1" style="font-size:90%;">0.660</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.8.4" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.8.4.1" style="font-size:90%;">0.696</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.8.5" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.8.5.1" style="font-size:90%;">0.697</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.F4.4.1.8.6" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.8.6.1" style="font-size:90%;">0.484</span></td></tr>
+<tr class="ltx_tr" id="S3.F4.4.1.9">
+<td class="ltx_td ltx_align_left" id="S3.F4.4.1.9.1" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.9.1.1" style="font-size:90%;">Oracle slices + notes</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.9.2" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.9.2.1" style="font-size:90%;">0.863</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.9.3" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.9.3.1" style="font-size:90%;">0.950</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.9.4" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.9.4.1" style="font-size:90%;">0.843</span></td>
+<td class="ltx_td ltx_align_center" id="S3.F4.4.1.9.5" style="padding:0.15pt 3.0pt;"><span class="ltx_text ltx_font_bold" id="S3.F4.4.1.9.5.1" style="font-size:90%;">0.905</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center" id="S3.F4.4.1.9.6" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.9.6.1" style="font-size:90%;">0.467</span></td></tr>
+<tr class="ltx_tr" id="S3.F4.4.1.10">
+<td class="ltx_td ltx_align_left ltx_border_t" colspan="6" id="S3.F4.4.1.10.1" style="padding:0.15pt 3.0pt;"><span class="ltx_text ltx_font_bold ltx_font_italic" id="S3.F4.4.1.10.1.1" style="font-size:90%;">Codex + GPT-5.4-mini (xhigh reasoning)</span></td></tr>
+<tr class="ltx_tr" id="S3.F4.4.1.11">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="S3.F4.4.1.11.1" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.11.1.1" style="font-size:90%;">Oracle trajectory files</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.F4.4.1.11.2" style="padding:0.15pt 3.0pt;"><span class="ltx_text ltx_font_bold" id="S3.F4.4.1.11.2.1" style="font-size:90%;">0.897</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.F4.4.1.11.3" style="padding:0.15pt 3.0pt;"><span class="ltx_text ltx_font_bold" id="S3.F4.4.1.11.3.1" style="font-size:90%;">0.986</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.F4.4.1.11.4" style="padding:0.15pt 3.0pt;"><span class="ltx_text ltx_font_bold" id="S3.F4.4.1.11.4.1" style="font-size:90%;">0.947</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S3.F4.4.1.11.5" style="padding:0.15pt 3.0pt;"><span class="ltx_text" id="S3.F4.4.1.11.5.1" style="font-size:90%;">0.815</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_center ltx_border_bb" id="S3.F4.4.1.11.6" style="padding:0.15pt 3.0pt;"><span class="ltx_text ltx_font_bold" id="S3.F4.4.1.11.6.1" style="font-size:90%;">0.517</span></td></tr>
+</table></figure><figure id="S5.T2"><figcaption>Table 2: Main results with baselines and ablations. The downstream reader is always Qwen3.5-9B. We boldface the best results in each method family. ✣ means statistically significantly outperforming the non-ablation baselines via paired bootstrap test ( p &lt; 0.05 p&lt;0.05 ). AgentRunbook strongly outperforms the baseline in RAG family and achieves a superior latency in coding agent family.</figcaption><table class="ltx_tabular ltx_align_middle" id="S5.T2.9.1">
+<tr class="ltx_tr" id="S5.T2.9.1.1">
+<td class="ltx_td ltx_align_left ltx_border_tt" id="S5.T2.9.1.1.1" rowspan="2" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.1.1.1" style="font-size:90%;">Method</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="6" id="S5.T2.9.1.1.2" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.1.2.1" style="font-size:90%;">LME-V2-Small</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" colspan="6" id="S5.T2.9.1.1.3" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.1.3.1" style="font-size:90%;">LME-V2-Medium</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.9.1.2">
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.2.1" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.2.1.1" style="font-size:90%;">Overall</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.2.2" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.2.2.1" style="font-size:90%;">Static</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.2.3" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.2.3.1" style="font-size:90%;">Dynamic</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.2.4" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.2.4.1" style="font-size:90%;">Workflow</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.2.5" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.2.5.1" style="font-size:90%;">Gotchas</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.2.6" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.2.6.1" style="font-size:90%;">Latency</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.2.7" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.2.7.1" style="font-size:90%;">Overall</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.2.8" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.2.8.1" style="font-size:90%;">Static</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.2.9" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.2.9.1" style="font-size:90%;">Dynamic</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.2.10" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.2.10.1" style="font-size:90%;">Workflow</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.2.11" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.2.11.1" style="font-size:90%;">Gotchas</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.2.12" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.2.12.1" style="font-size:90%;">Latency</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.9.1.3">
+<td class="ltx_td ltx_align_left ltx_border_t" id="S5.T2.9.1.3.1" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.3.1.1" style="font-size:90%;">No retrieval</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.3.2" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.3.2.1" style="font-size:90%;">0.013</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.3.3" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.3.3.1" style="font-size:90%;">0.000</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.3.4" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.3.4.1" style="font-size:90%;">0.008</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.3.5" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.3.5.1" style="font-size:90%;">0.094</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.3.6" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.3.6.1" style="font-size:90%;">0.138</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.3.7" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.3.7.1" style="font-size:90%;">0s</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.3.8" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.3.8.1" style="font-size:90%;">0.013</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.3.9" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.3.9.1" style="font-size:90%;">0.000</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.3.10" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.3.10.1" style="font-size:90%;">0.008</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.3.11" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.3.11.1" style="font-size:90%;">0.094</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.3.12" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.3.12.1" style="font-size:90%;">0.138</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S5.T2.9.1.3.13" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.3.13.1" style="font-size:90%;">0s</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.9.1.4">
+<td class="ltx_td ltx_align_left ltx_border_t" colspan="13" id="S5.T2.9.1.4.1" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold ltx_font_italic" id="S5.T2.9.1.4.1.1" style="font-size:90%;">RAG Methods (Controller = Qwen3.5 9B, thinking enabled)</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.9.1.5">
+<td class="ltx_td ltx_align_left" id="S5.T2.9.1.5.1" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.5.1.1" style="font-size:90%;">RAG: query </span><math alttext="\rightarrow" class="ltx_Math" display="inline" id="S5.T2.m3" intent=":literal"><semantics><mo mathsize="0.900em" stretchy="false">→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math><span class="ltx_text" id="S5.T2.9.1.5.1.2" style="font-size:90%;"> slice</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.5.2" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.5.2.1" style="font-size:90%;">0.428</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.5.3" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.5.3.1" style="font-size:90%;">0.471</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.5.4" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.5.4.1" style="font-size:90%;">0.425</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.5.5" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.5.5.1" style="font-size:90%;">0.415</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.5.6" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.5.6.1" style="font-size:90%;">0.207</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.5.7" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.5.7.1" style="font-size:90%;">0.1s</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.5.8" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.5.8.1" style="font-size:90%;">0.381</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.5.9" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.5.9.1" style="font-size:90%;">0.434</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.5.10" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.5.10.1" style="font-size:90%;">0.405</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.5.11" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.5.11.1" style="font-size:90%;">0.293</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.5.12" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.5.12.1" style="font-size:90%;">0.242</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.5.13" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.5.13.1" style="font-size:90%;">0.1s</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.9.1.6">
+<td class="ltx_td ltx_align_left" id="S5.T2.9.1.6.1" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.6.1.1" style="font-size:90%;">RAG: query </span><math alttext="\rightarrow" class="ltx_Math" display="inline" id="S5.T2.m4" intent=":literal"><semantics><mo mathsize="0.900em" stretchy="false">→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math><span class="ltx_text" id="S5.T2.9.1.6.1.2" style="font-size:90%;"> slice + notes</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.6.2" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.6.2.1" style="font-size:90%;">0.510</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.6.3" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.6.3.1" style="font-size:90%;">0.524</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.6.4" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.6.4.1" style="font-size:90%;">0.496</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.6.5" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.6.5.1" style="font-size:90%;">0.528</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.6.6" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.6.6.1" style="font-size:90%;">0.414</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.6.7" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.6.7.1" style="font-size:90%;">0.2s</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.6.8" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.6.8.1" style="font-size:90%;">0.459</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.6.9" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.6.9.1" style="font-size:90%;">0.487</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.6.10" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.6.10.1" style="font-size:90%;">0.472</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.6.11" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.6.11.1" style="font-size:90%;">0.434</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.6.12" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.6.12.1" style="font-size:90%;">0.310</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.6.13" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.6.13.1" style="font-size:90%;">0.3s</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.9.1.7">
+<td class="ltx_td ltx_align_left" id="S5.T2.9.1.7.1" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.7.1.1" style="font-size:90%;">AgentRunbook-R</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.7.2" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.7.2.1" style="font-size:90%;">0.586<sup class="ltx_sup" id="S5.T2.9.1.7.2.1.1"><span class="ltx_text ltx_font_medium" id="S5.T2.9.1.7.2.1.1.1">✣</span></sup></span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.7.3" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.7.3.1" style="font-size:90%;">0.661<sup class="ltx_sup" id="S5.T2.9.1.7.3.1.1"><span class="ltx_text ltx_font_medium" id="S5.T2.9.1.7.3.1.1.1">✣</span></sup></span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.7.4" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.7.4.1" style="font-size:90%;">0.583</span><sup class="ltx_sup" id="S5.T2.9.1.7.4.2"><span class="ltx_text" id="S5.T2.9.1.7.4.2.1" style="font-size:90%;">✣</span></sup></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.7.5" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.7.5.1" style="font-size:90%;">0.528</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.7.6" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.7.6.1" style="font-size:90%;">0.310</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.7.7" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.7.7.1" style="font-size:90%;">26.9s</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.7.8" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.7.8.1" style="font-size:90%;">0.570<sup class="ltx_sup" id="S5.T2.9.1.7.8.1.1"><span class="ltx_text ltx_font_medium" id="S5.T2.9.1.7.8.1.1.1">✣</span></sup></span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.7.9" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.7.9.1" style="font-size:90%;">0.630<sup class="ltx_sup" id="S5.T2.9.1.7.9.1.1"><span class="ltx_text ltx_font_medium" id="S5.T2.9.1.7.9.1.1.1">✣</span></sup></span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.7.10" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.7.10.1" style="font-size:90%;">0.614<sup class="ltx_sup" id="S5.T2.9.1.7.10.1.1"><span class="ltx_text ltx_font_medium" id="S5.T2.9.1.7.10.1.1.1">✣</span></sup></span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.7.11" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.7.11.1" style="font-size:90%;">0.472<sup class="ltx_sup" id="S5.T2.9.1.7.11.1.1"><span class="ltx_text ltx_font_medium" id="S5.T2.9.1.7.11.1.1.1">✣</span></sup></span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.7.12" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.7.12.1" style="font-size:90%;">0.345</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.7.13" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.7.13.1" style="font-size:90%;">25.8s</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.9.1.8">
+<td class="ltx_td ltx_align_left" id="S5.T2.9.1.8.1" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.8.1.1" style="font-size:90%;">        – raw slice pool</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.8.2" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.8.2.1" style="font-size:90%;">0.423</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.8.3" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.8.3.1" style="font-size:90%;">0.286</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.8.4" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.8.4.1" style="font-size:90%;">0.551</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.8.5" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.8.5.1" style="font-size:90%;">0.538</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.8.6" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.8.6.1" style="font-size:90%;">0.345</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.8.7" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.8.7.1" style="font-size:90%;">16.7s</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.8.8" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.8.8.1" style="font-size:90%;">0.335</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.8.9" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.8.9.1" style="font-size:90%;">0.233</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.8.10" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.8.10.1" style="font-size:90%;">0.433</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.8.11" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.8.11.1" style="font-size:90%;">0.377</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.8.12" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.8.12.1" style="font-size:90%;">0.413</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.8.13" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.8.13.1" style="font-size:90%;">17.1s</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.9.1.9">
+<td class="ltx_td ltx_align_left" id="S5.T2.9.1.9.1" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.9.1.1" style="font-size:90%;">        – event pool</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.9.2" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.9.2.1" style="font-size:90%;">0.556</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.9.3" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.9.3.1" style="font-size:90%;">0.614</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.9.4" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.9.4.1" style="font-size:90%;">0.559</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.9.5" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.9.5.1" style="font-size:90%;">0.528</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.9.6" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.9.6.1" style="font-size:90%;">0.276</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.9.7" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.9.7.1" style="font-size:90%;">19.1s</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.9.8" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.9.8.1" style="font-size:90%;">0.484</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.9.9" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.9.9.1" style="font-size:90%;">0.534</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.9.10" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.9.10.1" style="font-size:90%;">0.496</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.9.11" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.9.11.1" style="font-size:90%;">0.434</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.9.12" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.9.12.1" style="font-size:90%;">0.276</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.9.13" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.9.13.1" style="font-size:90%;">18.5s</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.9.1.10">
+<td class="ltx_td ltx_align_left" id="S5.T2.9.1.10.1" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.10.1.1" style="font-size:90%;">        – note pool</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.10.2" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.10.2.1" style="font-size:90%;">0.579</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.10.3" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.10.3.1" style="font-size:90%;">0.651</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.10.4" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.10.4.1" style="font-size:90%;">0.614</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.10.5" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.10.5.1" style="font-size:90%;">0.481</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.10.6" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.10.6.1" style="font-size:90%;">0.310</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.10.7" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.10.7.1" style="font-size:90%;">22.8s</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.10.8" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.10.8.1" style="font-size:90%;">0.499</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.10.9" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.10.9.1" style="font-size:90%;">0.561</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.10.10" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.10.10.1" style="font-size:90%;">0.543</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.10.11" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.10.11.1" style="font-size:90%;">0.396</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.10.12" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.10.12.1" style="font-size:90%;">0.276</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.10.13" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.10.13.1" style="font-size:90%;">20.5s</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.9.1.11">
+<td class="ltx_td ltx_align_left ltx_border_t" colspan="13" id="S5.T2.9.1.11.1" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold ltx_font_italic" id="S5.T2.9.1.11.1.1" style="font-size:90%;">Coding Agent Methods (Controller = GPT-5.4-mini, xhigh reasoning)</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.9.1.12">
+<td class="ltx_td ltx_align_left" id="S5.T2.9.1.12.1" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.12.1.1" style="font-size:90%;">Codex</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.12.2" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.12.2.1" style="font-size:90%;">0.699</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.12.3" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.12.3.1" style="font-size:90%;">0.804</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.12.4" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.12.4.1" style="font-size:90%;">0.670</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.12.5" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.12.5.1" style="font-size:90%;">0.575</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.12.6" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.12.6.1" style="font-size:90%;">0.586</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.12.7" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.12.7.1" style="font-size:90%;">177.2s</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.12.8" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.12.8.1" style="font-size:90%;">0.687</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.12.9" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.12.9.1" style="font-size:90%;">0.783</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.12.10" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.12.10.1" style="font-size:90%;">0.646</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.12.11" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.12.11.1" style="font-size:90%;">0.613</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.12.12" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.12.12.1" style="font-size:90%;">0.517</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.12.13" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.12.13.1" style="font-size:90%;">185.8s</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.9.1.13">
+<td class="ltx_td ltx_align_left" id="S5.T2.9.1.13.1" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.13.1.1" style="font-size:90%;">AgentRunbook-C</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.13.2" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.13.2.1" style="font-size:90%;">0.749<sup class="ltx_sup" id="S5.T2.9.1.13.2.1.1"><span class="ltx_text ltx_font_medium" id="S5.T2.9.1.13.2.1.1.1">✣</span></sup></span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.13.3" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.13.3.1" style="font-size:90%;">0.820</span><sup class="ltx_sup" id="S5.T2.9.1.13.3.2"><span class="ltx_text" id="S5.T2.9.1.13.3.2.1" style="font-size:90%;">✣</span></sup></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.13.4" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.13.4.1" style="font-size:90%;">0.724<sup class="ltx_sup" id="S5.T2.9.1.13.4.1.1"><span class="ltx_text ltx_font_medium" id="S5.T2.9.1.13.4.1.1.1">✣</span></sup></span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.13.5" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.13.5.1" style="font-size:90%;">0.726<sup class="ltx_sup" id="S5.T2.9.1.13.5.1.1"><span class="ltx_text ltx_font_medium" id="S5.T2.9.1.13.5.1.1.1">✣</span></sup></span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.13.6" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.13.6.1" style="font-size:90%;">0.483</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.13.7" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.13.7.1" style="font-size:90%;">108.3s</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.13.8" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.13.8.1" style="font-size:90%;">0.701</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.13.9" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.13.9.1" style="font-size:90%;">0.788</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.13.10" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.13.10.1" style="font-size:90%;">0.701<sup class="ltx_sup" id="S5.T2.9.1.13.10.1.1"><span class="ltx_text ltx_font_medium" id="S5.T2.9.1.13.10.1.1.1">✣</span></sup></span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.13.11" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.13.11.1" style="font-size:90%;">0.613</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.13.12" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.13.12.1" style="font-size:90%;">0.449</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.13.13" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.13.13.1" style="font-size:90%;">139.9s</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.9.1.14">
+<td class="ltx_td ltx_align_left" id="S5.T2.9.1.14.1" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.14.1.1" style="font-size:90%;">        – workflow</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.14.2" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.14.2.1" style="font-size:90%;">0.701</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.14.3" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.14.3.1" style="font-size:90%;">0.772</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.14.4" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.14.4.1" style="font-size:90%;">0.677</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.14.5" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.14.5.1" style="font-size:90%;">0.632</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.14.6" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.14.6.1" style="font-size:90%;">0.586</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.14.7" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.14.7.1" style="font-size:90%;">167.9s</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.14.8" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.14.8.1" style="font-size:90%;">0.641</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.14.9" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.14.9.1" style="font-size:90%;">0.709</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.14.10" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.14.10.1" style="font-size:90%;">0.646</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.14.11" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.14.11.1" style="font-size:90%;">0.575</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.14.12" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.14.12.1" style="font-size:90%;">0.414</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.14.13" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.14.13.1" style="font-size:90%;">231.9s</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.9.1.15">
+<td class="ltx_td ltx_align_left" id="S5.T2.9.1.15.1" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.15.1.1" style="font-size:90%;">        – manifest artifacts</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.15.2" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.15.2.1" style="font-size:90%;">0.747</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.15.3" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.15.3.1" style="font-size:90%;">0.847</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.15.4" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.15.4.1" style="font-size:90%;">0.709</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.15.5" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.15.5.1" style="font-size:90%;">0.698</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.15.6" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.15.6.1" style="font-size:90%;">0.448</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.15.7" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.15.7.1" style="font-size:90%;">155.0s</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.15.8" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.15.8.1" style="font-size:90%;">0.681</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.15.9" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.15.9.1" style="font-size:90%;">0.767</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.15.10" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.15.10.1" style="font-size:90%;">0.685</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.15.11" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.15.11.1" style="font-size:90%;">0.576</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.15.12" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.15.12.1" style="font-size:90%;">0.483</span></td>
+<td class="ltx_td ltx_align_center" id="S5.T2.9.1.15.13" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.15.13.1" style="font-size:90%;">211.6s</span></td></tr>
+<tr class="ltx_tr" id="S5.T2.9.1.16">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="S5.T2.9.1.16.1" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.16.1.1" style="font-size:90%;">        – helper functions</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.9.1.16.2" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.16.2.1" style="font-size:90%;">0.714</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.9.1.16.3" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.16.3.1" style="font-size:90%;">0.783</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.9.1.16.4" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.16.4.1" style="font-size:90%;">0.724</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.9.1.16.5" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.16.5.1" style="font-size:90%;">0.660</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.9.1.16.6" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.16.6.1" style="font-size:90%;">0.414</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.9.1.16.7" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.16.7.1" style="font-size:90%;">145.9s</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.9.1.16.8" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.16.8.1" style="font-size:90%;">0.718</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.9.1.16.9" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.16.9.1" style="font-size:90%;">0.804</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.9.1.16.10" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.16.10.1" style="font-size:90%;">0.693</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.9.1.16.11" style="padding:0.35pt 4.0pt;"><span class="ltx_text ltx_font_bold" id="S5.T2.9.1.16.11.1" style="font-size:90%;">0.689</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.9.1.16.12" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.16.12.1" style="font-size:90%;">0.380</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S5.T2.9.1.16.13" style="padding:0.35pt 4.0pt;"><span class="ltx_text" id="S5.T2.9.1.16.13.1" style="font-size:90%;">182.5s</span></td></tr>
+</table></figure><figure id="A1.T3"><figcaption>Table 3: Examples of goal sanitization for WorkArena and WorkArena++ Level-2/3 trajectories. The rewritten goals preserve task intent and task-specific values while removing explicit navigation routes and step-by-step module hints.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="A1.T3.5">
+<tr class="ltx_tr" id="A1.T3.5.1">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A1.T3.5.1.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T3.5.1.1.1" style="width:75.9pt;">
+<span class="ltx_p" id="A1.T3.5.1.1.1.1"><span class="ltx_text ltx_font_bold" id="A1.T3.5.1.1.1.1.1" style="font-size:90%;">Task family</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A1.T3.5.1.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T3.5.1.2.1" style="width:124.2pt;">
+<span class="ltx_p" id="A1.T3.5.1.2.1.1"><span class="ltx_text ltx_font_bold" id="A1.T3.5.1.2.1.1.1" style="font-size:90%;">Original goal excerpt</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A1.T3.5.1.3" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T3.5.1.3.1" style="width:124.2pt;">
+<span class="ltx_p" id="A1.T3.5.1.3.1.1"><span class="ltx_text ltx_font_bold" id="A1.T3.5.1.3.1.1.1" style="font-size:90%;">Sanitized goal excerpt</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A1.T3.5.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A1.T3.5.2.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T3.5.2.1.1" style="width:75.9pt;">
+<span class="ltx_p" id="A1.T3.5.2.1.1.1"><span class="ltx_text" id="A1.T3.5.2.1.1.1.1" style="font-size:90%;">Duplicate problem cleanup</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A1.T3.5.2.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T3.5.2.2.1" style="width:124.2pt;">
+<span class="ltx_p" id="A1.T3.5.2.2.1.1"><span class="ltx_text" id="A1.T3.5.2.2.1.1.1" style="font-size:90%;">Clean-up your duplicate problems. Concretely, navigate to the “Assigned to me” module of the “Problem” application. Create a filter where “Problem statement” contains </span><span class="ltx_text ltx_font_typewriter" id="A1.T3.5.2.2.1.1.2" style="font-size:90%;">#SERIES-5ea261ef-8</span><span class="ltx_text" id="A1.T3.5.2.2.1.1.3" style="font-size:90%;">. Mark problems with duplicated problem statements as such.</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A1.T3.5.2.3" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T3.5.2.3.1" style="width:124.2pt;">
+<span class="ltx_p" id="A1.T3.5.2.3.1.1"><span class="ltx_text" id="A1.T3.5.2.3.1.1.1" style="font-size:90%;">Clean-up your duplicate problems. Review your own assigned problems where “Problem statement” contains </span><span class="ltx_text ltx_font_typewriter" id="A1.T3.5.2.3.1.1.2" style="font-size:90%;">#SERIES-5ea261ef-8</span><span class="ltx_text" id="A1.T3.5.2.3.1.1.3" style="font-size:90%;">. Mark problems with duplicated problem statements as such.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A1.T3.5.3">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A1.T3.5.3.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T3.5.3.1.1" style="width:75.9pt;">
+<span class="ltx_p" id="A1.T3.5.3.1.1.1"><span class="ltx_text" id="A1.T3.5.3.1.1.1.1" style="font-size:90%;">Dashboard-driven catalog restocking</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A1.T3.5.3.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T3.5.3.2.1" style="width:124.2pt;">
+<span class="ltx_p" id="A1.T3.5.3.2.1.1"><span class="ltx_text" id="A1.T3.5.3.2.1.1.1" style="font-size:90%;">Retrieve information from the chart with title </span><span class="ltx_text ltx_font_typewriter" id="A1.T3.5.3.2.1.1.2" style="font-size:90%;">#CAT012007808</span><span class="ltx_text" id="A1.T3.5.3.2.1.1.3" style="font-size:90%;">. Navigate to </span><span class="ltx_text ltx_font_typewriter" id="A1.T3.5.3.2.1.1.4" style="font-size:90%;">Reports &gt; View/Run</span><span class="ltx_text" id="A1.T3.5.3.2.1.1.5" style="font-size:90%;">, search for the report, then navigate to </span><span class="ltx_text ltx_font_typewriter" id="A1.T3.5.3.2.1.1.6" style="font-size:90%;">Self-Service &gt; Service Catalog</span><span class="ltx_text" id="A1.T3.5.3.2.1.1.7" style="font-size:90%;"> and place an order for the least available item.</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A1.T3.5.3.3" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T3.5.3.3.1" style="width:124.2pt;">
+<span class="ltx_p" id="A1.T3.5.3.3.1.1"><span class="ltx_text" id="A1.T3.5.3.3.1.1.1" style="font-size:90%;">Retrieve information from the chart with title </span><span class="ltx_text ltx_font_typewriter" id="A1.T3.5.3.3.1.1.2" style="font-size:90%;">#CAT012007808</span><span class="ltx_text" id="A1.T3.5.3.3.1.1.3" style="font-size:90%;">. Find the greatest stock value and the least available item in the chart. For the least available item, place an order for extra items such that its quantity matches the value you found.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A1.T3.5.4">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A1.T3.5.4.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T3.5.4.1.1" style="width:75.9pt;">
+<span class="ltx_p" id="A1.T3.5.4.1.1.1"><span class="ltx_text" id="A1.T3.5.4.1.1.1.1" style="font-size:90%;">Requested-item reorder</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A1.T3.5.4.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T3.5.4.2.1" style="width:124.2pt;">
+<span class="ltx_p" id="A1.T3.5.4.2.1.1"><span class="ltx_text" id="A1.T3.5.4.2.1.1.1" style="font-size:90%;">Order same item as Kathryn-Lisa Ibarra-Stewart. Navigate to the “Requested Items” module of “Self-Service”, filter by “Requested for”, then navigate to the “Service Catalog” module and order the item with the specified quantity and configuration.</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A1.T3.5.4.3" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T3.5.4.3.1" style="width:124.2pt;">
+<span class="ltx_p" id="A1.T3.5.4.3.1.1"><span class="ltx_text" id="A1.T3.5.4.3.1.1.1" style="font-size:90%;">Order same item as Kathryn-Lisa Ibarra-Stewart. Find the item previously requested for Kathryn-Lisa Ibarra-Stewart. Order the item with the specified quantity and configuration.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A1.T3.5.5">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A1.T3.5.5.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T3.5.5.1.1" style="width:75.9pt;">
+<span class="ltx_p" id="A1.T3.5.5.1.1.1"><span class="ltx_text" id="A1.T3.5.5.1.1.1.1" style="font-size:90%;">Hardware asset lookup</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A1.T3.5.5.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T3.5.5.2.1" style="width:124.2pt;">
+<span class="ltx_p" id="A1.T3.5.5.2.1.1"><span class="ltx_text" id="A1.T3.5.5.2.1.1.1" style="font-size:90%;">Find the warranty expiration date for Julia-Dylan Ray-Mclean’s laptop. Navigate to </span><span class="ltx_text ltx_font_typewriter" id="A1.T3.5.5.2.1.1.2" style="font-size:90%;">Portfolios &gt; Hardware Assets</span><span class="ltx_text" id="A1.T3.5.5.2.1.1.3" style="font-size:90%;">, filter where “Assigned to” is Julia-Dylan Ray-Mclean, and extract the “Warranty expiration” field.</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A1.T3.5.5.3" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T3.5.5.3.1" style="width:124.2pt;">
+<span class="ltx_p" id="A1.T3.5.5.3.1.1"><span class="ltx_text" id="A1.T3.5.5.3.1.1.1" style="font-size:90%;">Find the warranty expiration date for Julia-Dylan Ray-Mclean’s laptop and report it.</span></span>
+</span></td></tr>
+</table></figure><figure id="A1.T4"><figcaption>Table 4: Reader prompt used in the main context gathering evaluation. The same template is used for all memory systems.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="A1.T4.5">
+<tr class="ltx_tr" id="A1.T4.5.1">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A1.T4.5.1.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T4.5.1.1.1" style="width:62.1pt;">
+<span class="ltx_p" id="A1.T4.5.1.1.1.1"><span class="ltx_text ltx_font_bold" id="A1.T4.5.1.1.1.1.1" style="font-size:90%;">Component</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A1.T4.5.1.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T4.5.1.2.1" style="width:265.7pt;">
+<span class="ltx_p" id="A1.T4.5.1.2.1.1"><span class="ltx_text ltx_font_bold" id="A1.T4.5.1.2.1.1.1" style="font-size:90%;">Template</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A1.T4.5.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A1.T4.5.2.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T4.5.2.1.1" style="width:62.1pt;">
+<span class="ltx_p" id="A1.T4.5.2.1.1.1"><span class="ltx_text" id="A1.T4.5.2.1.1.1.1" style="font-size:90%;">System prompt, WebArena</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A1.T4.5.2.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T4.5.2.2.1" style="width:265.7pt;">
+<span class="ltx_p" id="A1.T4.5.2.2.1.1"><span class="ltx_text" id="A1.T4.5.2.2.1.1.1" style="font-size:90%;">You are an experienced colleague in a web browsing environment that has a customized Magento-based shopping website, a customized Magento-based shopping admin CMS website, as well as a customized forum website based on Reddit/Postmill. Answer based on your memory of the environment. If you do not know the answer, output exactly </span><span class="ltx_text ltx_font_typewriter" id="A1.T4.5.2.2.1.1.2" style="font-size:90%;">\boxed{UNKNOWN}</span><span class="ltx_text" id="A1.T4.5.2.2.1.1.3" style="font-size:90%;">. Do not guess. Never attempt to guess an answer if you are not sure. If you believe the question’s construction/premise is wrong, provide an explanation in </span><span class="ltx_text ltx_font_typewriter" id="A1.T4.5.2.2.1.1.4" style="font-size:90%;">\boxed{}</span><span class="ltx_text" id="A1.T4.5.2.2.1.1.5" style="font-size:90%;"> explaining why the question is flawed.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A1.T4.5.3">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A1.T4.5.3.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T4.5.3.1.1" style="width:62.1pt;">
+<span class="ltx_p" id="A1.T4.5.3.1.1.1"><span class="ltx_text" id="A1.T4.5.3.1.1.1.1" style="font-size:90%;">System prompt, WorkArena</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A1.T4.5.3.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T4.5.3.2.1" style="width:265.7pt;">
+<span class="ltx_p" id="A1.T4.5.3.2.1.1"><span class="ltx_text" id="A1.T4.5.3.2.1.1.1" style="font-size:90%;">You are an experienced colleague working in a customized ServiceNow environment. Answer based on your memory of the environment. If you do not know the answer, output exactly </span><span class="ltx_text ltx_font_typewriter" id="A1.T4.5.3.2.1.1.2" style="font-size:90%;">\boxed{UNKNOWN}</span><span class="ltx_text" id="A1.T4.5.3.2.1.1.3" style="font-size:90%;">. Do not guess. Never attempt to guess an answer if you are not sure. If you believe the question’s construction/premise is wrong, provide an explanation in </span><span class="ltx_text ltx_font_typewriter" id="A1.T4.5.3.2.1.1.4" style="font-size:90%;">\boxed{}</span><span class="ltx_text" id="A1.T4.5.3.2.1.1.5" style="font-size:90%;"> explaining why the question is flawed.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A1.T4.5.4">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A1.T4.5.4.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T4.5.4.1.1" style="width:62.1pt;">
+<span class="ltx_p" id="A1.T4.5.4.1.1.1"><span class="ltx_text" id="A1.T4.5.4.1.1.1.1" style="font-size:90%;">User prompt</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A1.T4.5.4.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T4.5.4.2.1" style="width:265.7pt;">
+<span class="ltx_p" id="A1.T4.5.4.2.1.1"><span class="ltx_text ltx_font_typewriter" id="A1.T4.5.4.2.1.1.1" style="font-size:90%;">### Memory context:</span><span class="ltx_text" id="A1.T4.5.4.2.1.1.2" style="font-size:90%;"> </span>
+<br class="ltx_break"/><span class="ltx_text ltx_font_typewriter" id="A1.T4.5.4.2.1.1.3" style="font-size:90%;">{memory context returned by the memory module, after truncation}</span><span class="ltx_text" id="A1.T4.5.4.2.1.1.4" style="font-size:90%;"> </span>
+<br class="ltx_break"/><span class="ltx_text ltx_font_typewriter" id="A1.T4.5.4.2.1.1.5" style="font-size:90%;">### Question to answer:</span><span class="ltx_text" id="A1.T4.5.4.2.1.1.6" style="font-size:90%;"> </span>
+<br class="ltx_break"/><span class="ltx_text ltx_font_typewriter" id="A1.T4.5.4.2.1.1.7" style="font-size:90%;">{question text}</span><span class="ltx_text" id="A1.T4.5.4.2.1.1.8" style="font-size:90%;"> </span>
+<br class="ltx_break"/><span class="ltx_text ltx_font_italic" id="A1.T4.5.4.2.1.1.9" style="font-size:90%;">If the question contains an image, the image is appended after the question text.</span></span>
+</span></td></tr>
+</table></figure><figure id="A1.T5"><figcaption>Table 5: LLM-judge prompts for semantic evaluation of abstention and gotchas questions. Both judges return JSON with a binary label.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="A1.T5.5">
+<tr class="ltx_tr" id="A1.T5.5.1">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A1.T5.5.1.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T5.5.1.1.1" style="width:55.2pt;">
+<span class="ltx_p" id="A1.T5.5.1.1.1.1"><span class="ltx_text ltx_font_bold" id="A1.T5.5.1.1.1.1.1" style="font-size:90%;">Judge</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A1.T5.5.1.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T5.5.1.2.1" style="width:272.6pt;">
+<span class="ltx_p" id="A1.T5.5.1.2.1.1"><span class="ltx_text ltx_font_bold" id="A1.T5.5.1.2.1.1.1" style="font-size:90%;">Prompt</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A1.T5.5.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A1.T5.5.2.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T5.5.2.1.1" style="width:55.2pt;">
+<span class="ltx_p" id="A1.T5.5.2.1.1.1"><span class="ltx_text" id="A1.T5.5.2.1.1.1.1" style="font-size:90%;">Abstention judge</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A1.T5.5.2.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T5.5.2.2.1" style="width:272.6pt;">
+<span class="ltx_p" id="A1.T5.5.2.2.1.1"><span class="ltx_text ltx_font_bold" id="A1.T5.5.2.2.1.1.1" style="font-size:90%;">System:</span><span class="ltx_text" id="A1.T5.5.2.2.1.1.2" style="font-size:90%;"> You are a strict grader for flawed-premise (abstention) questions. Judge whether a model answer correctly identifies that the question premise is wrong, consistent with the reference answer. If the model follows the flawed premise and gives a concrete answer under that premise, it must be graded 0. If the model’s final answer is just UNKNOWN / cannot determine without identifying the flaw, grade 0. If the model is contradictory (both rejects premise and also gives a concrete premise-following answer), grade 0. Paraphrases are allowed when they preserve the same core flaw described by the reference answer.</span></span>
+<span class="ltx_p" id="A1.T5.5.2.2.1.2"><span class="ltx_text ltx_font_bold" id="A1.T5.5.2.2.1.2.1" style="font-size:90%;">User:</span><span class="ltx_text" id="A1.T5.5.2.2.1.2.2" style="font-size:90%;"> Evaluate whether the model correctly handled a flawed-premise question.</span></span>
+<span class="ltx_p" id="A1.T5.5.2.2.1.3"><span class="ltx_text ltx_font_bold" id="A1.T5.5.2.2.1.3.1" style="font-size:90%;">Question:</span><span class="ltx_text" id="A1.T5.5.2.2.1.3.2" style="font-size:90%;"> </span><span class="ltx_text ltx_font_typewriter" id="A1.T5.5.2.2.1.3.3" style="font-size:90%;">{question_text}</span></span>
+<span class="ltx_p" id="A1.T5.5.2.2.1.4"><span class="ltx_text ltx_font_bold" id="A1.T5.5.2.2.1.4.1" style="font-size:90%;">Reference answer:</span><span class="ltx_text" id="A1.T5.5.2.2.1.4.2" style="font-size:90%;"> </span><span class="ltx_text ltx_font_typewriter" id="A1.T5.5.2.2.1.4.3" style="font-size:90%;">{reference_answer}</span></span>
+<span class="ltx_p" id="A1.T5.5.2.2.1.5"><span class="ltx_text ltx_font_bold" id="A1.T5.5.2.2.1.5.1" style="font-size:90%;">Model full response:</span><span class="ltx_text" id="A1.T5.5.2.2.1.5.2" style="font-size:90%;"> </span><span class="ltx_text ltx_font_typewriter" id="A1.T5.5.2.2.1.5.3" style="font-size:90%;">{model_full_response}</span></span>
+<span class="ltx_p" id="A1.T5.5.2.2.1.6"><span class="ltx_text ltx_font_bold" id="A1.T5.5.2.2.1.6.1" style="font-size:90%;">Model extracted final answer:</span><span class="ltx_text" id="A1.T5.5.2.2.1.6.2" style="font-size:90%;"> </span><span class="ltx_text ltx_font_typewriter" id="A1.T5.5.2.2.1.6.3" style="font-size:90%;">{model_final_answer}</span></span>
+<span class="ltx_p" id="A1.T5.5.2.2.1.7"><span class="ltx_text ltx_font_bold" id="A1.T5.5.2.2.1.7.1" style="font-size:90%;">Scoring rubric:</span><span class="ltx_text" id="A1.T5.5.2.2.1.7.2" style="font-size:90%;"> Label 1 only if the model clearly identifies the flawed premise and reaches a conclusion equivalent to the reference answer. Label 1 also if the model explicitly says it lacks access to the user’s specific live environment/instance/configuration and therefore cannot verify, provided it does not give a concrete premise-following answer. Label 0 if the model follows the flawed premise and gives a concrete answer under that premise. Label 0 for generic UNKNOWN/insufficient-info replies that do not identify a flaw and do not make the explicit environment-access limitation clear. Label 0 if contradictory.</span></span>
+<span class="ltx_p" id="A1.T5.5.2.2.1.8"><span class="ltx_text ltx_font_bold" id="A1.T5.5.2.2.1.8.1" style="font-size:90%;">Output JSON only:</span><span class="ltx_text" id="A1.T5.5.2.2.1.8.2" style="font-size:90%;"> </span><span class="ltx_text ltx_font_typewriter" id="A1.T5.5.2.2.1.8.3" style="font-size:90%;">{"label": 0 or 1, "reason": "short rationale"}</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A1.T5.5.3">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A1.T5.5.3.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T5.5.3.1.1" style="width:55.2pt;">
+<span class="ltx_p" id="A1.T5.5.3.1.1.1"><span class="ltx_text" id="A1.T5.5.3.1.1.1.1" style="font-size:90%;">Gotchas judge</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A1.T5.5.3.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A1.T5.5.3.2.1" style="width:272.6pt;">
+<span class="ltx_p" id="A1.T5.5.3.2.1.1"><span class="ltx_text ltx_font_bold" id="A1.T5.5.3.2.1.1.1" style="font-size:90%;">System:</span><span class="ltx_text" id="A1.T5.5.3.2.1.1.2" style="font-size:90%;"> You are a strict grader for gotchas-style insight questions. The reference answer describes the key insight(s). Grade 1 if the model response includes at least one correct insight point from the reference answer (paraphrase allowed), and does not contradict any reference point. If the model’s direction is wrong, or it contains contradictions against any reference point, grade 0. If the model gives multiple points, partial coverage is enough for 1 as long as no contradictions appear.</span></span>
+<span class="ltx_p" id="A1.T5.5.3.2.1.2"><span class="ltx_text ltx_font_bold" id="A1.T5.5.3.2.1.2.1" style="font-size:90%;">User:</span><span class="ltx_text" id="A1.T5.5.3.2.1.2.2" style="font-size:90%;"> Evaluate whether the model answer captures the gotcha insight.</span></span>
+<span class="ltx_p" id="A1.T5.5.3.2.1.3"><span class="ltx_text ltx_font_bold" id="A1.T5.5.3.2.1.3.1" style="font-size:90%;">Question:</span><span class="ltx_text" id="A1.T5.5.3.2.1.3.2" style="font-size:90%;"> </span><span class="ltx_text ltx_font_typewriter" id="A1.T5.5.3.2.1.3.3" style="font-size:90%;">{question_text}</span></span>
+<span class="ltx_p" id="A1.T5.5.3.2.1.4"><span class="ltx_text ltx_font_bold" id="A1.T5.5.3.2.1.4.1" style="font-size:90%;">Reference answer:</span><span class="ltx_text" id="A1.T5.5.3.2.1.4.2" style="font-size:90%;"> </span><span class="ltx_text ltx_font_typewriter" id="A1.T5.5.3.2.1.4.3" style="font-size:90%;">{reference_answer}</span></span>
+<span class="ltx_p" id="A1.T5.5.3.2.1.5"><span class="ltx_text ltx_font_bold" id="A1.T5.5.3.2.1.5.1" style="font-size:90%;">Model full response:</span><span class="ltx_text" id="A1.T5.5.3.2.1.5.2" style="font-size:90%;"> </span><span class="ltx_text ltx_font_typewriter" id="A1.T5.5.3.2.1.5.3" style="font-size:90%;">{model_full_response}</span></span>
+<span class="ltx_p" id="A1.T5.5.3.2.1.6"><span class="ltx_text ltx_font_bold" id="A1.T5.5.3.2.1.6.1" style="font-size:90%;">Model extracted final answer:</span><span class="ltx_text" id="A1.T5.5.3.2.1.6.2" style="font-size:90%;"> </span><span class="ltx_text ltx_font_typewriter" id="A1.T5.5.3.2.1.6.3" style="font-size:90%;">{model_final_answer}</span></span>
+<span class="ltx_p" id="A1.T5.5.3.2.1.7"><span class="ltx_text ltx_font_bold" id="A1.T5.5.3.2.1.7.1" style="font-size:90%;">Scoring rubric:</span><span class="ltx_text" id="A1.T5.5.3.2.1.7.2" style="font-size:90%;"> Label 1 if the model includes at least one correct insight point from the reference answer (paraphrase acceptable), and does not contradict any reference point. Label 1 even if only part of a multi-point reference answer is covered, as long as there is no contradiction. Label 0 if direction is wrong (suggests opposite action/cause), even if some wording overlaps. Label 0 if any point in the model response contradicts any reference point. Label 0 if the response is irrelevant or generic without insight.</span></span>
+<span class="ltx_p" id="A1.T5.5.3.2.1.8"><span class="ltx_text ltx_font_bold" id="A1.T5.5.3.2.1.8.1" style="font-size:90%;">Output JSON only:</span><span class="ltx_text" id="A1.T5.5.3.2.1.8.2" style="font-size:90%;"> </span><span class="ltx_text ltx_font_typewriter" id="A1.T5.5.3.2.1.8.3" style="font-size:90%;">{"label": 0 or 1, "reason": "short rationale"}</span></span>
+</span></td></tr>
+</table></figure><figure id="A2.T6"><figcaption>Table 6: No-context direct QA results on non-abstention questions. Frontier LLMs perform poorly across problem types.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="A2.T6.5">
+<tr class="ltx_tr" id="A2.T6.5.1">
+<td class="ltx_td ltx_align_left ltx_border_tt" id="A2.T6.5.1.1" style="padding:0.35pt 4.2pt;"><span class="ltx_text ltx_font_bold" id="A2.T6.5.1.1.1" style="font-size:90%;">Model</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A2.T6.5.1.2" style="padding:0.35pt 4.2pt;"><span class="ltx_text ltx_font_bold" id="A2.T6.5.1.2.1" style="font-size:90%;">Overall</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A2.T6.5.1.3" style="padding:0.35pt 4.2pt;"><span class="ltx_text ltx_font_bold" id="A2.T6.5.1.3.1" style="font-size:90%;">Static</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A2.T6.5.1.4" style="padding:0.35pt 4.2pt;"><span class="ltx_text ltx_font_bold" id="A2.T6.5.1.4.1" style="font-size:90%;">Dynamic</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A2.T6.5.1.5" style="padding:0.35pt 4.2pt;"><span class="ltx_text ltx_font_bold" id="A2.T6.5.1.5.1" style="font-size:90%;">Workflow</span></td>
+<td class="ltx_td ltx_align_center ltx_border_tt" id="A2.T6.5.1.6" style="padding:0.35pt 4.2pt;"><span class="ltx_text ltx_font_bold" id="A2.T6.5.1.6.1" style="font-size:90%;">Gotchas</span></td></tr>
+<tr class="ltx_tr" id="A2.T6.5.2">
+<td class="ltx_td ltx_align_left ltx_border_t" id="A2.T6.5.2.1" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.2.1.1" style="font-size:90%;">GPT-5.2</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A2.T6.5.2.2" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.2.2.1" style="font-size:90%;">0.047</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A2.T6.5.2.3" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.2.3.1" style="font-size:90%;">0.000</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A2.T6.5.2.4" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.2.4.1" style="font-size:90%;">0.000</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A2.T6.5.2.5" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.2.5.1" style="font-size:90%;">0.032</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="A2.T6.5.2.6" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.2.6.1" style="font-size:90%;">0.210</span></td></tr>
+<tr class="ltx_tr" id="A2.T6.5.3">
+<td class="ltx_td ltx_align_left" id="A2.T6.5.3.1" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.3.1.1" style="font-size:90%;">Gemini-3.1-Pro-Preview</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.3.2" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.3.2.1" style="font-size:90%;">0.110</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.3.3" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.3.3.1" style="font-size:90%;">0.104</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.3.4" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.3.4.1" style="font-size:90%;">0.096</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.3.5" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.3.5.1" style="font-size:90%;">0.147</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.3.6" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.3.6.1" style="font-size:90%;">0.241</span></td></tr>
+<tr class="ltx_tr" id="A2.T6.5.4">
+<td class="ltx_td ltx_align_left" id="A2.T6.5.4.1" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.4.1.1" style="font-size:90%;">Claude Opus 4.6</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.4.2" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.4.2.1" style="font-size:90%;">0.118</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.4.3" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.4.3.1" style="font-size:90%;">0.096</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.4.4" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.4.4.1" style="font-size:90%;">0.121</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.4.5" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.4.5.1" style="font-size:90%;">0.134</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.4.6" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.4.6.1" style="font-size:90%;">0.379</span></td></tr>
+<tr class="ltx_tr" id="A2.T6.5.5">
+<td class="ltx_td ltx_align_left" id="A2.T6.5.5.1" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.5.1.1" style="font-size:90%;">GLM-5V-Turbo</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.5.2" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.5.2.1" style="font-size:90%;">0.101</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.5.3" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.5.3.1" style="font-size:90%;">0.126</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.5.4" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.5.4.1" style="font-size:90%;">0.107</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.5.5" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.5.5.1" style="font-size:90%;">0.091</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.5.6" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.5.6.1" style="font-size:90%;">0.205</span></td></tr>
+<tr class="ltx_tr" id="A2.T6.5.6">
+<td class="ltx_td ltx_align_left" id="A2.T6.5.6.1" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.6.1.1" style="font-size:90%;">Grok-4.20</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.6.2" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.6.2.1" style="font-size:90%;">0.024</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.6.3" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.6.3.1" style="font-size:90%;">0.000</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.6.4" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.6.4.1" style="font-size:90%;">0.029</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.6.5" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.6.5.1" style="font-size:90%;">0.151</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.6.6" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.6.6.1" style="font-size:90%;">0.102</span></td></tr>
+<tr class="ltx_tr" id="A2.T6.5.7">
+<td class="ltx_td ltx_align_left" id="A2.T6.5.7.1" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.7.1.1" style="font-size:90%;">Kimi-K2.5</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.7.2" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.7.2.1" style="font-size:90%;">0.141</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.7.3" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.7.3.1" style="font-size:90%;">0.183</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.7.4" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.7.4.1" style="font-size:90%;">0.197</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.7.5" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.7.5.1" style="font-size:90%;">0.115</span></td>
+<td class="ltx_td ltx_align_center" id="A2.T6.5.7.6" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.7.6.1" style="font-size:90%;">0.171</span></td></tr>
+<tr class="ltx_tr" id="A2.T6.5.8">
+<td class="ltx_td ltx_align_left ltx_border_bb" id="A2.T6.5.8.1" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.8.1.1" style="font-size:90%;">Qwen3.6-Plus</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A2.T6.5.8.2" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.8.2.1" style="font-size:90%;">0.110</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A2.T6.5.8.3" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.8.3.1" style="font-size:90%;">0.118</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A2.T6.5.8.4" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.8.4.1" style="font-size:90%;">0.078</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A2.T6.5.8.5" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.8.5.1" style="font-size:90%;">0.091</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="A2.T6.5.8.6" style="padding:0.35pt 4.2pt;"><span class="ltx_text" id="A2.T6.5.8.6.1" style="font-size:90%;">0.310</span></td></tr>
+</table></figure><figure id="A2.T7"><figcaption>Table 7: Prompt template for oracle slices and notes direct QA. The same template is used for full oracle trajectories.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="A2.T7.5">
+<tr class="ltx_tr" id="A2.T7.5.1">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A2.T7.5.1.1">
+<span class="ltx_inline-block ltx_align_top" id="A2.T7.5.1.1.1" style="width:58.7pt;">
+<span class="ltx_p" id="A2.T7.5.1.1.1.1"><span class="ltx_text ltx_font_bold" id="A2.T7.5.1.1.1.1.1" style="font-size:90%;">Component</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A2.T7.5.1.2">
+<span class="ltx_inline-block ltx_align_top" id="A2.T7.5.1.2.1" style="width:269.1pt;">
+<span class="ltx_p" id="A2.T7.5.1.2.1.1"><span class="ltx_text ltx_font_bold" id="A2.T7.5.1.2.1.1.1" style="font-size:90%;">Template</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A2.T7.5.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A2.T7.5.2.1">
+<span class="ltx_inline-block ltx_align_top" id="A2.T7.5.2.1.1" style="width:58.7pt;">
+<span class="ltx_p" id="A2.T7.5.2.1.1.1"><span class="ltx_text" id="A2.T7.5.2.1.1.1.1" style="font-size:90%;">System prompt, web</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A2.T7.5.2.2">
+<span class="ltx_inline-block ltx_align_top" id="A2.T7.5.2.2.1" style="width:269.1pt;">
+<span class="ltx_p" id="A2.T7.5.2.2.1.1"><span class="ltx_text" id="A2.T7.5.2.2.1.1.1" style="font-size:90%;">You are an experienced colleague in a web browsing environment that has a customized Magento-based shopping website, a customized Magento-based shopping admin CMS website, as well as a customized forum website based on Reddit/Postmill. Answer based on your memory of the environment. If you do not know the answer, output exactly </span><span class="ltx_text ltx_font_typewriter" id="A2.T7.5.2.2.1.1.2" style="font-size:90%;">\boxed{UNKNOWN}</span><span class="ltx_text" id="A2.T7.5.2.2.1.1.3" style="font-size:90%;">. Do not guess. Never attempt to guess an answer if you are not sure. If you believe the question’s construction/premise is wrong, provide an explanation in </span><span class="ltx_text ltx_font_typewriter" id="A2.T7.5.2.2.1.1.4" style="font-size:90%;">\boxed{}</span><span class="ltx_text" id="A2.T7.5.2.2.1.1.5" style="font-size:90%;"> explaining why the question is flawed.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A2.T7.5.3">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A2.T7.5.3.1">
+<span class="ltx_inline-block ltx_align_top" id="A2.T7.5.3.1.1" style="width:58.7pt;">
+<span class="ltx_p" id="A2.T7.5.3.1.1.1"><span class="ltx_text" id="A2.T7.5.3.1.1.1.1" style="font-size:90%;">System prompt, ServiceNow</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A2.T7.5.3.2">
+<span class="ltx_inline-block ltx_align_top" id="A2.T7.5.3.2.1" style="width:269.1pt;">
+<span class="ltx_p" id="A2.T7.5.3.2.1.1"><span class="ltx_text" id="A2.T7.5.3.2.1.1.1" style="font-size:90%;">You are an experienced colleague working in a customized ServiceNow environment. Answer based on your memory of the environment. If you do not know the answer, output exactly </span><span class="ltx_text ltx_font_typewriter" id="A2.T7.5.3.2.1.1.2" style="font-size:90%;">\boxed{UNKNOWN}</span><span class="ltx_text" id="A2.T7.5.3.2.1.1.3" style="font-size:90%;">. Do not guess. Never attempt to guess an answer if you are not sure. If you believe the question’s construction/premise is wrong, provide an explanation in </span><span class="ltx_text ltx_font_typewriter" id="A2.T7.5.3.2.1.1.4" style="font-size:90%;">\boxed{}</span><span class="ltx_text" id="A2.T7.5.3.2.1.1.5" style="font-size:90%;"> explaining why the question is flawed.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A2.T7.5.4">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A2.T7.5.4.1">
+<span class="ltx_inline-block ltx_align_top" id="A2.T7.5.4.1.1" style="width:58.7pt;">
+<span class="ltx_p" id="A2.T7.5.4.1.1.1"><span class="ltx_text" id="A2.T7.5.4.1.1.1.1" style="font-size:90%;">User prompt</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A2.T7.5.4.2">
+<span class="ltx_inline-block ltx_align_top" id="A2.T7.5.4.2.1" style="width:269.1pt;">
+<span class="ltx_p" id="A2.T7.5.4.2.1.1"><span class="ltx_text ltx_font_typewriter" id="A2.T7.5.4.2.1.1.1" style="font-size:90%;"># Memory context:</span><span class="ltx_text" id="A2.T7.5.4.2.1.1.2" style="font-size:90%;"> </span>
+<br class="ltx_break"/><span class="ltx_text ltx_font_typewriter" id="A2.T7.5.4.2.1.1.3" style="font-size:90%;">## Procedure and Hint Notes Learned from Previous Tasks in the Environment</span><span class="ltx_text" id="A2.T7.5.4.2.1.1.4" style="font-size:90%;"> </span>
+<br class="ltx_break"/><span class="ltx_text ltx_font_italic" id="A2.T7.5.4.2.1.1.5" style="font-size:90%;">For each oracle trajectory: procedure note title, description, and bullet content; hint note title, description, and bullet content.</span><span class="ltx_text" id="A2.T7.5.4.2.1.1.6" style="font-size:90%;"> </span>
+<br class="ltx_break"/><span class="ltx_text ltx_font_typewriter" id="A2.T7.5.4.2.1.1.7" style="font-size:90%;">## Oracle Trajectories and Relevant State Slices from Previous Tasks in the Environment</span><span class="ltx_text" id="A2.T7.5.4.2.1.1.8" style="font-size:90%;"> </span>
+<br class="ltx_break"/><span class="ltx_text ltx_font_italic" id="A2.T7.5.4.2.1.1.9" style="font-size:90%;">For each selected trajectory: goal, outcome, start URL, action list, and evidence windows centered at annotated answer states. Each evidence window includes states from radius 1 around the annotated state, with URL, action, accessibility-tree text, and screenshots according to the rendering configuration.</span><span class="ltx_text" id="A2.T7.5.4.2.1.1.10" style="font-size:90%;"> </span>
+<br class="ltx_break"/><span class="ltx_text ltx_font_typewriter" id="A2.T7.5.4.2.1.1.11" style="font-size:90%;"># Question to answer:</span><span class="ltx_text" id="A2.T7.5.4.2.1.1.12" style="font-size:90%;"> </span>
+<br class="ltx_break"/><span class="ltx_text ltx_font_typewriter" id="A2.T7.5.4.2.1.1.13" style="font-size:90%;">{question}</span><span class="ltx_text" id="A2.T7.5.4.2.1.1.14" style="font-size:90%;"> </span>
+<br class="ltx_break"/><span class="ltx_text ltx_font_italic" id="A2.T7.5.4.2.1.1.15" style="font-size:90%;">If the question contains an image, the image is appended after the question text.</span></span>
+</span></td></tr>
+</table></figure><figure id="A2.T8"><figcaption>Table 8: Sandbox layout and instruction for the Codex oracle direct-QA pilot study.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="A2.T8.5">
+<tr class="ltx_tr" id="A2.T8.5.1">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A2.T8.5.1.1">
+<span class="ltx_inline-block ltx_align_top" id="A2.T8.5.1.1.1" style="width:65.6pt;">
+<span class="ltx_p" id="A2.T8.5.1.1.1.1"><span class="ltx_text ltx_font_bold" id="A2.T8.5.1.1.1.1.1" style="font-size:90%;">Component</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A2.T8.5.1.2">
+<span class="ltx_inline-block ltx_align_top" id="A2.T8.5.1.2.1" style="width:262.2pt;">
+<span class="ltx_p" id="A2.T8.5.1.2.1.1"><span class="ltx_text ltx_font_bold" id="A2.T8.5.1.2.1.1.1" style="font-size:90%;">Content</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A2.T8.5.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A2.T8.5.2.1">
+<span class="ltx_inline-block ltx_align_top" id="A2.T8.5.2.1.1" style="width:65.6pt;">
+<span class="ltx_p" id="A2.T8.5.2.1.1.1"><span class="ltx_text" id="A2.T8.5.2.1.1.1.1" style="font-size:90%;">Sandbox layout</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A2.T8.5.2.2">
+<span class="ltx_inline-block ltx_align_top" id="A2.T8.5.2.2.1" style="width:262.2pt;">
+<span class="ltx_p" id="A2.T8.5.2.2.1.1"><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.2.2.1.1.1" style="font-size:90%;">question.json</span><span class="ltx_text" id="A2.T8.5.2.2.1.1.2" style="font-size:90%;">: question text and optional copied question image. </span>
+<br class="ltx_break"/><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.2.2.1.1.3" style="font-size:90%;">INSTRUCTION.md</span><span class="ltx_text" id="A2.T8.5.2.2.1.1.4" style="font-size:90%;">: task instruction. </span>
+<br class="ltx_break"/><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.2.2.1.1.5" style="font-size:90%;">answer.json</span><span class="ltx_text" id="A2.T8.5.2.2.1.1.6" style="font-size:90%;">: initialized as </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.2.2.1.1.7" style="font-size:90%;">{"answer": ""}</span><span class="ltx_text" id="A2.T8.5.2.2.1.1.8" style="font-size:90%;">. </span>
+<br class="ltx_break"/><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.2.2.1.1.9" style="font-size:90%;">trajectories/{trajectory_id}/trajectory.json</span><span class="ltx_text" id="A2.T8.5.2.2.1.1.10" style="font-size:90%;">: oracle trajectory with </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.2.2.1.1.11" style="font-size:90%;">id</span><span class="ltx_text" id="A2.T8.5.2.2.1.1.12" style="font-size:90%;">, optional </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.2.2.1.1.13" style="font-size:90%;">original_goal</span><span class="ltx_text" id="A2.T8.5.2.2.1.1.14" style="font-size:90%;">, optional </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.2.2.1.1.15" style="font-size:90%;">outcome</span><span class="ltx_text" id="A2.T8.5.2.2.1.1.16" style="font-size:90%;">, and state content. </span>
+<br class="ltx_break"/><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.2.2.1.1.17" style="font-size:90%;">trajectories/{trajectory_id}/screenshots/</span><span class="ltx_text" id="A2.T8.5.2.2.1.1.18" style="font-size:90%;">: copied trajectory screenshots.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A2.T8.5.3">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A2.T8.5.3.1">
+<span class="ltx_inline-block ltx_align_top" id="A2.T8.5.3.1.1" style="width:65.6pt;">
+<span class="ltx_p" id="A2.T8.5.3.1.1.1"><span class="ltx_text" id="A2.T8.5.3.1.1.1.1" style="font-size:90%;">Package instruction</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A2.T8.5.3.2">
+<span class="ltx_inline-block ltx_align_top" id="A2.T8.5.3.2.1" style="width:262.2pt;">
+<span class="ltx_p" id="A2.T8.5.3.2.1.1"><span class="ltx_text" id="A2.T8.5.3.2.1.1.1" style="font-size:90%;">You are an experienced colleague working in a customized web environment. Read </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.3.2.1.1.2" style="font-size:90%;">question.json</span><span class="ltx_text" id="A2.T8.5.3.2.1.1.3" style="font-size:90%;"> and inspect every trajectory under </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.3.2.1.1.4" style="font-size:90%;">trajectories/</span><span class="ltx_text" id="A2.T8.5.3.2.1.1.5" style="font-size:90%;">. This package comes from a public-environment-based setup that has been customized. Do not rely on prior knowledge of the public environment. Work only from the provided trajectories and copied question assets. Use only the question and the provided trajectories. Do not browse anywhere else, do not inspect other question folders, and do not use outside resources. If the question specifies an answer format, follow it exactly. For multiple-choice questions, write only the boxed letter corresponding to your answer, e.g., </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.3.2.1.1.6" style="font-size:90%;">\boxed{A}</span><span class="ltx_text" id="A2.T8.5.3.2.1.1.7" style="font-size:90%;">, into the answer field. Write your final answer to </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.3.2.1.1.8" style="font-size:90%;">answer.json</span><span class="ltx_text" id="A2.T8.5.3.2.1.1.9" style="font-size:90%;"> using this exact schema: </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.3.2.1.1.10" style="font-size:90%;">{"answer": "&lt;your final answer&gt;"}</span><span class="ltx_text" id="A2.T8.5.3.2.1.1.11" style="font-size:90%;">.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A2.T8.5.4">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A2.T8.5.4.1">
+<span class="ltx_inline-block ltx_align_top" id="A2.T8.5.4.1.1" style="width:65.6pt;">
+<span class="ltx_p" id="A2.T8.5.4.1.1.1"><span class="ltx_text" id="A2.T8.5.4.1.1.1.1" style="font-size:90%;">Codex invocation prompt</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A2.T8.5.4.2">
+<span class="ltx_inline-block ltx_align_top" id="A2.T8.5.4.2.1" style="width:262.2pt;">
+<span class="ltx_p" id="A2.T8.5.4.2.1.1"><span class="ltx_text" id="A2.T8.5.4.2.1.1.1" style="font-size:90%;">You are an experienced colleague working in a customized web environment. Read the local files in this directory, especially </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.4.2.1.1.2" style="font-size:90%;">INSTRUCTION.md</span><span class="ltx_text" id="A2.T8.5.4.2.1.1.3" style="font-size:90%;"> and </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.4.2.1.1.4" style="font-size:90%;">question.json</span><span class="ltx_text" id="A2.T8.5.4.2.1.1.5" style="font-size:90%;">. If </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.4.2.1.1.6" style="font-size:90%;">question.json</span><span class="ltx_text" id="A2.T8.5.4.2.1.1.7" style="font-size:90%;"> refers to a screenshot, view it carefully. Use only local files in this directory. Solve the task and write your final answer to </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.4.2.1.1.8" style="font-size:90%;">answer.json</span><span class="ltx_text" id="A2.T8.5.4.2.1.1.9" style="font-size:90%;"> as valid JSON with a non-empty string field named </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.4.2.1.1.10" style="font-size:90%;">answer</span><span class="ltx_text" id="A2.T8.5.4.2.1.1.11" style="font-size:90%;">. If </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.4.2.1.1.12" style="font-size:90%;">answer.json</span><span class="ltx_text" id="A2.T8.5.4.2.1.1.13" style="font-size:90%;"> already exists, update only the </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.4.2.1.1.14" style="font-size:90%;">answer</span><span class="ltx_text" id="A2.T8.5.4.2.1.1.15" style="font-size:90%;"> value. Follow the formatting instructions in </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.4.2.1.1.16" style="font-size:90%;">question.json</span><span class="ltx_text" id="A2.T8.5.4.2.1.1.17" style="font-size:90%;">. For multiple-choice questions, write only the boxed letter corresponding to your answer, e.g., </span><span class="ltx_text ltx_font_typewriter" id="A2.T8.5.4.2.1.1.18" style="font-size:90%;">\boxed{A}</span><span class="ltx_text" id="A2.T8.5.4.2.1.1.19" style="font-size:90%;">, into the answer field.</span></span>
+</span></td></tr>
+</table></figure><figure id="A3.T9"><figcaption>Table 9: Prompt templates used by AgentRunbook-R. Trajectory-specific content is abbreviated.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="A3.T9.5">
+<tr class="ltx_tr" id="A3.T9.5.1">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A3.T9.5.1.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T9.5.1.1.1" style="width:62.1pt;">
+<span class="ltx_p" id="A3.T9.5.1.1.1.1"><span class="ltx_text ltx_font_bold" id="A3.T9.5.1.1.1.1.1" style="font-size:90%;">Prompt</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A3.T9.5.1.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T9.5.1.2.1" style="width:265.7pt;">
+<span class="ltx_p" id="A3.T9.5.1.2.1.1"><span class="ltx_text ltx_font_bold" id="A3.T9.5.1.2.1.1.1" style="font-size:90%;">Template</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T9.5.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A3.T9.5.2.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T9.5.2.1.1" style="width:62.1pt;">
+<span class="ltx_p" id="A3.T9.5.2.1.1.1"><span class="ltx_text" id="A3.T9.5.2.1.1.1.1" style="font-size:90%;">Procedure and hint note generation</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A3.T9.5.2.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T9.5.2.2.1" style="width:265.7pt;">
+<span class="ltx_p" id="A3.T9.5.2.2.1.1"><span class="ltx_text ltx_font_bold" id="A3.T9.5.2.2.1.1.1" style="font-size:90%;">System:</span><span class="ltx_text" id="A3.T9.5.2.2.1.1.2" style="font-size:90%;"> You convert one UI task trajectory into two reusable memory notes for a future agent. Assume these notes will later be retrieved for unknown future questions. Preserve the workflow and the highest-value reusable facts from the touched pages. Write </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.2.2.1.1.3" style="font-size:90%;">procedure_note</span><span class="ltx_text" id="A3.T9.5.2.2.1.1.4" style="font-size:90%;"> and </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.2.2.1.1.5" style="font-size:90%;">hint_note</span><span class="ltx_text" id="A3.T9.5.2.2.1.1.6" style="font-size:90%;">. Each note must contain </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.2.2.1.1.7" style="font-size:90%;">title</span><span class="ltx_text" id="A3.T9.5.2.2.1.1.8" style="font-size:90%;">, </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.2.2.1.1.9" style="font-size:90%;">description</span><span class="ltx_text" id="A3.T9.5.2.2.1.1.10" style="font-size:90%;">, and </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.2.2.1.1.11" style="font-size:90%;">content</span><span class="ltx_text" id="A3.T9.5.2.2.1.1.12" style="font-size:90%;">. Use only evidence grounded in the provided goal, outcome, thoughts, annotated actions, and screenshots. Do not invent unseen fields, filters, modules, or outcomes. If the run failed, describe only the intended or attempted workflow where the evidence supports it. Keep the procedure note focused on the reliable core workflow and use the hint note for durable facts, pitfalls, option sets, confirmation signals, absent functionality, and distinctions between easily confused controls. Return only valid JSON:
+</span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.2.2.1.1.13" style="font-size:90%;">{"procedure_note":{"title":"...","description":"...","content":"- ..."},"hint_note":{"title":"...","description":"...","content":"- ..."}}</span><span class="ltx_text" id="A3.T9.5.2.2.1.1.14" style="font-size:90%;">.</span></span>
+<span class="ltx_p" id="A3.T9.5.2.2.1.2"><span class="ltx_text ltx_font_bold" id="A3.T9.5.2.2.1.2.1" style="font-size:90%;">User:</span><span class="ltx_text" id="A3.T9.5.2.2.1.2.2" style="font-size:90%;"> Extract two reusable notes from this UI task run. Goal: </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.2.2.1.2.3" style="font-size:90%;">{goal}</span><span class="ltx_text" id="A3.T9.5.2.2.1.2.4" style="font-size:90%;">. Outcome: </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.2.2.1.2.5" style="font-size:90%;">{outcome}</span><span class="ltx_text" id="A3.T9.5.2.2.1.2.6" style="font-size:90%;">. Start URL: </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.2.2.1.2.7" style="font-size:90%;">{start_url}</span><span class="ltx_text" id="A3.T9.5.2.2.1.2.8" style="font-size:90%;">. Each state block is followed by the screenshot for that state. The action line is the action taken from that state, annotated with recoverable object or module details. </span><span class="ltx_text ltx_font_italic" id="A3.T9.5.2.2.1.2.9" style="font-size:90%;">Then include the ordered state blocks, thoughts, annotated actions, and screenshots.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T9.5.3">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A3.T9.5.3.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T9.5.3.1.1" style="width:62.1pt;">
+<span class="ltx_p" id="A3.T9.5.3.1.1.1"><span class="ltx_text" id="A3.T9.5.3.1.1.1.1" style="font-size:90%;">State-transition event generation</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A3.T9.5.3.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T9.5.3.2.1" style="width:265.7pt;">
+<span class="ltx_p" id="A3.T9.5.3.2.1.1"><span class="ltx_text ltx_font_bold" id="A3.T9.5.3.2.1.1.1" style="font-size:90%;">System:</span><span class="ltx_text" id="A3.T9.5.3.2.1.1.2" style="font-size:90%;"> You convert one UI transition from a longer task trajectory into retrieval-ready event text. You will be given the task goal and outcome, the full annotated action trace, and one target transition defined as pre-state, annotated action, and post-state. Return exactly one JSON object:
+</span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.3.2.1.1.3" style="font-size:90%;">{"overview":"...","state_transition":"..."}</span><span class="ltx_text" id="A3.T9.5.3.2.1.1.4" style="font-size:90%;">. The overview briefly recaps the task goal and workflow stage. The state-transition field explicitly compares the post-state to the pre-state and describes what changed after the action, such as a new page, revealed panel, form fields, changed values, confirmation signal, blocker, popup, navigation, or lack of visible change. Ground the output only in the provided evidence and preserve exact UI labels when available.</span></span>
+<span class="ltx_p" id="A3.T9.5.3.2.1.2"><span class="ltx_text ltx_font_bold" id="A3.T9.5.3.2.1.2.1" style="font-size:90%;">User:</span><span class="ltx_text" id="A3.T9.5.3.2.1.2.2" style="font-size:90%;"> Generate an event for transition </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.3.2.1.2.3" style="font-size:90%;">{state_i} -&gt; {state_j}</span><span class="ltx_text" id="A3.T9.5.3.2.1.2.4" style="font-size:90%;">. Goal: </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.3.2.1.2.5" style="font-size:90%;">{goal}</span><span class="ltx_text" id="A3.T9.5.3.2.1.2.6" style="font-size:90%;">. Outcome: </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.3.2.1.2.7" style="font-size:90%;">{outcome}</span><span class="ltx_text" id="A3.T9.5.3.2.1.2.8" style="font-size:90%;">. Full action trace: </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.3.2.1.2.9" style="font-size:90%;">{actions}</span><span class="ltx_text" id="A3.T9.5.3.2.1.2.10" style="font-size:90%;">. Pre-state: </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.3.2.1.2.11" style="font-size:90%;">{url, thoughts, action, AXTree, screenshot}</span><span class="ltx_text" id="A3.T9.5.3.2.1.2.12" style="font-size:90%;">. Post-state: </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.3.2.1.2.13" style="font-size:90%;">{url, thoughts, action, AXTree, screenshot}</span><span class="ltx_text" id="A3.T9.5.3.2.1.2.14" style="font-size:90%;">.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T9.5.4">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A3.T9.5.4.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T9.5.4.1.1" style="width:62.1pt;">
+<span class="ltx_p" id="A3.T9.5.4.1.1.1"><span class="ltx_text" id="A3.T9.5.4.1.1.1.1" style="font-size:90%;">Query generation</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A3.T9.5.4.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T9.5.4.2.1" style="width:265.7pt;">
+<span class="ltx_p" id="A3.T9.5.4.2.1.1"><span class="ltx_text ltx_font_bold" id="A3.T9.5.4.2.1.1.1" style="font-size:90%;">System:</span><span class="ltx_text" id="A3.T9.5.4.2.1.1.2" style="font-size:90%;"> You generate structured retrieval queries for an active memory system with three pools: raw state slices, state-transition events, and procedure/hint notes. Return exactly one JSON object:
+</span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.4.2.1.1.3" style="font-size:90%;">{"raw_state_queries":["..."],"event_query":"...","note_query":"..."}</span><span class="ltx_text" id="A3.T9.5.4.2.1.1.4" style="font-size:90%;">. Maximize retrieval of memory entries that would help answer the question later. Do not answer the question yourself. Use raw-state queries for exact UI surface evidence, such as pages, forms, records, tabs, fields, buttons, dropdowns, options, labels, values, counts, and missing controls. Use the event query only when navigation, before/after change, revealed content, confirmation, blocker, popup, or workflow stage matters. Use the note query for reusable procedures, module paths, disambiguation, absent functionality, pitfalls, and durable hints. Remove formatting instructions and final-answer wrappers. Preserve exact entity names and literal UI labels. Deduplicate raw-state queries and cap them at five. Return JSON only.</span></span>
+<span class="ltx_p" id="A3.T9.5.4.2.1.2"><span class="ltx_text ltx_font_bold" id="A3.T9.5.4.2.1.2.1" style="font-size:90%;">User:</span><span class="ltx_text" id="A3.T9.5.4.2.1.2.2" style="font-size:90%;"> Memory pool summary: </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.4.2.1.2.3" style="font-size:90%;">{runtime_summary}</span><span class="ltx_text" id="A3.T9.5.4.2.1.2.4" style="font-size:90%;">. Output schema example: </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.4.2.1.2.5" style="font-size:90%;">{schema_example}</span><span class="ltx_text" id="A3.T9.5.4.2.1.2.6" style="font-size:90%;">. Prompt examples: </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.4.2.1.2.7" style="font-size:90%;">{few_shot_examples}</span><span class="ltx_text" id="A3.T9.5.4.2.1.2.8" style="font-size:90%;">. Question ID: </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.4.2.1.2.9" style="font-size:90%;">{question_id}</span><span class="ltx_text" id="A3.T9.5.4.2.1.2.10" style="font-size:90%;">. Question type: </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.4.2.1.2.11" style="font-size:90%;">{question_type}</span><span class="ltx_text" id="A3.T9.5.4.2.1.2.12" style="font-size:90%;">. Question text: </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.4.2.1.2.13" style="font-size:90%;">{question}</span><span class="ltx_text" id="A3.T9.5.4.2.1.2.14" style="font-size:90%;">. Question image path: </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.4.2.1.2.15" style="font-size:90%;">{image_path or &lt;none&gt;}</span><span class="ltx_text" id="A3.T9.5.4.2.1.2.16" style="font-size:90%;">. Original goals attached to this benchmark question: </span><span class="ltx_text ltx_font_typewriter" id="A3.T9.5.4.2.1.2.17" style="font-size:90%;">{original_goals}</span><span class="ltx_text" id="A3.T9.5.4.2.1.2.18" style="font-size:90%;">. Return only the JSON object.</span></span>
+</span></td></tr>
+</table></figure><figure id="A3.T10"><figcaption>Table 10: AgentRunbook-C query-time sandbox layout.</figcaption><table class="ltx_tabular ltx_align_middle" id="A3.T10.5">
+<tr class="ltx_tr" id="A3.T10.5.1">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A3.T10.5.1.1" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.1.1.1" style="width:127.6pt;">
+<span class="ltx_p ltx_align_left" id="A3.T10.5.1.1.1.1"><span class="ltx_text ltx_font_bold" id="A3.T10.5.1.1.1.1.1" style="font-size:90%;">Path</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_border_tt" id="A3.T10.5.1.2" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.1.2.1">
+<span class="ltx_p" id="A3.T10.5.1.2.1.1"><span class="ltx_text ltx_font_bold" id="A3.T10.5.1.2.1.1.1" style="font-size:90%;">Content</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.5.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A3.T10.5.2.1" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.2.1.1" style="width:127.6pt;">
+<span class="ltx_p ltx_align_left" id="A3.T10.5.2.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self" style="font-size:90%;">question.json</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_border_t" id="A3.T10.5.2.2" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.2.2.1">
+<span class="ltx_p" id="A3.T10.5.2.2.1.1"><span class="ltx_text" id="A3.T10.5.2.2.1.1.1" style="font-size:90%;">Question text, question id, metadata, and optional copied question image path.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.5.3">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A3.T10.5.3.1" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.3.1.1" style="width:127.6pt;">
+<span class="ltx_p ltx_align_left" id="A3.T10.5.3.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self" style="font-size:90%;">INSTRUCTION.md</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left" id="A3.T10.5.3.2" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.3.2.1">
+<span class="ltx_p" id="A3.T10.5.3.2.1.1"><span class="ltx_text" id="A3.T10.5.3.2.1.1.1" style="font-size:90%;">Workflow instruction for using the sandbox as a memory retrieval module.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.5.4">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A3.T10.5.4.1" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.4.1.1" style="width:127.6pt;">
+<span class="ltx_p ltx_align_left" id="A3.T10.5.4.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self" style="font-size:90%;">trajectories/</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left" id="A3.T10.5.4.2" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.4.2.1">
+<span class="ltx_p" id="A3.T10.5.4.2.1.1"><span class="ltx_text" id="A3.T10.5.4.2.1.1.1" style="font-size:90%;">Symlink to the inserted trajectory haystack.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.5.5">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A3.T10.5.5.1" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.5.1.1" style="width:127.6pt;">
+<span class="ltx_p ltx_align_left" id="A3.T10.5.5.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self" style="font-size:90%;">trajectories/&lt;trajectory_id&gt;/trajectory.json</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left" id="A3.T10.5.5.2" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.5.2.1">
+<span class="ltx_p" id="A3.T10.5.5.2.1.1"><span class="ltx_text" id="A3.T10.5.5.2.1.1.1" style="font-size:90%;">One full trajectory, including goal, start URL, outcome, actions, and ordered states.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.5.6">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A3.T10.5.6.1" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.6.1.1" style="width:127.6pt;">
+<span class="ltx_p ltx_align_left" id="A3.T10.5.6.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self" style="font-size:90%;">trajectories/&lt;trajectory_id&gt;/screenshots/</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left" id="A3.T10.5.6.2" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.6.2.1">
+<span class="ltx_p" id="A3.T10.5.6.2.1.1"><span class="ltx_text" id="A3.T10.5.6.2.1.1.1" style="font-size:90%;">Screenshots referenced by trajectory states.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.5.7">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A3.T10.5.7.1" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.7.1.1" style="width:127.6pt;">
+<span class="ltx_p ltx_align_left" id="A3.T10.5.7.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self" style="font-size:90%;">trajectories/TRAJECTORY_SUMMARY_CONCISE.md</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left" id="A3.T10.5.7.2" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.7.2.1">
+<span class="ltx_p" id="A3.T10.5.7.2.1.1"><span class="ltx_text" id="A3.T10.5.7.2.1.1.1" style="font-size:90%;">Compact trajectory-level manifest for quick triage.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.5.8">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A3.T10.5.8.1" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.8.1.1" style="width:127.6pt;">
+<span class="ltx_p ltx_align_left" id="A3.T10.5.8.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self" style="font-size:90%;">trajectories/TRAJECTORY_SUMMARY_FULL.md</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left" id="A3.T10.5.8.2" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.8.2.1">
+<span class="ltx_p" id="A3.T10.5.8.2.1.1"><span class="ltx_text" id="A3.T10.5.8.2.1.1.1" style="font-size:90%;">Fuller manifest with detailed thought and action traces for shortlist selection.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.5.9">
+<td class="ltx_td ltx_align_left ltx_align_top" id="A3.T10.5.9.1" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.9.1.1" style="width:127.6pt;">
+<span class="ltx_p ltx_align_left" id="A3.T10.5.9.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self" style="font-size:90%;">scripts/inspect_trajectory.py</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left" id="A3.T10.5.9.2" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.9.2.1">
+<span class="ltx_p" id="A3.T10.5.9.2.1.1"><span class="ltx_text" id="A3.T10.5.9.2.1.1.1" style="font-size:90%;">Helper script for inspecting one trajectory, state, span, or text match.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T10.5.10">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb" id="A3.T10.5.10.1" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.10.1.1" style="width:127.6pt;">
+<span class="ltx_p ltx_align_left" id="A3.T10.5.10.1.1.1"><span class="ltx_ref ltx_nolink ltx_path ltx_font_typewriter ltx_ref_self" style="font-size:90%;">memory_module_output.json</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_border_bb" id="A3.T10.5.10.2" style="padding:0.35pt 4.2pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T10.5.10.2.1">
+<span class="ltx_p" id="A3.T10.5.10.2.1.1"><span class="ltx_text" id="A3.T10.5.10.2.1.1.1" style="font-size:90%;">Structured output written by the coding agent.</span></span>
+</span></td></tr>
+</table></figure><figure id="A3.T11"><figcaption>Table 11: Prompt and workflow instruction for AgentRunbook-C. Codex invocation
+prompt is the prompt for invoking the codex binary software. The other rows in the table are the content in the INSTRUCTION.md.</figcaption><table class="ltx_tabular ltx_centering ltx_align_middle" id="A3.T11.5">
+<tr class="ltx_tr" id="A3.T11.5.1">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A3.T11.5.1.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T11.5.1.1.1" style="width:62.1pt;">
+<span class="ltx_p" id="A3.T11.5.1.1.1.1"><span class="ltx_text ltx_font_bold" id="A3.T11.5.1.1.1.1.1" style="font-size:90%;">Component</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top ltx_border_tt" id="A3.T11.5.1.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T11.5.1.2.1" style="width:265.7pt;">
+<span class="ltx_p" id="A3.T11.5.1.2.1.1"><span class="ltx_text ltx_font_bold" id="A3.T11.5.1.2.1.1.1" style="font-size:90%;">Template</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T11.5.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A3.T11.5.2.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T11.5.2.1.1" style="width:62.1pt;">
+<span class="ltx_p" id="A3.T11.5.2.1.1.1"><span class="ltx_text" id="A3.T11.5.2.1.1.1.1" style="font-size:90%;">Codex invocation prompt</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top ltx_border_t" id="A3.T11.5.2.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T11.5.2.2.1" style="width:265.7pt;">
+<span class="ltx_p" id="A3.T11.5.2.2.1.1"><span class="ltx_text" id="A3.T11.5.2.2.1.1.1" style="font-size:90%;">You are acting as the query-time agent for Coding Agent Memory. Read the local files in this directory, especially </span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.2.2.1.1.2" style="font-size:90%;">INSTRUCTION.md</span><span class="ltx_text" id="A3.T11.5.2.2.1.1.3" style="font-size:90%;"> and </span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.2.2.1.1.4" style="font-size:90%;">question.json</span><span class="ltx_text" id="A3.T11.5.2.2.1.1.5" style="font-size:90%;">. The local </span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.2.2.1.1.6" style="font-size:90%;">trajectories/</span><span class="ltx_text" id="A3.T11.5.2.2.1.1.7" style="font-size:90%;"> directory contains the current haystack for this evaluation item, and you must explore </span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.2.2.1.1.8" style="font-size:90%;">trajectories/</span><span class="ltx_text" id="A3.T11.5.2.2.1.1.9" style="font-size:90%;"> before returning your final result. If </span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.2.2.1.1.10" style="font-size:90%;">question.json</span><span class="ltx_text" id="A3.T11.5.2.2.1.1.11" style="font-size:90%;"> refers to an image, view it carefully. Write your final result to </span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.2.2.1.1.12" style="font-size:90%;">memory_module_output.json</span><span class="ltx_text" id="A3.T11.5.2.2.1.1.13" style="font-size:90%;"> as valid JSON. Use the local inspection helper under </span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.2.2.1.1.14" style="font-size:90%;">scripts/</span><span class="ltx_text" id="A3.T11.5.2.2.1.1.15" style="font-size:90%;"> when you need to inspect one trajectory, one state, one span, or match text within one trajectory quickly.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T11.5.3">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A3.T11.5.3.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T11.5.3.1.1" style="width:62.1pt;">
+<span class="ltx_p" id="A3.T11.5.3.1.1.1"><span class="ltx_text" id="A3.T11.5.3.1.1.1.1" style="font-size:90%;">Task overview in </span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.3.1.1.1.2" style="font-size:90%;">INSTRUCTION.md</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top ltx_border_t" id="A3.T11.5.3.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T11.5.3.2.1" style="width:265.7pt;">
+<span class="ltx_p" id="A3.T11.5.3.2.1.1"><span class="ltx_text" id="A3.T11.5.3.2.1.1.1" style="font-size:90%;">You are acting as a quick memory retrieval module to provide contexts from agent trajectories collected from a customized web environment for a downstream reader to answer questions specific to that environment. The question is in </span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.3.2.1.1.2" style="font-size:90%;">question.json</span><span class="ltx_text" id="A3.T11.5.3.2.1.1.3" style="font-size:90%;">. Aggregate information from the local </span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.3.2.1.1.4" style="font-size:90%;">trajectories/</span><span class="ltx_text" id="A3.T11.5.3.2.1.1.5" style="font-size:90%;"> directory. Follow the workflow and do not attempt to re-verify or rebuild maps unnecessarily, since the task has latency constraints. Be quick and do not over-explore unless necessary. Work inside the current directory and never explore outside it.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T11.5.4">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A3.T11.5.4.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T11.5.4.1.1" style="width:62.1pt;">
+<span class="ltx_p" id="A3.T11.5.4.1.1.1"><span class="ltx_text" id="A3.T11.5.4.1.1.1.1" style="font-size:90%;">Output requirement</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top ltx_border_t" id="A3.T11.5.4.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T11.5.4.2.1" style="width:265.7pt;">
+<span class="ltx_p" id="A3.T11.5.4.2.1.1"><span class="ltx_text" id="A3.T11.5.4.2.1.1.1" style="font-size:90%;">Write the final result to </span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.4.2.1.1.2" style="font-size:90%;">memory_module_output.json</span><span class="ltx_text" id="A3.T11.5.4.2.1.1.3" style="font-size:90%;"> as valid JSON:
+</span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.4.2.1.1.4" style="font-size:90%;">{"memory_markdown":"## Support Analysis\n...\n\n## Relevant Procedure and Hint Notes\n...","trajectory_spans":[{"trajectory_id":"...",</span></span>
+<span class="ltx_p" id="A3.T11.5.4.2.1.2"><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.4.2.1.2.1" style="font-size:90%;">"start_state_index":0,"end_state_index":0}]}</span><span class="ltx_text" id="A3.T11.5.4.2.1.2.2" style="font-size:90%;">.
+The support analysis should briefly describe where the evidence can be found. If the evidence contradicts the premise of the question, clearly say that the premise is wrong and include the contradicting evidence. The trajectory spans must use zero-based inclusive indices and preserve order by importance.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T11.5.5">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A3.T11.5.5.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T11.5.5.1.1" style="width:62.1pt;">
+<span class="ltx_p" id="A3.T11.5.5.1.1.1"><span class="ltx_text" id="A3.T11.5.5.1.1.1.1" style="font-size:90%;">Workflow instruction</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top ltx_border_t" id="A3.T11.5.5.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T11.5.5.2.1" style="width:265.7pt;">
+<span class="ltx_p" id="A3.T11.5.5.2.1.1"><span class="ltx_text" id="A3.T11.5.5.2.1.1.1" style="font-size:90%;">First classify the question before opening trajectories in detail. If the question contains an image, inspect it and align it with the matching surface or state. For direct lookup questions, find an exact state showing the requested field, value, button, or page. For comparison questions, find one supporting state per side when needed. For procedure questions, stay within the same workflow family unless the question explicitly asks for a shared pattern across workflows. Start from </span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.5.2.1.1.2" style="font-size:90%;">TRAJECTORY_SUMMARY_FULL.md</span><span class="ltx_text" id="A3.T11.5.5.2.1.1.3" style="font-size:90%;"> and shortlist only a few likely trajectories using the goal, start URL, action sequence, and final reward. Prefer the helper script for exact verification:
+</span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.5.2.1.1.4" style="font-size:90%;">python scripts/inspect_trajectory.py &lt;trajectory_id&gt;</span><span class="ltx_text" id="A3.T11.5.5.2.1.1.5" style="font-size:90%;">,
+</span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.5.2.1.1.6" style="font-size:90%;">--state &lt;i&gt;</span><span class="ltx_text" id="A3.T11.5.5.2.1.1.7" style="font-size:90%;">,
+</span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.5.2.1.1.8" style="font-size:90%;">--span &lt;i:j&gt;</span><span class="ltx_text" id="A3.T11.5.5.2.1.1.9" style="font-size:90%;">, or
+</span><span class="ltx_text ltx_font_typewriter" id="A3.T11.5.5.2.1.1.10" style="font-size:90%;">--match "&lt;pattern&gt;"</span><span class="ltx_text" id="A3.T11.5.5.2.1.1.11" style="font-size:90%;">.
+Use the helper on shortlisted trajectories rather than performing broad raw-file search. Keep the final evidence package small, usually no more than three states per span, and use at most 20 states in total.</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A3.T11.5.6">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A3.T11.5.6.1" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T11.5.6.1.1" style="width:62.1pt;">
+<span class="ltx_p" id="A3.T11.5.6.1.1.1"><span class="ltx_text" id="A3.T11.5.6.1.1.1.1" style="font-size:90%;">Final rules</span></span>
+</span></td>
+<td class="ltx_td ltx_nopad_r ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A3.T11.5.6.2" style="padding:0.35pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A3.T11.5.6.2.1" style="width:265.7pt;">
+<span class="ltx_p" id="A3.T11.5.6.2.1.1"><span class="ltx_text" id="A3.T11.5.6.2.1.1.1" style="font-size:90%;">Move fast and prefer targeted exploration. Put the most important evidence first. Avoid redundant trajectories when multiple trajectories support the same fact. Reject nearby but non-exact matches. Do not copy screenshots or large AXTree blocks into the JSON output. You may write scratch files in the current directory if needed.</span></span>
+</span></td></tr>
+</table></figure><figure id="A4.T12"><figcaption>Table 12 : Successful AgentRunbook-C examples with the selected question markdown, evidence span content, and corresponding screenshot.</figcaption><table class="ltx_tabular ltx_align_middle" id="A4.T12.7">
+<tr class="ltx_tr" id="A4.T12.7.1">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A4.T12.7.1.1" style="padding:0.55pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T12.7.1.1.1" style="width:36.2pt;">
+<span class="ltx_p ltx_align_left" id="A4.T12.7.1.1.1.1"><span class="ltx_text ltx_font_bold" id="A4.T12.7.1.1.1.1.1" style="font-size:70%;">Question type</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A4.T12.7.1.2" style="padding:0.55pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T12.7.1.2.1" style="width:94.9pt;">
+<span class="ltx_p ltx_align_left" id="A4.T12.7.1.2.1.1"><span class="ltx_text ltx_font_bold" id="A4.T12.7.1.2.1.1.1" style="font-size:70%;">Question markdown</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_tt" id="A4.T12.7.1.3" style="padding:0.55pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T12.7.1.3.1">
+<span class="ltx_p ltx_align_left" id="A4.T12.7.1.3.1.1"><span class="ltx_text ltx_font_bold" id="A4.T12.7.1.3.1.1.1" style="font-size:70%;">Selected span content</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A4.T12.7.1.4" style="padding:0.55pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T12.7.1.4.1" style="width:63.8pt;">
+<span class="ltx_p ltx_align_center" id="A4.T12.7.1.4.1.1"><span class="ltx_text ltx_font_bold" id="A4.T12.7.1.4.1.1.1" style="font-size:70%;">Screenshot</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T12.7.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T12.7.2.1" style="padding:0.55pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T12.7.2.1.1" style="width:36.2pt;">
+<span class="ltx_p ltx_align_left" id="A4.T12.7.2.1.1.1"><span class="ltx_text" id="A4.T12.7.2.1.1.1.1" style="font-size:70%;">Static environment</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T12.7.2.2" style="padding:0.55pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T12.7.2.2.1" style="width:94.9pt;">
+<span class="ltx_p ltx_align_left" id="A4.T12.7.2.2.1.1"><span class="ltx_text ltx_font_bold" id="A4.T12.7.2.2.1.1.1" style="font-size:70%;">QID: <span class="ltx_text ltx_font_typewriter" id="A4.T12.7.2.2.1.1.1.1">98b62f3d</span>.</span><span class="ltx_text" id="A4.T12.7.2.2.1.1.2" style="font-size:70%;"> </span><span class="ltx_text ltx_font_bold" id="A4.T12.7.2.2.1.1.3" style="font-size:70%;">Question.</span><span class="ltx_text" id="A4.T12.7.2.2.1.1.4" style="font-size:70%;"> I am using our reddit-based custom forum website. For the create submission form, what are the names of the mandatory fields? Mark your final answer as a comma-separated list of short phrases in </span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.2.2.1.1.5" style="font-size:70%;">\boxed{}</span><span class="ltx_text" id="A4.T12.7.2.2.1.1.6" style="font-size:70%;">.</span></span>
+<span class="ltx_p ltx_align_left" id="A4.T12.7.2.2.1.2"><span class="ltx_text ltx_font_bold" id="A4.T12.7.2.2.1.2.1" style="font-size:70%;">Gold / reader answer.</span><span class="ltx_text" id="A4.T12.7.2.2.1.2.2" style="font-size:70%;"> </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.2.2.1.2.3" style="font-size:70%;">Title, Forum</span><span class="ltx_text" id="A4.T12.7.2.2.1.2.4" style="font-size:70%;">.</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T12.7.2.3" style="padding:0.55pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T12.7.2.3.1">
+<span class="ltx_p ltx_align_left" id="A4.T12.7.2.3.1.1"><span class="ltx_text ltx_font_bold" id="A4.T12.7.2.3.1.1.1" style="font-size:70%;">Support analysis.</span><span class="ltx_text" id="A4.T12.7.2.3.1.1.2" style="font-size:70%;"> The clearest evidence is trajectory </span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.2.3.1.1.3" style="font-size:70%;">4ba5e9cb</span><span class="ltx_text" id="A4.T12.7.2.3.1.1.4" style="font-size:70%;">, state 2, on the </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.2.3.1.1.5" style="font-size:70%;">Create submission</span><span class="ltx_text" id="A4.T12.7.2.3.1.1.6" style="font-size:70%;"> form for </span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.2.3.1.1.7" style="font-size:70%;">/submit/pittsburgh</span><span class="ltx_text" id="A4.T12.7.2.3.1.1.8" style="font-size:70%;">. That state marks </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.2.3.1.1.9" style="font-size:70%;">Title</span><span class="ltx_text" id="A4.T12.7.2.3.1.1.10" style="font-size:70%;"> and </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.2.3.1.1.11" style="font-size:70%;">Forum</span><span class="ltx_text" id="A4.T12.7.2.3.1.1.12" style="font-size:70%;"> as required, while </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.2.3.1.1.13" style="font-size:70%;">Body</span><span class="ltx_text" id="A4.T12.7.2.3.1.1.14" style="font-size:70%;"> is optional and the URL/Image controls are submission-type selectors.</span></span>
+<span class="ltx_p ltx_align_left" id="A4.T12.7.2.3.1.2"><span class="ltx_text ltx_font_bold" id="A4.T12.7.2.3.1.2.1" style="font-size:70%;">Trajectory state span.</span><span class="ltx_text" id="A4.T12.7.2.3.1.2.2" style="font-size:70%;"> </span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.2.3.1.2.3" style="font-size:70%;">4ba5e9cb</span><span class="ltx_text" id="A4.T12.7.2.3.1.2.4" style="font-size:70%;">: states 2–2.</span></span>
+<span class="ltx_p ltx_align_left" id="A4.T12.7.2.3.1.3"><span class="ltx_text ltx_font_bold" id="A4.T12.7.2.3.1.3.1" style="font-size:70%;">State 2 AXTree excerpt.</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.2" style="font-size:70%;">
+</span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.2.3.1.3.3" style="font-size:70%;">[136]</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.4" style="font-size:70%;"> LabelText: </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.2.3.1.3.5" style="font-size:70%;">Title</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.6" style="font-size:70%;"> </span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.2.3.1.3.7" style="font-size:70%;">*</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.8" style="font-size:70%;">;
+</span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.2.3.1.3.9" style="font-size:70%;">[138]</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.10" style="font-size:70%;"> textbox </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.2.3.1.3.11" style="font-size:70%;">Title This field is required.</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.12" style="font-size:70%;">, required;
+</span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.2.3.1.3.13" style="font-size:70%;">[141]</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.14" style="font-size:70%;"> LabelText: </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.2.3.1.3.15" style="font-size:70%;">Body</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.16" style="font-size:70%;">;
+</span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.2.3.1.3.17" style="font-size:70%;">[143]</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.18" style="font-size:70%;"> textbox </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.2.3.1.3.19" style="font-size:70%;">Body</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.20" style="font-size:70%;">;
+</span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.2.3.1.3.21" style="font-size:70%;">[148]</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.22" style="font-size:70%;"> checkbox </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.2.3.1.3.23" style="font-size:70%;">Formatting help +</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.24" style="font-size:70%;">;
+</span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.2.3.1.3.25" style="font-size:70%;">[277]</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.26" style="font-size:70%;"> LabelText: </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.2.3.1.3.27" style="font-size:70%;">Forum</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.28" style="font-size:70%;"> </span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.2.3.1.3.29" style="font-size:70%;">*</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.30" style="font-size:70%;">;
+</span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.2.3.1.3.31" style="font-size:70%;">[384]</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.32" style="font-size:70%;"> combobox value </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.2.3.1.3.33" style="font-size:70%;">pittsburgh</span><span class="ltx_text" id="A4.T12.7.2.3.1.3.34" style="font-size:70%;">.</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T12.7.2.4" style="padding:0.55pt 4.0pt;">
+<span class="ltx_inline-block" id="A4.T12.7.2.4.1" style="width:63.8pt;">
+<span class="ltx_block ltx_minipage ltx_align_center ltx_align_top" id="A4.T12.7.2.4.1.1" style="width:345.0pt;"><img alt="[Uncaptioned image]" class="ltx_graphics ltx_centering ltx_img_landscape" height="105" id="A4.T12.g1" loading="lazy" src="/assets/gui-memory/SUP-A04/d24c45350c4ce2841375.png" style="aspect-ratio:186/105;" width="186"/>
+<span class="ltx_p ltx_align_center" id="A4.T12.7.2.4.1.1.1"><span class="ltx_text" id="A4.T12.7.2.4.1.1.1.1" style="font-size:80%;">Trajectory <span class="ltx_text ltx_font_typewriter" id="A4.T12.7.2.4.1.1.1.1.1">4ba5e9cb</span>, state 2.</span></span>
+</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T12.7.3">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A4.T12.7.3.1" style="padding:0.55pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T12.7.3.1.1" style="width:36.2pt;">
+<span class="ltx_p ltx_align_left" id="A4.T12.7.3.1.1.1"><span class="ltx_text" id="A4.T12.7.3.1.1.1.1" style="font-size:70%;">Dynamic environment</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A4.T12.7.3.2" style="padding:0.55pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T12.7.3.2.1" style="width:94.9pt;">
+<span class="ltx_p ltx_align_left" id="A4.T12.7.3.2.1.1"><span class="ltx_text ltx_font_bold" id="A4.T12.7.3.2.1.1.1" style="font-size:70%;">QID: <span class="ltx_text ltx_font_typewriter" id="A4.T12.7.3.2.1.1.1.1">609acb91</span>.</span><span class="ltx_text" id="A4.T12.7.3.2.1.1.2" style="font-size:70%;"> </span><span class="ltx_text ltx_font_bold" id="A4.T12.7.3.2.1.1.3" style="font-size:70%;">Question.</span><span class="ltx_text" id="A4.T12.7.3.2.1.1.4" style="font-size:70%;"> I am using our magento-based custom shopping website. I am now browsing the item list that appears after I click a specific item category from the home page. If I then narrow the display scope by selecting a specific price range in the left column, two new links will appear after the selected range. What are the names of the links? Your final answer should be a comma-separated list of two phrases wrapped in </span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.3.2.1.1.5" style="font-size:70%;">\boxed{}</span><span class="ltx_text" id="A4.T12.7.3.2.1.1.6" style="font-size:70%;">.</span></span>
+<span class="ltx_p ltx_align_left" id="A4.T12.7.3.2.1.2"><span class="ltx_text ltx_font_bold" id="A4.T12.7.3.2.1.2.1" style="font-size:70%;">Gold / reader answer.</span><span class="ltx_text" id="A4.T12.7.3.2.1.2.2" style="font-size:70%;"> </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.3.2.1.2.3" style="font-size:70%;">Remove This Item, Clear All</span><span class="ltx_text" id="A4.T12.7.3.2.1.2.4" style="font-size:70%;">.</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="A4.T12.7.3.3" style="padding:0.55pt 4.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T12.7.3.3.1">
+<span class="ltx_p ltx_align_left" id="A4.T12.7.3.3.1.1"><span class="ltx_text ltx_font_bold" id="A4.T12.7.3.3.1.1.1" style="font-size:70%;">Support analysis.</span><span class="ltx_text" id="A4.T12.7.3.3.1.1.2" style="font-size:70%;"> The supporting evidence is trajectory </span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.3.3.1.1.3" style="font-size:70%;">dddd8aa2</span><span class="ltx_text" id="A4.T12.7.3.3.1.1.4" style="font-size:70%;">, state 5. That state shows the Men </span><math alttext="&gt;" class="ltx_Math" display="inline" id="A4.T12.m1" intent=":literal"><semantics><mo mathsize="0.700em">&gt;</mo><annotation encoding="application/x-tex">&gt;</annotation></semantics></math><span class="ltx_text" id="A4.T12.7.3.3.1.1.5" style="font-size:70%;"> Shoes category page after the </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.3.3.1.1.6" style="font-size:70%;">Price: $0.00–$29.99</span><span class="ltx_text" id="A4.T12.7.3.3.1.1.7" style="font-size:70%;"> filter is applied, and immediately after the selected range the sidebar lists the two links </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.3.3.1.1.8" style="font-size:70%;">Remove This Item</span><span class="ltx_text" id="A4.T12.7.3.3.1.1.9" style="font-size:70%;"> and </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.3.3.1.1.10" style="font-size:70%;">Clear All</span><span class="ltx_text" id="A4.T12.7.3.3.1.1.11" style="font-size:70%;">.</span></span>
+<span class="ltx_p ltx_align_left" id="A4.T12.7.3.3.1.2"><span class="ltx_text ltx_font_bold" id="A4.T12.7.3.3.1.2.1" style="font-size:70%;">Trajectory state span.</span><span class="ltx_text" id="A4.T12.7.3.3.1.2.2" style="font-size:70%;"> </span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.3.3.1.2.3" style="font-size:70%;">dddd8aa2</span><span class="ltx_text" id="A4.T12.7.3.3.1.2.4" style="font-size:70%;">: states 5–5. The action sequence opens Men </span><math alttext="&gt;" class="ltx_Math" display="inline" id="A4.T12.m2" intent=":literal"><semantics><mo mathsize="0.700em">&gt;</mo><annotation encoding="application/x-tex">&gt;</annotation></semantics></math><span class="ltx_text" id="A4.T12.7.3.3.1.2.5" style="font-size:70%;"> Shoes, selects </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.3.3.1.2.6" style="font-size:70%;">Price</span><span class="ltx_text" id="A4.T12.7.3.3.1.2.7" style="font-size:70%;">, and loads the filtered page with </span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.3.3.1.2.8" style="font-size:70%;">price=0-30</span><span class="ltx_text" id="A4.T12.7.3.3.1.2.9" style="font-size:70%;">.</span></span>
+<span class="ltx_p ltx_align_left" id="A4.T12.7.3.3.1.3"><span class="ltx_text ltx_font_bold" id="A4.T12.7.3.3.1.3.1" style="font-size:70%;">State 5 AXTree excerpt.</span><span class="ltx_text" id="A4.T12.7.3.3.1.3.2" style="font-size:70%;">
+</span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.3.3.1.3.3" style="font-size:70%;">[1922]</span><span class="ltx_text" id="A4.T12.7.3.3.1.3.4" style="font-size:70%;"> strong: </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.3.3.1.3.5" style="font-size:70%;">Shop By</span><span class="ltx_text" id="A4.T12.7.3.3.1.3.6" style="font-size:70%;">;
+</span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.3.3.1.3.7" style="font-size:70%;">[1925]</span><span class="ltx_text" id="A4.T12.7.3.3.1.3.8" style="font-size:70%;"> heading: </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.3.3.1.3.9" style="font-size:70%;">Now Shopping by</span><span class="ltx_text" id="A4.T12.7.3.3.1.3.10" style="font-size:70%;">;
+</span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.3.3.1.3.11" style="font-size:70%;">[1927]</span><span class="ltx_text" id="A4.T12.7.3.3.1.3.12" style="font-size:70%;"> listitem: </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.3.3.1.3.13" style="font-size:70%;">Price: $0.00–$29.99</span><span class="ltx_text" id="A4.T12.7.3.3.1.3.14" style="font-size:70%;">;
+</span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.3.3.1.3.15" style="font-size:70%;">[1930]</span><span class="ltx_text" id="A4.T12.7.3.3.1.3.16" style="font-size:70%;"> link: </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.3.3.1.3.17" style="font-size:70%;">Remove This Item</span><span class="ltx_text" id="A4.T12.7.3.3.1.3.18" style="font-size:70%;">, clickable, visible;
+</span><span class="ltx_text ltx_font_typewriter" id="A4.T12.7.3.3.1.3.19" style="font-size:70%;">[1933]</span><span class="ltx_text" id="A4.T12.7.3.3.1.3.20" style="font-size:70%;"> link: </span><span class="ltx_text ltx_font_italic" id="A4.T12.7.3.3.1.3.21" style="font-size:70%;">Clear All</span><span class="ltx_text" id="A4.T12.7.3.3.1.3.22" style="font-size:70%;">, clickable, visible.</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A4.T12.7.3.4" style="padding:0.55pt 4.0pt;">
+<span class="ltx_inline-block" id="A4.T12.7.3.4.1" style="width:63.8pt;">
+<span class="ltx_block ltx_minipage ltx_align_center ltx_align_top" id="A4.T12.7.3.4.1.1" style="width:345.0pt;"><img alt="[Uncaptioned image]" class="ltx_graphics ltx_centering ltx_img_landscape" height="105" id="A4.T12.g2" loading="lazy" src="/assets/gui-memory/SUP-A04/0dfdf2fad31d1723034a.png" style="aspect-ratio:186/105;" width="186"/>
+<span class="ltx_p ltx_align_center" id="A4.T12.7.3.4.1.1.1"><span class="ltx_text" id="A4.T12.7.3.4.1.1.1.1" style="font-size:80%;">Trajectory <span class="ltx_text ltx_font_typewriter" id="A4.T12.7.3.4.1.1.1.1.1">dddd8aa2</span>, state 5.</span></span>
+</span>
+</span></td></tr>
+</table></figure><figure id="A4.T13"><figcaption>Table 13 : Successful AgentRunbook-R examples where different memory pools provide the answer-bearing evidence. The controller queries and retrieved items are copied from the corresponding runs.</figcaption><table class="ltx_tabular ltx_align_middle" id="A4.T13.7">
+<tr class="ltx_tr" id="A4.T13.7.1">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A4.T13.7.1.1" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.1.1.1" style="width:36.2pt;">
+<span class="ltx_p ltx_align_left" id="A4.T13.7.1.1.1.1"><span class="ltx_text ltx_font_bold" id="A4.T13.7.1.1.1.1.1" style="font-size:70%;">Pool</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A4.T13.7.1.2" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.1.2.1" style="width:74.2pt;">
+<span class="ltx_p ltx_align_left" id="A4.T13.7.1.2.1.1"><span class="ltx_text ltx_font_bold" id="A4.T13.7.1.2.1.1.1" style="font-size:70%;">Question</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A4.T13.7.1.3" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.1.3.1" style="width:58.7pt;">
+<span class="ltx_p ltx_align_left" id="A4.T13.7.1.3.1.1"><span class="ltx_text ltx_font_bold" id="A4.T13.7.1.3.1.1.1" style="font-size:70%;">Controller query</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_tt" id="A4.T13.7.1.4" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.1.4.1">
+<span class="ltx_p ltx_align_left" id="A4.T13.7.1.4.1.1"><span class="ltx_text ltx_font_bold" id="A4.T13.7.1.4.1.1.1" style="font-size:70%;">Retrieved evidence from that pool</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_tt" id="A4.T13.7.1.5" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.1.5.1" style="width:63.8pt;">
+<span class="ltx_p ltx_align_center" id="A4.T13.7.1.5.1.1"><span class="ltx_text ltx_font_bold" id="A4.T13.7.1.5.1.1.1" style="font-size:70%;">Figure</span></span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T13.7.2">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T13.7.2.1" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.2.1.1" style="width:36.2pt;">
+<span class="ltx_p ltx_align_left" id="A4.T13.7.2.1.1.1"><span class="ltx_text" id="A4.T13.7.2.1.1.1.1" style="font-size:70%;">Procedure and hint notes</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T13.7.2.2" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.2.2.1" style="width:74.2pt;">
+<span class="ltx_p ltx_align_left" id="A4.T13.7.2.2.1.1"><span class="ltx_text" id="A4.T13.7.2.2.1.1.1" style="font-size:70%;">Magento storefront order-history question: the user is already on </span><span class="ltx_text ltx_font_italic" id="A4.T13.7.2.2.1.1.2" style="font-size:70%;">My Orders</span><span class="ltx_text" id="A4.T13.7.2.2.1.1.3" style="font-size:70%;">; the table says “Items 1 to 10 of 37 total”; which pagination label should be clicked first to reach the oldest orders most directly? Choices: A. 2, B. 3, C. 4, D. Next, E. Last. </span><span class="ltx_text ltx_font_bold" id="A4.T13.7.2.2.1.1.4" style="font-size:70%;">Correct answer: C.</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T13.7.2.3" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.2.3.1" style="width:58.7pt;">
+<span class="ltx_p ltx_align_left" id="A4.T13.7.2.3.1.1"><span class="ltx_text ltx_font_italic" id="A4.T13.7.2.3.1.1.1" style="font-size:70%;">Magento My Orders page pagination and date sorting behavior for finding oldest purchase</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T13.7.2.4" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.2.4.1">
+<span class="ltx_p ltx_align_left" id="A4.T13.7.2.4.1.1"><span class="ltx_text ltx_font_bold" id="A4.T13.7.2.4.1.1.1" style="font-size:70%;">Procedure note, rank 1</span><span class="ltx_text" id="A4.T13.7.2.4.1.1.2" style="font-size:70%;"> (score 0.7465, trajectory </span><span class="ltx_text ltx_font_typewriter" id="A4.T13.7.2.4.1.1.3" style="font-size:70%;">19022110</span><span class="ltx_text" id="A4.T13.7.2.4.1.1.4" style="font-size:70%;">) is titled </span><span class="ltx_text ltx_font_italic" id="A4.T13.7.2.4.1.1.5" style="font-size:70%;">Find Earliest Purchase Date in My Orders</span><span class="ltx_text" id="A4.T13.7.2.4.1.1.6" style="font-size:70%;">. It states that on </span><span class="ltx_text ltx_font_italic" id="A4.T13.7.2.4.1.1.7" style="font-size:70%;">My Orders</span><span class="ltx_text" id="A4.T13.7.2.4.1.1.8" style="font-size:70%;">, the reader should note the pagination text, compute the final page from the total count, click the final page number, and verify the final range, e.g., “Items 31 to 37 of 37 total.” The paired hint note also records that oldest orders are on the last page. With 37 orders and 10 per page, the first direct click is page 4.</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T13.7.2.5" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block" id="A4.T13.7.2.5.1" style="width:63.8pt;">
+<span class="ltx_block ltx_minipage ltx_align_center ltx_align_top" id="A4.T13.7.2.5.1.1" style="width:345.0pt;"><img alt="[Uncaptioned image]" class="ltx_graphics ltx_centering ltx_img_landscape" height="105" id="A4.T13.g1" loading="lazy" src="/assets/gui-memory/SUP-A04/e30d3e4f52e6c3362aa1.png" style="aspect-ratio:186/105;" width="186"/>
+<span class="ltx_p ltx_align_center" id="A4.T13.7.2.5.1.1.1"><span class="ltx_text" id="A4.T13.7.2.5.1.1.1.1" style="font-size:80%;">Trajectory <span class="ltx_text ltx_font_typewriter" id="A4.T13.7.2.5.1.1.1.1.1">19022110</span>: final order-history page.</span></span>
+</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T13.7.3">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T13.7.3.1" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.3.1.1" style="width:36.2pt;">
+<span class="ltx_p ltx_align_left" id="A4.T13.7.3.1.1.1"><span class="ltx_text" id="A4.T13.7.3.1.1.1.1" style="font-size:70%;">State-transition events</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T13.7.3.2" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.3.2.1" style="width:74.2pt;">
+<span class="ltx_p ltx_align_left" id="A4.T13.7.3.2.1.1"><span class="ltx_text" id="A4.T13.7.3.2.1.1.1" style="font-size:70%;">Postmill forum dynamic question: after replying to a nested comment, a blue banner appears above the reply; what does the link in that banner say? </span><span class="ltx_text ltx_font_bold" id="A4.T13.7.3.2.1.1.2" style="font-size:70%;">Correct answer: View all comments.</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T13.7.3.3" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.3.3.1" style="width:58.7pt;">
+<span class="ltx_p ltx_align_left" id="A4.T13.7.3.3.1.1"><span class="ltx_text ltx_font_italic" id="A4.T13.7.3.3.1.1.1" style="font-size:70%;">submit comment reply to nested thread and observe blue banner overlay appearance</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_t" id="A4.T13.7.3.4" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.3.4.1">
+<span class="ltx_p ltx_align_left" id="A4.T13.7.3.4.1.1"><span class="ltx_text ltx_font_bold" id="A4.T13.7.3.4.1.1.1" style="font-size:70%;">Event result 2</span><span class="ltx_text" id="A4.T13.7.3.4.1.1.2" style="font-size:70%;"> (similarity 0.5923, trajectory </span><span class="ltx_text ltx_font_typewriter" id="A4.T13.7.3.4.1.1.3" style="font-size:70%;">2e8f6477</span><span class="ltx_text" id="A4.T13.7.3.4.1.1.4" style="font-size:70%;">) retrieves the transition from state 9 to state 10 after the nested reply was posted. The event is attached to the single-comment-thread view for the AskReddit post and includes the post-state screenshot where the banner text is visible. The banner reads “Viewing a single comment thread.” and its link reads “View all comments.”</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_t" id="A4.T13.7.3.5" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block" id="A4.T13.7.3.5.1" style="width:63.8pt;">
+<span class="ltx_block ltx_minipage ltx_align_center ltx_align_top" id="A4.T13.7.3.5.1.1" style="width:345.0pt;"><img alt="[Uncaptioned image]" class="ltx_graphics ltx_centering ltx_img_landscape" height="105" id="A4.T13.g2" loading="lazy" src="/assets/gui-memory/SUP-A04/09d4e9f38694f868e961.png" style="aspect-ratio:186/105;" width="186"/>
+<span class="ltx_p ltx_align_center" id="A4.T13.7.3.5.1.1.1"><span class="ltx_text" id="A4.T13.7.3.5.1.1.1.1" style="font-size:80%;">Trajectory <span class="ltx_text ltx_font_typewriter" id="A4.T13.7.3.5.1.1.1.1.1">2e8f6477</span>: reply result banner.</span></span>
+</span>
+</span></td></tr>
+<tr class="ltx_tr" id="A4.T13.7.4">
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A4.T13.7.4.1" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.4.1.1" style="width:36.2pt;">
+<span class="ltx_p ltx_align_left" id="A4.T13.7.4.1.1.1"><span class="ltx_text" id="A4.T13.7.4.1.1.1.1" style="font-size:70%;">Raw state slices</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A4.T13.7.4.2" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.4.2.1" style="width:74.2pt;">
+<span class="ltx_p ltx_align_left" id="A4.T13.7.4.2.1.1"><span class="ltx_text" id="A4.T13.7.4.2.1.1.1" style="font-size:70%;">ServiceNow form-comparison question: between </span><span class="ltx_text ltx_font_italic" id="A4.T13.7.4.2.1.1.2" style="font-size:70%;">Create Change Request</span><span class="ltx_text" id="A4.T13.7.4.2.1.1.3" style="font-size:70%;"> and </span><span class="ltx_text ltx_font_italic" id="A4.T13.7.4.2.1.1.4" style="font-size:70%;">Incident</span><span class="ltx_text" id="A4.T13.7.4.2.1.1.5" style="font-size:70%;">, what additional top-right button appears on the incident form but not the change-request form? </span><span class="ltx_text ltx_font_bold" id="A4.T13.7.4.2.1.1.6" style="font-size:70%;">Correct answer: Resolve.</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A4.T13.7.4.3" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.4.3.1" style="width:58.7pt;">
+<span class="ltx_p ltx_align_left" id="A4.T13.7.4.3.1.1"><span class="ltx_text ltx_font_italic" id="A4.T13.7.4.3.1.1.1" style="font-size:70%;">ServiceNow Incident form top right button area visible controls</span><span class="ltx_text" id="A4.T13.7.4.3.1.1.2" style="font-size:70%;">; </span><span class="ltx_text ltx_font_italic" id="A4.T13.7.4.3.1.1.3" style="font-size:70%;">ServiceNow Change Request form top right button area visible controls</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_border_bb ltx_border_t" id="A4.T13.7.4.4" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block ltx_align_top" id="A4.T13.7.4.4.1">
+<span class="ltx_p ltx_align_left" id="A4.T13.7.4.4.1.1"><span class="ltx_text ltx_font_bold" id="A4.T13.7.4.4.1.1.1" style="font-size:70%;">Raw state result 1</span><span class="ltx_text" id="A4.T13.7.4.4.1.1.2" style="font-size:70%;"> (similarity 0.7168, trajectory </span><span class="ltx_text ltx_font_typewriter" id="A4.T13.7.4.4.1.1.3" style="font-size:70%;">454485ca</span><span class="ltx_text" id="A4.T13.7.4.4.1.1.4" style="font-size:70%;">, center state 7) retrieves the incident creation form; the top-right controls include </span><span class="ltx_text ltx_font_italic" id="A4.T13.7.4.4.1.1.5" style="font-size:70%;">Submit</span><span class="ltx_text" id="A4.T13.7.4.4.1.1.6" style="font-size:70%;"> and </span><span class="ltx_text ltx_font_italic" id="A4.T13.7.4.4.1.1.7" style="font-size:70%;">Resolve</span><span class="ltx_text" id="A4.T13.7.4.4.1.1.8" style="font-size:70%;">. </span><span class="ltx_text ltx_font_bold" id="A4.T13.7.4.4.1.1.9" style="font-size:70%;">Raw state result 4</span><span class="ltx_text" id="A4.T13.7.4.4.1.1.10" style="font-size:70%;"> (similarity 0.7087, trajectory </span><span class="ltx_text ltx_font_typewriter" id="A4.T13.7.4.4.1.1.11" style="font-size:70%;">afa62eac</span><span class="ltx_text" id="A4.T13.7.4.4.1.1.12" style="font-size:70%;">, center state 6) retrieves the change-request creation form; its top-right controls show </span><span class="ltx_text ltx_font_italic" id="A4.T13.7.4.4.1.1.13" style="font-size:70%;">Submit</span><span class="ltx_text" id="A4.T13.7.4.4.1.1.14" style="font-size:70%;"> without </span><span class="ltx_text ltx_font_italic" id="A4.T13.7.4.4.1.1.15" style="font-size:70%;">Resolve</span><span class="ltx_text" id="A4.T13.7.4.4.1.1.16" style="font-size:70%;">. The contrast isolates the extra incident-only button.</span></span>
+</span></td>
+<td class="ltx_td ltx_align_left ltx_align_top ltx_border_bb ltx_border_t" id="A4.T13.7.4.5" style="padding:0.55pt 3.0pt;">
+<span class="ltx_inline-block" id="A4.T13.7.4.5.1" style="width:63.8pt;">
+<span class="ltx_block ltx_minipage ltx_align_center ltx_align_top" id="A4.T13.7.4.5.1.1" style="width:345.0pt;"><img alt="[Uncaptioned image]" class="ltx_graphics ltx_centering ltx_img_landscape" height="78" id="A4.T13.g3" loading="lazy" src="/assets/gui-memory/SUP-A04/64757a052b81f009b32a.png" style="aspect-ratio:139/78;" width="139"/>
+<span class="ltx_p ltx_align_center" id="A4.T13.7.4.5.1.1.1"><span class="ltx_text" id="A4.T13.7.4.5.1.1.1.1" style="font-size:80%;">Incident: <span class="ltx_text ltx_font_italic" id="A4.T13.7.4.5.1.1.1.1.1">Submit</span>, <span class="ltx_text ltx_font_italic" id="A4.T13.7.4.5.1.1.1.1.2">Resolve</span>.
+<br class="ltx_break" style="--ltx-break-space:2.0pt;"/>
+<img alt="[Uncaptioned image]" class="ltx_graphics ltx_img_landscape" height="78" id="A4.T13.g4" loading="lazy" src="/assets/gui-memory/SUP-A04/3a9f548a67318e9b6729.png" style="aspect-ratio:139/78;" width="139"/>
+<br class="ltx_break" style="--ltx-break-space:-1.0pt;"/>
+Change Request: <span class="ltx_text ltx_font_italic" id="A4.T13.7.4.5.1.1.1.1.3">Submit</span> only.</span></span>
+</span>
+</span></td></tr>
+</table></figure></html>

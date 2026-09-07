@@ -1,0 +1,928 @@
+{
+  "schema_version": 1,
+  "title": "GUI 历史记忆研究分类树",
+  "subtitle": "45 篇 P0：先分改进方法与评测研究，再看历史如何保存、查找和使用",
+  "date": "2026-09-07",
+  "classification_note": "这是为阅读导航整理的主分类，不是论文作者共同认可的正式分类，也不表示各类机制互斥。每篇只计入一个主要分支，跨分支贡献用标签显示。P0 表示阅读优先级，不表示论文质量。",
+  "categories": [
+    {
+      "slug": "methods",
+      "name": "方法：怎样保存、找到并使用历史",
+      "description": "修改观察接口、记忆表示、检索流程或决策模型；同时提供基准的论文仍标出其评测贡献。",
+      "children": [
+        {
+          "slug": "text-summaries",
+          "name": "页面与过程摘要",
+          "question": "把旧页面和已发生的事写成什么文字？",
+          "description": "把界面内容、动作结果或阶段进展整理为可读文本，由主策略直接使用。",
+          "children": [],
+          "paper_ids": [
+            "P032",
+            "P070",
+            "P071",
+            "Y26-067",
+            "Y26-164"
+          ],
+          "count": 5
+        },
+        {
+          "slug": "task-state",
+          "name": "结构化任务状态",
+          "question": "什么值属于谁，哪些步骤已经完成？",
+          "description": "显式维护变量、来源、依赖、事实或待做/已做状态，使历史成为可更新的任务记录。",
+          "children": [],
+          "paper_ids": [
+            "Y26-026",
+            "Y26-076",
+            "Y26-124",
+            "Y26-146",
+            "Y26-155",
+            "SUP-M05"
+          ],
+          "count": 6
+        },
+        {
+          "slug": "source-lookback",
+          "name": "目录与底稿分存，按需回查",
+          "question": "概括不够时，能否找到原来的细节？",
+          "description": "保存简短入口和更详细的原记录，再通过步号、证据指针或检索工具恢复所需信息；底稿可为文字、截图或图文消息。",
+          "children": [],
+          "paper_ids": [
+            "P052",
+            "Y26-090",
+            "Y26-113",
+            "SUP-A01",
+            "SUP-A27",
+            "SUP-R02"
+          ],
+          "count": 6
+        },
+        {
+          "slug": "knowledge-query",
+          "name": "经验、检索线索与分析查询",
+          "question": "如何从历史提炼知识，或组合查询多个记录？",
+          "description": "从经验中提炼可复用流程，用压缩记忆生成搜索线索，或将重复属性整理成可分析的表格。",
+          "children": [],
+          "paper_ids": [
+            "Y26-040",
+            "Y26-062",
+            "SUP-A02",
+            "SUP-A30"
+          ],
+          "count": 4
+        },
+        {
+          "slug": "visual-compression",
+          "name": "保留视觉历史并控制成本",
+          "question": "旧画面怎样以更少像素或 token 进入模型？",
+          "description": "采用低分辨率、画布、冗余块删除、浅层信息转移或潜在记忆；不都提供按记录编号回查的接口。",
+          "children": [],
+          "paper_ids": [
+            "P035",
+            "Y26-025",
+            "Y26-058",
+            "Y26-105",
+            "Y26-107",
+            "Y26-170",
+            "SUP-P18",
+            "SUP-R01"
+          ],
+          "count": 8
+        },
+        {
+          "slug": "dynamic-observation",
+          "name": "动作间观察与短暂事件",
+          "question": "两次截图之间消失的信息怎样被记下来？",
+          "description": "补充动作期间的帧流、关键帧或音频，并保存事件描述，处理普通逐步截图未曾采到的内容。",
+          "children": [],
+          "paper_ids": [
+            "Y26-097",
+            "Y26-152"
+          ],
+          "count": 2
+        },
+        {
+          "slug": "critic-feedback",
+          "name": "历史核验与动作反馈",
+          "question": "刚才真的成功了吗，下一步会点错吗？",
+          "description": "用实际前后观察更新进展，或主动取证并检查候选动作，向执行策略反馈问题。",
+          "children": [],
+          "paper_ids": [
+            "Y26-133",
+            "SUP-A19"
+          ],
+          "count": 2
+        }
+      ],
+      "count": 33
+    },
+    {
+      "slug": "evaluation",
+      "name": "评测与分析：怎样知道历史真的有用",
+      "description": "区分完整任务执行、历史信息恢复与机制诊断；问答分数、步骤匹配与在线终态成功率不能混为一个指标。",
+      "children": [
+        {
+          "slug": "gui-environments",
+          "name": "长程 GUI 数据与任务环境",
+          "question": "在哪些手机、桌面或跨应用任务上测？",
+          "description": "提供交互轨迹或可执行环境，用于评估跨页面、跨应用及长流程能力。",
+          "children": [],
+          "paper_ids": [
+            "P001",
+            "Y26-153",
+            "SUP-A12",
+            "SUP-A13"
+          ],
+          "count": 4
+        },
+        {
+          "slug": "memory-benchmarks",
+          "name": "记忆能力与历史检索评测",
+          "question": "过去出现过的信息，后来还能找对吗？",
+          "description": "针对延迟依赖、视觉细节、时间更新或历史图像检索构造问题；既有 GUI 任务，也有完整历史上的后置问答。",
+          "children": [],
+          "paper_ids": [
+            "Y26-046",
+            "SUP-A04",
+            "SUP-R03",
+            "SUP-R05",
+            "SUP-R06"
+          ],
+          "count": 5
+        },
+        {
+          "slug": "process-cost-audit",
+          "name": "过程、失败类型与预算审计",
+          "question": "失败在哪里，收益是否值得额外成本？",
+          "description": "拆分探索与执行、分析记忆引发的错误，或在相同 token 预算下检查技能和记忆模块的价值。",
+          "children": [],
+          "paper_ids": [
+            "Y26-086",
+            "Y26-136",
+            "Y26-137"
+          ],
+          "count": 3
+        }
+      ],
+      "count": 12
+    }
+  ],
+  "papers": {
+    "P001": {
+      "category": "gui-environments",
+      "short_name": "GUIOdyssey / OdysseyAgent",
+      "type": "数据集＋方法",
+      "tags": [
+        "手机",
+        "跨应用",
+        "历史视觉重采样",
+        "离线轨迹"
+      ],
+      "mechanism": "提供跨应用手机轨迹，并用 history resampler 将旧截图压成较少视觉 token 辅助下一动作。",
+      "title": "GUIOdyssey: A Comprehensive Dataset for Cross-App GUI Navigation on Mobile Devices (OdysseyAgent)",
+      "paper_url": "https://arxiv.org/abs/2406.08451",
+      "blog_id": "gui-odyssey",
+      "note_url": "/notes/gui-odyssey/"
+    },
+    "P032": {
+      "category": "text-summaries",
+      "short_name": "Chain-of-Memory",
+      "type": "方法",
+      "tags": [
+        "同任务",
+        "动作结果",
+        "文字事实",
+        "记忆写入训练"
+      ],
+      "mechanism": "比较动作前后画面记录近期结果，再选择应跨步骤和跨应用保留的文字事实。",
+      "title": "Chain-of-Memory: Enhancing GUI Agents for Cross-Application Navigation",
+      "paper_url": "https://arxiv.org/abs/2506.18158",
+      "blog_id": "p0-p032",
+      "note_url": "/notes/p0-p032/"
+    },
+    "P035": {
+      "category": "visual-compression",
+      "short_name": "SimpAgent",
+      "type": "方法",
+      "tags": [
+        "历史视觉",
+        "浅层压缩",
+        "一致性训练",
+        "非可读摘要"
+      ],
+      "mechanism": "先在浅层将旧图信息融入保留的 token 表征，再删除历史视觉 token，配合一致性训练。",
+      "title": "Less is More: Empowering GUI Agent with Context-Aware Simplification (SimpAgent)",
+      "paper_url": "https://arxiv.org/abs/2507.03730",
+      "blog_id": "p0-p035",
+      "note_url": "/notes/p0-p035/"
+    },
+    "P052": {
+      "category": "source-lookback",
+      "short_name": "PAL-UI",
+      "type": "方法",
+      "tags": [
+        "同任务",
+        "历史摘要",
+        "步号回查",
+        "原始截图",
+        "工具学习"
+      ],
+      "mechanism": "用文字概括历史页面，让策略在需要时按历史步号取回旧截图。",
+      "title": "PAL-UI: Planning with Active Look-back for Vision-Based GUI Agents",
+      "paper_url": "https://arxiv.org/abs/2510.00413",
+      "blog_id": "p0-p052",
+      "note_url": "/notes/p0-p052/"
+    },
+    "P070": {
+      "category": "text-summaries",
+      "short_name": "MGA",
+      "type": "方法",
+      "tags": [
+        "同任务",
+        "观察描述",
+        "动作验证",
+        "模型分工"
+      ],
+      "mechanism": "观察模型描述页面，记忆模型验证前后状态变化，再把结构化观察和历史交给规划器。",
+      "title": "MGA: Memory-Driven GUI Agent for Observation-Centric Interaction",
+      "paper_url": "https://arxiv.org/abs/2510.24168",
+      "blog_id": "p0-p070",
+      "note_url": "/notes/p0-p070/"
+    },
+    "P071": {
+      "category": "text-summaries",
+      "short_name": "GUI-Rise",
+      "type": "方法",
+      "tags": [
+        "同任务",
+        "递归摘要",
+        "下游效用训练",
+        "SFT＋RL"
+      ],
+      "mechanism": "策略同时生成动作与更新摘要，并以该摘要对下一步动作预测的帮助作为训练奖励。",
+      "title": "GUI-Rise: Structured Reasoning and History Summarization for GUI Navigation",
+      "paper_url": "https://arxiv.org/abs/2510.27210",
+      "blog_id": "p0-p071",
+      "note_url": "/notes/p0-p071/"
+    },
+    "Y26-025": {
+      "category": "visual-compression",
+      "short_name": "HiconAgent",
+      "type": "方法",
+      "tags": [
+        "历史视觉",
+        "动作锚点",
+        "浅层压缩",
+        "策略训练"
+      ],
+      "mechanism": "用不同历史长度训练策略，在浅层视觉融合后保留动作表征、删除旧图 token。",
+      "title": "HiconAgent: History Context-aware Policy Optimization for GUI Agents",
+      "paper_url": "https://arxiv.org/abs/2512.01763",
+      "blog_id": "p0-y26-025",
+      "note_url": "/notes/p0-y26-025/"
+    },
+    "Y26-026": {
+      "category": "task-state",
+      "short_name": "AgentProg",
+      "type": "方法",
+      "tags": [
+        "同任务",
+        "执行树",
+        "显式变量",
+        "步骤 ID 检索"
+      ],
+      "mechanism": "把长任务表示为带分支、循环和变量的程序，按执行位置筛选历史并按步骤 ID 检索记录。",
+      "title": "AgentProg: Empowering Long-Horizon GUI Agents with Program-Guided Context Management",
+      "paper_url": "https://arxiv.org/abs/2512.10371",
+      "blog_id": "p0-y26-026",
+      "note_url": "/notes/p0-y26-026/"
+    },
+    "Y26-040": {
+      "category": "knowledge-query",
+      "short_name": "MAGNET",
+      "type": "方法",
+      "tags": [
+        "跨任务经验",
+        "图标图块",
+        "功能语义",
+        "知识更新"
+      ],
+      "mechanism": "分别保存可复用流程与功能—图标实例，在规划和当前界面定位时检索使用。",
+      "title": "MAGNET: Towards Adaptive GUI Agents with Memory-Driven Knowledge Evolution",
+      "paper_url": "https://arxiv.org/abs/2601.19199",
+      "blog_id": "p0-y26-040",
+      "note_url": "/notes/p0-y26-040/"
+    },
+    "Y26-046": {
+      "category": "memory-benchmarks",
+      "short_name": "MemGUI-Bench",
+      "type": "基准",
+      "tags": [
+        "手机",
+        "长程记忆",
+        "动态环境",
+        "任务执行"
+      ],
+      "mechanism": "构造需要跨步骤保留并使用中间信息的手机任务，专门评估 GUI 代理记忆能力。",
+      "title": "MemGUI-Bench: Benchmarking Memory of Mobile GUI Agents in Dynamic Environments",
+      "paper_url": "https://arxiv.org/abs/2602.06075",
+      "blog_id": "p0-y26-046",
+      "note_url": "/notes/p0-y26-046/"
+    },
+    "Y26-058": {
+      "category": "visual-compression",
+      "short_name": "GUIPruner",
+      "type": "方法",
+      "tags": [
+        "历史降分辨率",
+        "当前图剪枝",
+        "空间结构",
+        "效率"
+      ],
+      "mechanism": "按时间远近给旧截图分配分辨率，同时对当前图进行保留空间参照的 token 筛选。",
+      "title": "Spatio-Temporal Token Pruning for Efficient High-Resolution GUI Agents",
+      "paper_url": "https://arxiv.org/abs/2602.23235",
+      "blog_id": "p0-y26-058",
+      "note_url": "/notes/p0-y26-058/"
+    },
+    "Y26-062": {
+      "category": "knowledge-query",
+      "short_name": "M²",
+      "type": "方法",
+      "tags": [
+        "同任务摘要",
+        "跨任务经验",
+        "双层记忆",
+        "检索"
+      ],
+      "mechanism": "用摘要链记录本次进度，再从离线成功轨迹提炼的经验库检索可迁移操作指南。",
+      "title": "M²: Dual-Memory Augmentation for Long-Horizon Web Agents via Trajectory Summarization and Insight Retrieval",
+      "paper_url": "https://arxiv.org/abs/2603.00503",
+      "blog_id": "p0-y26-062",
+      "note_url": "/notes/p0-y26-062/"
+    },
+    "Y26-067": {
+      "category": "text-summaries",
+      "short_name": "SecAgent",
+      "type": "方法",
+      "tags": [
+        "同任务",
+        "3B",
+        "语义上下文",
+        "动作与记忆联合训练"
+      ],
+      "mechanism": "3B 策略在同一次生成中更新语义上下文并输出动作，以短文字承接更早的历史。",
+      "title": "SecAgent: Efficient Mobile GUI Agent with Semantic Context",
+      "paper_url": "https://arxiv.org/abs/2603.08533",
+      "blog_id": "p0-y26-067",
+      "note_url": "/notes/p0-y26-067/"
+    },
+    "Y26-076": {
+      "category": "task-state",
+      "short_name": "AndroTMem / ASM",
+      "type": "基准＋方法",
+      "tags": [
+        "同任务",
+        "来源与依赖",
+        "状态锚点",
+        "失效更新",
+        "延迟依赖评测"
+      ],
+      "mechanism": "将关键中间事实存成带来源、依赖和状态更新的锚点，并构造长程依赖任务评测。",
+      "title": "AndroTMem: From Interaction Trajectories to Anchored Memory in Long-Horizon GUI Agents",
+      "paper_url": "https://arxiv.org/abs/2603.18429",
+      "blog_id": "p0-y26-076",
+      "note_url": "/notes/p0-y26-076/"
+    },
+    "Y26-086": {
+      "category": "process-cost-audit",
+      "short_name": "WebStep",
+      "type": "基准＋过程分析",
+      "tags": [
+        "网页",
+        "语义状态",
+        "探索与执行",
+        "失败分歧"
+      ],
+      "mechanism": "让受控网站记录确定性语义状态，把终局成功拆成信息探索、执行与步骤推进。",
+      "title": "Where Did It Go Wrong? Process-Level Evaluation of Web Agents with Semantic State Tracking (WebStep)",
+      "paper_url": "https://arxiv.org/abs/2606.15673",
+      "blog_id": "p0-y26-086",
+      "note_url": "/notes/p0-y26-086/"
+    },
+    "Y26-090": {
+      "category": "source-lookback",
+      "short_name": "UI-Copilot",
+      "type": "方法",
+      "tags": [
+        "同任务",
+        "短摘要＋外存细节",
+        "按需工具",
+        "检索与计算",
+        "工具学习"
+      ],
+      "mechanism": "主策略保留简短进度，详细观察写入外部知识文件，需要时调用辅助模型检索或计算。",
+      "title": "UI-Copilot: Advancing Long-Horizon GUI Automation via Tool-Integrated Policy Optimization",
+      "paper_url": "https://arxiv.org/abs/2604.13822",
+      "blog_id": "p0-y26-090",
+      "note_url": "/notes/p0-y26-090/"
+    },
+    "Y26-097": {
+      "category": "dynamic-observation",
+      "short_name": "DynamicGUIBench / DynamicUI",
+      "type": "基准＋方法",
+      "tags": [
+        "短暂事件",
+        "视频挑帧",
+        "历史修正",
+        "动态任务评测"
+      ],
+      "mechanism": "构造短暂信息任务，从动作间视频选择相关画面，再修正动作记录并生成反思反馈。",
+      "title": "Benchmarking and Improving GUI Agents in High-Dynamic Environments (DynamicGUIBench / DynamicUI)",
+      "paper_url": "https://arxiv.org/abs/2604.25380",
+      "blog_id": "p0-y26-097",
+      "note_url": "/notes/p0-y26-097/"
+    },
+    "Y26-105": {
+      "category": "visual-compression",
+      "short_name": "Mem-W",
+      "type": "方法",
+      "tags": [
+        "同任务",
+        "潜在记忆",
+        "软 token",
+        "记忆训练"
+      ],
+      "mechanism": "把移出近期窗口的多模态历史分块压成少量连续 token，供当前 GUI 策略读取。",
+      "title": "Mem-W: Latent Memory-Native GUI Agents",
+      "paper_url": "https://arxiv.org/abs/2605.09317",
+      "blog_id": "p0-y26-105",
+      "note_url": "/notes/p0-y26-105/"
+    },
+    "Y26-107": {
+      "category": "visual-compression",
+      "short_name": "ReVision",
+      "type": "方法",
+      "tags": [
+        "重复 UI",
+        "相邻帧",
+        "视觉块选择",
+        "策略微调"
+      ],
+      "mechanism": "保留窗口首图，后续截图删除与前帧重复的视觉块，并训练动作模型利用这种历史。",
+      "title": "ReVision: Scaling Computer-Use Agents via Temporal Visual Redundancy Reduction",
+      "paper_url": "https://arxiv.org/abs/2605.11212",
+      "blog_id": "p0-y26-107",
+      "note_url": "/notes/p0-y26-107/"
+    },
+    "Y26-113": {
+      "category": "source-lookback",
+      "short_name": "MementoGUI",
+      "type": "方法",
+      "tags": [
+        "同任务工作记忆",
+        "跨任务经验",
+        "局部截图",
+        "事件门控",
+        "读写控制器训练"
+      ],
+      "mechanism": "学习何时写入事件、压缩旧记忆并保留局部图像引用，再按需筛选情景经验供执行器读取。",
+      "title": "MementoGUI: Learning Agentic Multimodal Memory Control for Long-Horizon GUI Agents",
+      "paper_url": "https://arxiv.org/abs/2605.18652",
+      "blog_id": "p0-y26-113",
+      "note_url": "/notes/p0-y26-113/"
+    },
+    "Y26-124": {
+      "category": "task-state",
+      "short_name": "STAMP",
+      "type": "训练方法＋环境",
+      "tags": [
+        "同任务",
+        "显式文字记忆",
+        "延迟依赖",
+        "合成监督",
+        "SFT＋RL"
+      ],
+      "mechanism": "在可控环境中安排先出现后使用的信息，生成记忆标签并训练模型主动写出关键事实。",
+      "title": "STAMP: Training Explicit Memory for Mobile GUI Agents in Controllable and Scalable Virtual Environments",
+      "paper_url": "https://arxiv.org/abs/2605.29324",
+      "blog_id": "p0-y26-124",
+      "note_url": "/notes/p0-y26-124/"
+    },
+    "Y26-133": {
+      "category": "critic-feedback",
+      "short_name": "HiViG",
+      "type": "方法",
+      "tags": [
+        "同任务",
+        "宏观进展",
+        "坐标核验",
+        "批评器训练"
+      ],
+      "mechanism": "先根据真实前后截图更新阶段进展，再在执行前核查候选动作的视觉落点与任务一致性。",
+      "title": "A History-Aware Visually Grounded Critic for Computer Use Agents (HiViG)",
+      "paper_url": "https://arxiv.org/abs/2606.11078",
+      "blog_id": "p0-y26-133",
+      "note_url": "/notes/p0-y26-133/"
+    },
+    "Y26-136": {
+      "category": "process-cost-audit",
+      "short_name": "技能与记忆预算审计",
+      "type": "实验分析",
+      "tags": [
+        "网页",
+        "同预算比较",
+        "在线技能",
+        "记忆成本"
+      ],
+      "mechanism": "在 token 预算约束下比较技能与记忆模块，检查额外调用的收益是否抵消其成本。",
+      "title": "Are Online Skill and Memory Modules Always Worth Their Tokens? A Budget-Constrained Study of Web Agents",
+      "paper_url": "https://arxiv.org/abs/2606.15017",
+      "blog_id": "p0-y26-136",
+      "note_url": "/notes/p0-y26-136/"
+    },
+    "Y26-137": {
+      "category": "process-cost-audit",
+      "short_name": "视觉记忆失败分析 / AGMem",
+      "type": "失败分析＋方法",
+      "tags": [
+        "跨任务经验",
+        "定位错误",
+        "局部图与上下文",
+        "恢复经验"
+      ],
+      "mechanism": "分析整图经验记忆改善或加重的错误，再用动作相关局部视图、分阶段检索和恢复示例改进。",
+      "title": "Naive Visual Memory is Not Enough: A Failure-Mode Study of GUI Agents",
+      "paper_url": "https://arxiv.org/abs/2606.14106",
+      "blog_id": "p0-y26-137",
+      "note_url": "/notes/p0-y26-137/"
+    },
+    "Y26-146": {
+      "category": "task-state",
+      "short_name": "MemGUI-Agent",
+      "type": "方法＋数据",
+      "tags": [
+        "同任务",
+        "事实与过程分存",
+        "记忆增删改",
+        "主动上下文管理"
+      ],
+      "mechanism": "同一策略输出 GUI 动作和记忆维护操作，分开管理压缩过程、持久界面事实与近期记录。",
+      "title": "MemGUI-Agent: An End-to-End Long-Horizon Mobile GUI Agent with Proactive Context Management",
+      "paper_url": "https://arxiv.org/abs/2606.19926",
+      "blog_id": "p0-y26-146",
+      "note_url": "/notes/p0-y26-146/"
+    },
+    "Y26-152": {
+      "category": "dynamic-observation",
+      "short_name": "AOI",
+      "type": "方法＋基准",
+      "tags": [
+        "连续观察",
+        "关键帧",
+        "音频",
+        "持久视觉叙述",
+        "动态任务评测"
+      ],
+      "mechanism": "把连续观察与离散动作解耦，结合关键帧、语音转写和持久文字叙述保留步骤间事件。",
+      "title": "Agent-Computer Observation Interfaces Enable Dynamic Computer Use (AOI)",
+      "paper_url": "https://arxiv.org/abs/2606.29472",
+      "blog_id": "p0-y26-152",
+      "note_url": "/notes/p0-y26-152/"
+    },
+    "Y26-153": {
+      "category": "gui-environments",
+      "short_name": "OSWorld 2.0",
+      "type": "基准",
+      "tags": [
+        "桌面",
+        "长程",
+        "有状态任务",
+        "真实软件"
+      ],
+      "mechanism": "提供长程、有状态的真实桌面任务，用终态与任务要求检查代理能否完成完整流程。",
+      "title": "OSWorld 2.0: Benchmarking Computer Use Agents on Long-Horizon Real-World Tasks",
+      "paper_url": "https://arxiv.org/abs/2606.29537",
+      "blog_id": "p0-y26-153",
+      "note_url": "/notes/p0-y26-153/"
+    },
+    "Y26-155": {
+      "category": "task-state",
+      "short_name": "ATMem",
+      "type": "方法＋基准",
+      "tags": [
+        "同任务",
+        "条目 ID",
+        "待做/已做/跳过",
+        "记忆干预训练"
+      ],
+      "mechanism": "把记忆写成工作流和条目执行状态，并对照开启与关闭显式记忆的轨迹训练策略。",
+      "title": "What Memory Do GUI Agents Really Need? From Passive Records to Active Task-Driving States",
+      "paper_url": "https://arxiv.org/abs/2606.31612",
+      "blog_id": "p0-y26-155",
+      "note_url": "/notes/p0-y26-155/"
+    },
+    "Y26-164": {
+      "category": "text-summaries",
+      "short_name": "HiSA",
+      "type": "方法",
+      "tags": [
+        "动作差分 ROI",
+        "模型分工",
+        "分层摘要",
+        "跨任务经验"
+      ],
+      "mechanism": "从动作前后变化抽象单步结果，再精炼任务上下文，并在任务结束后提炼可复用模式。",
+      "title": "HiSA: Hierarchical State Abstraction for Scalable GUI Agents",
+      "paper_url": "https://aclanthology.org/2026.findings-acl.581/",
+      "blog_id": "p0-y26-164",
+      "note_url": "/notes/p0-y26-164/"
+    },
+    "Y26-170": {
+      "category": "visual-compression",
+      "short_name": "FocusMem",
+      "type": "方法",
+      "tags": [
+        "同任务工作记忆",
+        "跨任务经验",
+        "潜在记忆",
+        "状态条件读出",
+        "信任门"
+      ],
+      "mechanism": "在连续 token 记忆中分开学习内容保留、面向当前状态的读出和无关记忆抑制。",
+      "title": "FocusMem: Factorizing Content, Readout, and Trust in Latent GUI Memory",
+      "paper_url": "https://arxiv.org/abs/2608.04530",
+      "blog_id": "p0-y26-170",
+      "note_url": "/notes/p0-y26-170/"
+    },
+    "SUP-A01": {
+      "category": "source-lookback",
+      "short_name": "ReadAgent",
+      "type": "方法",
+      "tags": [
+        "文本长上下文",
+        "提要目录",
+        "按需展开",
+        "含网页 HTML 实验"
+      ],
+      "mechanism": "为长文本分段写提要，原文仍保留，回答时由模型选择需要展开的段落。",
+      "title": "A Human-Inspired Reading Agent with Gist Memory of Very Long Contexts (ReadAgent)",
+      "paper_url": "https://arxiv.org/abs/2402.09727",
+      "blog_id": "p0-sup-a01",
+      "note_url": "/notes/p0-sup-a01/"
+    },
+    "SUP-A02": {
+      "category": "knowledge-query",
+      "short_name": "MemoRAG",
+      "type": "方法",
+      "tags": [
+        "文本记忆",
+        "检索线索",
+        "小模型分工",
+        "原文 RAG"
+      ],
+      "mechanism": "先由压缩记忆产生粗略答案或线索，再用线索检索原始材料支持正式回答。",
+      "title": "MemoRAG: Moving towards Next-Gen RAG Via Memory-Inspired Knowledge Discovery",
+      "paper_url": "https://arxiv.org/abs/2409.05591",
+      "blog_id": "p0-sup-a02",
+      "note_url": "/notes/p0-sup-a02/"
+    },
+    "SUP-A04": {
+      "category": "memory-benchmarks",
+      "short_name": "LongMemEval-V2 / AgentRunbook-C",
+      "type": "基准＋方法",
+      "tags": [
+        "完整轨迹后置问答",
+        "网页历史",
+        "文件与脚本检索",
+        "多模态证据",
+        "非动作重执行"
+      ],
+      "mechanism": "先存入多条完整任务轨迹，再就历史提问；AgentRunbook-C 用代码代理查档案并把证据交给回答模型。",
+      "title": "LongMemEval-V2: Evaluating Long-Term Agent Memory Toward Experienced Colleagues",
+      "paper_url": "https://arxiv.org/abs/2605.12493",
+      "blog_id": "p0-sup-a04",
+      "note_url": "/notes/p0-sup-a04/"
+    },
+    "SUP-A12": {
+      "category": "gui-environments",
+      "short_name": "AndroidWorld",
+      "type": "基准",
+      "tags": [
+        "Android",
+        "在线执行",
+        "真实应用",
+        "可验证任务"
+      ],
+      "mechanism": "在真实 Android 应用中初始化任务并验证结果，评估实际交互而非只匹配录制动作。",
+      "title": "AndroidWorld: A Dynamic Benchmarking Environment for Autonomous Agents",
+      "paper_url": "https://arxiv.org/abs/2405.14573",
+      "blog_id": "rawles2024androidworld",
+      "note_url": "/notes/rawles2024androidworld/"
+    },
+    "SUP-A13": {
+      "category": "gui-environments",
+      "short_name": "OSWorld",
+      "type": "基准",
+      "tags": [
+        "桌面",
+        "在线执行",
+        "真实应用",
+        "终态验证"
+      ],
+      "mechanism": "在真实桌面软件环境中执行开放式任务，并通过执行后的系统状态判断完成情况。",
+      "title": "OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments",
+      "paper_url": "https://arxiv.org/abs/2404.07972",
+      "blog_id": "xie2024osworld",
+      "note_url": "/notes/xie2024osworld/"
+    },
+    "SUP-A19": {
+      "category": "critic-feedback",
+      "short_name": "GUI-PRA",
+      "type": "方法",
+      "tags": [
+        "过程评判",
+        "历史摘要",
+        "主动视觉取证",
+        "版本差异"
+      ],
+      "mechanism": "评判代理借助历史摘要和视觉观察判断 GUI 过程；不同版本的回看范围与取证接口需分开理解。",
+      "title": "GUI-PRA: Process Reward Agent for GUI Tasks",
+      "paper_url": "https://arxiv.org/abs/2509.23263",
+      "blog_id": "p0-sup-a19",
+      "note_url": "/notes/p0-sup-a19/"
+    },
+    "SUP-A27": {
+      "category": "source-lookback",
+      "short_name": "M2A",
+      "type": "方法＋数据",
+      "tags": [
+        "长期个性化对话",
+        "语义层＋原始图文",
+        "证据指针",
+        "混合检索"
+      ],
+      "mechanism": "语义记忆与不可变原始图文分存，通过证据指针和混合检索逐步回查具体细节。",
+      "title": "M2A: Multimodal Memory Agent with Dual-Layer Hybrid Memory for Long-Term Personalized Interactions",
+      "paper_url": "https://arxiv.org/abs/2602.07624",
+      "blog_id": "p0-sup-a27",
+      "note_url": "/notes/p0-sup-a27/"
+    },
+    "SUP-A30": {
+      "category": "knowledge-query",
+      "short_name": "AdaMM",
+      "type": "方法",
+      "tags": [
+        "多模态历史",
+        "来源可追溯",
+        "表格查询",
+        "层级视觉检索"
+      ],
+      "mechanism": "把重复属性、数值与时间整理成可查询表格，同时保留视觉检索，按问题组合筛选、计算与取证。",
+      "title": "Beyond Retrieval: Analytic Memory for Multimodal Agents (AdaMM)",
+      "paper_url": "https://arxiv.org/abs/2607.29440",
+      "blog_id": "p0-sup-a30",
+      "note_url": "/notes/p0-sup-a30/"
+    },
+    "SUP-M05": {
+      "category": "task-state",
+      "short_name": "Task-State Representation",
+      "type": "方法",
+      "tags": [
+        "同任务",
+        "目标与进度",
+        "前后截图验证",
+        "辅助模型"
+      ],
+      "mechanism": "辅助模型逐步比较前后截图，更新原始要求、完成进度和动作结果，再注入固定执行器。",
+      "title": "A Task-State Representation for Long-Horizon Mobile GUI Agents",
+      "paper_url": "https://arxiv.org/abs/2607.00502",
+      "blog_id": "p0-sup-m05",
+      "note_url": "/notes/p0-sup-m05/"
+    },
+    "SUP-P18": {
+      "category": "visual-compression",
+      "short_name": "UI-Hawk",
+      "type": "方法＋数据",
+      "tags": [
+        "手机",
+        "固定窗口历史",
+        "低分辨率截图",
+        "视觉重采样"
+      ],
+      "mechanism": "将低分辨率旧截图与动作历史持续输入模型，并用视觉重采样降低历史视觉 token 数。",
+      "title": "UI-Hawk: Unleashing the Screen Stream Understanding for Mobile GUI Agents",
+      "paper_url": "https://aclanthology.org/2025.emnlp-main.920/",
+      "blog_id": "p0-sup-p18",
+      "note_url": "/notes/p0-sup-p18/"
+    },
+    "SUP-R01": {
+      "category": "visual-compression",
+      "short_name": "VERA",
+      "type": "方法＋对照分析",
+      "tags": [
+        "多模态历史",
+        "视觉画布",
+        "原生图像证据",
+        "固定策略比较",
+        "非 GUI 在线任务"
+      ],
+      "mechanism": "将文字历史排成画布并保留原生图像，在固定执行策略下比较历史表示与预算分配。",
+      "title": "When History Is Multimodal: Rethinking Context Management for Long-Horizon Agents (VERA)",
+      "paper_url": "https://arxiv.org/abs/2608.29897",
+      "blog_id": "p0-sup-r01",
+      "note_url": "/notes/p0-sup-r01/"
+    },
+    "SUP-R02": {
+      "category": "source-lookback",
+      "short_name": "Personal Visual Context Learning",
+      "type": "方法＋评测",
+      "tags": [
+        "个人视觉经历",
+        "未来问题未知",
+        "文字目录",
+        "按需原图",
+        "更新与撤回"
+      ],
+      "mechanism": "先将个人视觉经历整理成文字目录并关联视觉来源，之后按具体问题展开相应原图。",
+      "title": "Personal Visual Context Learning in Large Multimodal Models",
+      "paper_url": "https://arxiv.org/abs/2605.10936",
+      "blog_id": "p0-sup-r02",
+      "note_url": "/notes/p0-sup-r02/"
+    },
+    "SUP-R03": {
+      "category": "memory-benchmarks",
+      "short_name": "MemEye",
+      "type": "基准",
+      "tags": [
+        "视觉记忆",
+        "文字替代检查",
+        "时间更新",
+        "过期证据"
+      ],
+      "mechanism": "用需要视觉细节与时间判断的问题，诊断多模态记忆是否只依赖文字或取回过期证据。",
+      "title": "MemEye: A Visual-Centric Evaluation Framework for Multimodal Agent Memory",
+      "paper_url": "https://arxiv.org/abs/2605.15128",
+      "blog_id": "p0-sup-r03",
+      "note_url": "/notes/p0-sup-r03/"
+    },
+    "SUP-R05": {
+      "category": "memory-benchmarks",
+      "short_name": "DeepImageSearch",
+      "type": "基准＋方法分析",
+      "tags": [
+        "个人图像历史",
+        "上下文图像检索",
+        "事件锚点",
+        "多步查询"
+      ],
+      "mechanism": "评估从个人视觉历史中依据事件、描述与多步线索找到目标图片的能力。",
+      "title": "DeepImageSearch: Benchmarking Multimodal Agents for Context-Aware Image Retrieval in Visual Histories",
+      "paper_url": "https://arxiv.org/abs/2602.10809",
+      "blog_id": "p0-sup-r05",
+      "note_url": "/notes/p0-sup-r05/"
+    },
+    "SUP-R06": {
+      "category": "memory-benchmarks",
+      "short_name": "DMV-Bench / DualMem",
+      "type": "基准＋方法",
+      "tags": [
+        "偶然视觉线索",
+        "延迟需求",
+        "视觉与文字双路",
+        "历史回访"
+      ],
+      "mechanism": "向长程多模态任务注入稍后才用到的偶然线索，并以双路记忆等方法检查历史恢复能力。",
+      "title": "DMV-Bench: Diagnosing Long-Horizon Multimodal Agents’ Visual Memory with Incidental Cue Injection",
+      "paper_url": "https://arxiv.org/abs/2606.27499",
+      "blog_id": "p0-sup-r06",
+      "note_url": "/notes/p0-sup-r06/"
+    }
+  },
+  "our_method": {
+    "name": "我们的当前方案：明细全存、目录定位、按需读取",
+    "status": "拟议方案，尚未训练或报告实验结果",
+    "primary_category": "source-lookback",
+    "related_categories": [
+      "text-summaries",
+      "memory-benchmarks",
+      "process-cost-audit"
+    ],
+    "mechanism": "同一任务逐步回放：OCR＋YOLO 提取每帧元素，独立 3B 补图标描述并写一行定位目录；7B VLM 看当前截图，用 search_history 和 read_frames 查此前帧的文字明细。",
+    "training": "7B 通过真实工具回包学习多轮搜索与读帧；3B 以冻结读者的检索成败为信号训练目录。",
+    "scope": "帧 ID 和元素 ID 只负责定位记录；当前首版不合并跨帧对象，不把对象时间线、图数据库或历史原图回查作为必选模块。",
+    "temporal_boundary": "第 t 步只能查询同任务的第 1 到 t−1 帧，未来帧、未来动作与终态不可进入目录或工具结果。",
+    "limit": "明细全存指全部已抽取记录，不等于无损保存截图；OCR 与描述都漏掉的视觉细节，文字工具无法恢复。",
+    "read_next": [
+      "P052",
+      "Y26-090",
+      "P071",
+      "SUP-A01",
+      "SUP-A27",
+      "SUP-R02",
+      "SUP-A04"
+    ],
+    "relationship_note": "这是研究导航中的位置，不是声称整套结构首次提出。相邻论文可能共享分层记忆、工具学习或目录回查机制，但任务设置和可访问历史范围不同。"
+  },
+  "paper_count": 45
+}
